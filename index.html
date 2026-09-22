@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -42,7 +42,7 @@
       id="menuButton"
       aria-label="Open navigation"
     >
-      ☰
+      â˜°
     </button>
 
     <nav id="navigation">
@@ -74,7 +74,7 @@
       </div>
 
       <div class="eyebrow">
-        Dharma • Devotion • Service • Social Good
+        Dharma â€¢ Devotion â€¢ Service â€¢ Social Good
       </div>
 
       <h1>
@@ -162,7 +162,7 @@
         <p>
           Door No. 001, Bodabanda Village,<br>
           Pullayapalli Post, Udayagiri Mandal,<br>
-          SPSR Nellore, Andhra Pradesh – 524226
+          SPSR Nellore, Andhra Pradesh â€“ 524226
         </p>
 
         <p>
@@ -203,7 +203,7 @@
     <div class="card-grid">
 
       <article class="activity-card">
-        <div class="activity-icon">ॐ</div>
+        <div class="activity-icon">à¥</div>
         <h3>Religious Activities</h3>
         <p>
           Supporting permitted temple,
@@ -212,7 +212,7 @@
       </article>
 
       <article class="activity-card">
-        <div class="activity-icon">♥</div>
+        <div class="activity-icon">â™¥</div>
         <h3>Charitable Service</h3>
         <p>
           Community welfare, awareness,
@@ -222,7 +222,7 @@
       </article>
 
       <article class="activity-card">
-        <div class="activity-icon">✦</div>
+        <div class="activity-icon">âœ¦</div>
         <h3>Education</h3>
         <p>
           Educational awareness and
@@ -232,7 +232,7 @@
       </article>
 
       <article class="activity-card">
-        <div class="activity-icon">♧</div>
+        <div class="activity-icon">â™§</div>
         <h3>Environment</h3>
         <p>
           Environmental protection,
@@ -391,9 +391,8 @@
       <p>
         Verify an official SRMDC Trust donation receipt
         using its receipt number and verification ID.
-        QR-based direct verification will be enabled
-        after the official website and verification
-        service are connected.
+        Receipt QR codes open this official verification
+        page and securely provide the receipt reference.
       </p>
 
     </div>
@@ -431,7 +430,44 @@
       <div
         id="verificationMessage"
         class="verification-message"
+        role="status"
+        aria-live="polite"
       ></div>
+
+      <div
+        id="verificationResult"
+        class="verification-result"
+        hidden
+        aria-live="polite"
+      >
+        <div class="verification-result-header">
+          <div
+            id="verificationStatusIcon"
+            class="verification-status-icon"
+            aria-hidden="true"
+          >
+            i
+          </div>
+
+          <div>
+            <p
+              id="verificationStatusLabel"
+              class="verification-status-label"
+            >
+              Verification Status
+            </p>
+
+            <h3 id="verificationStatusTitle">
+              Receipt Verification
+            </h3>
+          </div>
+        </div>
+
+        <div
+          id="verificationResultDetails"
+          class="verification-result-details"
+        ></div>
+      </div>
 
       <p class="privacy-note">
         Public verification will never display
@@ -512,7 +548,7 @@
         <p>
           Door No. 001, Bodabanda Village,<br>
           Pullayapalli Post, Udayagiri Mandal,<br>
-          SPSR Nellore, Andhra Pradesh – 524226
+          SPSR Nellore, Andhra Pradesh â€“ 524226
         </p>
 
       </div>
@@ -575,19 +611,19 @@
   </strong>
 
   <p>
-    Dharma • Devotion • Service • Social Good
+    Dharma â€¢ Devotion â€¢ Service â€¢ Social Good
   </p>
 
   <p class="footer-contact">
     Bodabanda Village, Andhra Pradesh
-    &nbsp; • &nbsp;
+    &nbsp; â€¢ &nbsp;
     +91 81233 86813
-    &nbsp; • &nbsp;
+    &nbsp; â€¢ &nbsp;
     srmdchtrustbodabanda@gmail.com
   </p>
 
   <p>
-    © <span id="year"></span> SRMDC Trust.
+    Â© <span id="year"></span> SRMDC Trust.
     All rights reserved.
   </p>
 
