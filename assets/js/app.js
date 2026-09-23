@@ -1,4 +1,4 @@
-﻿const menuButton =
+const menuButton =
   document.getElementById("menuButton");
 
 const navigation =
@@ -31,7 +31,7 @@ if (yearElement) {
 
 // =========================================================
 // SRMDC TRUST
-// PUBLIC RECEIPT VERIFICATION - PHASE 1D-A
+// PUBLIC RECEIPT VERIFICATION - PHASE 1D-B
 // =========================================================
 //
 // SECURITY PRINCIPLE:
@@ -49,6 +49,9 @@ if (yearElement) {
 // will be returned only after the secure SRMDC
 // verification service is connected.
 // =========================================================
+
+const SRMDC_VERIFICATION_ENDPOINT =
+  "https://umawsedkfamopecaykwp.supabase.co/functions/v1/verify-receipt";
 
 const verifyButton =
   document.getElementById("verifyButton");
@@ -275,7 +278,7 @@ function renderVerificationResult(result) {
     ["Date", result.date],
     ["Amount", result.amount],
     ["Purpose / Fund", result.fund],
-    ["Donor", result.maskedDonorName],
+    ["Donor Name", result.donorName],
     ["Status", result.status]
   ];
 
@@ -345,23 +348,98 @@ async function verifyReceipt() {
     receipt,
     verificationId
   );
-
   showMessage(
-    "The receipt reference was received successfully. " +
-    "Live validation will become available when the " +
-    "secure SRMDC verification service is connected.",
+    "Checking this receipt securely with SRMDC Trust...",
     "pending"
   );
 
-  // -------------------------------------------------------
-  // PHASE 1D-B
-  //
-  // The secure verification API call will be added here.
-  //
-  // IMPORTANT:
-  // Never replace this with a public donation JSON file.
-  // Never embed donor/payment records in this JavaScript.
-  // -------------------------------------------------------
+  if (verifyButton) {
+    verifyButton.disabled = true;
+  }
+
+  try {
+    const response = await fetch(
+      SRMDC_VERIFICATION_ENDPOINT,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          receiptNumber: receipt,
+          verificationId: verificationId
+        })
+      }
+    );
+
+    let result = null;
+
+    try {
+      result = await response.json();
+    } catch (_) {
+      throw new Error(
+        "Invalid verification-service response."
+      );
+    }
+
+    if (!response.ok) {
+      throw new Error(
+        result && result.message
+          ? result.message
+          : "Verification service unavailable."
+      );
+    }
+
+    if (
+      result &&
+      result.verified === true &&
+      (
+        result.status === "valid" ||
+        result.status === "cancelled"
+      )
+    ) {
+      renderVerificationResult(result);
+
+      if (result.status === "valid") {
+        showMessage(
+          "This receipt has been verified against the official SRMDC Trust record.",
+          "success"
+        );
+      } else {
+        showMessage(
+          "This receipt was issued by SRMDC Trust but has subsequently been cancelled.",
+          "error"
+        );
+      }
+
+      return;
+    }
+
+    renderVerificationResult({
+      status: "invalid"
+    });
+
+    showMessage(
+      "Receipt not verified. Please check the receipt number and verification ID.",
+      "error"
+    );
+  } catch (error) {
+    console.error(
+      "SRMDC receipt verification error:",
+      error
+    );
+
+    hideVerificationResult();
+
+    showMessage(
+      "The SRMDC receipt verification service is temporarily unavailable. Please try again later.",
+      "error"
+    );
+  } finally {
+    if (verifyButton) {
+      verifyButton.disabled = false;
+    }
+  }
 }
 
 
