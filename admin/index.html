@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="robots"
+    content="noindex, nofollow, noarchive"
+  >
+
+  <title>SRMDC Trust Administration</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/admin.css"
+  >
+</head>
+
+<body>
+
+  <main class="admin-shell">
+
+    <section
+      id="loadingView"
+      class="auth-card"
+    >
+      <div class="brand-mark">SRMDC</div>
+
+      <h1>SRMDC Trust</h1>
+
+      <p class="muted">
+        Checking administrator session...
+      </p>
+    </section>
+
+    <section
+      id="loginView"
+      class="auth-card hidden"
+    >
+      <div class="brand-mark">SRMDC</div>
+
+      <p class="eyebrow">
+        SRI RAMA MANDIRA DEVASTHANA CHARITABLE TRUST
+      </p>
+
+      <h1>Administration</h1>
+
+      <p class="muted">
+        Sign in with an authorized Trust administrator account.
+      </p>
+
+      <form id="loginForm">
+
+        <label for="email">
+          Email address
+        </label>
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="username"
+          required
+        >
+
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+        >
+
+        <button
+          id="loginButton"
+          type="submit"
+          class="primary-button"
+        >
+          Sign in
+        </button>
+
+        <p
+          id="loginMessage"
+          class="form-message"
+          aria-live="polite"
+        ></p>
+
+      </form>
+
+      <a
+        class="public-link"
+        href="../"
+      >
+        Return to public website
+      </a>
+    </section>
+
+    <section
+      id="dashboardView"
+      class="dashboard hidden"
+    >
+
+      <header class="dashboard-header">
+
+        <div>
+          <p class="eyebrow">
+            SRMDC TRUST
+          </p>
+
+          <h1>
+            Administration Dashboard
+          </h1>
+
+          <p
+            id="adminIdentity"
+            class="muted"
+          ></p>
+        </div>
+
+        <div class="header-actions">
+
+          <a
+            href="../"
+            class="secondary-button"
+          >
+            View Website
+          </a>
+
+          <button
+            id="logoutButton"
+            class="secondary-button"
+            type="button"
+          >
+            Logout
+          </button>
+
+        </div>
+
+      </header>
+
+      <div class="welcome-panel">
+
+        <div>
+          <span class="status-dot"></span>
+          Authorized administrator
+        </div>
+
+        <strong id="adminRole">
+          -
+        </strong>
+
+      </div>
+
+      <div class="module-grid">
+
+        <button class="module-card" data-module="Trust Profile">
+          <span class="module-icon">&#9881;</span>
+          <strong>Trust Profile</strong>
+          <span>Name, address and official details</span>
+        </button>
+
+        <button class="module-card" data-module="Home Page">
+          <span class="module-icon">&#8962;</span>
+          <strong>Home Page</strong>
+          <span>Headings, messages and highlights</span>
+        </button>
+
+        <button class="module-card" data-module="Activities">
+          <span class="module-icon">&#10022;</span>
+          <strong>Activities</strong>
+          <span>Religious and charitable activities</span>
+        </button>
+
+        <button class="module-card" data-module="Temple Updates">
+          <span class="module-icon">&#2384;</span>
+          <strong>Temple Updates</strong>
+          <span>Construction progress and updates</span>
+        </button>
+
+        <button class="module-card" data-module="Gallery">
+          <span class="module-icon">&#9638;</span>
+          <strong>Gallery</strong>
+          <span>Upload and manage public images</span>
+        </button>
+
+        <button class="module-card" data-module="Documents">
+          <span class="module-icon">&#9776;</span>
+          <strong>Documents</strong>
+          <span>Public reports and approved documents</span>
+        </button>
+
+        <button class="module-card" data-module="Announcements">
+          <span class="module-icon">&#9737;</span>
+          <strong>Announcements</strong>
+          <span>News, notices and events</span>
+        </button>
+
+        <button class="module-card" data-module="Trustees">
+          <span class="module-icon">&#9823;</span>
+          <strong>Trustees</strong>
+          <span>Public trustee and office-bearer profiles</span>
+        </button>
+
+        <button class="module-card" data-module="Contact">
+          <span class="module-icon">&#9742;</span>
+          <strong>Contact</strong>
+          <span>Public contact information</span>
+        </button>
+
+        <button class="module-card" data-module="Receipt Verification">
+          <span class="module-icon">&#10003;</span>
+          <strong>Receipt Verification</strong>
+          <span>Public verification service status</span>
+        </button>
+
+        <button class="module-card" data-module="Users & Roles">
+          <span class="module-icon">&#9919;</span>
+          <strong>Users &amp; Roles</strong>
+          <span>Administrator access management</span>
+        </button>
+
+        <button class="module-card" data-module="Audit Log">
+          <span class="module-icon">&#9776;</span>
+          <strong>Audit Log</strong>
+          <span>Review administrative changes</span>
+        </button>
+
+      </div>
+
+      <p
+        id="moduleMessage"
+        class="module-message"
+      >
+        Content editing modules will be enabled one by one.
+      </p>
+
+    </section>
+
+  </main>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
+
+  <script
+    src="../assets/js/supabase-config.js"
+  ></script>
+
+  <script
+    src="../assets/js/admin.js"
+  ></script>
+
+</body>
+</html>

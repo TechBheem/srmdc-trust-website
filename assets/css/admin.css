@@ -1,0 +1,278 @@
+:root {
+  --cream: #fbf6ec;
+  --paper: #fffdf8;
+  --navy: #07335c;
+  --maroon: #8d1f25;
+  --gold: #bf8b24;
+  --text: #17212b;
+  --muted: #68717a;
+  --border: #e5d8bd;
+  --success: #2c7252;
+  --danger: #a72c34;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  color: var(--text);
+  background: var(--cream);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.admin-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.auth-card {
+  width: min(470px, 100%);
+  margin: 7vh auto 0;
+  padding: 38px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+
+.brand-mark {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  color: var(--maroon);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--maroon);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  color: var(--navy);
+}
+
+.auth-card h1 {
+  margin: 8px 0 10px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+form {
+  margin-top: 28px;
+}
+
+label {
+  display: block;
+  margin: 18px 0 7px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #cfc5b1;
+  border-radius: 9px;
+  background: white;
+}
+
+input:focus {
+  outline: 2px solid rgba(7, 51, 92, 0.15);
+  border-color: var(--navy);
+}
+
+.primary-button,
+.secondary-button {
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.primary-button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 13px 16px;
+  border: 1px solid var(--navy);
+  color: white;
+  background: var(--navy);
+}
+
+.primary-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  border: 1px solid var(--border);
+  color: var(--navy);
+  background: var(--paper);
+  text-decoration: none;
+}
+
+.form-message {
+  min-height: 22px;
+  margin: 14px 0 0;
+  color: var(--danger);
+}
+
+.public-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--navy);
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.dashboard-header h1 {
+  margin: 5px 0 5px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.welcome-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  margin-bottom: 24px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.module-card {
+  min-height: 155px;
+  padding: 22px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.module-card:hover,
+.module-card:focus-visible {
+  border-color: var(--gold);
+  outline: none;
+}
+
+.module-card strong,
+.module-card span {
+  display: block;
+}
+
+.module-card strong {
+  margin: 13px 0 7px;
+  color: var(--navy);
+  font-size: 17px;
+}
+
+.module-card span:last-child {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.module-icon {
+  color: var(--maroon);
+  font-size: 25px;
+}
+
+.module-message {
+  margin-top: 20px;
+  padding: 14px 16px;
+  color: var(--muted);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+@media (max-width: 850px) {
+  .module-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-shell {
+    width: min(100% - 20px, 1180px);
+    padding: 20px 0;
+  }
+
+  .auth-card {
+    padding: 24px;
+  }
+
+  .dashboard-header {
+    display: block;
+  }
+
+  .header-actions {
+    margin-top: 18px;
+  }
+
+  .module-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-panel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
