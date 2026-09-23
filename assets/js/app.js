@@ -226,6 +226,63 @@ function createResultRow(label, value) {
 // It is NOT currently called with locally fabricated data.
 // ---------------------------------------------------------
 
+function formatVerificationAmount(value) {
+  const amount = Number(value);
+
+  if (!Number.isFinite(amount)) {
+    return value;
+  }
+
+  return new Intl.NumberFormat(
+    "en-IN",
+    {
+      style: "currency",
+      currency: "INR",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }
+  ).format(amount);
+}
+
+
+
+function formatVerificationDate(value) {
+  const text = String(value || "").trim();
+
+  const match =
+    /^(\d{4})-(\d{2})-(\d{2})$/.exec(text);
+
+  if (!match) {
+    return value;
+  }
+
+  return `${match[3]}-${match[2]}-${match[1]}`;
+}
+
+
+
+function formatVerificationStatus(value) {
+  const status =
+    String(value || "")
+      .trim()
+      .toLowerCase();
+
+  if (status === "valid") {
+    return "Valid";
+  }
+
+  if (status === "cancelled") {
+    return "Cancelled";
+  }
+
+  if (status === "invalid") {
+    return "Not Verified";
+  }
+
+  return value;
+}
+
+
 function renderVerificationResult(result) {
   if (
     !verificationResult ||
@@ -275,11 +332,11 @@ function renderVerificationResult(result) {
 
   const safeFields = [
     ["Receipt Number", result.receiptNumber],
-    ["Date", result.date],
-    ["Amount", result.amount],
+    ["Date", formatVerificationDate(result.date)],
+    ["Amount", formatVerificationAmount(result.amount)],
     ["Purpose / Fund", result.fund],
     ["Donor Name", result.donorName],
-    ["Status", result.status]
+    ["Status", formatVerificationStatus(result.status)]
   ];
 
   safeFields.forEach(([label, value]) => {
