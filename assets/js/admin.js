@@ -163,7 +163,7 @@
     }
 
     adminIdentity.textContent =
-      `${profile.display_name} • ${user.email || ""}`;
+      `${profile.display_name} â€¢ ${user.email || ""}`;
 
     adminRole.textContent =
       readableRole(profile.role);
@@ -863,7 +863,7 @@
 
     const formatDate = (value) => {
       if (!value) {
-        return "—";
+        return "â€”";
       }
 
       const date = new Date(value);
@@ -1323,7 +1323,7 @@
                   development
                     ? `
                       <div class="srmdc-test-warning">
-                        DEVELOPMENT / TEST RECORD —
+                        DEVELOPMENT / TEST RECORD â€”
                         DO NOT PROCESS
                       </div>
                     `
@@ -1573,7 +1573,7 @@
                 <strong>
                   ${
                     escapeHtml(
-                      item.mobile || "—"
+                      item.mobile || "â€”"
                     )
                   }
                 </strong>
@@ -1584,7 +1584,7 @@
                 <strong>
                   ${
                     escapeHtml(
-                      item.email || "—"
+                      item.email || "â€”"
                     )
                   }
                 </strong>
@@ -1692,7 +1692,7 @@
                     escapeHtml(
                       item
                         .donor_transaction_reference ||
-                      "—"
+                      "â€”"
                     )
                   }
                 </strong>
@@ -1743,7 +1743,7 @@
                           escapeHtml(
                             item
                               .bank_transaction_reference ||
-                            "—"
+                            "â€”"
                           )
                         }
                       </strong>
@@ -2531,11 +2531,16 @@
       }
 
 
+      // Open a writable same-origin blank window first.
+      //
+      // Do NOT pass "noopener,noreferrer" here.
+      // Some browsers (including Edge) can open the tab but
+      // return null when noopener is requested, preventing us
+      // from writing the official receipt document.
       const receiptWindow =
         window.open(
           "",
-          "_blank",
-          "noopener,noreferrer"
+          "_blank"
         );
 
       if (!receiptWindow) {
@@ -3026,6 +3031,18 @@
         documentHtml
       );
       receiptWindow.document.close();
+
+      // The receipt is now fully written. Detach the opener
+      // afterwards without losing our writable window reference.
+      try {
+        receiptWindow.opener = null;
+      }
+      catch (error) {
+        console.warn(
+          "Unable to detach receipt window opener.",
+          error
+        );
+      }
 
 
       const renderLocalQr = () => {
