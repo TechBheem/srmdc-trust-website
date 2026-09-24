@@ -2229,6 +2229,14 @@
 
           <div class="srmdc-success-actions">
 
+            <button
+              type="button"
+              id="viewOfficialReceiptButton"
+              class="srmdc-issue-button"
+            >
+              View / Print Official Receipt
+            </button>
+
             <a
               class="secondary-button srmdc-link-button"
               href="${
@@ -2263,6 +2271,24 @@
       `;
 
 
+      const viewReceiptButton =
+        document.getElementById(
+          "viewOfficialReceiptButton"
+        );
+
+      if (viewReceiptButton) {
+        viewReceiptButton.addEventListener(
+          "click",
+          () => {
+            openOfficialReceipt(
+              result,
+              verificationUrl,
+              currentSubmission
+            );
+          }
+        );
+      }
+
       document
         .getElementById(
           "returnToDonationQueueButton"
@@ -2284,6 +2310,760 @@
         );
     }
 
+
+
+    // ==========================================================
+    // SRMDC_OFFICIAL_RECEIPT_RENDERER
+    // ==========================================================
+    //
+    // This renderer never creates a receipt.
+    // It can only display receipt information already returned
+    // by the successful atomic approval RPC.
+    // ==========================================================
+
+    function numberToIndianWords(value) {
+
+      const amount =
+        Math.round(Number(value));
+
+      if (
+        !Number.isFinite(amount) ||
+        amount < 0
+      ) {
+        return "";
+      }
+
+      if (amount === 0) {
+        return "Zero Rupees Only";
+      }
+
+      const ones = [
+        "",
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine",
+        "Ten",
+        "Eleven",
+        "Twelve",
+        "Thirteen",
+        "Fourteen",
+        "Fifteen",
+        "Sixteen",
+        "Seventeen",
+        "Eighteen",
+        "Nineteen"
+      ];
+
+      const tens = [
+        "",
+        "",
+        "Twenty",
+        "Thirty",
+        "Forty",
+        "Fifty",
+        "Sixty",
+        "Seventy",
+        "Eighty",
+        "Ninety"
+      ];
+
+      function belowHundred(number) {
+
+        if (number < 20) {
+          return ones[number];
+        }
+
+        const ten =
+          Math.floor(number / 10);
+
+        const unit =
+          number % 10;
+
+        return [
+          tens[ten],
+          ones[unit]
+        ]
+          .filter(Boolean)
+          .join(" ");
+      }
+
+
+      function belowThousand(number) {
+
+        const hundred =
+          Math.floor(number / 100);
+
+        const remainder =
+          number % 100;
+
+        const words = [];
+
+        if (hundred) {
+          words.push(
+            `${ones[hundred]} Hundred`
+          );
+        }
+
+        if (remainder) {
+          words.push(
+            belowHundred(remainder)
+          );
+        }
+
+        return words.join(" ");
+      }
+
+
+      let remaining = amount;
+      const words = [];
+
+      const crore =
+        Math.floor(
+          remaining / 10000000
+        );
+
+      if (crore) {
+        words.push(
+          `${numberToIndianWordsCore(crore)} Crore`
+        );
+
+        remaining %= 10000000;
+      }
+
+
+      const lakh =
+        Math.floor(
+          remaining / 100000
+        );
+
+      if (lakh) {
+        words.push(
+          `${numberToIndianWordsCore(lakh)} Lakh`
+        );
+
+        remaining %= 100000;
+      }
+
+
+      const thousand =
+        Math.floor(
+          remaining / 1000
+        );
+
+      if (thousand) {
+        words.push(
+          `${numberToIndianWordsCore(thousand)} Thousand`
+        );
+
+        remaining %= 1000;
+      }
+
+
+      if (remaining) {
+        words.push(
+          belowThousand(remaining)
+        );
+      }
+
+
+      return `${words.join(" ")} Rupees Only`;
+
+
+      function numberToIndianWordsCore(number) {
+
+        if (number < 100) {
+          return belowHundred(number);
+        }
+
+        if (number < 1000) {
+          return belowThousand(number);
+        }
+
+        const thousands =
+          Math.floor(number / 1000);
+
+        const rest =
+          number % 1000;
+
+        return [
+          `${numberToIndianWordsCore(thousands)} Thousand`,
+          rest
+            ? belowThousand(rest)
+            : ""
+        ]
+          .filter(Boolean)
+          .join(" ");
+      }
+    }
+
+
+    function openOfficialReceipt(
+      result,
+      verificationUrl,
+      submission
+    ) {
+
+      if (
+        !result ||
+        !result.receipt_number ||
+        !result.verification_token
+      ) {
+        window.alert(
+          "Official receipt details are not available."
+        );
+
+        return;
+      }
+
+
+      if (!submission) {
+        window.alert(
+          "Donation details are not available for this receipt."
+        );
+
+        return;
+      }
+
+
+      const receiptWindow =
+        window.open(
+          "",
+          "_blank",
+          "noopener,noreferrer"
+        );
+
+      if (!receiptWindow) {
+        window.alert(
+          "Please allow pop-ups to view the official receipt."
+        );
+
+        return;
+      }
+
+
+      const receiptDate =
+        result.receipt_date ||
+        submission.bank_credit_date ||
+        submission.donor_payment_date ||
+        new Date().toISOString();
+
+
+      const amount =
+        Number(
+          result.amount ??
+          submission.declared_amount
+        );
+
+
+      const paymentMode =
+        statusLabel(
+          submission.payment_mode ||
+          "bank_transfer"
+        );
+
+
+      const safeVerificationUrl =
+        escapeHtml(
+          verificationUrl
+        );
+
+
+      const qrContainerId =
+        "srmdcReceiptQr";
+
+
+      const documentHtml = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+<title>
+  ${escapeHtml(result.receipt_number)}
+</title>
+
+<style>
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 28px;
+    background: #eee9dc;
+    color: #102b45;
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+  }
+
+  .toolbar {
+    max-width: 900px;
+    margin: 0 auto 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+  }
+
+  .toolbar button {
+    border: 1px solid #c8a85b;
+    border-radius: 8px;
+    background: #fffaf0;
+    color: #082f54;
+    padding: 10px 18px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .receipt {
+    position: relative;
+    max-width: 900px;
+    min-height: 1080px;
+    margin: auto;
+    padding: 34px 42px;
+    background:
+      linear-gradient(
+        rgba(255, 252, 240, 0.97),
+        rgba(255, 250, 233, 0.97)
+      );
+    border: 8px double #b6923c;
+    box-shadow:
+      0 14px 40px rgba(0, 0, 0, 0.13);
+  }
+
+  .receipt::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(139, 32, 32, 0.35);
+    pointer-events: none;
+  }
+
+  .trust-image {
+    display: block;
+    width: 150px;
+    max-height: 130px;
+    object-fit: contain;
+    margin: 0 auto 10px;
+  }
+
+  .trust-name {
+    margin: 0;
+    text-align: center;
+    color: #7d1818;
+    font-size: 27px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .trust-address {
+    margin: 8px auto 0;
+    max-width: 720px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .divider {
+    height: 3px;
+    margin: 20px 0;
+    border-top: 1px solid #b6923c;
+    border-bottom: 1px solid #b6923c;
+  }
+
+  .receipt-title {
+    margin: 0 0 18px;
+    text-align: center;
+    color: #082f54;
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+
+  .receipt-meta {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+    gap: 14px 28px;
+    margin-bottom: 24px;
+  }
+
+  .field {
+    border-bottom:
+      1px dotted rgba(16, 43, 69, 0.5);
+    padding: 8px 0;
+  }
+
+  .field span {
+    display: block;
+    margin-bottom: 4px;
+    color: #775f31;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+  }
+
+  .field strong {
+    font-size: 17px;
+  }
+
+  .amount-box {
+    margin: 22px 0;
+    padding: 18px;
+    border: 1px solid #c8a85b;
+    background: rgba(255, 248, 222, 0.7);
+  }
+
+  .amount-number {
+    color: #7d1818;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .amount-words {
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .verification {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 24px;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #c8a85b;
+  }
+
+  .verification h3 {
+    margin: 0 0 8px;
+    color: #7d1818;
+  }
+
+  .verification p {
+    margin: 5px 0;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .qr {
+    width: 170px;
+    height: 170px;
+    padding: 6px;
+    border: 1px solid #c8a85b;
+    background: #fff;
+  }
+
+  .signature {
+    margin-top: 55px;
+    text-align: right;
+  }
+
+  .signature-space {
+    height: 55px;
+  }
+
+  .signature strong {
+    display: block;
+    color: #7d1818;
+  }
+
+  .footer {
+    margin-top: 32px;
+    padding-top: 12px;
+    border-top: 1px solid #c8a85b;
+    text-align: center;
+    color: #685b43;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 700px) {
+
+    body {
+      padding: 8px;
+    }
+
+    .receipt {
+      padding: 24px 20px;
+    }
+
+    .receipt-meta,
+    .verification {
+      grid-template-columns: 1fr;
+    }
+
+    .verification {
+      text-align: center;
+    }
+
+    .qr {
+      margin: auto;
+    }
+  }
+
+  @media print {
+
+    @page {
+      size: A4;
+      margin: 8mm;
+    }
+
+    body {
+      padding: 0;
+      background: #fff;
+    }
+
+    .toolbar {
+      display: none !important;
+    }
+
+    .receipt {
+      width: 100%;
+      min-height: auto;
+      margin: 0;
+      padding: 20px 28px;
+      box-shadow: none;
+      page-break-inside: avoid;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+
+<div class="toolbar">
+  <button onclick="window.print()">
+    Print / Save PDF
+  </button>
+
+  <button onclick="window.close()">
+    Close
+  </button>
+</div>
+
+
+<main class="receipt">
+
+  <img
+    class="trust-image"
+    src="${window.location.origin}/assets/images/sita_rama_kalyanam.png"
+    alt="Sita Rama Kalyanam"
+  >
+
+  <h1 class="trust-name">
+    Sri Rama Mandira Devasthana Charitable Trust
+  </h1>
+
+  <div class="trust-address">
+    Door No. 001, Bodabanda Village,
+    Pullayapalli Post, Udayagiri Mandal,
+    SPSR Nellore, Andhra Pradesh - 524226
+    <br>
+    Phone: 8123386813 / 6362486813
+    &nbsp; | &nbsp;
+    srmdchtrustbodabanda@gmail.com
+    <br>
+    srmdctrust.org
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 class="receipt-title">
+    OFFICIAL DONATION RECEIPT
+  </h2>
+
+
+  <section class="receipt-meta">
+
+    <div class="field">
+      <span>Receipt Number</span>
+      <strong>
+        ${escapeHtml(result.receipt_number)}
+      </strong>
+    </div>
+
+    <div class="field">
+      <span>Receipt Date</span>
+      <strong>
+        ${escapeHtml(formatDate(receiptDate))}
+      </strong>
+    </div>
+
+    <div class="field">
+      <span>Received From</span>
+      <strong>
+        ${escapeHtml(submission.donor_name)}
+      </strong>
+    </div>
+
+    <div class="field">
+      <span>Fund</span>
+      <strong>
+        ${escapeHtml(submission.fund_name)}
+      </strong>
+    </div>
+
+    <div class="field">
+      <span>Purpose</span>
+      <strong>
+        ${escapeHtml(submission.donation_purpose)}
+      </strong>
+    </div>
+
+    <div class="field">
+      <span>Payment Mode</span>
+      <strong>
+        ${escapeHtml(paymentMode)}
+      </strong>
+    </div>
+
+  </section>
+
+
+  <section class="amount-box">
+
+    <div class="amount-number">
+      ${escapeHtml(money(amount))}
+    </div>
+
+    <div class="amount-words">
+      <strong>Amount in words:</strong>
+      ${escapeHtml(numberToIndianWords(amount))}
+    </div>
+
+  </section>
+
+
+  <section class="verification">
+
+    <div>
+
+      <h3>Verify this Receipt</h3>
+
+      <p>
+        Scan the QR code or visit the official
+        SRMDC Trust website to verify this receipt.
+      </p>
+
+      <p>
+        <strong>Verification ID:</strong><br>
+        ${escapeHtml(result.verification_token)}
+      </p>
+
+      <p>
+        <strong>Verification URL:</strong><br>
+        ${safeVerificationUrl}
+      </p>
+
+    </div>
+
+    <div
+      id="${qrContainerId}"
+      class="qr"
+      role="img"
+      aria-label="Receipt verification QR code"
+    ></div>
+
+  </section>
+
+
+  <section class="signature">
+
+    <div class="signature-space"></div>
+
+    <strong>
+      For SRI RAMA MANDIRA DEVASTHANA
+      CHARITABLE TRUST
+    </strong>
+
+    <div>
+      Treasurer / Authorized Signatory
+    </div>
+
+  </section>
+
+
+  <div class="footer">
+
+    This is an official donation receipt generated
+    from the SRMDC Trust administration system.
+
+    <br>
+
+    Tax eligibility, where applicable, is subject to
+    separate statutory review and compliance.
+    This receipt by itself does not constitute a
+    tax-exemption certificate.
+
+  </div>
+
+</main>
+
+</body>
+</html>
+      `;
+
+
+      receiptWindow.document.open();
+      receiptWindow.document.write(
+        documentHtml
+      );
+      receiptWindow.document.close();
+
+
+      const renderLocalQr = () => {
+
+        const qrElement =
+          receiptWindow.document
+            .getElementById(
+              qrContainerId
+            );
+
+        if (
+          !qrElement ||
+          typeof QRCode === "undefined"
+        ) {
+          return;
+        }
+
+        qrElement.innerHTML = "";
+
+        new QRCode(
+          qrElement,
+          {
+            text: verificationUrl,
+            width: 156,
+            height: 156,
+            correctLevel:
+              QRCode.CorrectLevel.M
+          }
+        );
+      };
+
+
+      if (
+        typeof QRCode !== "undefined"
+      ) {
+        renderLocalQr();
+      }
+    }
 
     // ----------------------------------------------------------
     // Initialize UI

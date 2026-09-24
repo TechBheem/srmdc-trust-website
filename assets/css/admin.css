@@ -839,3 +839,32 @@ input:focus {
   }
 
 }
+
+/* =========================================================
+   SRMDC_OFFICIAL_RECEIPT_ACTIONS
+   ========================================================= */
+
+.srmdc-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.srmdc-success-actions .srmdc-issue-button,
+.srmdc-success-actions .secondary-button {
+  width: auto;
+  min-width: 180px;
+}
+
+@media (max-width: 640px) {
+
+  .srmdc-success-actions {
+    flex-direction: column;
+  }
+
+  .srmdc-success-actions .srmdc-issue-button,
+  .srmdc-success-actions .secondary-button {
+    width: 100%;
+  }
+}
