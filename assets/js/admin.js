@@ -163,7 +163,7 @@
     }
 
     adminIdentity.textContent =
-      `${profile.display_name} â€¢ ${user.email || ""}`;
+      `${profile.display_name} - ${user.email || ""}`;
 
     adminRole.textContent =
       readableRole(profile.role);
@@ -863,7 +863,7 @@
 
     const formatDate = (value) => {
       if (!value) {
-        return "â€”";
+        return "\u2014";
       }
 
       const date = new Date(value);
@@ -1323,8 +1323,7 @@
                   development
                     ? `
                       <div class="srmdc-test-warning">
-                        DEVELOPMENT / TEST RECORD â€”
-                        DO NOT PROCESS
+                        DEVELOPMENT / TEST RECORD<br>DO NOT PROCESS
                       </div>
                     `
                     : ""
@@ -1573,7 +1572,7 @@
                 <strong>
                   ${
                     escapeHtml(
-                      item.mobile || "â€”"
+                      item.mobile || "\u2014"
                     )
                   }
                 </strong>
@@ -1584,7 +1583,7 @@
                 <strong>
                   ${
                     escapeHtml(
-                      item.email || "â€”"
+                      item.email || "\u2014"
                     )
                   }
                 </strong>
@@ -1692,7 +1691,7 @@
                     escapeHtml(
                       item
                         .donor_transaction_reference ||
-                      "â€”"
+                      "\u2014"
                     )
                   }
                 </strong>
@@ -1803,7 +1802,7 @@
                           escapeHtml(
                             item
                               .bank_transaction_reference ||
-                            "â€”"
+                            "\u2014"
                           )
                         }
                       </strong>
@@ -2861,7 +2860,7 @@
   }
 
   .amount-words {
-    margin-top: 8px;
+    margin-top: 5px;
     line-height: 1.5;
   }
 
@@ -2876,7 +2875,7 @@
   }
 
   .verification h3 {
-    margin: 0 0 8px;
+    margin: 0 0 5px;
     color: #7d1818;
   }
 
@@ -2944,32 +2943,270 @@
     }
   }
 
+  
+
+
+
+  /* SRMDC_A4_FINAL_ONE_PAGE */
+  
+
+
+  /* ==========================================================
+     SRMDC_DEVOTIONAL_RECEIPT_V1
+     ========================================================== */
+
+  .receipt {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /*
+    Real IMG watermark instead of CSS background-image.
+    This is more reliable when printing / saving as PDF.
+  */
+  .receipt-watermark {
+    position: absolute;
+    z-index: 0;
+
+    left: 4%;
+    top: 17%;
+
+    width: 92%;
+    height: 66%;
+
+    object-fit: contain;
+
+    opacity: 0.16;
+
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /*
+    All actual receipt content remains above watermark.
+  */
+  .receipt > *:not(.receipt-watermark) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .devotional-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    margin: 0 auto 4px;
+
+    min-height: 54px;
+
+    color: #8b1e24;
+
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+
+    font-weight: 700;
+  }
+
+  .devotional-word {
+    min-width: 110px;
+
+    font-size: 17px;
+    line-height: 1;
+
+    text-align: center;
+
+    letter-spacing: 0.2px;
+  }
+
+  .ganesh-icon {
+    display: block;
+
+    width: 52px;
+    height: 52px;
+
+    object-fit: contain;
+
+    mix-blend-mode: multiply;
+  }
+
+
+  /* ==========================================================
+     PRINT â€” EXPLICIT SINGLE A4 PAGE
+     ========================================================== */
+
+  
+
+
+  /* ==========================================================
+     SRMDC_PRINT_FLOW_FIX_V1
+
+     Keep A4 one-page sizing, but restore natural vertical flow.
+     ========================================================== */
+
+  
+
+
+  /* ==========================================================
+     SRMDC_PRINT_COLOR_FIDELITY_V1
+
+     Preserve the approved screen receipt styling when printing.
+     No receipt-data or workflow changes.
+     ========================================================== */
+
+  /* ==========================================================
+     SRMDC_FIXED_CANVAS_PRINT_V1
+
+     IMPORTANT:
+     Screen receipt is the master design.
+
+     Do not resize individual:
+       - text
+       - Ganesh image
+       - Sita-Rama watermark
+       - QR
+       - signature
+       - footer
+
+     The complete receipt is scaled uniformly for A4.
+     ========================================================== */
+
   @media print {
 
     @page {
-      size: A4;
-      margin: 8mm;
+      size: A4 portrait;
+      margin: 5mm;
     }
 
+    html,
     body {
-      padding: 0;
-      background: #fff;
+      width: 210mm !important;
+      height: 297mm !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+
+      background: #ffffff !important;
+
+      overflow: hidden !important;
+
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
 
     .toolbar {
       display: none !important;
     }
 
+    /*
+      Preserve the exact screen receipt canvas.
+      Edge must not rebuild the internal layout.
+    */
     .receipt {
-      width: 100%;
-      min-height: auto;
-      margin: 0;
-      padding: 20px 28px;
-      box-shadow: none;
-      page-break-inside: avoid;
+      box-sizing: border-box !important;
+
+      width: 900px !important;
+      max-width: none !important;
+
+      min-height: 1080px !important;
+
+      margin: 0 !important;
+
+      /*
+        900px receipt -> approx. 190mm printable visual width.
+        Uniform scale preserves all proportions.
+      */
+      zoom: 0.90;
+      /* Edge print uses layout-aware zoom. */
+
+      /*
+        Center the scaled canvas on A4.
+      */
+      position: absolute !important;
+
+      left: 10mm !important;
+      top: 7mm !important;
+
+      box-shadow: none !important;
+
+      overflow: hidden !important;
+
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /*
+      Critical:
+      Preserve every child exactly as designed on screen.
+    */
+    .receipt,
+    .receipt *,
+    .receipt::before,
+    .receipt::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /*
+      Preserve original devotional watermark geometry.
+    */
+    .receipt-watermark {
+      left: 4% !important;
+      top: 17% !important;
+
+      width: 92% !important;
+      height: 66% !important;
+
+      object-fit: contain !important;
+
+      opacity: 0.16 !important;
+
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /*
+      Preserve Ganesh icon exactly as screen.
+    */
+    .ganesh-icon {
+      width: 52px !important;
+      height: 52px !important;
+
+      object-fit: contain !important;
+
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /*
+      QR must remain sharp and printable.
+    */
+    .qr,
+    .qr img,
+    .qr canvas {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /*
+      Prevent Edge from splitting these sections.
+    */
+    .receipt-meta,
+    .amount-box,
+    .verification,
+    .signature,
+    .footer {
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
     }
   }
-
 </style>
 </head>
 
@@ -2988,11 +3225,31 @@
 
 <main class="receipt">
 
+    <!-- SRMDC_DEVOTIONAL_RECEIPT_V1 -->
+
   <img
-    class="trust-image"
+    class="receipt-watermark"
     src="${window.location.origin}/assets/images/sita_rama_kalyanam.png"
-    alt="Sita Rama Kalyanam"
+    alt=""
   >
+
+  <div class="devotional-header">
+
+    <span class="devotional-word">
+      Srirasthu
+    </span>
+
+    <img
+      class="ganesh-icon"
+      src="${window.location.origin}/assets/images/ganesh.png"
+      alt="Sri Ganesh"
+    >
+
+    <span class="devotional-word">
+      Subhamasthu
+    </span>
+
+  </div>
 
   <h1 class="trust-name">
     Sri Rama Mandira Devasthana Charitable Trust
@@ -3228,3 +3485,13 @@
   initialize();
 
 })();
+
+
+
+
+
+
+
+
+
+
