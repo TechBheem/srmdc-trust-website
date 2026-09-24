@@ -822,4 +822,1482 @@
   );
 
   initialize();
+
+  // ============================================================
+  // SRMDC_DONATION_VERIFICATION_MODULE
+  // ============================================================
+
+  const srmdcDonationVerification = (() => {
+
+    let queue = [];
+    let currentSubmission = null;
+
+
+    // ----------------------------------------------------------
+    // Helpers
+    // ----------------------------------------------------------
+
+    const escapeHtml = (value) => {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    };
+
+
+    const money = (value) => {
+      const number = Number(value || 0);
+
+      return new Intl.NumberFormat(
+        "en-IN",
+        {
+          style: "currency",
+          currency: "INR",
+          maximumFractionDigits: 2
+        }
+      ).format(number);
+    };
+
+
+    const formatDate = (value) => {
+      if (!value) {
+        return "—";
+      }
+
+      const date = new Date(value);
+
+      if (Number.isNaN(date.getTime())) {
+        return value;
+      }
+
+      return new Intl.DateTimeFormat(
+        "en-IN",
+        {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric"
+        }
+      ).format(date);
+    };
+
+
+    const statusLabel = (value) => {
+      return String(value || "")
+        .replaceAll("_", " ")
+        .replace(/\b\w/g, (character) =>
+          character.toUpperCase()
+        );
+    };
+
+
+    const getView = () =>
+      document.getElementById(
+        "donationVerificationView"
+      );
+
+
+    const setMessage = (
+      text,
+      type = ""
+    ) => {
+      const element =
+        document.getElementById(
+          "donationVerificationMessage"
+        );
+
+      if (!element) {
+        return;
+      }
+
+      element.textContent = text || "";
+      element.className =
+        "srmdc-finance-message";
+
+      if (type) {
+        element.classList.add(type);
+      }
+    };
+
+
+    // ----------------------------------------------------------
+    // Build module card + workspace dynamically.
+    //
+    // This avoids replacing existing Trust Profile HTML.
+    // ----------------------------------------------------------
+
+    const buildUi = () => {
+
+      const moduleGrid =
+        document.querySelector(".module-grid");
+
+      if (
+        moduleGrid &&
+        !document.getElementById(
+          "donationVerificationCard"
+        )
+      ) {
+        const card =
+          document.createElement("button");
+
+        card.type = "button";
+        card.id =
+          "donationVerificationCard";
+
+        card.className = "module-card";
+
+        card.innerHTML = `
+          <span class="module-icon">&#8377;</span>
+          <strong>Donation Verification</strong>
+          <span>
+            Verify bank credits and issue official receipts
+          </span>
+        `;
+
+        const receiptCard =
+          Array.from(
+            moduleGrid.querySelectorAll(
+              ".module-card"
+            )
+          ).find(
+            (element) =>
+              element.dataset.module ===
+              "Receipt Verification"
+          );
+
+        if (receiptCard) {
+          moduleGrid.insertBefore(
+            card,
+            receiptCard
+          );
+        } else {
+          moduleGrid.appendChild(card);
+        }
+
+        card.addEventListener(
+          "click",
+          open
+        );
+      }
+
+
+      if (
+        !document.getElementById(
+          "donationVerificationView"
+        )
+      ) {
+        const view =
+          document.createElement("section");
+
+        view.id =
+          "donationVerificationView";
+
+        view.className =
+          "dashboard hidden srmdc-finance-view";
+
+        view.innerHTML = `
+          <header class="dashboard-header">
+            <div>
+              <p class="eyebrow">
+                FINANCIAL ADMINISTRATION
+              </p>
+
+              <h1>
+                Donation Verification
+              </h1>
+
+              <p class="muted">
+                Verify actual bank credits before issuing
+                an official SRMDC Trust receipt.
+              </p>
+            </div>
+
+            <div class="srmdc-finance-header-actions">
+              <button
+                type="button"
+                id="refreshDonationQueueButton"
+                class="secondary-button"
+              >
+                Refresh
+              </button>
+
+              <button
+                type="button"
+                id="donationVerificationBackButton"
+                class="secondary-button"
+              >
+                Back to Dashboard
+              </button>
+            </div>
+          </header>
+
+          <div
+            id="donationVerificationMessage"
+            class="srmdc-finance-message"
+          ></div>
+
+          <div class="srmdc-finance-summary">
+            <div>
+              <strong id="pendingDonationCount">0</strong>
+              <span>Awaiting verification</span>
+            </div>
+
+            <div>
+              <strong id="issuedDonationCount">0</strong>
+              <span>Receipts issued</span>
+            </div>
+          </div>
+
+          <div
+            id="donationQueue"
+            class="srmdc-donation-queue"
+          ></div>
+
+          <div
+            id="donationVerificationPanel"
+            class="srmdc-verification-panel hidden"
+          ></div>
+        `;
+
+        const main =
+          dashboardView.parentElement;
+
+        main.appendChild(view);
+
+
+        document
+          .getElementById(
+            "donationVerificationBackButton"
+          )
+          .addEventListener(
+            "click",
+            close
+          );
+
+
+        document
+          .getElementById(
+            "refreshDonationQueueButton"
+          )
+          .addEventListener(
+            "click",
+            loadQueue
+          );
+      }
+    };
+
+
+    // ----------------------------------------------------------
+    // Navigation
+    // ----------------------------------------------------------
+
+    function open() {
+
+      buildUi();
+
+      dashboardView.classList.add(
+        "hidden"
+      );
+
+      const profileView =
+        document.getElementById(
+          "trustProfileView"
+        );
+
+      if (profileView) {
+        profileView.classList.add(
+          "hidden"
+        );
+      }
+
+      getView().classList.remove(
+        "hidden"
+      );
+
+      currentSubmission = null;
+
+      loadQueue();
+    }
+
+
+    function close() {
+
+      const view = getView();
+
+      if (view) {
+        view.classList.add(
+          "hidden"
+        );
+      }
+
+      dashboardView.classList.remove(
+        "hidden"
+      );
+
+      currentSubmission = null;
+    }
+
+
+    // ----------------------------------------------------------
+    // Load secure financial-admin queue
+    // ----------------------------------------------------------
+
+    async function loadQueue() {
+
+      buildUi();
+
+      const container =
+        document.getElementById(
+          "donationQueue"
+        );
+
+      const panel =
+        document.getElementById(
+          "donationVerificationPanel"
+        );
+
+      container.innerHTML = `
+        <div class="srmdc-finance-empty">
+          Loading donation submissions...
+        </div>
+      `;
+
+      panel.classList.add("hidden");
+
+      setMessage("");
+
+
+      const {
+        data,
+        error
+      } = await client.rpc(
+        "get_srmdc_donation_verification_queue"
+      );
+
+
+      if (error) {
+        console.error(error);
+
+        container.innerHTML = `
+          <div class="srmdc-finance-empty">
+            Unable to load donation submissions.
+          </div>
+        `;
+
+        setMessage(
+          error.message ||
+          "Unable to load donation verification queue.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      queue =
+        Array.isArray(data)
+          ? data
+          : [];
+
+
+      renderQueue();
+    }
+
+
+    // ----------------------------------------------------------
+    // Queue cards
+    // ----------------------------------------------------------
+
+    function renderQueue() {
+
+      const container =
+        document.getElementById(
+          "donationQueue"
+        );
+
+
+      const pending =
+        queue.filter(
+          (item) =>
+            item.status !==
+            "receipt_issued"
+        );
+
+
+      const issued =
+        queue.filter(
+          (item) =>
+            item.status ===
+            "receipt_issued"
+        );
+
+
+      document.getElementById(
+        "pendingDonationCount"
+      ).textContent =
+        String(pending.length);
+
+
+      document.getElementById(
+        "issuedDonationCount"
+      ).textContent =
+        String(issued.length);
+
+
+      if (!queue.length) {
+
+        container.innerHTML = `
+          <div class="srmdc-finance-empty">
+            No donation submissions are currently
+            waiting for verification.
+          </div>
+        `;
+
+        return;
+      }
+
+
+      container.innerHTML =
+        queue.map(
+          (item) => {
+
+            const development =
+              item.is_development_record === true;
+
+
+            return `
+              <article
+                class="
+                  srmdc-donation-card
+                  ${
+                    development
+                      ? "development"
+                      : ""
+                  }
+                "
+              >
+                <div class="srmdc-donation-card-head">
+
+                  <div>
+                    <span class="srmdc-reference">
+                      ${
+                        escapeHtml(
+                          item.submission_number
+                        )
+                      }
+                    </span>
+
+                    <h3>
+                      ${
+                        escapeHtml(
+                          item.donor_name
+                        )
+                      }
+                    </h3>
+                  </div>
+
+                  <span
+                    class="
+                      srmdc-status-badge
+                      ${
+                        item.status ===
+                        "receipt_issued"
+                          ? "issued"
+                          : ""
+                      }
+                    "
+                  >
+                    ${
+                      escapeHtml(
+                        statusLabel(
+                          item.status
+                        )
+                      )
+                    }
+                  </span>
+                </div>
+
+
+                ${
+                  development
+                    ? `
+                      <div class="srmdc-test-warning">
+                        DEVELOPMENT / TEST RECORD —
+                        DO NOT PROCESS
+                      </div>
+                    `
+                    : ""
+                }
+
+
+                <div class="srmdc-card-grid">
+
+                  <div>
+                    <span>Fund</span>
+                    <strong>
+                      ${
+                        escapeHtml(
+                          item.fund_name
+                        )
+                      }
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>Amount</span>
+                    <strong>
+                      ${
+                        escapeHtml(
+                          money(
+                            item.declared_amount
+                          )
+                        )
+                      }
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>Payment Mode</span>
+                    <strong>
+                      ${
+                        escapeHtml(
+                          statusLabel(
+                            item.payment_mode
+                          )
+                        )
+                      }
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>Payment Date</span>
+                    <strong>
+                      ${
+                        escapeHtml(
+                          formatDate(
+                            item.donor_payment_date
+                          )
+                        )
+                      }
+                    </strong>
+                  </div>
+
+                </div>
+
+
+                <p class="srmdc-purpose">
+                  ${
+                    escapeHtml(
+                      item.donation_purpose
+                    )
+                  }
+                </p>
+
+
+                <button
+                  type="button"
+                  class="secondary-button srmdc-review-button"
+                  data-submission-id="${
+                    escapeHtml(
+                      item.submission_id
+                    )
+                  }"
+                >
+                  ${
+                    item.status ===
+                    "receipt_issued"
+                      ? "View Record"
+                      : "Review Payment"
+                  }
+                </button>
+
+              </article>
+            `;
+          }
+        ).join("");
+
+
+      container
+        .querySelectorAll(
+          ".srmdc-review-button"
+        )
+        .forEach(
+          (button) => {
+
+            button.addEventListener(
+              "click",
+              () => {
+
+                const id =
+                  button.dataset
+                    .submissionId;
+
+                showSubmission(id);
+              }
+            );
+          }
+        );
+    }
+
+
+    // ----------------------------------------------------------
+    // Review screen
+    // ----------------------------------------------------------
+
+    function showSubmission(id) {
+
+      const item =
+        queue.find(
+          (entry) =>
+            entry.submission_id === id
+        );
+
+
+      if (!item) {
+        return;
+      }
+
+
+      currentSubmission = item;
+
+
+      const panel =
+        document.getElementById(
+          "donationVerificationPanel"
+        );
+
+
+      const container =
+        document.getElementById(
+          "donationQueue"
+        );
+
+
+      container.classList.add(
+        "hidden"
+      );
+
+
+      const locked =
+        item.status ===
+        "receipt_issued";
+
+
+      const development =
+        item.is_development_record ===
+        true;
+
+
+      const amount =
+        item.paid_amount ??
+        item.declared_amount ??
+        "";
+
+
+      panel.innerHTML = `
+        <div class="srmdc-review-toolbar">
+          <button
+            type="button"
+            id="backToDonationQueueButton"
+            class="secondary-button"
+          >
+            &#8592; Back to Donation Queue
+          </button>
+        </div>
+
+
+        <div class="srmdc-review-card">
+
+          <div class="srmdc-review-title">
+
+            <div>
+              <p class="eyebrow">
+                DONATION SUBMISSION
+              </p>
+
+              <h2>
+                ${
+                  escapeHtml(
+                    item.submission_number
+                  )
+                }
+              </h2>
+            </div>
+
+            <span class="srmdc-status-badge">
+              ${
+                escapeHtml(
+                  statusLabel(
+                    item.status
+                  )
+                )
+              }
+            </span>
+
+          </div>
+
+
+          ${
+            development
+              ? `
+                <div class="srmdc-test-warning large">
+                  This is a development/test record.
+                  Official receipt issuance is blocked
+                  by the database.
+                </div>
+              `
+              : ""
+          }
+
+
+          <section class="srmdc-review-section">
+
+            <h3>Donor Details</h3>
+
+            <div class="srmdc-detail-grid">
+
+              <div>
+                <span>Name</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      item.donor_name
+                    )
+                  }
+                </strong>
+              </div>
+
+              <div>
+                <span>Mobile</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      item.mobile || "—"
+                    )
+                  }
+                </strong>
+              </div>
+
+              <div>
+                <span>Email</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      item.email || "—"
+                    )
+                  }
+                </strong>
+              </div>
+
+              <div>
+                <span>PAN / ID</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      item.pan_or_id ||
+                      "Not provided"
+                    )
+                  }
+                </strong>
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <section class="srmdc-review-section">
+
+            <h3>Donation</h3>
+
+            <div class="srmdc-detail-grid">
+
+              <div>
+                <span>Fund</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      item.fund_name
+                    )
+                  }
+                </strong>
+              </div>
+
+              <div>
+                <span>Purpose</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      item.donation_purpose
+                    )
+                  }
+                </strong>
+              </div>
+
+              <div>
+                <span>Declared Amount</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      money(
+                        item.declared_amount
+                      )
+                    )
+                  }
+                </strong>
+              </div>
+
+              <div>
+                <span>Reported Paid Amount</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      money(
+                        item.paid_amount
+                      )
+                    )
+                  }
+                </strong>
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <section class="srmdc-review-section">
+
+            <h3>Donor-Reported Payment</h3>
+
+            <div class="srmdc-detail-grid">
+
+              <div>
+                <span>Mode</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      statusLabel(
+                        item.payment_mode
+                      )
+                    )
+                  }
+                </strong>
+              </div>
+
+              <div>
+                <span>UTR / Transaction ID</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      item
+                        .donor_transaction_reference ||
+                      "—"
+                    )
+                  }
+                </strong>
+              </div>
+
+              <div>
+                <span>Payment Date</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      formatDate(
+                        item.donor_payment_date
+                      )
+                    )
+                  }
+                </strong>
+              </div>
+
+            </div>
+
+            <p class="srmdc-bank-warning">
+              Donor-reported payment details are not
+              proof of receipt. Confirm the actual
+              credit in the Trust bank account before
+              issuing a receipt.
+            </p>
+
+          </section>
+
+
+          ${
+            locked
+              ? `
+                <section class="srmdc-review-section">
+                  <h3>Verification Complete</h3>
+
+                  <div class="srmdc-success-box">
+                    Official receipt has already been
+                    issued for this submission.
+                  </div>
+
+                  <div class="srmdc-detail-grid">
+
+                    <div>
+                      <span>Bank Reference</span>
+                      <strong>
+                        ${
+                          escapeHtml(
+                            item
+                              .bank_transaction_reference ||
+                            "—"
+                          )
+                        }
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span>Bank Credit Date</span>
+                      <strong>
+                        ${
+                          escapeHtml(
+                            formatDate(
+                              item.bank_credit_date
+                            )
+                          )
+                        }
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span>Verified Amount</span>
+                      <strong>
+                        ${
+                          escapeHtml(
+                            money(
+                              item.bank_credited_amount
+                            )
+                          )
+                        }
+                      </strong>
+                    </div>
+
+                  </div>
+                </section>
+              `
+              : `
+                <section class="srmdc-review-section">
+
+                  <h3>
+                    Actual Bank Verification
+                  </h3>
+
+                  <p class="muted">
+                    Enter these values from the actual
+                    Trust bank credit, not merely from
+                    the donor's screenshot or message.
+                  </p>
+
+
+                  <div class="srmdc-bank-form">
+
+                    <label>
+                      <span>
+                        Bank Transaction Reference *
+                      </span>
+
+                      <input
+                        id="verifiedBankReference"
+                        type="text"
+                        maxlength="100"
+                        autocomplete="off"
+                        placeholder="Enter bank-confirmed reference"
+                      >
+                    </label>
+
+
+                    <label>
+                      <span>
+                        Credited Amount *
+                      </span>
+
+                      <input
+                        id="verifiedBankAmount"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        value="${
+                          escapeHtml(amount)
+                        }"
+                      >
+                    </label>
+
+
+                    <label>
+                      <span>
+                        Bank Credit Date *
+                      </span>
+
+                      <input
+                        id="verifiedBankDate"
+                        type="date"
+                        value="${
+                          escapeHtml(
+                            item.donor_payment_date ||
+                            ""
+                          )
+                        }"
+                      >
+                    </label>
+
+
+                    <label class="wide">
+                      <span>
+                        Verification Notes
+                      </span>
+
+                      <textarea
+                        id="verifiedBankNotes"
+                        rows="3"
+                        maxlength="500"
+                        placeholder="Optional internal verification note"
+                      ></textarea>
+                    </label>
+
+                  </div>
+
+
+                  <div
+                    id="issueReceiptMessage"
+                    class="srmdc-finance-message"
+                  ></div>
+
+
+                  <button
+                    type="button"
+                    id="verifyAndIssueReceiptButton"
+                    class="srmdc-issue-button"
+                    ${
+                      development
+                        ? "disabled"
+                        : ""
+                    }
+                  >
+                    Verify Bank Credit &amp;
+                    Issue Official Receipt
+                  </button>
+
+
+                  ${
+                    development
+                      ? `
+                        <p class="srmdc-disabled-note">
+                          Receipt issuance is disabled
+                          for development records.
+                        </p>
+                      `
+                      : `
+                        <p class="srmdc-final-warning">
+                          This action creates the official
+                          donation, payment and receipt.
+                          Verify the bank credit carefully
+                          before continuing.
+                        </p>
+                      `
+                  }
+
+                </section>
+              `
+          }
+
+        </div>
+      `;
+
+
+      panel.classList.remove(
+        "hidden"
+      );
+
+
+      document
+        .getElementById(
+          "backToDonationQueueButton"
+        )
+        .addEventListener(
+          "click",
+          () => {
+
+            panel.classList.add(
+              "hidden"
+            );
+
+            container.classList.remove(
+              "hidden"
+            );
+
+            currentSubmission = null;
+          }
+        );
+
+
+      const approveButton =
+        document.getElementById(
+          "verifyAndIssueReceiptButton"
+        );
+
+
+      if (
+        approveButton &&
+        !development
+      ) {
+        approveButton.addEventListener(
+          "click",
+          approve
+        );
+      }
+    }
+
+
+    // ----------------------------------------------------------
+    // Atomic approval
+    // ----------------------------------------------------------
+
+    async function approve() {
+
+      if (!currentSubmission) {
+        return;
+      }
+
+
+      const reference =
+        document
+          .getElementById(
+            "verifiedBankReference"
+          )
+          .value
+          .trim();
+
+
+      const amount =
+        Number(
+          document
+            .getElementById(
+              "verifiedBankAmount"
+            )
+            .value
+        );
+
+
+      const date =
+        document
+          .getElementById(
+            "verifiedBankDate"
+          )
+          .value;
+
+
+      const notes =
+        document
+          .getElementById(
+            "verifiedBankNotes"
+          )
+          .value
+          .trim();
+
+
+      const message =
+        document.getElementById(
+          "issueReceiptMessage"
+        );
+
+
+      if (!reference) {
+        message.textContent =
+          "Enter the bank-confirmed transaction reference.";
+
+        message.className =
+          "srmdc-finance-message error";
+
+        return;
+      }
+
+
+      if (
+        !Number.isFinite(amount) ||
+        amount <= 0
+      ) {
+        message.textContent =
+          "Enter a valid credited amount.";
+
+        message.className =
+          "srmdc-finance-message error";
+
+        return;
+      }
+
+
+      if (!date) {
+        message.textContent =
+          "Select the actual bank credit date.";
+
+        message.className =
+          "srmdc-finance-message error";
+
+        return;
+      }
+
+
+      const expected =
+        Number(
+          currentSubmission.declared_amount
+        );
+
+
+      if (
+        Math.round(amount * 100) !==
+        Math.round(expected * 100)
+      ) {
+        message.textContent =
+          "Credited amount does not match the declared donation amount.";
+
+        message.className =
+          "srmdc-finance-message error";
+
+        return;
+      }
+
+
+      const confirmed =
+        window.confirm(
+          [
+            "Issue an official SRMDC Trust receipt?",
+            "",
+            `Donation: ${currentSubmission.submission_number}`,
+            `Donor: ${currentSubmission.donor_name}`,
+            `Amount: ${money(amount)}`,
+            `Bank reference: ${reference}`,
+            "",
+            "Confirm only after checking the actual Trust bank credit."
+          ].join("\n")
+        );
+
+
+      if (!confirmed) {
+        return;
+      }
+
+
+      const button =
+        document.getElementById(
+          "verifyAndIssueReceiptButton"
+        );
+
+
+      button.disabled = true;
+      button.textContent =
+        "Verifying & Issuing Receipt...";
+
+
+      message.textContent =
+        "Creating official donation and receipt...";
+
+      message.className =
+        "srmdc-finance-message";
+
+
+      const {
+        data,
+        error
+      } = await client.rpc(
+        "approve_srmdc_donation_submission",
+        {
+          p_submission_id:
+            currentSubmission.submission_id,
+
+          p_bank_transaction_reference:
+            reference,
+
+          p_credited_amount:
+            amount,
+
+          p_bank_credit_date:
+            date,
+
+          p_verification_notes:
+            notes || null
+        }
+      );
+
+
+      if (error) {
+
+        console.error(error);
+
+        button.disabled = false;
+        button.textContent =
+          "Verify Bank Credit & Issue Official Receipt";
+
+        message.textContent =
+          error.message ||
+          "Unable to issue the receipt.";
+
+        message.className =
+          "srmdc-finance-message error";
+
+        return;
+      }
+
+
+      const result =
+        Array.isArray(data)
+          ? data[0]
+          : data;
+
+
+      if (!result) {
+
+        button.disabled = false;
+
+        message.textContent =
+          "The server did not return receipt details.";
+
+        message.className =
+          "srmdc-finance-message error";
+
+        return;
+      }
+
+
+      const verificationUrl =
+        `${window.location.origin}/` +
+        `?receipt=${
+          encodeURIComponent(
+            result.receipt_number
+          )
+        }` +
+        `&id=${
+          encodeURIComponent(
+            result.verification_token
+          )
+        }#verify`;
+
+
+      panelSuccess(
+        result,
+        verificationUrl
+      );
+    }
+
+
+    // ----------------------------------------------------------
+    // Successful issuance screen
+    // ----------------------------------------------------------
+
+    function panelSuccess(
+      result,
+      verificationUrl
+    ) {
+
+      const panel =
+        document.getElementById(
+          "donationVerificationPanel"
+        );
+
+
+      panel.innerHTML = `
+        <div class="srmdc-receipt-success">
+
+          <div class="srmdc-success-check">
+            &#10003;
+          </div>
+
+          <p class="eyebrow">
+            BANK CREDIT VERIFIED
+          </p>
+
+          <h2>
+            Official Receipt Issued
+          </h2>
+
+          <p>
+            The donation has been converted into
+            official SRMDC Trust records.
+          </p>
+
+
+          <div class="srmdc-issued-receipt-number">
+            ${
+              escapeHtml(
+                result.receipt_number
+              )
+            }
+          </div>
+
+
+          <div class="srmdc-success-actions">
+
+            <a
+              class="secondary-button srmdc-link-button"
+              href="${
+                escapeHtml(
+                  verificationUrl
+                )
+              }"
+              target="_blank"
+              rel="noopener"
+            >
+              Verify Receipt
+            </a>
+
+            <button
+              type="button"
+              id="returnToDonationQueueButton"
+              class="secondary-button"
+            >
+              Return to Donation Queue
+            </button>
+
+          </div>
+
+
+          <p class="muted">
+            Tax compliance remains Pending Review.
+            Form 113 / Form 114 processing will be
+            handled separately for eligible donations.
+          </p>
+
+        </div>
+      `;
+
+
+      document
+        .getElementById(
+          "returnToDonationQueueButton"
+        )
+        .addEventListener(
+          "click",
+          async () => {
+
+            document
+              .getElementById(
+                "donationQueue"
+              )
+              .classList.remove(
+                "hidden"
+              );
+
+            await loadQueue();
+          }
+        );
+    }
+
+
+    // ----------------------------------------------------------
+    // Initialize UI
+    // ----------------------------------------------------------
+
+    buildUi();
+
+
+    return {
+      open,
+      close,
+      refresh: loadQueue
+    };
+
+  })();
+
 })();

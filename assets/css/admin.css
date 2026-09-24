@@ -487,3 +487,355 @@ input:focus {
     margin-top: 12px;
   }
 }
+
+/* ============================================================
+   SRMDC DONATION VERIFICATION MODULE
+   ============================================================ */
+
+.srmdc-finance-view {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+
+.srmdc-finance-header-actions,
+.srmdc-success-actions,
+.srmdc-review-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.srmdc-finance-message {
+  min-height: 22px;
+  margin: 12px 0;
+  font-size: 0.94rem;
+}
+
+.srmdc-finance-message.error {
+  color: #8b1e24;
+  font-weight: 700;
+}
+
+.srmdc-finance-message.success {
+  color: #245d37;
+  font-weight: 700;
+}
+
+.srmdc-finance-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  gap: 14px;
+  margin: 18px 0 22px;
+}
+
+.srmdc-finance-summary > div {
+  border: 1px solid rgba(139, 101, 37, 0.28);
+  border-radius: 12px;
+  background: rgba(255, 250, 235, 0.82);
+  padding: 16px;
+}
+
+.srmdc-finance-summary strong {
+  display: block;
+  font-size: 1.7rem;
+  color: #7d2028;
+}
+
+.srmdc-finance-summary span {
+  color: #5e5b54;
+  font-size: 0.88rem;
+}
+
+.srmdc-donation-queue {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(310px, 1fr));
+  gap: 16px;
+}
+
+.srmdc-donation-card,
+.srmdc-review-card,
+.srmdc-receipt-success {
+  border: 1px solid rgba(139, 101, 37, 0.3);
+  border-radius: 14px;
+  background: #fffdf6;
+}
+
+.srmdc-donation-card {
+  padding: 18px;
+}
+
+.srmdc-donation-card.development {
+  border-color: #b45d5d;
+}
+
+.srmdc-donation-card-head,
+.srmdc-review-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.srmdc-donation-card h3,
+.srmdc-review-title h2 {
+  margin: 5px 0 0;
+}
+
+.srmdc-reference {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #7d2028;
+}
+
+.srmdc-status-badge {
+  display: inline-block;
+  border-radius: 999px;
+  background: #f4ead2;
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #634817;
+}
+
+.srmdc-status-badge.issued {
+  background: #e3f1e7;
+  color: #245d37;
+}
+
+.srmdc-card-grid,
+.srmdc-detail-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.srmdc-card-grid {
+  margin: 18px 0 12px;
+}
+
+.srmdc-card-grid span,
+.srmdc-detail-grid span {
+  display: block;
+  margin-bottom: 4px;
+  color: #716d63;
+  font-size: 0.78rem;
+}
+
+.srmdc-card-grid strong,
+.srmdc-detail-grid strong {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.srmdc-purpose {
+  min-height: 40px;
+  color: #514d45;
+}
+
+.srmdc-review-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.srmdc-test-warning {
+  margin: 12px 0;
+  border: 1px solid #c57b7b;
+  border-radius: 8px;
+  background: #fff0f0;
+  padding: 9px 11px;
+  color: #861f28;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.srmdc-test-warning.large {
+  padding: 13px;
+  font-size: 0.88rem;
+}
+
+.srmdc-verification-panel {
+  margin-top: 12px;
+}
+
+.srmdc-review-card {
+  padding: 24px;
+}
+
+.srmdc-review-section {
+  border-top: 1px solid rgba(139, 101, 37, 0.18);
+  margin-top: 22px;
+  padding-top: 20px;
+}
+
+.srmdc-review-section h3 {
+  margin-top: 0;
+  color: #172b4d;
+}
+
+.srmdc-bank-warning,
+.srmdc-final-warning {
+  margin-top: 16px;
+  border-left: 3px solid #b8862b;
+  background: #fff8e5;
+  padding: 11px 13px;
+  color: #59471f;
+  font-size: 0.88rem;
+}
+
+.srmdc-bank-form {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.srmdc-bank-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.srmdc-bank-form label.wide {
+  grid-column: 1 / -1;
+}
+
+.srmdc-bank-form span {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #4d493f;
+}
+
+.srmdc-bank-form input,
+.srmdc-bank-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #cfc5ac;
+  border-radius: 8px;
+  background: #fff;
+  padding: 11px 12px;
+  color: #222;
+  font: inherit;
+}
+
+.srmdc-issue-button {
+  width: 100%;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #7d2028;
+  padding: 13px 18px;
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.srmdc-issue-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.srmdc-disabled-note {
+  text-align: center;
+  color: #861f28;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.srmdc-success-box {
+  margin: 10px 0 18px;
+  border: 1px solid #a7c7ae;
+  border-radius: 9px;
+  background: #edf7ef;
+  padding: 12px;
+  color: #245d37;
+  font-weight: 700;
+}
+
+.srmdc-finance-empty {
+  grid-column: 1 / -1;
+  border: 1px dashed #c8b990;
+  border-radius: 12px;
+  padding: 30px 18px;
+  text-align: center;
+  color: #706958;
+}
+
+.srmdc-receipt-success {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 34px 24px;
+  text-align: center;
+}
+
+.srmdc-success-check {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 14px;
+  border: 2px solid #4d805d;
+  border-radius: 50%;
+  color: #376d48;
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+.srmdc-issued-receipt-number {
+  margin: 22px auto;
+  border: 1px solid #c8b47b;
+  border-radius: 9px;
+  background: #fff8e7;
+  padding: 15px;
+  color: #7d2028;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.srmdc-success-actions {
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.srmdc-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+
+  .srmdc-finance-view {
+    width: min(100% - 20px, 1180px);
+  }
+
+  .srmdc-finance-summary,
+  .srmdc-card-grid,
+  .srmdc-detail-grid,
+  .srmdc-bank-form {
+    grid-template-columns: 1fr;
+  }
+
+  .srmdc-finance-summary {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .srmdc-donation-card-head,
+  .srmdc-review-title {
+    flex-direction: column;
+  }
+
+  .srmdc-review-card {
+    padding: 18px;
+  }
+
+}
