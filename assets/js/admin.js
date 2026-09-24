@@ -3638,6 +3638,43 @@
     // Initialize UI
     // ----------------------------------------------------------
 
+    // ========================================================
+    // SRMDC_RECEIPT_BRIDGE_V2
+    //
+    // Reuses the frozen Donation Verification receipt renderer
+    // and safe share helper from other authenticated modules.
+    // No receipt is created or modified here.
+    // ========================================================
+
+    window.SRMDC_RECEIPTS = Object.freeze({
+
+      openExisting(
+        result,
+        verificationUrl,
+        submission
+      ) {
+
+        return openOfficialReceipt(
+          result,
+          verificationUrl,
+          submission
+        );
+      },
+
+
+      async shareExisting(
+        receiptNumber,
+        verificationToken
+      ) {
+
+        return await shareSrmdcOfficialReceipt(
+          receiptNumber,
+          verificationToken
+        );
+      }
+
+    });
+
     buildUi();
 
 
@@ -3645,6 +3682,1170 @@
       open,
       close,
       refresh: loadQueue
+    };
+
+  })();
+
+
+  // ============================================================
+  // SRMDC_DONOR_PROFILE_V2
+  // ============================================================
+
+  const srmdcDonorProfiles = (() => {
+
+    let donorRows = [];
+    let donors = [];
+    let currentDonor = null;
+
+    let donorCard;
+    let donorView;
+    let donorList;
+    let donorSearch;
+
+
+    const donorSafe = value => {
+      const text = String(value ?? "").trim();
+      return text || "\u2014";
+    };
+
+    // ========================================================
+    // SRMDC_DONOR_LOCAL_HELPERS_V2
+    // Donor module is isolated, so it owns its display helpers.
+    // ========================================================
+
+    const escapeHtml = value => {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    };
+
+
+    const money = value => {
+
+      const number =
+        Number(value || 0);
+
+      return new Intl.NumberFormat(
+        "en-IN",
+        {
+          style: "currency",
+          currency: "INR",
+          maximumFractionDigits: 2
+        }
+      ).format(number);
+    };
+
+
+    const statusLabel = value => {
+
+      return String(value || "")
+        .replaceAll("_", " ")
+        .replace(
+          /\b\w/g,
+          character =>
+            character.toUpperCase()
+        );
+    };
+
+
+    const formatDate = value => {
+
+      if (!value) {
+        return "\u2014";
+      }
+
+      const text =
+        String(value).trim();
+
+      const dateOnly =
+        /^\d{4}-\d{2}-\d{2}$/
+          .test(text);
+
+      let date;
+
+      if (dateOnly) {
+
+        const [
+          year,
+          month,
+          day
+        ] = text
+          .split("-")
+          .map(Number);
+
+        date =
+          new Date(
+            year,
+            month - 1,
+            day
+          );
+      }
+      else {
+
+        date =
+          new Date(text);
+      }
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+        return text;
+      }
+
+      return new Intl.DateTimeFormat(
+        "en-IN",
+        {
+          day: "2-digit",
+          month: "short",
+          year: "numeric"
+        }
+      ).format(date);
+    };
+
+
+    // ========================================================
+    // SRMDC_DONOR_VERIFICATION_URL_V2
+    //
+    // Donor module owns this helper because the original
+    // Donation Verification helper is intentionally private.
+    // Always points to the production public verification site.
+    // ========================================================
+
+    const donorVerificationUrl = (
+      receiptNumber,
+      verificationToken
+    ) => {
+
+      const params =
+        new URLSearchParams({
+          receipt:
+            String(
+              receiptNumber || ""
+            ).trim(),
+
+          id:
+            String(
+              verificationToken || ""
+            ).trim()
+        });
+
+      return (
+        "https://srmdctrust.org/?" +
+        params.toString() +
+        "#verify"
+      );
+    };
+
+    const donorGroupRows = rows => {
+
+      const map = new Map();
+
+      for (const row of rows || []) {
+
+        if (!row?.donor_id) {
+          continue;
+        }
+
+        if (!map.has(row.donor_id)) {
+
+          map.set(row.donor_id, {
+            donor_id: row.donor_id,
+            donor_name: row.donor_name,
+            mobile: row.mobile,
+            email: row.email,
+            address: row.address,
+            pan_or_id: row.pan_or_id,
+            donations: new Map()
+          });
+        }
+
+        const donor = map.get(row.donor_id);
+
+        donor.email ||= row.email;
+        donor.mobile ||= row.mobile;
+        donor.address ||= row.address;
+        donor.pan_or_id ||= row.pan_or_id;
+
+        if (!row.donation_id) {
+          continue;
+        }
+
+        if (!donor.donations.has(row.donation_id)) {
+
+          donor.donations.set(row.donation_id, {
+            donation_id: row.donation_id,
+            donation_date: row.donation_date,
+            donation_type: row.donation_type,
+            donation_amount:
+              Number(row.donation_amount || 0),
+            donation_status: row.donation_status,
+            tax_review_status: row.tax_review_status,
+            fund_name: row.fund_name,
+            donation_purpose: row.donation_purpose,
+            submission_number: row.submission_number,
+            receipt_number: row.receipt_number,
+            financial_year: row.financial_year,
+            verification_token: row.verification_token,
+            receipt_status: row.receipt_status,
+            receipt_issued_at: row.receipt_issued_at,
+            payments: []
+          });
+        }
+
+        const donation =
+          donor.donations.get(row.donation_id);
+
+        if (
+          row.payment_method ||
+          row.payment_amount ||
+          row.payment_reference
+        ) {
+
+          const key = [
+            row.payment_method || "",
+            row.payment_amount || "",
+            row.payment_reference || ""
+          ].join("|");
+
+          if (
+            !donation.payments.some(
+              payment => payment.key === key
+            )
+          ) {
+            donation.payments.push({
+              key,
+              payment_method: row.payment_method,
+              payment_amount:
+                Number(row.payment_amount || 0),
+              payment_reference:
+                row.payment_reference
+            });
+          }
+        }
+      }
+
+      return Array
+        .from(map.values())
+        .map(donor => ({
+          ...donor,
+          donations:
+            Array.from(donor.donations.values())
+              .sort(
+                (a, b) =>
+                  String(b.donation_date || "")
+                    .localeCompare(
+                      String(a.donation_date || "")
+                    )
+              )
+        }))
+        .sort(
+          (a, b) =>
+            String(a.donor_name || "")
+              .localeCompare(
+                String(b.donor_name || "")
+              )
+        );
+    };
+
+
+    const totalForDonor = donor =>
+      donor.donations.reduce(
+        (sum, donation) =>
+          sum +
+          Number(donation.donation_amount || 0),
+        0
+      );
+
+
+    const receiptCountForDonor = donor =>
+      donor.donations.filter(
+        donation => donation.receipt_number
+      ).length;
+
+
+    const loadDonors = async () => {
+
+      const { data, error } =
+        await client.rpc(
+          "get_srmdc_donor_profiles"
+        );
+
+      if (error) {
+        console.error(
+          "SRMDC donor profiles failed:",
+          error
+        );
+        throw error;
+      }
+
+      donorRows =
+        Array.isArray(data) ? data : [];
+
+      donors =
+        donorGroupRows(donorRows);
+
+      return donors;
+    };
+
+
+    const buildUi = () => {
+
+      const grid =
+        document.querySelector(".module-grid");
+
+      if (!grid) {
+        console.warn(
+          "SRMDC Donors: dashboard grid unavailable."
+        );
+        return;
+      }
+
+      // Exactly one dashboard card.
+      donorCard =
+        document.createElement("button");
+
+      donorCard.type = "button";
+      donorCard.id = "donorProfileCard";
+      donorCard.className = "module-card";
+
+      donorCard.innerHTML = `
+        <span class="module-icon">\u2665</span>
+        <strong>Donors</strong>
+        <span>Profiles and donation history</span>
+      `;
+
+      const receiptCard =
+        document.getElementById(
+          "receiptVerificationCard"
+        );
+
+      if (
+        receiptCard &&
+        receiptCard.parentElement === grid
+      ) {
+        grid.insertBefore(
+          donorCard,
+          receiptCard
+        );
+      } else {
+        grid.appendChild(donorCard);
+      }
+
+
+      donorView =
+        document.createElement("section");
+
+      donorView.id = "donorProfileView";
+      donorView.className =
+        "view hidden srmdc-finance-view";
+
+      donorView.innerHTML = `
+        <div class="srmdc-finance-header">
+
+          <div>
+            <button
+              id="donorBackDashboard"
+              type="button"
+              class="secondary-button"
+            >
+              \u2190 Back to Dashboard
+            </button>
+
+            <div
+              class="brand-mark"
+              style="margin-top:18px;"
+            >
+              SRMDC TRUST
+            </div>
+
+            <h1>Donors</h1>
+
+            <p class="muted">
+              Official donor profiles and donation history
+            </p>
+          </div>
+
+        </div>
+
+        <div
+          class="srmdc-verification-panel"
+          style="margin-bottom:18px;"
+        >
+          <label
+            for="donorSearch"
+            style="
+              display:block;
+              font-weight:700;
+              margin-bottom:7px;
+            "
+          >
+            Search Donors
+          </label>
+
+          <input
+            id="donorSearch"
+            type="search"
+            placeholder="Name, mobile, PAN / ID or receipt"
+            autocomplete="off"
+            style="
+              width:100%;
+              max-width:620px;
+              padding:11px 12px;
+              border:1px solid #ccb98e;
+              border-radius:8px;
+            "
+          >
+        </div>
+
+        <div id="donorMessage"></div>
+
+        <div
+          id="donorList"
+          class="srmdc-donation-queue"
+        ></div>
+      `;
+
+      dashboardView.parentElement
+        .appendChild(donorView);
+
+      donorList =
+        document.getElementById("donorList");
+
+      donorSearch =
+        document.getElementById("donorSearch");
+
+      donorCard.addEventListener(
+        "click",
+        open
+      );
+
+      document
+        .getElementById("donorBackDashboard")
+        .addEventListener(
+          "click",
+          () => show(dashboardView)
+        );
+
+      donorSearch.addEventListener(
+        "input",
+        () =>
+          renderDonorList(
+            donorSearch.value
+          )
+      );
+    };
+
+
+    const open = async () => {
+
+      show(donorView);
+
+      const message =
+        document.getElementById(
+          "donorMessage"
+        );
+
+      message.innerHTML =
+        `<p class="muted">Loading donor profiles...</p>`;
+
+      donorList.innerHTML = "";
+
+      try {
+
+        await loadDonors();
+
+        message.innerHTML = "";
+
+        renderDonorList(
+          donorSearch.value
+        );
+
+      } catch (error) {
+
+        message.innerHTML = `
+          <div class="srmdc-bank-warning">
+            Unable to load donor profiles.
+            Please check the administrator session.
+          </div>
+        `;
+      }
+    };
+
+
+    const renderDonorList = query => {
+
+      currentDonor = null;
+
+      const search =
+        String(query || "")
+          .trim()
+          .toLowerCase();
+
+      const filtered =
+        donors.filter(donor => {
+
+          if (!search) {
+            return true;
+          }
+
+          const receipts =
+            donor.donations
+              .map(
+                donation =>
+                  donation.receipt_number || ""
+              )
+              .join(" ");
+
+          return [
+            donor.donor_name,
+            donor.mobile,
+            donor.pan_or_id,
+            receipts
+          ]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase()
+            .includes(search);
+        });
+
+
+      if (!filtered.length) {
+
+        donorList.innerHTML = `
+          <div class="srmdc-verification-panel">
+            <p class="muted">
+              No donors found.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+
+      donorList.innerHTML =
+        filtered.map(donor => `
+
+          <article class="srmdc-submission-card">
+
+            <div class="srmdc-submission-head">
+
+              <div>
+                <span class="srmdc-reference">
+                  DONOR PROFILE
+                </span>
+
+                <h3>
+                  ${
+                    escapeHtml(
+                      donorSafe(
+                        donor.donor_name
+                      )
+                    )
+                  }
+                </h3>
+              </div>
+
+              <span class="srmdc-status-badge">
+                ${donor.donations.length}
+                Donation${
+                  donor.donations.length === 1
+                    ? ""
+                    : "s"
+                }
+              </span>
+
+            </div>
+
+            <div class="srmdc-detail-grid">
+
+              <div>
+                <span>Total Donated</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      money(
+                        totalForDonor(donor)
+                      )
+                    )
+                  }
+                </strong>
+              </div>
+
+              <div>
+                <span>Receipts Issued</span>
+                <strong>
+                  ${
+                    receiptCountForDonor(
+                      donor
+                    )
+                  }
+                </strong>
+              </div>
+
+              <div>
+                <span>Mobile</span>
+                <strong>
+                  ${
+                    escapeHtml(
+                      donorSafe(
+                        donor.mobile
+                      )
+                    )
+                  }
+                </strong>
+              </div>
+
+            </div>
+
+            <button
+              type="button"
+              class="secondary-button donor-open-profile"
+              data-donor="${
+                escapeHtml(
+                  donor.donor_id
+                )
+              }"
+            >
+              View Profile
+            </button>
+
+          </article>
+
+        `).join("");
+
+
+      donorList
+        .querySelectorAll(
+          ".donor-open-profile"
+        )
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () =>
+              renderProfile(
+                button.dataset.donor
+              )
+          );
+        });
+    };
+
+
+    const renderProfile = donorId => {
+
+      const donor =
+        donors.find(
+          item =>
+            item.donor_id === donorId
+        );
+
+      if (!donor) {
+        return;
+      }
+
+      currentDonor = donor;
+
+      donorList.innerHTML = `
+
+        <div style="margin-bottom:16px;">
+          <button
+            id="donorBackList"
+            type="button"
+            class="secondary-button"
+          >
+            \u2190 Back to Donors
+          </button>
+        </div>
+
+        <article class="srmdc-verification-panel">
+
+          <span class="srmdc-reference">
+            DONOR PROFILE
+          </span>
+
+          <h2>
+            ${
+              escapeHtml(
+                donorSafe(
+                  donor.donor_name
+                )
+              )
+            }
+          </h2>
+
+          <div class="srmdc-detail-grid">
+
+            <div>
+              <span>Mobile</span>
+              <strong>
+                ${
+                  escapeHtml(
+                    donorSafe(donor.mobile)
+                  )
+                }
+              </strong>
+            </div>
+
+            <div>
+              <span>Email</span>
+              <strong>
+                ${
+                  escapeHtml(
+                    donorSafe(donor.email)
+                  )
+                }
+              </strong>
+            </div>
+
+            <div>
+              <span>PAN / ID</span>
+              <strong>
+                ${
+                  escapeHtml(
+                    donorSafe(
+                      donor.pan_or_id
+                    )
+                  )
+                }
+              </strong>
+            </div>
+
+            <div>
+              <span>Address</span>
+              <strong>
+                ${
+                  escapeHtml(
+                    donorSafe(
+                      donor.address
+                    )
+                  )
+                }
+              </strong>
+            </div>
+
+          </div>
+        </article>
+
+        <div class="srmdc-finance-summary">
+
+          <div>
+            <strong>
+              ${donor.donations.length}
+            </strong>
+            <span>Official Donations</span>
+          </div>
+
+          <div>
+            <strong>
+              ${
+                escapeHtml(
+                  money(
+                    totalForDonor(donor)
+                  )
+                )
+              }
+            </strong>
+            <span>Total Donated</span>
+          </div>
+
+          <div>
+            <strong>
+              ${
+                receiptCountForDonor(
+                  donor
+                )
+              }
+            </strong>
+            <span>Receipts Issued</span>
+          </div>
+
+        </div>
+
+        <h2 style="margin-top:26px;">
+          Donation History
+        </h2>
+
+        <div id="donorHistory">
+          ${
+            donor.donations.length
+              ? donor.donations
+                  .map(donationCard)
+                  .join("")
+              : `
+                  <div class="srmdc-verification-panel">
+                    <p class="muted">
+                      No official donations recorded.
+                    </p>
+                  </div>
+                `
+          }
+        </div>
+      `;
+
+      document
+        .getElementById("donorBackList")
+        .addEventListener(
+          "click",
+          () =>
+            renderDonorList(
+              donorSearch.value
+            )
+        );
+
+      wireReceiptButtons();
+    };
+
+
+    const donationCard = donation => {
+
+      const hasReceipt =
+        Boolean(
+          donation.receipt_number &&
+          donation.verification_token
+        );
+
+      const paymentHtml =
+        donation.payments.length
+          ? donation.payments.map(
+              payment => `
+                <div style="margin-top:5px;">
+                  ${
+                    escapeHtml(
+                      statusLabel(
+                        payment.payment_method
+                      )
+                    )
+                  }
+                  &middot;
+                  ${
+                    escapeHtml(
+                      money(
+                        payment.payment_amount
+                      )
+                    )
+                  }
+                  ${
+                    payment.payment_reference
+                      ? `
+                        &middot; Ref:
+                        ${
+                          escapeHtml(
+                            payment.payment_reference
+                          )
+                        }
+                      `
+                      : ""
+                  }
+                </div>
+              `
+            ).join("")
+          : `<span class="muted">\u2014</span>`;
+
+
+      return `
+
+        <article class="srmdc-submission-card">
+
+          <div class="srmdc-submission-head">
+
+            <div>
+              <span class="srmdc-reference">
+                ${
+                  escapeHtml(
+                    donorSafe(
+                      donation.receipt_number ||
+                      donation.submission_number
+                    )
+                  )
+                }
+              </span>
+
+              <h3>
+                ${
+                  escapeHtml(
+                    donorSafe(
+                      donation.fund_name
+                    )
+                  )
+                }
+              </h3>
+            </div>
+
+            <span class="srmdc-status-badge">
+              ${
+                escapeHtml(
+                  statusLabel(
+                    donation.donation_status
+                  )
+                )
+              }
+            </span>
+
+          </div>
+
+          <div class="srmdc-detail-grid">
+
+            <div>
+              <span>Date</span>
+              <strong>
+                ${
+                  escapeHtml(
+                    formatDate(
+                      donation.donation_date
+                    )
+                  )
+                }
+              </strong>
+            </div>
+
+            <div>
+              <span>Amount</span>
+              <strong>
+                ${
+                  escapeHtml(
+                    money(
+                      donation.donation_amount
+                    )
+                  )
+                }
+              </strong>
+            </div>
+
+            <div>
+              <span>Purpose</span>
+              <strong>
+                ${
+                  escapeHtml(
+                    donorSafe(
+                      donation.donation_purpose
+                    )
+                  )
+                }
+              </strong>
+            </div>
+
+            <div>
+              <span>Receipt Status</span>
+              <strong>
+                ${
+                  escapeHtml(
+                    statusLabel(
+                      donation.receipt_status ||
+                      "not issued"
+                    )
+                  )
+                }
+              </strong>
+            </div>
+
+          </div>
+
+          <div
+            style="
+              margin-top:14px;
+              padding-top:12px;
+              border-top:1px solid #eadfc7;
+            "
+          >
+            <strong>Payment</strong>
+            ${paymentHtml}
+          </div>
+
+          ${
+            hasReceipt
+              ? `
+                <div
+                  class="srmdc-success-actions"
+                  style="margin-top:16px;"
+                >
+
+                  <button
+                    type="button"
+                    class="srmdc-issue-button donor-view-receipt"
+                    data-id="${
+                      escapeHtml(
+                        donation.donation_id
+                      )
+                    }"
+                  >
+                    View / Print Receipt
+                  </button>
+
+                  <button
+                    type="button"
+                    class="secondary-button donor-share-receipt"
+                    data-id="${
+                      escapeHtml(
+                        donation.donation_id
+                      )
+                    }"
+                  >
+                    Share Receipt
+                  </button>
+
+                  <a
+                    class="secondary-button srmdc-link-button"
+                    href="${
+                      escapeHtml(
+                        donorVerificationUrl(
+                          donation.receipt_number,
+                          donation.verification_token
+                        )
+                      )
+                    }"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Verify Receipt
+                  </a>
+
+                </div>
+              `
+              : `
+                <p class="muted">
+                  No official receipt attached.
+                </p>
+              `
+          }
+
+        </article>
+      `;
+    };
+
+
+    const findDonation = id =>
+      currentDonor?.donations.find(
+        donation =>
+          donation.donation_id === id
+      );
+
+
+    const wireReceiptButtons = () => {
+
+      donorList
+        .querySelectorAll(
+          ".donor-view-receipt"
+        )
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              const donation =
+                findDonation(
+                  button.dataset.id
+                );
+
+              if (!donation) {
+                return;
+              }
+
+              const verificationUrl =
+                donorVerificationUrl(
+                  donation.receipt_number,
+                  donation.verification_token
+                );
+
+              window.SRMDC_RECEIPTS.openExisting(
+                {
+                  receipt_number:
+                    donation.receipt_number,
+
+                  verification_token:
+                    donation.verification_token,
+
+                  receipt_date:
+                    donation.donation_date,
+
+                  receipt_status:
+                    donation.receipt_status
+                },
+                verificationUrl,
+                {
+                  donor_name:
+                    currentDonor.donor_name,
+
+                  mobile:
+                    currentDonor.mobile,
+
+                  email:
+                    currentDonor.email,
+
+                  address:
+                    currentDonor.address,
+
+                  pan_or_id:
+                    currentDonor.pan_or_id,
+
+                  fund_name:
+                    donation.fund_name,
+
+                  donation_purpose:
+                    donation.donation_purpose,
+
+                  declared_amount:
+                    donation.donation_amount,
+
+                  paid_amount:
+                    donation.donation_amount,
+
+                  payment_mode:
+                    donation.payments
+                      .map(
+                        payment =>
+                          payment.payment_method
+                      )
+                      .filter(Boolean)
+                      .join(" + ")
+                }
+              );
+            }
+          );
+        });
+
+
+      donorList
+        .querySelectorAll(
+          ".donor-share-receipt"
+        )
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            async () => {
+
+              const donation =
+                findDonation(
+                  button.dataset.id
+                );
+
+              if (!donation) {
+                return;
+              }
+
+              await window.SRMDC_RECEIPTS.shareExisting(
+                donation.receipt_number,
+                donation.verification_token
+              );
+            }
+          );
+        });
+    };
+
+
+    buildUi();
+
+
+    return {
+      open,
+      refresh: loadDonors
     };
 
   })();
