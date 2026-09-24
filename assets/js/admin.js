@@ -1760,22 +1760,23 @@
                             View / Print Official Receipt
                           </button>
 
+                          <button
+                            type="button"
+                            id="existingShareReceiptButton"
+                            class="secondary-button"
+                          >
+                            Share Receipt
+                          </button>
+
                           <a
                             id="existingVerifyReceiptLink"
                             class="secondary-button srmdc-link-button"
                             href="${
                               escapeHtml(
-                                `${window.location.origin}/` +
-                                `?receipt=${
-                                  encodeURIComponent(
-                                    item.receipt_number
-                                  )
-                                }` +
-                                `&id=${
-                                  encodeURIComponent(
-                                    item.verification_token
-                                  )
-                                }#verify`
+                                buildSrmdcPublicVerificationUrl(
+                                  item.receipt_number,
+                                  item.verification_token
+                                )
                               )
                             }"
                             target="_blank"
@@ -1971,6 +1972,27 @@
       );
 
 
+      const existingShareReceiptButton =
+        document.getElementById(
+          "existingShareReceiptButton"
+        );
+
+
+      if (existingShareReceiptButton) {
+
+        existingShareReceiptButton
+          .addEventListener(
+            "click",
+            async () => {
+
+              await shareSrmdcOfficialReceipt(
+                item.receipt_number,
+                item.verification_token
+              );
+            }
+          );
+      }
+
       const existingReceiptButton =
         document.getElementById(
           "existingOfficialReceiptButton"
@@ -1998,17 +2020,10 @@
 
 
               const verificationUrl =
-                `${window.location.origin}/` +
-                `?receipt=${
-                  encodeURIComponent(
-                    item.receipt_number
-                  )
-                }` +
-                `&id=${
-                  encodeURIComponent(
-                    item.verification_token
-                  )
-                }#verify`;
+                buildSrmdcPublicVerificationUrl(
+                  item.receipt_number,
+                  item.verification_token
+                );
 
 
               openOfficialReceipt(
@@ -2283,17 +2298,10 @@
 
 
       const verificationUrl =
-        `${window.location.origin}/` +
-        `?receipt=${
-          encodeURIComponent(
-            result.receipt_number
-          )
-        }` +
-        `&id=${
-          encodeURIComponent(
-            result.verification_token
-          )
-        }#verify`;
+        buildSrmdcPublicVerificationUrl(
+          result.receipt_number,
+          result.verification_token
+        );
 
 
       panelSuccess(
@@ -2358,6 +2366,14 @@
               View / Print Official Receipt
             </button>
 
+            <button
+              type="button"
+              id="shareIssuedReceiptButton"
+              class="secondary-button"
+            >
+              Share Receipt
+            </button>
+
             <a
               class="secondary-button srmdc-link-button"
               href="${
@@ -2405,6 +2421,27 @@
               result,
               verificationUrl,
               currentSubmission
+            );
+          }
+        );
+      }
+
+
+      const shareIssuedReceiptButton =
+        document.getElementById(
+          "shareIssuedReceiptButton"
+        );
+
+
+      if (shareIssuedReceiptButton) {
+
+        shareIssuedReceiptButton.addEventListener(
+          "click",
+          async () => {
+
+            await shareSrmdcOfficialReceipt(
+              result.receipt_number,
+              result.verification_token
             );
           }
         );
@@ -2623,6 +2660,142 @@
       }
     }
 
+
+    // ==========================================================
+    // SRMDC_PRODUCTION_VERIFICATION_URL_V2
+    // Public verification links must always use the official site.
+    // ==========================================================
+
+    function buildSrmdcPublicVerificationUrl(
+      receiptNumber,
+      verificationToken
+    ) {
+
+      const params = new URLSearchParams({
+        receipt: String(receiptNumber || "").trim(),
+        id: String(verificationToken || "").trim()
+      });
+
+      return (
+        "https://srmdctrust.org/?" +
+        params.toString() +
+        "#verify"
+      );
+    }
+
+
+    // ==========================================================
+    // SRMDC_SAFE_RECEIPT_SHARE_V2
+    //
+    // Shares only public receipt-verification information.
+    // No mobile, email, PAN, address, UTR or bank data.
+    // ==========================================================
+
+    async function shareSrmdcOfficialReceipt(
+      receiptNumber,
+      verificationToken
+    ) {
+
+      if (!receiptNumber || !verificationToken) {
+
+        window.alert(
+          "Official receipt details are not available."
+        );
+
+        return;
+      }
+
+
+      const verificationUrl =
+        buildSrmdcPublicVerificationUrl(
+          receiptNumber,
+          verificationToken
+        );
+
+
+      const shareText =
+        "Sri Rama Mandira Devasthana Charitable Trust\n" +
+        "Official Donation Receipt\n" +
+        `Receipt: ${receiptNumber}\n` +
+        `Verify: ${verificationUrl}`;
+
+
+      try {
+
+        if (navigator.share) {
+
+          await navigator.share({
+            title: `SRMDC Receipt ${receiptNumber}`,
+            text: shareText
+          });
+
+          return;
+        }
+
+
+        if (
+          navigator.clipboard &&
+          navigator.clipboard.writeText
+        ) {
+
+          await navigator.clipboard.writeText(
+            shareText
+          );
+
+          window.alert(
+            "Receipt verification details copied. " +
+            "You can paste them into WhatsApp or email."
+          );
+
+          return;
+        }
+
+
+        window.prompt(
+          "Copy these receipt verification details:",
+          shareText
+        );
+      }
+      catch (error) {
+
+        if (
+          error &&
+          error.name === "AbortError"
+        ) {
+          return;
+        }
+
+
+        try {
+
+          if (
+            navigator.clipboard &&
+            navigator.clipboard.writeText
+          ) {
+
+            await navigator.clipboard.writeText(
+              shareText
+            );
+
+            window.alert(
+              "Receipt verification details copied. " +
+              "You can paste them into WhatsApp or email."
+            );
+
+            return;
+          }
+        }
+        catch (_) {
+          // Use manual copy fallback below.
+        }
+
+
+        window.prompt(
+          "Copy these receipt verification details:",
+          shareText
+        );
+      }
+    }
 
     function openOfficialReceipt(
       result,
