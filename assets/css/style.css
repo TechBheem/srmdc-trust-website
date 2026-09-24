@@ -890,3 +890,283 @@ input:focus-visible {
     gap: 3px;
   }
 }
+
+/* =========================================================
+   SRMDC DONATION PAYMENT PANEL
+   ========================================================= */
+
+.donation-panel-modern {
+  width: min(1180px, 100%);
+  padding: 24px;
+}
+
+.donation-payment-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(420px, 1.35fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.donation-payment-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.donation-upi-card {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 249, 236, 0.96),
+      rgba(255, 255, 255, 0.88)
+    );
+}
+
+.donation-bank-card {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(241, 250, 241, 0.94),
+      rgba(255, 255, 255, 0.88)
+    );
+}
+
+.donation-card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.donation-card-heading h3 {
+  margin: 0 0 4px;
+  color: var(--navy);
+  font-size: 1.35rem;
+}
+
+.donation-card-heading p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.donation-card-icon {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(177, 122, 24, 0.12);
+  color: #7a4b09;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.donation-card-icon.bank-icon {
+  background: rgba(29, 125, 73, 0.12);
+  color: #176b3d;
+}
+
+.donation-qr-wrap {
+  width: min(310px, 100%);
+  margin: 8px auto 16px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.donation-qr {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.donation-upi-details {
+  text-align: center;
+  margin: 14px 0;
+  overflow-wrap: anywhere;
+}
+
+.donation-detail-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.donation-upi-details strong {
+  color: var(--navy);
+  font-size: 1rem;
+}
+
+.donation-copy-button {
+  width: 100%;
+  cursor: pointer;
+}
+
+.donation-bank-details {
+  overflow: hidden;
+  border: 1px solid rgba(29, 125, 73, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.donation-bank-row {
+  display: grid;
+  grid-template-columns: minmax(125px, 0.75fr) minmax(180px, 1.45fr);
+  gap: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(29, 125, 73, 0.14);
+}
+
+.donation-bank-row:last-child {
+  border-bottom: 0;
+}
+
+.donation-bank-row > span {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.donation-bank-row strong {
+  overflow-wrap: anywhere;
+}
+
+.donation-bank-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.donation-inline-copy {
+  flex: 0 0 auto;
+  padding: 7px 11px;
+  border: 1px solid rgba(11, 74, 133, 0.22);
+  border-radius: 8px;
+  background: rgba(230, 242, 255, 0.9);
+  color: var(--navy);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.donation-inline-copy:hover,
+.donation-inline-copy:focus-visible {
+  border-color: var(--navy);
+}
+
+.donation-safety-box,
+.donation-after-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 18px;
+  padding: 18px 20px;
+  border-radius: 14px;
+}
+
+.donation-safety-box {
+  border: 1px solid rgba(205, 132, 17, 0.32);
+  background: rgba(255, 247, 230, 0.86);
+}
+
+.donation-after-box {
+  border: 1px solid rgba(25, 103, 181, 0.22);
+  background: rgba(237, 247, 255, 0.86);
+}
+
+.donation-notice-icon {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.78);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.donation-safety-box h3,
+.donation-after-box h3 {
+  margin: 0 0 5px;
+  color: var(--navy);
+  font-size: 1.05rem;
+}
+
+.donation-safety-box p,
+.donation-after-box p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.donation-contact-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.donation-contact-actions .button {
+  width: 100%;
+  text-align: center;
+}
+
+.donation-copy-message {
+  min-height: 22px;
+  margin-top: 10px;
+  text-align: center;
+  color: #176b3d;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+@media (max-width: 850px) {
+
+  .donation-payment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .donation-bank-row {
+    grid-template-columns: minmax(115px, 0.7fr) minmax(0, 1.3fr);
+  }
+
+}
+
+@media (max-width: 620px) {
+
+  .donation-panel-modern {
+    padding: 16px;
+  }
+
+  .donation-payment-card {
+    padding: 16px;
+  }
+
+  .donation-bank-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 13px;
+  }
+
+  .donation-bank-value {
+    align-items: center;
+  }
+
+  .donation-contact-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .donation-safety-box,
+  .donation-after-box {
+    padding: 15px;
+  }
+
+}

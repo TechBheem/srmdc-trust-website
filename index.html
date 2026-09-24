@@ -32,8 +32,8 @@
       <span class="brand-mark">SRMDC</span>
 
       <span class="brand-text">
-        <strong>SRMDC Trust</strong>
-        <small>Bodabanda Village</small>
+        <strong data-srmdc="display-name">SRMDC Trust</strong>
+        <small data-srmdc="brand-location">Bodabanda Village</small>
       </span>
     </a>
 
@@ -77,10 +77,7 @@
         Dharma &bull; Devotion &bull; Service &bull; Social Good
       </div>
 
-      <h1>
-        Sri Rama Mandira Devasthana
-        Charitable Trust
-      </h1>
+      <h1 data-srmdc="official-name">Sri Rama Mandira Devasthana Charitable Trust</h1>
 
       <p>
         Serving the community through religious,
@@ -119,16 +116,9 @@
 
       <span>About Us</span>
 
-      <h2>
-        Sri Rama Mandira Devasthana
-        Charitable Trust
-      </h2>
+      <h2 data-srmdc="official-name">Sri Rama Mandira Devasthana Charitable Trust</h2>
 
-      <p>
-        A public religious and charitable trust
-        based in Bodabanda Village,
-        Andhra Pradesh.
-      </p>
+      <p data-srmdc="public-description">A public religious and charitable trust based in Bodabanda Village, Andhra Pradesh.</p>
 
     </div>
 
@@ -159,20 +149,16 @@
 
         <h3>Registered Address</h3>
 
-        <p>
-          Door No. 001, Bodabanda Village,<br>
-          Pullayapalli Post, Udayagiri Mandal,<br>
-          SPSR Nellore, Andhra Pradesh &ndash; 524226
-        </p>
+        <p data-srmdc="about-address">Door No. 001, Bodabanda Village,<br>Pullayapalli Post, Udayagiri Mandal,<br>SPSR Nellore, Andhra Pradesh &ndash; 524226</p>
 
         <p>
           <strong>Phone:</strong><br>
-          8123386813 / 6362486813
+          <span data-srmdc="phone-pair">8123386813 / 6362486813</span>
         </p>
 
         <p>
           <strong>Email:</strong><br>
-          srmdchtrustbodabanda@gmail.com
+          <span data-srmdc="email-text">srmdchtrustbodabanda@gmail.com</span>
         </p>
 
       </div>
@@ -319,38 +305,215 @@
 
     </div>
 
-    <div class="donation-panel">
+    <div class="donation-panel donation-panel-modern">
 
-      <h3>Donation Information</h3>
+      <div class="donation-payment-grid">
 
-      <p>
-        Official bank, UPI and payment
-        instructions will be published here
-        after they are verified and approved
-        by the Trust.
-      </p>
+        <!-- SCAN & PAY -->
 
-      <div class="warning-box">
-        Please verify payment details through
-        the official Trust contact numbers
-        before transferring funds.
+        <div class="donation-payment-card donation-upi-card">
+
+          <div class="donation-card-heading">
+
+            <div class="donation-card-icon" aria-hidden="true">
+              &#9635;
+            </div>
+
+            <div>
+              <h3>Scan &amp; Pay</h3>
+              <p>
+                Use any UPI app to scan the official
+                Trust QR code below.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="donation-qr-wrap">
+
+            <img
+              src="assets/images/srmdc_donation_qr.png"
+              alt="Official SRMDC Trust donation UPI QR code"
+              class="donation-qr"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="donation-upi-details">
+
+            <span class="donation-detail-label">
+              UPI ID
+            </span>
+
+            <strong id="srmdcUpiId">
+              342049698082389@cnrb
+            </strong>
+
+          </div>
+
+          <button
+            type="button"
+            class="button secondary donation-copy-button"
+            data-copy-value="342049698082389@cnrb"
+            data-copy-label="UPI ID"
+          >
+            Copy UPI ID
+          </button>
+
+        </div>
+
+
+        <!-- BANK TRANSFER -->
+
+        <div class="donation-payment-card donation-bank-card">
+
+          <div class="donation-card-heading">
+
+            <div class="donation-card-icon bank-icon" aria-hidden="true">
+              &#9783;
+            </div>
+
+            <div>
+              <h3>Bank Transfer</h3>
+              <p>
+                You can also donate directly to our
+                Trust bank account.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="donation-bank-details">
+
+            <div class="donation-bank-row">
+              <span>Account Name</span>
+              <strong>
+                SRI RAMA MANDIRA DEVASTHANA CHARITABLE TRUST
+              </strong>
+            </div>
+
+            <div class="donation-bank-row">
+              <span>Bank Name</span>
+              <strong>Canara Bank</strong>
+            </div>
+
+            <div class="donation-bank-row donation-bank-copy-row">
+
+              <span>Account Number</span>
+
+              <div class="donation-bank-value">
+                <strong>120042082389</strong>
+
+                <button
+                  type="button"
+                  class="donation-inline-copy"
+                  data-copy-value="120042082389"
+                  data-copy-label="Account number"
+                >
+                  Copy
+                </button>
+              </div>
+
+            </div>
+
+            <div class="donation-bank-row donation-bank-copy-row">
+
+              <span>IFSC</span>
+
+              <div class="donation-bank-value">
+                <strong>CNRB0013470</strong>
+
+                <button
+                  type="button"
+                  class="donation-inline-copy"
+                  data-copy-value="CNRB0013470"
+                  data-copy-label="IFSC"
+                >
+                  Copy
+                </button>
+              </div>
+
+            </div>
+
+            <div class="donation-bank-row">
+              <span>Branch</span>
+              <strong>Udayagiri - 524226</strong>
+            </div>
+
+            <div class="donation-bank-row">
+              <span>Branch Address</span>
+              <strong>
+                12-234, Annapoorna Complex,
+                Old Bus Stand, Udayagiri,
+                Nellore Dist - 524226 (AP)
+              </strong>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <p>
-        <strong>Official Contacts:</strong><br>
-        8123386813 / 6362486813
-      </p>
 
-      <p>
-        <strong>Email:</strong><br>
-        srmdchtrustbodabanda@gmail.com
-      </p>
+      <!-- PAYMENT SAFETY -->
 
-      <div class="donation-actions">
+      <div class="donation-safety-box">
+
+        <div class="donation-notice-icon" aria-hidden="true">
+          &#10003;
+        </div>
+
+        <div>
+
+          <h3>Please Verify Before Payment</h3>
+
+          <p>
+            Before confirming a payment, verify that the
+            beneficiary details shown by your bank or UPI
+            application correspond to the Trust.
+            Never share your OTP, PIN or other banking
+            credentials with anyone.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- AFTER DONATION -->
+
+      <div class="donation-after-box">
+
+        <div class="donation-notice-icon" aria-hidden="true">
+          &#9998;
+        </div>
+
+        <div>
+
+          <h3>After Making a Donation</h3>
+
+          <p>
+            Please share the payment reference
+            (UTR / Transaction ID), amount and donation
+            purpose with the Trust so the donation can be
+            recorded and an official receipt can be issued.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- CONTACT ACTIONS -->
+
+      <div class="donation-actions donation-contact-actions">
 
         <a
           class="button primary"
           href="tel:+918123386813"
+          data-srmdc-link="primary-phone"
         >
           Call Trust
         </a>
@@ -358,6 +521,7 @@
         <a
           class="button whatsapp-button"
           href="https://wa.me/918123386813"
+          data-srmdc-link="whatsapp"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -367,18 +531,23 @@
         <a
           class="button secondary"
           href="mailto:srmdchtrustbodabanda@gmail.com"
+          data-srmdc-link="email"
         >
           Email Trust
         </a>
 
       </div>
 
+      <div
+        id="donationCopyMessage"
+        class="donation-copy-message"
+        role="status"
+        aria-live="polite"
+      ></div>
+
     </div>
 
-  </section>
-
-
-  <!-- RECEIPT VERIFICATION -->
+  </section><!-- RECEIPT VERIFICATION -->
 
   <section id="verify" class="section">
 
@@ -535,7 +704,7 @@
 
       <span>Contact Us</span>
 
-      <h2>SRMDC Trust</h2>
+      <h2 data-srmdc="contact-heading">SRMDC Trust</h2>
 
     </div>
 
@@ -545,11 +714,7 @@
 
         <h3>Address</h3>
 
-        <p>
-          Door No. 001, Bodabanda Village,<br>
-          Pullayapalli Post, Udayagiri Mandal,<br>
-          SPSR Nellore, Andhra Pradesh &ndash; 524226
-        </p>
+        <p data-srmdc="contact-address">Door No. 001, Bodabanda Village,<br>Pullayapalli Post, Udayagiri Mandal,<br>SPSR Nellore, Andhra Pradesh &ndash; 524226</p>
 
       </div>
 
@@ -558,21 +723,21 @@
         <h3>Phone</h3>
 
         <p>
-          <a href="tel:+918123386813">
-            +91 81233 86813
+          <a href="tel:+918123386813" data-srmdc-link="primary-phone">
+            <span data-srmdc="primary-phone-formatted">+91 81233 86813</span>
           </a>
         </p>
 
         <p>
-          <a href="tel:+916362486813">
-            +91 63624 86813
+          <a href="tel:+916362486813" data-srmdc-link="alternate-phone">
+            <span data-srmdc="alternate-phone-formatted">+91 63624 86813</span>
           </a>
         </p>
 
         <p>
           <a
             class="contact-whatsapp"
-            href="https://wa.me/918123386813"
+            href="https://wa.me/918123386813" data-srmdc-link="whatsapp"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -588,9 +753,9 @@
 
         <p>
           <a
-            href="mailto:srmdchtrustbodabanda@gmail.com"
+            href="mailto:srmdchtrustbodabanda@gmail.com" data-srmdc-link="email"
           >
-            srmdchtrustbodabanda@gmail.com
+            <span data-srmdc="email-link-text">srmdchtrustbodabanda@gmail.com</span>
           </a>
         </p>
 
@@ -605,22 +770,13 @@
 
 <footer>
 
-  <strong>
-    Sri Rama Mandira Devasthana
-    Charitable Trust
-  </strong>
+  <strong data-srmdc="footer-official-name">Sri Rama Mandira Devasthana Charitable Trust</strong>
 
   <p>
     Dharma &bull; Devotion &bull; Service &bull; Social Good
   </p>
 
-  <p class="footer-contact">
-    Bodabanda Village, Andhra Pradesh
-    &nbsp; &bull; &nbsp;
-    +91 81233 86813
-    &nbsp; &bull; &nbsp;
-    srmdchtrustbodabanda@gmail.com
-  </p>
+  <p class="footer-contact" data-srmdc="footer-contact">Bodabanda Village, Andhra Pradesh &nbsp; &bull; &nbsp; +91 81233 86813 &nbsp; &bull; &nbsp; srmdchtrustbodabanda@gmail.com</p>
 
   <p>
     &copy; <span id="year"></span> SRMDC Trust.

@@ -29,6 +29,322 @@ if (yearElement) {
 }
 
 
+
+// =========================================================
+// SRMDC TRUST - PUBLISHED PUBLIC PROFILE
+// =========================================================
+//
+// Static HTML remains the safe fallback.
+//
+// Only the published public snapshot is requested.
+// The browser never reads private draft/admin tables.
+// =========================================================
+
+const SRMDC_PUBLIC_PROFILE_ENDPOINT =
+  "https://umawsedkfamopecaykwp.supabase.co/functions/v1/public-trust-profile";
+
+function srmdcSetText(selector, value) {
+  if (!value) return;
+
+  document
+    .querySelectorAll(selector)
+    .forEach((element) => {
+      element.textContent = value;
+    });
+}
+
+function srmdcDigits(value) {
+  return String(value || "")
+    .replace(/\D/g, "");
+}
+
+function srmdcIndianPhone(value) {
+  const digits = srmdcDigits(value);
+
+  if (digits.length !== 10) {
+    return value || "";
+  }
+
+  return (
+    "+91 " +
+    digits.slice(0, 5) +
+    " " +
+    digits.slice(5)
+  );
+}
+
+function srmdcSafeAddressHtml(address) {
+  if (!address) return "";
+
+  const line1 = [
+    address.doorNo
+      ? "Door No. " + address.doorNo
+      : "",
+    address.village || ""
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  const line2 = [
+    address.post || "",
+    address.mandal || ""
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  let line3 = [
+    address.district || "",
+    address.state || ""
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  if (address.pinCode) {
+    line3 +=
+      (line3 ? " \u2013 " : "") +
+      address.pinCode;
+  }
+
+  return [line1, line2, line3]
+    .filter(Boolean)
+    .map((line) => {
+      const element =
+        document.createElement("span");
+
+      element.textContent = line;
+
+      return element.innerHTML;
+    })
+    .join("<br>");
+}
+
+function srmdcApplyPublicProfile(profile) {
+  if (!profile) return;
+
+  const officialName =
+    profile.officialName || "";
+
+  const displayName =
+    profile.displayName || "";
+
+  const address =
+    profile.address || {};
+
+  const contact =
+    profile.contact || {};
+
+  srmdcSetText(
+    '[data-srmdc="official-name"]',
+    officialName
+  );
+
+  srmdcSetText(
+    '[data-srmdc="footer-official-name"]',
+    officialName
+  );
+
+  srmdcSetText(
+    '[data-srmdc="display-name"]',
+    displayName
+  );
+
+  srmdcSetText(
+    '[data-srmdc="contact-heading"]',
+    displayName
+  );
+
+  srmdcSetText(
+    '[data-srmdc="public-description"]',
+    profile.publicDescription || ""
+  );
+
+  srmdcSetText(
+    '[data-srmdc="brand-location"]',
+    address.village || ""
+  );
+
+  const addressHtml =
+    srmdcSafeAddressHtml(address);
+
+  if (addressHtml) {
+    document
+      .querySelectorAll(
+        '[data-srmdc="about-address"],' +
+        '[data-srmdc="contact-address"]'
+      )
+      .forEach((element) => {
+        element.innerHTML =
+          addressHtml;
+      });
+  }
+
+  const primary =
+    contact.primaryPhone || "";
+
+  const alternate =
+    contact.alternatePhone || "";
+
+  srmdcSetText(
+    '[data-srmdc="phone-pair"]',
+    [primary, alternate]
+      .filter(Boolean)
+      .join(" / ")
+  );
+
+  srmdcSetText(
+    '[data-srmdc="primary-phone-formatted"]',
+    srmdcIndianPhone(primary)
+  );
+
+  srmdcSetText(
+    '[data-srmdc="alternate-phone-formatted"]',
+    srmdcIndianPhone(alternate)
+  );
+
+  srmdcSetText(
+    '[data-srmdc="email-text"]',
+    contact.officialEmail || ""
+  );
+
+  srmdcSetText(
+    '[data-srmdc="email-link-text"]',
+    contact.officialEmail || ""
+  );
+
+  if (primary) {
+    document
+      .querySelectorAll(
+        '[data-srmdc-link="primary-phone"]'
+      )
+      .forEach((element) => {
+        element.href =
+          "tel:+91" +
+          srmdcDigits(primary);
+      });
+
+    document
+      .querySelectorAll(
+        '[data-srmdc-link="whatsapp"]'
+      )
+      .forEach((element) => {
+        element.href =
+          "https://wa.me/91" +
+          srmdcDigits(primary);
+      });
+  }
+
+  if (alternate) {
+    document
+      .querySelectorAll(
+        '[data-srmdc-link="alternate-phone"]'
+      )
+      .forEach((element) => {
+        element.href =
+          "tel:+91" +
+          srmdcDigits(alternate);
+      });
+  }
+
+  if (contact.officialEmail) {
+    document
+      .querySelectorAll(
+        '[data-srmdc-link="email"]'
+      )
+      .forEach((element) => {
+        element.href =
+          "mailto:" +
+          contact.officialEmail;
+      });
+  }
+
+  const footerLocation =
+    [address.village, address.state]
+      .filter(Boolean)
+      .join(", ");
+
+  const footerParts = [
+    footerLocation,
+    srmdcIndianPhone(primary),
+    contact.officialEmail || ""
+  ].filter(Boolean);
+
+  srmdcSetText(
+    '[data-srmdc="footer-contact"]',
+    footerParts.join(" \u2022 ")
+  );
+
+  if (officialName) {
+    document.title = officialName;
+
+    const meta =
+      document.querySelector(
+        'meta[name="description"]'
+      );
+
+    if (meta) {
+      const location =
+        [address.village, address.state]
+          .filter(Boolean)
+          .join(", ");
+
+      meta.content =
+        "Official website of " +
+        officialName +
+        (location
+          ? ", " + location + "."
+          : ".");
+    }
+  }
+}
+
+async function srmdcLoadPublicProfile() {
+  const controller =
+    new AbortController();
+
+  const timeout =
+    window.setTimeout(
+      () => controller.abort(),
+      6000
+    );
+
+  try {
+    const response =
+      await fetch(
+        SRMDC_PUBLIC_PROFILE_ENDPOINT,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json"
+          },
+          cache: "no-store",
+          signal: controller.signal
+        }
+      );
+
+    if (!response.ok) return;
+
+    const payload =
+      await response.json();
+
+    if (
+      !payload ||
+      payload.ok !== true ||
+      !payload.profile
+    ) {
+      return;
+    }
+
+    srmdcApplyPublicProfile(
+      payload.profile
+    );
+  } catch (_) {
+    // Keep static HTML fallback.
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
+srmdcLoadPublicProfile();
 // =========================================================
 // SRMDC TRUST
 // PUBLIC RECEIPT VERIFICATION - PHASE 1D-B
@@ -606,3 +922,55 @@ document.addEventListener(
     }
   }
 );
+
+// =========================================================
+// SRMDC DONATION COPY BUTTONS
+// =========================================================
+
+document
+  .querySelectorAll("[data-copy-value]")
+  .forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      async () => {
+
+        const value =
+          button.dataset.copyValue || "";
+
+        const label =
+          button.dataset.copyLabel || "Value";
+
+        const message =
+          document.getElementById(
+            "donationCopyMessage"
+          );
+
+        if (!value) {
+          return;
+        }
+
+        try {
+
+          await navigator.clipboard.writeText(
+            value
+          );
+
+          if (message) {
+            message.textContent =
+              `${label} copied.`;
+          }
+
+        } catch (error) {
+
+          if (message) {
+            message.textContent =
+              `Unable to copy ${label}. Please copy it manually.`;
+          }
+
+        }
+
+      }
+    );
+
+  });

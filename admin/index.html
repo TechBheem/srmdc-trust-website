@@ -245,6 +245,350 @@
 
     </section>
 
+    <section
+      id="trustProfileView"
+      class="editor-view hidden"
+    >
+
+      <header class="editor-header">
+
+        <div>
+          <p class="eyebrow">
+            WEBSITE CONTENT
+          </p>
+
+          <h1>Trust Profile</h1>
+
+          <p class="muted">
+            Edit the official public profile of SRMDC Trust.
+          </p>
+        </div>
+
+        <button
+          id="profileBackButton"
+          type="button"
+          class="secondary-button"
+        >
+          Back to Dashboard
+        </button>
+
+      </header>
+
+      <div
+        id="profileStatus"
+        class="profile-status"
+      >
+        Loading Trust profile...
+      </div>
+
+      <form
+        id="trustProfileForm"
+        class="profile-form"
+      >
+
+        <div class="form-section">
+
+          <h2>Trust Identity</h2>
+
+          <div class="form-grid">
+
+            <div class="field field-wide">
+              <label for="profileOfficialName">
+                Official Trust Name
+              </label>
+
+              <input
+                id="profileOfficialName"
+                type="text"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="profileDisplayName">
+                Display Name
+              </label>
+
+              <input
+                id="profileDisplayName"
+                type="text"
+                required
+              >
+            </div>
+
+            <div class="field field-wide">
+              <label for="profileDescription">
+                Public Description
+              </label>
+
+              <textarea
+                id="profileDescription"
+                rows="4"
+              ></textarea>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="form-section">
+
+          <h2>Official Address</h2>
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="profileDoorNumber">
+                Door No.
+              </label>
+
+              <input
+                id="profileDoorNumber"
+                type="text"
+              >
+            </div>
+
+            <div class="field">
+              <label for="profileVillage">
+                Village
+              </label>
+
+              <input
+                id="profileVillage"
+                type="text"
+              >
+            </div>
+
+            <div class="field">
+              <label for="profilePostOffice">
+                Post
+              </label>
+
+              <input
+                id="profilePostOffice"
+                type="text"
+              >
+            </div>
+
+            <div class="field">
+              <label for="profileMandal">
+                Mandal
+              </label>
+
+              <input
+                id="profileMandal"
+                type="text"
+              >
+            </div>
+
+            <div class="field">
+              <label for="profileDistrict">
+                District
+              </label>
+
+              <input
+                id="profileDistrict"
+                type="text"
+              >
+            </div>
+
+            <div class="field">
+              <label for="profileState">
+                State
+              </label>
+
+              <input
+                id="profileState"
+                type="text"
+              >
+            </div>
+
+            <div class="field">
+              <label for="profilePinCode">
+                PIN Code
+              </label>
+
+              <input
+                id="profilePinCode"
+                type="text"
+                inputmode="numeric"
+                maxlength="6"
+              >
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="form-section">
+
+          <h2>Public Contact</h2>
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="profilePrimaryPhone">
+                Primary Phone
+              </label>
+
+              <input
+                id="profilePrimaryPhone"
+                type="tel"
+              >
+            </div>
+
+            <div class="field">
+              <label for="profileAlternatePhone">
+                Alternate Phone
+              </label>
+
+              <input
+                id="profileAlternatePhone"
+                type="tel"
+              >
+            </div>
+
+            <div class="field">
+              <label for="profileEmail">
+                Official Email
+              </label>
+
+              <input
+                id="profileEmail"
+                type="email"
+              >
+            </div>
+
+            <div class="field">
+              <label for="profileWebsite">
+                Website
+              </label>
+
+              <input
+                id="profileWebsite"
+                type="url"
+              >
+            </div>
+
+            <div class="field field-wide">
+              <label for="profilePublicNote">
+                Public Note
+              </label>
+
+              <textarea
+                id="profilePublicNote"
+                rows="3"
+                placeholder="Optional public note"
+              ></textarea>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="editor-actions">
+
+          <button
+            id="saveDraftButton"
+            type="submit"
+            class="primary-action-button"
+          >
+            Save Draft
+          </button>
+
+          <button
+            id="previewProfileButton"
+            type="button"
+            class="secondary-button"
+          >
+            Preview
+          </button>
+
+          <button
+            id="publishProfileButton"
+            type="button"
+            class="publish-button"
+          >
+            Publish
+          </button>
+
+        </div>
+
+        <p
+          id="profileMessage"
+          class="form-message profile-message"
+          aria-live="polite"
+        ></p>
+
+      </form>
+
+      <section
+        id="profilePreview"
+        class="profile-preview hidden"
+      >
+
+        <div class="preview-heading">
+
+          <div>
+            <p class="eyebrow">
+              PREVIEW
+            </p>
+
+            <h2 id="previewDisplayName">
+              SRMDC Trust
+            </h2>
+          </div>
+
+          <button
+            id="closePreviewButton"
+            type="button"
+            class="secondary-button"
+          >
+            Close Preview
+          </button>
+
+        </div>
+
+        <p
+          id="previewOfficialName"
+          class="preview-official-name"
+        ></p>
+
+        <p id="previewDescription"></p>
+
+        <div class="preview-details">
+
+          <div>
+            <strong>Address</strong>
+            <span id="previewAddress"></span>
+          </div>
+
+          <div>
+            <strong>Phone</strong>
+            <span id="previewPhone"></span>
+          </div>
+
+          <div>
+            <strong>Email</strong>
+            <span id="previewEmail"></span>
+          </div>
+
+          <div>
+            <strong>Website</strong>
+            <span id="previewWebsite"></span>
+          </div>
+
+        </div>
+
+        <p
+          id="previewPublicNote"
+          class="muted"
+        ></p>
+
+      </section>
+
+    </section>
+
   </main>
 
   <script
