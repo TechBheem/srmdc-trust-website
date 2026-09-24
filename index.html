@@ -19,7 +19,7 @@
 
   <link
     rel="stylesheet"
-    href="assets/css/style.css"
+    href="assets/css/style.css?v=20260924115553"
   >
 </head>
 
@@ -299,209 +299,978 @@
       <h2>Donations</h2>
 
       <p>
-        Support the Trust's approved religious
-        and charitable activities.
+        Enter your donor details first so that your donation
+        can be recorded correctly and the official receipt can
+        be prepared after payment verification.
       </p>
 
     </div>
 
-    <div class="donation-panel donation-panel-modern">
+    <div
+        id="srmdcDonationDevotionalHeader"
+        class="srmdc-devotional-header"
+      >
 
-      <div class="donation-payment-grid">
+        <div
+          class="srmdc-devotional-image"
+          aria-hidden="true"
+        ></div>
 
-        <!-- SCAN & PAY -->
+        <div class="srmdc-devotional-content">
 
-        <div class="donation-payment-card donation-upi-card">
+          <div class="srmdc-rama-symbol">
+            &#10022;
+          </div>
 
-          <div class="donation-card-heading">
+          <div class="srmdc-devotional-mantra">
+            &#2405;&#2405; Sri Rama &#2405;&#2405;
+          </div>
 
-            <div class="donation-card-icon" aria-hidden="true">
-              &#9635;
+          <h3>
+            Devotion Through Service
+          </h3>
+
+          <p>
+            Support Sri Rama Mandira and the charitable
+            activities of Sri Rama Mandira Devasthana
+            Charitable Trust.
+          </p>
+
+          <div class="srmdc-devotional-divider">
+            <span></span>
+            <b>&#10022;</b>
+            <span></span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="donation-panel donation-panel-modern">
+
+      <!-- ===================================================
+           STEP INDICATOR
+           =================================================== -->
+
+      <div
+        class="donation-workflow-steps"
+        aria-label="Donation progress"
+      >
+
+        <div
+          class="donation-workflow-step active"
+          data-donation-step-indicator="1"
+        >
+          <span>1</span>
+          <strong>Donor Details</strong>
+        </div>
+
+        <div
+          class="donation-workflow-step"
+          data-donation-step-indicator="2"
+        >
+          <span>2</span>
+          <strong>Review &amp; Pay</strong>
+        </div>
+
+        <div
+          class="donation-workflow-step"
+          data-donation-step-indicator="3"
+        >
+          <span>3</span>
+          <strong>Payment Details</strong>
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================
+           STEP 1 - DONOR DETAILS
+           =================================================== -->
+
+      <div
+        id="srmdcDonationStep1"
+        class="donation-workflow-panel"
+      >
+
+        <div class="donation-workflow-heading">
+
+          <span class="donation-workflow-kicker">
+            Step 1 of 3
+          </span>
+
+          <h3>Donor &amp; Donation Details</h3>
+
+          <p>
+            Please enter the donor name carefully.
+            This name will be used for the official receipt
+            after the Trust verifies the payment.
+          </p>
+
+        </div>
+
+        <form
+          id="srmdcDonationDetailsForm"
+          novalidate
+        >
+
+          <div class="donation-form-grid">
+
+            <div class="donation-form-field">
+
+              <label for="donationDonorName">
+                Donor Name
+                <span aria-hidden="true">*</span>
+              </label>
+
+              <input
+                id="donationDonorName"
+                name="donorName"
+                type="text"
+                maxlength="120"
+                autocomplete="name"
+                required
+              >
+
             </div>
 
-            <div>
-              <h3>Scan &amp; Pay</h3>
-              <p>
-                Use any UPI app to scan the official
-                Trust QR code below.
-              </p>
+
+            <div class="donation-form-field">
+
+              <label for="donationMobile">
+                Mobile Number
+                <span aria-hidden="true">*</span>
+              </label>
+
+              <input
+                id="donationMobile"
+                name="mobile"
+                type="tel"
+                maxlength="20"
+                autocomplete="tel"
+                inputmode="tel"
+                required
+              >
+
+            </div>
+
+
+            <div class="donation-form-field">
+
+              <label for="donationEmail">
+                Email
+                <small>Optional</small>
+              </label>
+
+              <input
+                id="donationEmail"
+                name="email"
+                type="email"
+                maxlength="160"
+                autocomplete="email"
+              >
+
+            </div>
+
+
+            <div class="donation-form-field">
+
+              <label for="donationPan">
+                PAN
+                <small>Optional</small>
+              </label>
+
+              <input
+                id="donationPan"
+                name="pan"
+                type="text"
+                maxlength="10"
+                autocomplete="off"
+                autocapitalize="characters"
+                spellcheck="false"
+                placeholder="ABCDE1234F"
+              >
+
+              <small class="donation-field-help">
+                You may provide PAN for applicable
+                compliance or tax-benefit documentation.
+              </small>
+
+            </div>
+
+
+            <div class="donation-form-field donation-form-wide">
+
+              <label for="donationAddress">
+                Address
+                <small>Optional</small>
+              </label>
+
+              <textarea
+                id="donationAddress"
+                name="address"
+                maxlength="500"
+                rows="3"
+                autocomplete="street-address"
+              ></textarea>
+
+            </div>
+
+
+            <div class="donation-form-field">
+
+              <label for="donationFund">
+                Donation Category / Fund
+                <span aria-hidden="true">*</span>
+              </label>
+
+              <select
+                id="donationFund"
+                name="fundName"
+                required
+              >
+
+                <option value="">
+                  Select a category
+                </option>
+
+                <option value="Temple Construction Fund">
+                  Temple Construction Fund
+                </option>
+
+                <option value="Charitable Activities Fund">
+                  Charitable Activities Fund
+                </option>
+
+                <option value="Religious / Temple Operations Fund">
+                  Religious / Temple Operations Fund
+                </option>
+
+                <option value="General / Unallocated Fund">
+                  General / Unallocated Fund
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="donation-form-field">
+
+              <label for="donationAmount">
+                Amount to Donate
+                <span aria-hidden="true">*</span>
+              </label>
+
+              <div class="donation-amount-input">
+
+                <span aria-hidden="true">
+                  &#8377;
+                </span>
+
+                <input
+                  id="donationAmount"
+                  name="declaredAmount"
+                  type="number"
+                  min="1"
+                  max="100000000"
+                  step="0.01"
+                  inputmode="decimal"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="donation-form-field donation-form-wide">
+
+              <label for="donationPurpose">
+                Donation Purpose
+                <span aria-hidden="true">*</span>
+              </label>
+
+              <input
+                id="donationPurpose"
+                name="donationPurpose"
+                type="text"
+                maxlength="250"
+                placeholder="Example: Temple construction"
+                required
+              >
+
             </div>
 
           </div>
 
-          <div class="donation-qr-wrap">
+          <div
+            id="donationStep1Message"
+            class="donation-form-message"
+            role="alert"
+            aria-live="polite"
+          ></div>
 
-            <img
-              src="assets/images/srmdc_donation_qr.png"
-              alt="Official SRMDC Trust donation UPI QR code"
-              class="donation-qr"
-              loading="lazy"
+          <div class="donation-workflow-actions">
+
+            <button
+              type="submit"
+              class="button primary"
             >
+              Review Donation Details
+            </button>
 
           </div>
 
-          <div class="donation-upi-details">
+        </form>
 
-            <span class="donation-detail-label">
-              UPI ID
-            </span>
+      </div>
 
-            <strong id="srmdcUpiId">
-              342049698082389@cnrb
-            </strong>
 
+      <!-- ===================================================
+           STEP 2 - CONFIRM + PAYMENT
+           =================================================== -->
+
+      <div
+        id="srmdcDonationStep2"
+        class="donation-workflow-panel"
+        hidden
+      >
+
+        <div class="donation-workflow-heading">
+
+          <span class="donation-workflow-kicker">
+            Step 2 of 3
+          </span>
+
+          <h3>Review Donation Details</h3>
+
+          <p>
+            Please verify these details before continuing.
+            Your donor name will be used on the official
+            receipt after payment verification.
+          </p>
+
+        </div>
+
+
+        <div class="donation-confirm-card">
+
+          <div>
+            <span>Donor Name</span>
+            <strong id="donationConfirmName">-</strong>
           </div>
+
+          <div>
+            <span>Category / Fund</span>
+            <strong id="donationConfirmFund">-</strong>
+          </div>
+
+          <div>
+            <span>Purpose</span>
+            <strong id="donationConfirmPurpose">-</strong>
+          </div>
+
+          <div>
+            <span>Amount</span>
+            <strong id="donationConfirmAmount">-</strong>
+          </div>
+
+        </div>
+
+
+        <div
+          id="donationReferenceCard"
+          class="donation-reference-card"
+          hidden
+        >
+
+          <span>Donation Reference</span>
+
+          <strong id="donationReferenceNumber">
+            -
+          </strong>
+
+          <p>
+            Keep this reference until your official
+            receipt is issued.
+          </p>
+
+        </div>
+
+
+        <div
+          id="donationCreateMessage"
+          class="donation-form-message"
+          role="alert"
+          aria-live="polite"
+        ></div>
+
+
+        <div
+          id="donationPreCreateActions"
+          class="donation-workflow-actions donation-workflow-actions-split"
+        >
 
           <button
+            id="donationEditDetails"
             type="button"
-            class="button secondary donation-copy-button"
-            data-copy-value="342049698082389@cnrb"
-            data-copy-label="UPI ID"
+            class="button secondary donation-back-button"
           >
-            Copy UPI ID
+            &larr; Back to Donor Details
+          </button>
+
+          <button
+            id="donationConfirmCreate"
+            type="button"
+            class="button primary"
+          >
+            Continue
           </button>
 
         </div>
 
 
-        <!-- BANK TRANSFER -->
+        <!-- PAYMENT AREA - SHOWN ONLY AFTER REFERENCE CREATION -->
 
-        <div class="donation-payment-card donation-bank-card">
+        <div
+          id="donationPaymentArea"
+          class="donation-payment-area"
+          hidden
+        >
 
-          <div class="donation-card-heading">
+          <div class="donation-payment-for">
 
-            <div class="donation-card-icon bank-icon" aria-hidden="true">
-              &#9783;
+            <span>Donation for</span>
+
+            <strong id="donationPaymentForName">
+              -
+            </strong>
+
+            <span id="donationPaymentForAmount">
+              -
+            </span>
+
+          </div>
+
+
+          <div class="donation-payment-grid">
+
+            <!-- SCAN & PAY -->
+
+            <div class="donation-payment-card donation-upi-card">
+
+              <div class="donation-card-heading">
+
+                <div
+                  class="donation-card-icon"
+                  aria-hidden="true"
+                >
+                  &#9635;
+                </div>
+
+                <div>
+
+                  <h3>Scan &amp; Pay</h3>
+
+                  <p>
+                    Use any UPI app to scan the official
+                    Trust QR code below.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="donation-qr-wrap">
+
+                <img
+                  src="assets/images/srmdc_donation_qr.png"
+                  alt="Official SRMDC Trust donation UPI QR code"
+                  class="donation-qr"
+                  loading="lazy"
+                >
+
+              </div>
+
+
+              <div class="donation-upi-details">
+
+                <span class="donation-detail-label">
+                  UPI ID
+                </span>
+
+                <strong id="srmdcUpiId">
+                  342049698082389@cnrb
+                </strong>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="button secondary donation-copy-button"
+                data-copy-value="342049698082389@cnrb"
+                data-copy-label="UPI ID"
+              >
+                Copy UPI ID
+              </button>
+
+            </div>
+
+
+            <!-- BANK TRANSFER -->
+
+            <div class="donation-payment-card donation-bank-card">
+
+              <div class="donation-card-heading">
+
+                <div
+                  class="donation-card-icon bank-icon"
+                  aria-hidden="true"
+                >
+                  &#9783;
+                </div>
+
+                <div>
+
+                  <h3>Bank Transfer</h3>
+
+                  <p>
+                    You can also donate directly to our
+                    Trust bank account.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="donation-bank-details">
+
+                <div class="donation-bank-row">
+
+                  <span>Account Name</span>
+
+                  <strong>
+                    SRI RAMA MANDIRA DEVASTHANA CHARITABLE TRUST
+                  </strong>
+
+                </div>
+
+
+                <div class="donation-bank-row">
+
+                  <span>Bank Name</span>
+
+                  <strong>
+                    Canara Bank
+                  </strong>
+
+                </div>
+
+
+                <div class="donation-bank-row donation-bank-copy-row">
+
+                  <span>Account Number</span>
+
+                  <div class="donation-bank-value">
+
+                    <strong>
+                      120042082389
+                    </strong>
+
+                    <button
+                      type="button"
+                      class="donation-inline-copy"
+                      data-copy-value="120042082389"
+                      data-copy-label="Account number"
+                    >
+                      Copy
+                    </button>
+
+                  </div>
+
+                </div>
+
+
+                <div class="donation-bank-row donation-bank-copy-row">
+
+                  <span>IFSC</span>
+
+                  <div class="donation-bank-value">
+
+                    <strong>
+                      CNRB0013470
+                    </strong>
+
+                    <button
+                      type="button"
+                      class="donation-inline-copy"
+                      data-copy-value="CNRB0013470"
+                      data-copy-label="IFSC"
+                    >
+                      Copy
+                    </button>
+
+                  </div>
+
+                </div>
+
+
+                <div class="donation-bank-row">
+
+                  <span>Branch</span>
+
+                  <strong>
+                    Udayagiri - 524226
+                  </strong>
+
+                </div>
+
+
+                <div class="donation-bank-row">
+
+                  <span>Branch Address</span>
+
+                  <strong>
+                    12-234, Annapoorna Complex,
+                    Old Bus Stand, Udayagiri,
+                    Nellore Dist - 524226 (AP)
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="donation-safety-box">
+
+            <div
+              class="donation-notice-icon"
+              aria-hidden="true"
+            >
+              &#10003;
             </div>
 
             <div>
-              <h3>Bank Transfer</h3>
+
+              <h3>Please Verify Before Payment</h3>
+
               <p>
-                You can also donate directly to our
-                Trust bank account.
+                Confirm that the beneficiary shown by your
+                bank or UPI application corresponds to the
+                Trust. Never share your OTP, PIN or other
+                banking credentials with anyone.
               </p>
+
             </div>
 
           </div>
 
-          <div class="donation-bank-details">
 
-            <div class="donation-bank-row">
-              <span>Account Name</span>
-              <strong>
-                SRI RAMA MANDIRA DEVASTHANA CHARITABLE TRUST
-              </strong>
-            </div>
+          <div
+            class="donation-workflow-actions
+                   donation-workflow-actions-split
+                   donation-payment-navigation"
+          >
 
-            <div class="donation-bank-row">
-              <span>Bank Name</span>
-              <strong>Canara Bank</strong>
-            </div>
+            <button
+              id="donationReviewCreatedDetails"
+              type="button"
+              class="button secondary donation-back-button"
+            >
+              &larr; Review Donation Details
+            </button>
 
-            <div class="donation-bank-row donation-bank-copy-row">
-
-              <span>Account Number</span>
-
-              <div class="donation-bank-value">
-                <strong>120042082389</strong>
-
-                <button
-                  type="button"
-                  class="donation-inline-copy"
-                  data-copy-value="120042082389"
-                  data-copy-label="Account number"
-                >
-                  Copy
-                </button>
-              </div>
-
-            </div>
-
-            <div class="donation-bank-row donation-bank-copy-row">
-
-              <span>IFSC</span>
-
-              <div class="donation-bank-value">
-                <strong>CNRB0013470</strong>
-
-                <button
-                  type="button"
-                  class="donation-inline-copy"
-                  data-copy-value="CNRB0013470"
-                  data-copy-label="IFSC"
-                >
-                  Copy
-                </button>
-              </div>
-
-            </div>
-
-            <div class="donation-bank-row">
-              <span>Branch</span>
-              <strong>Udayagiri - 524226</strong>
-            </div>
-
-            <div class="donation-bank-row">
-              <span>Branch Address</span>
-              <strong>
-                12-234, Annapoorna Complex,
-                Old Bus Stand, Udayagiri,
-                Nellore Dist - 524226 (AP)
-              </strong>
-            </div>
+            <button
+              id="donationIHavePaid"
+              type="button"
+              class="button primary"
+            >
+              I Have Made the Payment &rarr;
+            </button>
 
           </div>
+
+
+          <div
+            id="donationCopyMessage"
+            class="donation-copy-message"
+            role="status"
+            aria-live="polite"
+          ></div>
 
         </div>
 
       </div>
 
 
-      <!-- PAYMENT SAFETY -->
+      <!-- ===================================================
+           STEP 3 - PAYMENT DETAILS
+           =================================================== -->
 
-      <div class="donation-safety-box">
+      <div
+        id="srmdcDonationStep3"
+        class="donation-workflow-panel"
+        hidden
+      >
 
-        <div class="donation-notice-icon" aria-hidden="true">
+        <div class="donation-workflow-heading">
+
+          <span class="donation-workflow-kicker">
+            Step 3 of 3
+          </span>
+
+          <h3>Submit Payment Details</h3>
+
+          <p>
+            Enter the transaction details exactly as shown
+            by your bank or UPI application.
+          </p>
+
+        </div>
+
+
+        <div class="donation-payment-summary">
+
+          <div>
+            <span>Donation Reference</span>
+            <strong id="donationPaymentReference">Will be generated after submission</strong>
+          </div>
+
+          <div>
+            <span>Donor</span>
+            <strong id="donationPaymentDonor">-</strong>
+          </div>
+
+          <div>
+            <span>Amount</span>
+            <strong id="donationPaymentAmount">-</strong>
+          </div>
+
+        </div>
+
+
+        <form
+          id="srmdcDonationPaymentForm"
+          novalidate
+        >
+
+          <div class="donation-form-grid">
+
+            <div class="donation-form-field">
+
+              <label for="donationPaymentMode">
+                Payment Mode
+                <span aria-hidden="true">*</span>
+              </label>
+
+              <select
+                id="donationPaymentMode"
+                required
+              >
+
+                <option value="">
+                  Select payment mode
+                </option>
+
+                <option value="UPI">
+                  UPI
+                </option>
+
+                <option value="Bank Transfer">
+                  Bank Transfer
+                </option>
+
+                <option value="NEFT">
+                  NEFT
+                </option>
+
+                <option value="RTGS">
+                  RTGS
+                </option>
+
+                <option value="IMPS">
+                  IMPS
+                </option>
+
+                <option value="Cheque">
+                  Cheque
+                </option>
+
+                <option value="DD">
+                  DD
+                </option>
+
+                <option value="Other">
+                  Other
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="donation-form-field">
+
+              <label for="donationTransactionReference">
+                UTR / Transaction ID
+                <span aria-hidden="true">*</span>
+              </label>
+
+              <input
+                id="donationTransactionReference"
+                type="text"
+                maxlength="100"
+                autocomplete="off"
+                required
+              >
+
+              <small class="donation-field-help">
+                Enter the reference exactly as shown
+                by your bank or UPI app.
+              </small>
+
+            </div>
+
+
+            <div class="donation-form-field">
+
+              <label for="donationPaymentDate">
+                Payment Date
+                <span aria-hidden="true">*</span>
+              </label>
+
+              <input
+                id="donationPaymentDate"
+                type="date"
+                required
+              >
+
+            </div>
+
+
+            <div class="donation-form-field">
+
+              <label for="donationPaidAmount">
+                Amount Paid
+                <span aria-hidden="true">*</span>
+              </label>
+
+              <div class="donation-amount-input">
+
+                <span aria-hidden="true">
+                  &#8377;
+                </span>
+
+                <input
+                  id="donationPaidAmount"
+                  type="number"
+                  min="1"
+                  max="100000000"
+                  step="0.01"
+                  inputmode="decimal"
+                  readonly
+                  required
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div
+            id="donationPaymentMessage"
+            class="donation-form-message"
+            role="alert"
+            aria-live="polite"
+          ></div>
+
+
+          <div class="donation-workflow-actions donation-workflow-actions-split">
+
+            <button
+              id="donationBackToPayment"
+              type="button"
+              class="button secondary donation-back-button"
+            >
+              &larr; Back to Payment Options
+            </button>
+
+            <button
+              id="donationSubmitPayment"
+              type="submit"
+              class="button primary"
+            >
+              Submit for Verification
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+
+      <!-- ===================================================
+           FINAL SUCCESS
+           =================================================== -->
+
+      <div
+        id="srmdcDonationSuccess"
+        class="donation-workflow-panel donation-success-panel"
+        hidden
+      >
+
+        <div
+          class="donation-success-icon"
+          aria-hidden="true"
+        >
           &#10003;
         </div>
 
-        <div>
+        <span class="donation-workflow-kicker">
+          Payment Details Submitted
+        </span>
 
-          <h3>Please Verify Before Payment</h3>
+        <h3>
+          Donation Payment Is Under Verification
+        </h3>
 
-          <p>
-            Before confirming a payment, verify that the
-            beneficiary details shown by your bank or UPI
-            application correspond to the Trust.
-            Never share your OTP, PIN or other banking
-            credentials with anyone.
-          </p>
+        <p>
+          Thank you. Your payment details have been
+          received by the Trust.
+        </p>
 
-        </div>
+        <div class="donation-success-reference">
 
-      </div>
+          <span>Donation Reference</span>
 
-
-      <!-- AFTER DONATION -->
-
-      <div class="donation-after-box">
-
-        <div class="donation-notice-icon" aria-hidden="true">
-          &#9998;
-        </div>
-
-        <div>
-
-          <h3>After Making a Donation</h3>
-
-          <p>
-            Please share the payment reference
-            (UTR / Transaction ID), amount and donation
-            purpose with the Trust so the donation can be
-            recorded and an official receipt can be issued.
-          </p>
+          <strong id="donationSuccessReference">
+            -
+          </strong>
 
         </div>
+
+        <p>
+          The official receipt will be issued only after
+          the Trust confirms receipt of the funds in its
+          bank account.
+        </p>
+
+        <p class="donation-success-note">
+          Please keep your donation reference and bank /
+          UPI transaction details until verification is
+          complete.
+        </p>
 
       </div>
 
@@ -537,13 +1306,6 @@
         </a>
 
       </div>
-
-      <div
-        id="donationCopyMessage"
-        class="donation-copy-message"
-        role="status"
-        aria-live="polite"
-      ></div>
 
     </div>
 
@@ -786,7 +1548,7 @@
 </footer>
 
 
-<script src="assets/js/app.js?v=354fd51"></script>
+<script src="assets/js/app.js?v=20260924115553"></script>
 
 </body>
 </html>

@@ -974,3 +974,857 @@ document
     );
 
   });
+
+// =========================================================
+// SRMDC GUIDED DONATION WORKFLOW
+// CONSOLIDATED FLOW
+//
+// 1. Donor Details
+// 2. Review + Payment Options
+// 3. Payment Details
+// 4. Submission Reference / Verification Pending
+//
+// IMPORTANT:
+// The backend submission is created only when payment
+// details are submitted. The donor therefore receives the
+// submission reference AFTER reporting the payment.
+// =========================================================
+
+(() => {
+  const CREATE_DONATION_URL =
+    "https://umawsedkfamopecaykwp.supabase.co/functions/v1/create-donation";
+
+  const SUBMIT_PAYMENT_URL =
+    "https://umawsedkfamopecaykwp.supabase.co/functions/v1/submit-donation-payment";
+
+  const detailsForm =
+    document.getElementById("srmdcDonationDetailsForm");
+
+  const paymentForm =
+    document.getElementById("srmdcDonationPaymentForm");
+
+  if (!detailsForm || !paymentForm) {
+    return;
+  }
+
+  const step1 =
+    document.getElementById("srmdcDonationStep1");
+
+  const step2 =
+    document.getElementById("srmdcDonationStep2");
+
+  const step3 =
+    document.getElementById("srmdcDonationStep3");
+
+  const successPanel =
+    document.getElementById("srmdcDonationSuccess");
+
+  const editButton =
+    document.getElementById("donationEditDetails");
+
+  const oldConfirmButton =
+    document.getElementById("donationConfirmCreate");
+
+  const preCreateActions =
+    document.getElementById("donationPreCreateActions");
+
+  const paymentArea =
+    document.getElementById("donationPaymentArea");
+
+  const referenceCard =
+    document.getElementById("donationReferenceCard");
+
+  const paidButton =
+    document.getElementById("donationIHavePaid");
+
+  const reviewCreatedDetails =
+    document.getElementById("donationReviewCreatedDetails");
+
+  const backToPaymentButton =
+    document.getElementById("donationBackToPayment");
+
+  const step1Message =
+    document.getElementById("donationStep1Message");
+
+  const createMessage =
+    document.getElementById("donationCreateMessage");
+
+  const paymentMessage =
+    document.getElementById("donationPaymentMessage");
+
+  const state = {
+    draft: null,
+    submissionNumber: "",
+    trackingToken: "",
+    submissionCreated: false,
+    paymentSubmitted: false,
+  };
+
+  const moneyFormatter =
+    new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 2,
+    });
+
+  function setMessage(element, message, success = false) {
+    if (!element) {
+      return;
+    }
+
+    element.textContent = message || "";
+
+    element.classList.toggle(
+      "success",
+      Boolean(success)
+    );
+  }
+
+  function scrollToDonation() {
+    const donationSection =
+      document.getElementById("donate");
+
+    if (!donationSection) {
+      return;
+    }
+
+    window.setTimeout(() => {
+      donationSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 40);
+  }
+
+  function setStep(number) {
+    [step1, step2, step3, successPanel]
+      .forEach((panel) => {
+        if (panel) {
+          panel.hidden = true;
+        }
+      });
+
+    if (number === 1 && step1) {
+      step1.hidden = false;
+    }
+
+    if (number === 2 && step2) {
+      step2.hidden = false;
+    }
+
+    if (number === 3 && step3) {
+      step3.hidden = false;
+    }
+
+    if (number === 4 && successPanel) {
+      successPanel.hidden = false;
+    }
+
+    document
+      .querySelectorAll("[data-donation-step-indicator]")
+      .forEach((indicator) => {
+        const indicatorNumber =
+          Number(
+            indicator.dataset.donationStepIndicator
+          );
+
+        indicator.classList.toggle(
+          "active",
+          indicatorNumber === number
+        );
+
+        indicator.classList.toggle(
+          "complete",
+          indicatorNumber < number
+        );
+      });
+
+    if (number !== 1) {
+      scrollToDonation();
+    }
+  }
+
+  function normalizePan(value) {
+    return String(value || "")
+      .replace(/\s+/g, "")
+      .toUpperCase();
+  }
+
+  function getDraft() {
+    return {
+      donorName:
+        document
+          .getElementById("donationDonorName")
+          .value
+          .trim(),
+
+      mobile:
+        document
+          .getElementById("donationMobile")
+          .value
+          .trim(),
+
+      email:
+        document
+          .getElementById("donationEmail")
+          .value
+          .trim(),
+
+      address:
+        document
+          .getElementById("donationAddress")
+          .value
+          .trim(),
+
+      pan:
+        normalizePan(
+          document
+            .getElementById("donationPan")
+            .value
+        ),
+
+      fundName:
+        document
+          .getElementById("donationFund")
+          .value,
+
+      donationPurpose:
+        document
+          .getElementById("donationPurpose")
+          .value
+          .trim(),
+
+      declaredAmount:
+        Number(
+          document
+            .getElementById("donationAmount")
+            .value
+        ),
+    };
+  }
+
+  function validateDraft(draft) {
+    if (draft.donorName.length < 2) {
+      return "Please enter the donor name.";
+    }
+
+    const mobileDigits =
+      draft.mobile.replace(/\D/g, "");
+
+    if (
+      mobileDigits.length < 10 ||
+      mobileDigits.length > 15
+    ) {
+      return "Please enter a valid mobile number.";
+    }
+
+    if (
+      draft.email &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(draft.email)
+    ) {
+      return "Please enter a valid email address or leave it blank.";
+    }
+
+    if (
+      draft.pan &&
+      !/^[A-Z]{5}[0-9]{4}[A-Z]$/
+        .test(draft.pan)
+    ) {
+      return "Please enter a valid PAN or leave the PAN field blank.";
+    }
+
+    if (!draft.fundName) {
+      return "Please select a donation category.";
+    }
+
+    if (draft.donationPurpose.length < 2) {
+      return "Please enter the donation purpose.";
+    }
+
+    if (
+      !Number.isFinite(draft.declaredAmount) ||
+      draft.declaredAmount <= 0
+    ) {
+      return "Please enter a valid donation amount.";
+    }
+
+    return "";
+  }
+
+  function populateConfirmation(draft) {
+    document.getElementById(
+      "donationConfirmName"
+    ).textContent =
+      draft.donorName;
+
+    document.getElementById(
+      "donationConfirmFund"
+    ).textContent =
+      draft.fundName;
+
+    document.getElementById(
+      "donationConfirmPurpose"
+    ).textContent =
+      draft.donationPurpose;
+
+    document.getElementById(
+      "donationConfirmAmount"
+    ).textContent =
+      moneyFormatter.format(
+        draft.declaredAmount
+      );
+
+    const paymentName =
+      document.getElementById(
+        "donationPaymentForName"
+      );
+
+    const paymentAmount =
+      document.getElementById(
+        "donationPaymentForAmount"
+      );
+
+    if (paymentName) {
+      paymentName.textContent =
+        draft.donorName;
+    }
+
+    if (paymentAmount) {
+      paymentAmount.textContent =
+        moneyFormatter.format(
+          draft.declaredAmount
+        );
+    }
+  }
+
+  function prepareStep2() {
+    /*
+     * Reference must NOT be shown before payment submission.
+     */
+    if (referenceCard) {
+      referenceCard.hidden = true;
+      referenceCard.style.setProperty(
+        "display",
+        "none",
+        "important"
+      );
+    }
+
+    /*
+     * QR / Bank details are available immediately on Step 2.
+     */
+    if (paymentArea) {
+      paymentArea.hidden = false;
+      paymentArea.style.removeProperty("display");
+    }
+
+    /*
+     * Keep only Back to Donor Details from the old
+     * pre-create action row.
+     */
+    if (preCreateActions) {
+      preCreateActions.hidden = false;
+      preCreateActions.style.removeProperty("display");
+    }
+
+    /*
+     * The old "Confirm Donation & Show Payment Options"
+     * action is no longer part of the flow.
+     */
+    if (oldConfirmButton) {
+      oldConfirmButton.hidden = true;
+      oldConfirmButton.style.setProperty(
+        "display",
+        "none",
+        "important"
+      );
+    }
+
+    /*
+     * The old post-reference review button is unnecessary.
+     * Donor can edit freely until payment details are submitted.
+     */
+    if (reviewCreatedDetails) {
+      reviewCreatedDetails.hidden = true;
+      reviewCreatedDetails.style.setProperty(
+        "display",
+        "none",
+        "important"
+      );
+    }
+
+    if (paidButton) {
+      paidButton.hidden = false;
+      paidButton.style.removeProperty("display");
+      paidButton.textContent =
+        "I Have Made the Payment \u2192";
+    }
+
+    setMessage(
+      createMessage,
+      "Please review the donation details and pay using the official Trust QR or bank account below. After payment, click \u201cI Have Made the Payment\u201d.",
+      false
+    );
+  }
+
+  detailsForm.addEventListener(
+    "submit",
+    (event) => {
+      event.preventDefault();
+
+      /*
+       * Once payment has been submitted, this workflow
+       * cannot be edited in the same session.
+       */
+      if (state.paymentSubmitted) {
+        return;
+      }
+
+      setMessage(step1Message, "");
+
+      const draft = getDraft();
+      const validationError =
+        validateDraft(draft);
+
+      if (validationError) {
+        setMessage(
+          step1Message,
+          validationError
+        );
+
+        return;
+      }
+
+      state.draft = draft;
+
+      populateConfirmation(draft);
+      prepareStep2();
+      setStep(2);
+    }
+  );
+
+  if (editButton) {
+    editButton.addEventListener(
+      "click",
+      () => {
+        if (state.paymentSubmitted) {
+          return;
+        }
+
+        /*
+         * No backend submission exists yet in the normal flow,
+         * so donor may safely correct Step 1.
+         */
+        setStep(1);
+      }
+    );
+  }
+
+  if (paidButton) {
+    paidButton.addEventListener(
+      "click",
+      () => {
+        if (!state.draft) {
+          setMessage(
+            createMessage,
+            "Please review your donation details first."
+          );
+
+          return;
+        }
+
+        document.getElementById(
+          "donationPaymentReference"
+        ).textContent =
+          "Will be generated after submission";
+
+        document.getElementById(
+          "donationPaymentDonor"
+        ).textContent =
+          state.draft.donorName;
+
+        document.getElementById(
+          "donationPaymentAmount"
+        ).textContent =
+          moneyFormatter.format(
+            state.draft.declaredAmount
+          );
+
+        document.getElementById(
+          "donationPaidAmount"
+        ).value =
+          state.draft.declaredAmount;
+
+        const dateInput =
+          document.getElementById(
+            "donationPaymentDate"
+          );
+
+        const today = new Date();
+
+        const localDate = [
+          today.getFullYear(),
+          String(
+            today.getMonth() + 1
+          ).padStart(2, "0"),
+          String(
+            today.getDate()
+          ).padStart(2, "0"),
+        ].join("-");
+
+        if (dateInput && !dateInput.value) {
+          dateInput.value = localDate;
+        }
+
+        if (dateInput) {
+          dateInput.max = localDate;
+        }
+
+        setMessage(paymentMessage, "");
+
+        setStep(3);
+      }
+    );
+  }
+
+  if (backToPaymentButton) {
+    backToPaymentButton.addEventListener(
+      "click",
+      () => {
+        if (state.paymentSubmitted) {
+          return;
+        }
+
+        prepareStep2();
+        setStep(2);
+      }
+    );
+  }
+
+  async function createSubmissionIfNeeded() {
+    if (
+      state.submissionCreated &&
+      state.submissionNumber &&
+      state.trackingToken
+    ) {
+      return;
+    }
+
+    if (!state.draft) {
+      throw new Error(
+        "Donation details are missing. Please restart the donation process."
+      );
+    }
+
+    const response =
+      await fetch(
+        CREATE_DONATION_URL,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+
+          body:
+            JSON.stringify(
+              state.draft
+            ),
+        }
+      );
+
+    let result = null;
+
+    try {
+      result =
+        await response.json();
+    }
+    catch (_) {
+      result = null;
+    }
+
+    if (
+      !response.ok ||
+      !result ||
+      result.ok !== true
+    ) {
+      throw new Error(
+        result?.message ||
+        "Unable to prepare the donation submission."
+      );
+    }
+
+    if (
+      result.status !==
+      "awaiting_payment"
+    ) {
+      throw new Error(
+        "Unexpected donation status returned."
+      );
+    }
+
+    if (
+      !result.submissionNumber ||
+      !result.trackingToken
+    ) {
+      throw new Error(
+        "Donation submission reference was not returned."
+      );
+    }
+
+    state.submissionNumber =
+      result.submissionNumber;
+
+    state.trackingToken =
+      result.trackingToken;
+
+    state.submissionCreated = true;
+  }
+
+  paymentForm.addEventListener(
+    "submit",
+    async (event) => {
+      event.preventDefault();
+
+      if (state.paymentSubmitted) {
+        return;
+      }
+
+      setMessage(paymentMessage, "");
+
+      if (!state.draft) {
+        setMessage(
+          paymentMessage,
+          "Donation details are missing. Please restart the donation process."
+        );
+
+        return;
+      }
+
+      const paymentMode =
+        document
+          .getElementById(
+            "donationPaymentMode"
+          )
+          .value;
+
+      const transactionReference =
+        document
+          .getElementById(
+            "donationTransactionReference"
+          )
+          .value
+          .trim();
+
+      const paymentDate =
+        document
+          .getElementById(
+            "donationPaymentDate"
+          )
+          .value;
+
+      const paidAmount =
+        Number(
+          document
+            .getElementById(
+              "donationPaidAmount"
+            )
+            .value
+        );
+
+      if (!paymentMode) {
+        setMessage(
+          paymentMessage,
+          "Please select the payment mode."
+        );
+
+        return;
+      }
+
+      if (
+        transactionReference.length < 4
+      ) {
+        setMessage(
+          paymentMessage,
+          "Please enter the UTR / Transaction ID."
+        );
+
+        return;
+      }
+
+      if (!paymentDate) {
+        setMessage(
+          paymentMessage,
+          "Please select the payment date."
+        );
+
+        return;
+      }
+
+      if (
+        !Number.isFinite(paidAmount) ||
+        paidAmount !==
+          state.draft.declaredAmount
+      ) {
+        setMessage(
+          paymentMessage,
+          "The paid amount must match the donation amount."
+        );
+
+        return;
+      }
+
+      const submitButton =
+        document.getElementById(
+          "donationSubmitPayment"
+        );
+
+      if (!submitButton) {
+        return;
+      }
+
+      submitButton.disabled = true;
+
+      const originalText =
+        submitButton.textContent;
+
+      submitButton.textContent =
+        "Submitting for Verification...";
+
+      try {
+        /*
+         * STEP A
+         *
+         * Create the private backend submission immediately
+         * before payment reporting.
+         *
+         * The donor has not been shown a reference yet.
+         */
+        await createSubmissionIfNeeded();
+
+        /*
+         * STEP B
+         *
+         * Attach donor-reported payment information to the
+         * same private submission.
+         */
+        const response =
+          await fetch(
+            SUBMIT_PAYMENT_URL,
+            {
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json",
+              },
+
+              body:
+                JSON.stringify({
+                  submissionNumber:
+                    state.submissionNumber,
+
+                  trackingToken:
+                    state.trackingToken,
+
+                  paymentMode,
+
+                  transactionReference,
+
+                  paymentDate,
+
+                  paidAmount,
+                }),
+            }
+          );
+
+        let result = null;
+
+        try {
+          result =
+            await response.json();
+        }
+        catch (_) {
+          result = null;
+        }
+
+        if (
+          !response.ok ||
+          !result ||
+          result.ok !== true
+        ) {
+          throw new Error(
+            result?.message ||
+            "Unable to submit the payment details."
+          );
+        }
+
+        if (
+          result.status !==
+          "pending_verification"
+        ) {
+          throw new Error(
+            "Unexpected payment status returned."
+          );
+        }
+
+        state.paymentSubmitted = true;
+
+        /*
+         * NOW reveal the submission reference.
+         */
+        const successReference =
+          document.getElementById(
+            "donationSuccessReference"
+          );
+
+        if (successReference) {
+          successReference.textContent =
+            state.submissionNumber;
+        }
+
+        setStep(4);
+      }
+      catch (error) {
+        setMessage(
+          paymentMessage,
+          error.message ||
+          "Unable to submit the payment details."
+        );
+
+        submitButton.disabled = false;
+      }
+      finally {
+        submitButton.textContent =
+          originalText;
+      }
+    }
+  );
+
+  /*
+   * Initial clean state.
+   */
+  if (referenceCard) {
+    referenceCard.hidden = true;
+    referenceCard.style.setProperty(
+      "display",
+      "none",
+      "important"
+    );
+  }
+
+  if (paymentArea) {
+    paymentArea.hidden = true;
+  }
+
+  if (oldConfirmButton) {
+    oldConfirmButton.hidden = true;
+    oldConfirmButton.style.setProperty(
+      "display",
+      "none",
+      "important"
+    );
+  }
+})();
