@@ -1734,6 +1734,66 @@
                     issued for this submission.
                   </div>
 
+                  ${
+                    item.receipt_number &&
+                    item.verification_token
+                      ? `
+                        <div
+                          class="srmdc-issued-receipt-number"
+                          style="margin-top:18px;"
+                        >
+                          ${
+                            escapeHtml(
+                              item.receipt_number
+                            )
+                          }
+                        </div>
+
+                        <div
+                          class="srmdc-success-actions"
+                          style="margin:18px 0 22px;"
+                        >
+                          <button
+                            type="button"
+                            id="existingOfficialReceiptButton"
+                            class="srmdc-issue-button"
+                          >
+                            View / Print Official Receipt
+                          </button>
+
+                          <a
+                            id="existingVerifyReceiptLink"
+                            class="secondary-button srmdc-link-button"
+                            href="${
+                              escapeHtml(
+                                `${window.location.origin}/` +
+                                `?receipt=${
+                                  encodeURIComponent(
+                                    item.receipt_number
+                                  )
+                                }` +
+                                `&id=${
+                                  encodeURIComponent(
+                                    item.verification_token
+                                  )
+                                }#verify`
+                              )
+                            }"
+                            target="_blank"
+                            rel="noopener"
+                          >
+                            Verify Receipt
+                          </a>
+                        </div>
+                      `
+                      : `
+                        <p class="srmdc-bank-warning">
+                          Receipt metadata is not available
+                          in this refreshed record.
+                        </p>
+                      `
+                  }
+
                   <div class="srmdc-detail-grid">
 
                     <div>
@@ -1910,6 +1970,68 @@
       panel.classList.remove(
         "hidden"
       );
+
+
+      const existingReceiptButton =
+        document.getElementById(
+          "existingOfficialReceiptButton"
+        );
+
+
+      if (existingReceiptButton) {
+
+        existingReceiptButton
+          .addEventListener(
+            "click",
+            () => {
+
+              if (
+                !item.receipt_number ||
+                !item.verification_token
+              ) {
+
+                window.alert(
+                  "Official receipt details are not available."
+                );
+
+                return;
+              }
+
+
+              const verificationUrl =
+                `${window.location.origin}/` +
+                `?receipt=${
+                  encodeURIComponent(
+                    item.receipt_number
+                  )
+                }` +
+                `&id=${
+                  encodeURIComponent(
+                    item.verification_token
+                  )
+                }#verify`;
+
+
+              openOfficialReceipt(
+                {
+                  receipt_number:
+                    item.receipt_number,
+
+                  verification_token:
+                    item.verification_token,
+
+                  receipt_date:
+                    item.receipt_date,
+
+                  receipt_status:
+                    item.receipt_status
+                },
+                verificationUrl,
+                item
+              );
+            }
+          );
+      }
 
 
       document
