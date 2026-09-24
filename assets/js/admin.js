@@ -821,7 +821,7 @@
     }
   );
 
-  initialize();
+  // Application startup is deferred until all admin modules are constructed.
 
   // ============================================================
   // SRMDC_DONATION_VERIFICATION_MODULE
@@ -2299,5 +2299,13 @@
     };
 
   })();
+
+  // ============================================================
+  // START APPLICATION
+  // ============================================================
+  // Donation Verification UI has already been constructed.
+  // Authentication/session restoration starts only now.
+
+  initialize();
 
 })();
