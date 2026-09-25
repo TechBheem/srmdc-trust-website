@@ -821,6 +821,561 @@
     }
   );
 
+  // ============================================================
+  // SRMDC_PROFILE_LINK_ADMIN_V1
+  // ============================================================
+
+  const srmdcProfileLinkAdmin = (() => {
+
+    let queue = [];
+
+    const escapeHtml = (value) => {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    };
+
+
+    const displayValue = (value) => {
+      const text = String(value ?? "").trim();
+      return text || "\u2014";
+    };
+
+
+    const formatDate = (value) => {
+      if (!value) {
+        return "\u2014";
+      }
+
+      const date = new Date(value);
+
+      if (Number.isNaN(date.getTime())) {
+        return String(value);
+      }
+
+      return new Intl.DateTimeFormat(
+        "en-IN",
+        {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        }
+      ).format(date);
+    };
+
+
+    const getView = () =>
+      document.getElementById(
+        "profileLinkRequestsView"
+      );
+
+
+    const setMessage = (
+      text,
+      type = ""
+    ) => {
+      const element =
+        document.getElementById(
+          "profileLinkRequestsMessage"
+        );
+
+      if (!element) {
+        return;
+      }
+
+      element.textContent = text || "";
+      element.className =
+        "srmdc-finance-message";
+
+      if (type) {
+        element.classList.add(type);
+      }
+    };
+
+
+    const hideOtherAdminViews = () => {
+      dashboardView.classList.add("hidden");
+
+      document
+        .querySelectorAll(
+          "main > section.dashboard"
+        )
+        .forEach((section) => {
+          if (
+            section.id !==
+            "profileLinkRequestsView"
+          ) {
+            section.classList.add(
+              "hidden"
+            );
+          }
+        });
+    };
+
+
+    const buildUi = () => {
+
+      const moduleGrid =
+        document.querySelector(
+          ".module-grid"
+        );
+
+      if (
+        moduleGrid &&
+        !document.getElementById(
+          "profileLinkRequestsCard"
+        )
+      ) {
+        const card =
+          document.createElement(
+            "button"
+          );
+
+        card.type = "button";
+        card.id =
+          "profileLinkRequestsCard";
+
+        card.className =
+          "module-card";
+
+        card.innerHTML = `
+          <span class="module-icon">&#128279;</span>
+          <strong>Profile Link Requests</strong>
+          <span>
+            Review My SRMDC historical donation linking requests
+          </span>
+        `;
+
+        const donationCard =
+          document.getElementById(
+            "donationVerificationCard"
+          );
+
+        if (donationCard) {
+          moduleGrid.insertBefore(
+            card,
+            donationCard
+          );
+        }
+        else {
+          moduleGrid.appendChild(
+            card
+          );
+        }
+
+        card.addEventListener(
+          "click",
+          open
+        );
+      }
+
+
+      if (
+        !document.getElementById(
+          "profileLinkRequestsView"
+        )
+      ) {
+        const view =
+          document.createElement(
+            "section"
+          );
+
+        view.id =
+          "profileLinkRequestsView";
+
+        view.className =
+          "dashboard hidden srmdc-finance-view";
+
+        view.innerHTML = `
+          <header class="dashboard-header">
+            <div>
+              <p class="eyebrow">
+                MY SRMDC ADMINISTRATION
+              </p>
+
+              <h1>
+                Profile Link Requests
+              </h1>
+
+              <p class="muted">
+                Review requests to connect verified historical
+                donor records with My SRMDC member accounts.
+              </p>
+            </div>
+
+            <div class="srmdc-finance-header-actions">
+              <button
+                type="button"
+                id="refreshProfileLinkQueueButton"
+                class="secondary-button"
+              >
+                Refresh
+              </button>
+
+              <button
+                type="button"
+                id="profileLinkBackButton"
+                class="secondary-button"
+              >
+                Back to Dashboard
+              </button>
+            </div>
+          </header>
+
+          <div
+            id="profileLinkRequestsMessage"
+            class="srmdc-finance-message"
+          ></div>
+
+          <div class="srmdc-finance-summary">
+            <div>
+              <strong
+                id="pendingProfileLinkCount"
+              >0</strong>
+              <span>Pending requests</span>
+            </div>
+          </div>
+
+          <div
+            id="profileLinkQueue"
+            class="srmdc-donation-queue"
+          ></div>
+        `;
+
+        const main =
+          dashboardView.parentElement;
+
+        main.appendChild(view);
+
+        document
+          .getElementById(
+            "profileLinkBackButton"
+          )
+          .addEventListener(
+            "click",
+            close
+          );
+
+        document
+          .getElementById(
+            "refreshProfileLinkQueueButton"
+          )
+          .addEventListener(
+            "click",
+            loadQueue
+          );
+      }
+    };
+
+
+    function open() {
+
+      buildUi();
+
+      hideOtherAdminViews();
+
+      getView().classList.remove(
+        "hidden"
+      );
+
+      loadQueue();
+    }
+
+
+    function close() {
+
+      const view = getView();
+
+      if (view) {
+        view.classList.add(
+          "hidden"
+        );
+      }
+
+      dashboardView.classList.remove(
+        "hidden"
+      );
+
+      setMessage("");
+    }
+
+
+    const renderQueue = () => {
+
+      const container =
+        document.getElementById(
+          "profileLinkQueue"
+        );
+
+      const count =
+        document.getElementById(
+          "pendingProfileLinkCount"
+        );
+
+      if (!container || !count) {
+        return;
+      }
+
+      count.textContent =
+        String(queue.length);
+
+
+      if (!queue.length) {
+
+        container.innerHTML = `
+          <div class="srmdc-finance-empty">
+            <strong>
+              No pending profile link requests.
+            </strong>
+
+            <p>
+              New My SRMDC historical-link requests
+              will appear here for administrator review.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+
+      container.innerHTML =
+        queue.map((item) => {
+
+          const type =
+            item.request_type ===
+            "receipt_proof"
+              ? "Receipt proof"
+              : "Manual recovery";
+
+          const member =
+            displayValue(
+              item.member_display_name
+            );
+
+          const memberId =
+            displayValue(
+              item.member_id
+            );
+
+          const username =
+            displayValue(
+              item.username
+            );
+
+          const receipt =
+            displayValue(
+              item.receipt_number
+            );
+
+          const candidateDonor =
+            displayValue(
+              item.candidate_donor_name
+            );
+
+          const claimedName =
+            displayValue(
+              item.claimed_name
+            );
+
+          const claimedMobile =
+            displayValue(
+              item.claimed_mobile
+            );
+
+          const claimedEmail =
+            displayValue(
+              item.claimed_email
+            );
+
+          const claimedPan =
+            displayValue(
+              item.claimed_pan_or_id
+            );
+
+          const claimedAddress =
+            displayValue(
+              item.claimed_address
+            );
+
+          const memberNote =
+            displayValue(
+              item.member_note
+            );
+
+          return `
+            <article class="srmdc-donation-card">
+
+              <div class="srmdc-donation-card-header">
+                <div>
+                  <p class="eyebrow">
+                    ${escapeHtml(type)}
+                  </p>
+
+                  <h3>
+                    ${escapeHtml(member)}
+                  </h3>
+
+                  <p class="muted">
+                    ${escapeHtml(memberId)}
+                    ${
+                      username !== "\u2014"
+                        ? ` \u00b7 @${escapeHtml(username)}`
+                        : ""
+                    }
+                  </p>
+                </div>
+
+                <span class="srmdc-status-pill">
+                  Pending
+                </span>
+              </div>
+
+              <div class="srmdc-finance-details">
+
+                <p>
+                  <strong>Submitted:</strong>
+                  ${escapeHtml(
+                    formatDate(
+                      item.created_at
+                    )
+                  )}
+                </p>
+
+                <p>
+                  <strong>Receipt:</strong>
+                  ${escapeHtml(receipt)}
+                </p>
+
+                <p>
+                  <strong>Candidate donor:</strong>
+                  ${escapeHtml(candidateDonor)}
+                </p>
+
+                <p>
+                  <strong>Claimed name:</strong>
+                  ${escapeHtml(claimedName)}
+                </p>
+
+                <p>
+                  <strong>Claimed mobile:</strong>
+                  ${escapeHtml(claimedMobile)}
+                </p>
+
+                <p>
+                  <strong>Claimed email:</strong>
+                  ${escapeHtml(claimedEmail)}
+                </p>
+
+                <p>
+                  <strong>Claimed PAN / ID:</strong>
+                  ${escapeHtml(claimedPan)}
+                </p>
+
+                <p>
+                  <strong>Claimed address:</strong>
+                  ${escapeHtml(claimedAddress)}
+                </p>
+
+                <p>
+                  <strong>Member note:</strong>
+                  ${escapeHtml(memberNote)}
+                </p>
+
+              </div>
+
+              <p class="muted">
+                Approval and rejection controls will be
+                enabled only after a genuine request is
+                available for controlled testing.
+              </p>
+
+            </article>
+          `;
+        }).join("");
+    };
+
+
+    async function loadQueue() {
+
+      buildUi();
+
+      const container =
+        document.getElementById(
+          "profileLinkQueue"
+        );
+
+      if (!container) {
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="srmdc-finance-empty">
+          Loading profile link requests...
+        </div>
+      `;
+
+      setMessage("");
+
+      const {
+        data,
+        error
+      } = await client.rpc(
+        "get_srmdc_donor_link_queue"
+      );
+
+      if (error) {
+
+        queue = [];
+
+        document
+          .getElementById(
+            "pendingProfileLinkCount"
+          )
+          .textContent = "0";
+
+        container.innerHTML = `
+          <div class="srmdc-finance-empty">
+            Unable to load profile link requests.
+          </div>
+        `;
+
+        setMessage(
+          error.message ||
+            "Unable to load profile link request queue.",
+          "error"
+        );
+
+        return;
+      }
+
+      queue =
+        Array.isArray(data)
+          ? data
+          : [];
+
+      renderQueue();
+    }
+
+
+    const init = () => {
+      buildUi();
+    };
+
+
+    return Object.freeze({
+      init,
+      open,
+      refresh: loadQueue
+    });
+
+  })();
+
   // Application startup is deferred until all admin modules are constructed.
 
   // ============================================================
@@ -3380,6 +3935,33 @@
       page-break-inside: avoid !important;
     }
   }
+
+  /* ==========================================================
+     SRMDC_RECEIPT_BODABANDA_V1
+     Bottom-left Bodabanda identity emblem.
+     Decorative Trust branding only.
+     ========================================================== */
+
+  .signature {
+    position: relative;
+  }
+
+  .srmdc-receipt-bodabanda {
+    position: absolute;
+    left: 14px;
+    bottom: 2px;
+
+    width: 104px;
+    height: 104px;
+
+    object-fit: contain;
+
+    transform: rotate(-8deg);
+    transform-origin: center center;
+
+    z-index: 2;
+    pointer-events: none;
+  }
 </style>
 </head>
 
@@ -3542,6 +4124,14 @@
 
 
   <section class="signature">
+
+    
+    <!-- SRMDC_RECEIPT_BODABANDA_V1 -->
+    <img
+      class="srmdc-receipt-bodabanda"
+      src="${window.location.origin}/assets/images/srmdc_bodabanda_stamp.png"
+      alt="Sri Rama Mandiram Bodabanda"
+    >
 
     <div class="signature-space"></div>
 
@@ -4851,11 +5441,918 @@
   })();
 
   // ============================================================
+
+  // ============================================================
+  // SRMDC_TRUST_SETTINGS_ADMIN_V1
+  // ============================================================
+
+  const srmdcTrustSettingsAdmin = (() => {
+
+    const viewId =
+      "trustPublicSettingsView";
+
+    const cardId =
+      "trustPublicSettingsCard";
+
+
+    const getView = () =>
+      document.getElementById(viewId);
+
+
+    const setMessage = (
+      text,
+      type = ""
+    ) => {
+
+      const element =
+        document.getElementById(
+          "trustSettingsMessage"
+        );
+
+      if (!element) {
+        return;
+      }
+
+      element.textContent =
+        text || "";
+
+      element.className =
+        "srmdc-finance-message";
+
+      if (type) {
+        element.classList.add(type);
+      }
+    };
+
+
+    const inputValue = (id) => {
+
+      const element =
+        document.getElementById(id);
+
+      return String(
+        element?.value ?? ""
+      ).trim();
+    };
+
+
+    const setInputValue = (
+      id,
+      value
+    ) => {
+
+      const element =
+        document.getElementById(id);
+
+      if (element) {
+        element.value =
+          String(value ?? "");
+      }
+    };
+
+
+    const normalizePhone = (value) =>
+      String(value || "")
+        .replace(/[^\d]/g, "");
+
+
+    const hideOtherViews = () => {
+
+      dashboardView.classList.add(
+        "hidden"
+      );
+
+      document
+        .querySelectorAll(
+          "main > section.dashboard"
+        )
+        .forEach((section) => {
+
+          if (section.id !== viewId) {
+            section.classList.add(
+              "hidden"
+            );
+          }
+        });
+    };
+
+
+    const showDashboard = () => {
+
+      getView()?.classList.add(
+        "hidden"
+      );
+
+      dashboardView.classList.remove(
+        "hidden"
+      );
+    };
+
+
+    const populate = (settings) => {
+
+      setInputValue(
+        "trustSettingsTrustName",
+        settings?.trust_name
+      );
+
+      setInputValue(
+        "trustSettingsAddress1",
+        settings?.address_line_1
+      );
+
+      setInputValue(
+        "trustSettingsAddress2",
+        settings?.address_line_2
+      );
+
+      setInputValue(
+        "trustSettingsAddress3",
+        settings?.address_line_3
+      );
+
+      setInputValue(
+        "trustSettingsPrimaryPhone",
+        settings?.primary_phone
+      );
+
+      setInputValue(
+        "trustSettingsSecondaryPhone",
+        settings?.secondary_phone
+      );
+
+      setInputValue(
+        "trustSettingsEmail",
+        settings?.email
+      );
+
+      setInputValue(
+        "trustSettingsWebsite",
+        settings?.website
+      );
+
+      setInputValue(
+        "trustSettingsWebsiteUrl",
+        settings?.website_url
+      );
+
+
+      const updated =
+        document.getElementById(
+          "trustSettingsUpdated"
+        );
+
+      if (updated) {
+
+        if (settings?.updated_at) {
+
+          const date =
+            new Date(
+              settings.updated_at
+            );
+
+          updated.textContent =
+            `Last updated: ${
+              date.toLocaleString(
+                "en-IN"
+              )
+            }`;
+        }
+        else {
+          updated.textContent =
+            "Initial Trust settings";
+        }
+      }
+    };
+
+
+    const loadSettings = async () => {
+
+      setMessage(
+        "Loading Trust settings..."
+      );
+
+
+      const {
+        data,
+        error
+      } =
+        await client.rpc(
+          "get_srmdc_public_trust_settings"
+        );
+
+
+      if (error) {
+
+        setMessage(
+          error.message ||
+          "Unable to load Trust settings.",
+          "error"
+        );
+
+        return false;
+      }
+
+
+      const settings =
+        Array.isArray(data)
+          ? data[0]
+          : data;
+
+
+      if (!settings) {
+
+        setMessage(
+          "Trust settings were not found.",
+          "error"
+        );
+
+        return false;
+      }
+
+
+      populate(settings);
+
+      setMessage("");
+
+      return true;
+    };
+
+
+    const validate = () => {
+
+      const primaryPhone =
+        normalizePhone(
+          inputValue(
+            "trustSettingsPrimaryPhone"
+          )
+        );
+
+      const secondaryPhone =
+        normalizePhone(
+          inputValue(
+            "trustSettingsSecondaryPhone"
+          )
+        );
+
+      const email =
+        inputValue(
+          "trustSettingsEmail"
+        );
+
+      const websiteUrl =
+        inputValue(
+          "trustSettingsWebsiteUrl"
+        );
+
+
+      if (
+        !inputValue(
+          "trustSettingsTrustName"
+        )
+      ) {
+        throw new Error(
+          "Trust name is required."
+        );
+      }
+
+
+      for (const id of [
+        "trustSettingsAddress1",
+        "trustSettingsAddress2",
+        "trustSettingsAddress3"
+      ]) {
+
+        if (!inputValue(id)) {
+
+          throw new Error(
+            "Complete Trust address is required."
+          );
+        }
+      }
+
+
+      if (
+        !/^[0-9]{10,15}$/.test(
+          primaryPhone
+        )
+      ) {
+        throw new Error(
+          "Enter a valid primary mobile number."
+        );
+      }
+
+
+      if (
+        secondaryPhone &&
+        !/^[0-9]{10,15}$/.test(
+          secondaryPhone
+        )
+      ) {
+        throw new Error(
+          "Enter a valid secondary mobile number."
+        );
+      }
+
+
+      if (
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+          email
+        )
+      ) {
+        throw new Error(
+          "Enter a valid Trust email address."
+        );
+      }
+
+
+      if (
+        !inputValue(
+          "trustSettingsWebsite"
+        )
+      ) {
+        throw new Error(
+          "Website display name is required."
+        );
+      }
+
+
+      if (
+        !/^https:\/\//i.test(
+          websiteUrl
+        )
+      ) {
+        throw new Error(
+          "Website URL must begin with https://"
+        );
+      }
+
+
+      return {
+        p_trust_name:
+          inputValue(
+            "trustSettingsTrustName"
+          ),
+
+        p_address_line_1:
+          inputValue(
+            "trustSettingsAddress1"
+          ),
+
+        p_address_line_2:
+          inputValue(
+            "trustSettingsAddress2"
+          ),
+
+        p_address_line_3:
+          inputValue(
+            "trustSettingsAddress3"
+          ),
+
+        p_primary_phone:
+          primaryPhone,
+
+        p_secondary_phone:
+          secondaryPhone || null,
+
+        p_email:
+          email,
+
+        p_website:
+          inputValue(
+            "trustSettingsWebsite"
+          ),
+
+        p_website_url:
+          websiteUrl
+      };
+    };
+
+
+    const saveSettings = async () => {
+
+      let payload;
+
+      try {
+        payload = validate();
+      }
+      catch (error) {
+
+        setMessage(
+          error.message,
+          "error"
+        );
+
+        return;
+      }
+
+
+      const button =
+        document.getElementById(
+          "trustSettingsSaveButton"
+        );
+
+
+      if (button) {
+        button.disabled = true;
+        button.textContent =
+          "Saving...";
+      }
+
+
+      setMessage(
+        "Saving Trust settings..."
+      );
+
+
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await client.rpc(
+            "update_srmdc_public_trust_settings",
+            payload
+          );
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        const settings =
+          Array.isArray(data)
+            ? data[0]
+            : data;
+
+
+        if (!settings) {
+          throw new Error(
+            "The server did not return the saved settings."
+          );
+        }
+
+
+        populate(settings);
+
+        setMessage(
+          "Trust details saved successfully.",
+          "success"
+        );
+      }
+      catch (error) {
+
+        setMessage(
+          error?.message ||
+          "Unable to save Trust settings.",
+          "error"
+        );
+      }
+      finally {
+
+        if (button) {
+          button.disabled = false;
+          button.textContent =
+            "Save Changes";
+        }
+      }
+    };
+
+
+    const open = async () => {
+
+      hideOtherViews();
+
+      const view = getView();
+
+      if (!view) {
+        return;
+      }
+
+      view.classList.remove(
+        "hidden"
+      );
+
+      await loadSettings();
+    };
+
+
+    const buildUi = () => {
+
+      const moduleGrid =
+        document.querySelector(
+          ".module-grid"
+        );
+
+
+      if (!moduleGrid) {
+        throw new Error(
+          "Admin module grid not found."
+        );
+      }
+
+
+      if (
+        !document.getElementById(cardId)
+      ) {
+
+        const card =
+          document.createElement(
+            "button"
+          );
+
+        card.type = "button";
+        card.id = cardId;
+        card.className =
+          "module-card";
+
+
+        card.innerHTML = `
+          <span class="module-icon">
+            &#9881;
+          </span>
+
+          <strong>
+            Trust Details &amp;
+            Website Settings
+          </strong>
+
+          <span>
+            Address, phones, email
+            and public website details
+          </span>
+        `;
+
+
+        const profileLinkCard =
+          document.getElementById(
+            "profileLinkRequestsCard"
+          );
+
+
+        if (profileLinkCard) {
+
+          moduleGrid.insertBefore(
+            card,
+            profileLinkCard
+          );
+        }
+        else {
+
+          moduleGrid.appendChild(
+            card
+          );
+        }
+
+
+        card.addEventListener(
+          "click",
+          open
+        );
+      }
+
+
+      if (!getView()) {
+
+        const main =
+          document.querySelector(
+            "main"
+          );
+
+
+        if (!main) {
+          throw new Error(
+            "Admin main container not found."
+          );
+        }
+
+
+        const section =
+          document.createElement(
+            "section"
+          );
+
+        section.id = viewId;
+        section.className =
+          "dashboard hidden";
+
+
+        section.innerHTML = `
+          <header class="dashboard-header">
+
+            <div>
+              <p class="eyebrow">
+                SRMDC TRUST
+              </p>
+
+              <h1>
+                Trust Details &amp;
+                Website Settings
+              </h1>
+
+              <p class="muted">
+                Manage the Trust's public
+                identity and contact details.
+              </p>
+            </div>
+
+
+            <div class="header-actions">
+
+              <button
+                type="button"
+                id="trustSettingsBackButton"
+                class="secondary-button"
+              >
+                Back to Dashboard
+              </button>
+
+            </div>
+
+          </header>
+
+
+          <div
+            class="srmdc-finance-panel"
+            style="
+              max-width: 920px;
+              margin: 0 auto;
+            "
+          >
+
+            <div
+              style="
+                padding: 1rem 1.1rem;
+                margin-bottom: 1rem;
+                border-radius: 10px;
+                background: #fff8e8;
+                border: 1px solid #ead6a6;
+              "
+            >
+              <strong>
+                Public Trust Information
+              </strong>
+
+              <p
+                class="muted"
+                style="
+                  margin: 0.35rem 0 0;
+                "
+              >
+                Changes here affect current
+                public Trust contact details.
+                Donation and receipt history
+                remain unchanged.
+              </p>
+            </div>
+
+
+            <form
+              id="trustSettingsForm"
+              autocomplete="off"
+            >
+
+              <div class="form-grid">
+
+                <label
+                  style="grid-column: 1 / -1;"
+                >
+                  Trust Name
+
+                  <input
+                    id="trustSettingsTrustName"
+                    type="text"
+                    maxlength="200"
+                    required
+                  >
+                </label>
+
+
+                <label
+                  style="grid-column: 1 / -1;"
+                >
+                  Address Line 1
+
+                  <input
+                    id="trustSettingsAddress1"
+                    type="text"
+                    maxlength="250"
+                    required
+                  >
+                </label>
+
+
+                <label
+                  style="grid-column: 1 / -1;"
+                >
+                  Address Line 2
+
+                  <input
+                    id="trustSettingsAddress2"
+                    type="text"
+                    maxlength="250"
+                    required
+                  >
+                </label>
+
+
+                <label
+                  style="grid-column: 1 / -1;"
+                >
+                  Address Line 3
+
+                  <input
+                    id="trustSettingsAddress3"
+                    type="text"
+                    maxlength="250"
+                    required
+                  >
+                </label>
+
+
+                <label>
+                  Primary Mobile
+
+                  <input
+                    id="trustSettingsPrimaryPhone"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="15"
+                    required
+                  >
+                </label>
+
+
+                <label>
+                  Secondary Mobile
+
+                  <input
+                    id="trustSettingsSecondaryPhone"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="15"
+                  >
+                </label>
+
+
+                <label
+                  style="grid-column: 1 / -1;"
+                >
+                  Trust Email
+
+                  <input
+                    id="trustSettingsEmail"
+                    type="email"
+                    maxlength="254"
+                    required
+                  >
+                </label>
+
+
+                <label>
+                  Website Display
+
+                  <input
+                    id="trustSettingsWebsite"
+                    type="text"
+                    maxlength="200"
+                    required
+                  >
+                </label>
+
+
+                <label>
+                  Website URL
+
+                  <input
+                    id="trustSettingsWebsiteUrl"
+                    type="url"
+                    maxlength="300"
+                    required
+                  >
+                </label>
+
+              </div>
+
+
+              <p
+                id="trustSettingsUpdated"
+                class="muted"
+                style="
+                  margin-top: 1rem;
+                "
+              ></p>
+
+
+              <div
+                id="trustSettingsMessage"
+                class="srmdc-finance-message"
+                aria-live="polite"
+              ></div>
+
+
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 0.75rem;
+                  margin-top: 1rem;
+                "
+              >
+
+                <button
+                  type="button"
+                  id="trustSettingsReloadButton"
+                  class="secondary-button"
+                >
+                  Reload
+                </button>
+
+
+                <button
+                  type="submit"
+                  id="trustSettingsSaveButton"
+                  class="primary-button"
+                >
+                  Save Changes
+                </button>
+
+              </div>
+
+            </form>
+
+          </div>
+        `;
+
+
+        main.appendChild(
+          section
+        );
+
+
+        document
+          .getElementById(
+            "trustSettingsBackButton"
+          )
+          ?.addEventListener(
+            "click",
+            showDashboard
+          );
+
+
+        document
+          .getElementById(
+            "trustSettingsReloadButton"
+          )
+          ?.addEventListener(
+            "click",
+            loadSettings
+          );
+
+
+        document
+          .getElementById(
+            "trustSettingsForm"
+          )
+          ?.addEventListener(
+            "submit",
+            async (event) => {
+
+              event.preventDefault();
+
+              await saveSettings();
+            }
+          );
+      }
+    };
+
+
+    const init = () => {
+      buildUi();
+    };
+
+
+    return Object.freeze({
+      init,
+      open,
+      reload: loadSettings
+    });
+
+  })();
+
+
   // START APPLICATION
   // ============================================================
   // Donation Verification UI has already been constructed.
   // Authentication/session restoration starts only now.
 
+  // SRMDC_PROFILE_LINK_ADMIN_INIT_V1_1
+  srmdcProfileLinkAdmin.init();
+
+  // SRMDC_TRUST_SETTINGS_ADMIN_INIT_V1_1
+  srmdcTrustSettingsAdmin.init();
   initialize();
 
 })();

@@ -297,6 +297,418 @@ function srmdcApplyPublicProfile(profile) {
   }
 }
 
+
+/* ============================================================
+ * SRMDC_PUBLIC_TRUST_SETTINGS_RUNTIME_V1
+ * ============================================================
+ *
+ * Authoritative source:
+ * public.get_srmdc_public_trust_settings()
+ *
+ * Security:
+ * - public RPC returns only approved public Trust fields
+ * - no service-role key
+ * - no private donor information
+ *
+ * Fallback:
+ * - existing published profile
+ * - static HTML
+ * - window.SRMDC_TRUST_CONFIG for receipt
+ *
+ * Receipt:
+ * - only current Trust contact/header information is refreshed
+ * - historical donor/donation/payment data is untouched
+ * ============================================================ */
+
+// SRMDC_PUBLIC_TRUST_SETTINGS_RUNTIME_KEY_V1_2
+async function srmdcLoadPublicTrustSettings() {
+
+  const browserConfig =
+    window.SRMDC_SUPABASE_CONFIG || {};
+
+  const supabaseLibrary =
+    window.supabase;
+
+
+  if (
+    !supabaseLibrary ||
+    typeof supabaseLibrary.createClient !== "function" ||
+    !browserConfig.url ||
+    !browserConfig.publishableKey
+  ) {
+    return;
+  }
+
+
+  try {
+
+    /*
+     * Separate lightweight public client.
+     *
+     * Auth persistence is deliberately disabled so this
+     * public settings read does not interfere with My SRMDC
+     * or Admin authentication sessions.
+     */
+    const settingsClient =
+      supabaseLibrary.createClient(
+        browserConfig.url,
+        browserConfig.publishableKey,
+        {
+          auth: {
+            persistSession: false,
+            autoRefreshToken: false,
+            detectSessionInUrl: false
+          }
+        }
+      );
+
+
+    const {
+      data,
+      error
+    } =
+      await settingsClient.rpc(
+        "get_srmdc_public_trust_settings"
+      );
+
+
+    if (error) {
+      return;
+    }
+
+
+    const settings =
+      Array.isArray(data)
+        ? data[0]
+        : data;
+
+
+    if (!settings) {
+      return;
+    }
+
+
+    const trustName =
+      String(
+        settings.trust_name || ""
+      ).trim();
+
+    const addressLine1 =
+      String(
+        settings.address_line_1 || ""
+      ).trim();
+
+    const addressLine2 =
+      String(
+        settings.address_line_2 || ""
+      ).trim();
+
+    const addressLine3 =
+      String(
+        settings.address_line_3 || ""
+      ).trim();
+
+    const primaryPhone =
+      srmdcDigits(
+        settings.primary_phone
+      );
+
+    const secondaryPhone =
+      srmdcDigits(
+        settings.secondary_phone
+      );
+
+    const email =
+      String(
+        settings.email || ""
+      ).trim();
+
+    const website =
+      String(
+        settings.website || ""
+      ).trim();
+
+    const websiteUrl =
+      String(
+        settings.website_url || ""
+      ).trim();
+
+
+    /*
+     * --------------------------------------------------------
+     * WEBSITE TEXT
+     * --------------------------------------------------------
+     */
+
+    srmdcSetText(
+      '[data-srmdc="official-name"]',
+      trustName
+    );
+
+    srmdcSetText(
+      '[data-srmdc="footer-official-name"]',
+      trustName
+    );
+
+
+    const addressHtml =
+      [addressLine1, addressLine2, addressLine3]
+        .filter(Boolean)
+        .map((line) => {
+
+          const element =
+            document.createElement("span");
+
+          element.textContent = line;
+
+          return element.innerHTML;
+        })
+        .join("<br>");
+
+
+    if (addressHtml) {
+
+      document
+        .querySelectorAll(
+          '[data-srmdc="about-address"],' +
+          '[data-srmdc="contact-address"]'
+        )
+        .forEach((element) => {
+
+          element.innerHTML =
+            addressHtml;
+        });
+    }
+
+
+    srmdcSetText(
+      '[data-srmdc="phone-pair"]',
+      [
+        primaryPhone,
+        secondaryPhone
+      ]
+        .filter(Boolean)
+        .join(" / ")
+    );
+
+
+    srmdcSetText(
+      '[data-srmdc="primary-phone-formatted"]',
+      srmdcIndianPhone(primaryPhone)
+    );
+
+
+    srmdcSetText(
+      '[data-srmdc="alternate-phone-formatted"]',
+      srmdcIndianPhone(secondaryPhone)
+    );
+
+
+    srmdcSetText(
+      '[data-srmdc="email-text"]',
+      email
+    );
+
+
+    srmdcSetText(
+      '[data-srmdc="email-link-text"]',
+      email
+    );
+
+
+    /*
+     * --------------------------------------------------------
+     * WEBSITE LINKS
+     * --------------------------------------------------------
+     */
+
+    if (primaryPhone) {
+
+      document
+        .querySelectorAll(
+          '[data-srmdc-link="primary-phone"]'
+        )
+        .forEach((element) => {
+
+          element.href =
+            "tel:+91" +
+            primaryPhone;
+        });
+
+
+      document
+        .querySelectorAll(
+          '[data-srmdc-link="whatsapp"]'
+        )
+        .forEach((element) => {
+
+          element.href =
+            "https://wa.me/91" +
+            primaryPhone;
+        });
+    }
+
+
+    if (secondaryPhone) {
+
+      document
+        .querySelectorAll(
+          '[data-srmdc-link="alternate-phone"]'
+        )
+        .forEach((element) => {
+
+          element.href =
+            "tel:+91" +
+            secondaryPhone;
+        });
+    }
+
+
+    if (email) {
+
+      document
+        .querySelectorAll(
+          '[data-srmdc-link="email"]'
+        )
+        .forEach((element) => {
+
+          element.href =
+            "mailto:" +
+            email;
+        });
+    }
+
+
+    /*
+     * Footer keeps primary contact concise.
+     */
+    const footerLocation =
+      addressLine1
+        .replace(/,+$/, "")
+        .trim();
+
+    const footerParts =
+      [
+        footerLocation,
+        srmdcIndianPhone(primaryPhone),
+        email
+      ].filter(Boolean);
+
+
+    srmdcSetText(
+      '[data-srmdc="footer-contact"]',
+      footerParts.join(" • ")
+    );
+
+
+    /*
+     * --------------------------------------------------------
+     * RECEIPT RUNTIME CONFIG
+     * --------------------------------------------------------
+     *
+     * my-srmdc-receipt.js reads this object when a receipt
+     * is opened. We therefore do not need to modify the
+     * frozen receipt renderer.
+     */
+
+    const fallback =
+      window.SRMDC_TRUST_CONFIG || {};
+
+
+    const runtimeConfig =
+      Object.freeze({
+
+        ...fallback,
+
+        name:
+          trustName ||
+          fallback.name ||
+          "",
+
+        addressLines:
+          [
+            addressLine1,
+            addressLine2,
+            addressLine3
+          ].filter(Boolean),
+
+        primaryPhone:
+          primaryPhone ||
+          fallback.primaryPhone ||
+          "",
+
+        secondaryPhone:
+          secondaryPhone ||
+          "",
+
+        primaryPhoneDisplay:
+          primaryPhone
+            ? srmdcIndianPhone(
+                primaryPhone
+              )
+            : (
+                fallback.primaryPhoneDisplay ||
+                ""
+              ),
+
+        secondaryPhoneDisplay:
+          secondaryPhone
+            ? srmdcIndianPhone(
+                secondaryPhone
+              )
+            : "",
+
+        email:
+          email ||
+          fallback.email ||
+          "",
+
+        website:
+          website ||
+          fallback.website ||
+          "",
+
+        websiteUrl:
+          websiteUrl ||
+          fallback.websiteUrl ||
+          ""
+
+      });
+
+
+    window.SRMDC_TRUST_CONFIG =
+      runtimeConfig;
+
+
+    /*
+     * Optional diagnostic signal.
+     * Contains no private data.
+     */
+    window.dispatchEvent(
+      new CustomEvent(
+        "srmdc:trust-settings-ready",
+        {
+          detail: {
+            source: "supabase",
+            updatedAt:
+              settings.updated_at ||
+              null
+          }
+        }
+      )
+    );
+
+  } catch (_) {
+
+    /*
+     * Intentionally silent.
+     *
+     * Existing public profile/static HTML and receipt fallback
+     * remain available if this public settings read fails.
+     */
+  }
+}
+
 async function srmdcLoadPublicProfile() {
   const controller =
     new AbortController();
@@ -344,7 +756,12 @@ async function srmdcLoadPublicProfile() {
   }
 }
 
-srmdcLoadPublicProfile();
+// SRMDC_PUBLIC_TRUST_SETTINGS_RUNTIME_CALL_V1_1
+srmdcLoadPublicProfile()
+  .then(() => srmdcLoadPublicTrustSettings())
+  .catch(() => {
+    // Preserve static/config fallback if startup fails.
+  });
 // =========================================================
 // SRMDC TRUST
 // PUBLIC RECEIPT VERIFICATION - PHASE 1D-B
