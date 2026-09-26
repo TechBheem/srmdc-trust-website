@@ -3962,6 +3962,908 @@
     z-index: 2;
     pointer-events: none;
   }
+
+  /* ==========================================================
+     SRMDC_RECEIPT_DESIGN_V2_ATTEMPT2
+
+     Visual-only V2 certificate layer.
+     Existing receipt workflow / QR / data logic preserved.
+     ========================================================== */
+
+  .receipt {
+    padding: 22px 32px 27px;
+
+    background:
+      linear-gradient(
+        180deg,
+        #fff9e9 0%,
+        #fffdf6 42%,
+        #fff8e8 100%
+      );
+
+    border:
+      7px double #a76f16;
+
+    color:
+      #302419;
+  }
+
+  .receipt::before {
+    inset: 8px;
+
+    border:
+      2px solid #7b171d;
+  }
+
+  .receipt::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    z-index: 0;
+
+    border:
+      1px solid rgba(
+        190,
+        143,
+        43,
+        0.72
+      );
+
+    pointer-events: none;
+  }
+
+
+  /* ----------------------------------------------------------
+     TOP ART PANEL
+     ---------------------------------------------------------- */
+
+  .srmdc-v2-art-panel {
+    position: relative;
+
+    height: 190px;
+
+    margin:
+      -7px
+      -14px
+      7px;
+
+    overflow: hidden;
+
+    border-bottom:
+      3px double #a97820;
+
+    background:
+      #f8e9bd;
+  }
+
+  .srmdc-v2-header-art {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position:
+      center center;
+
+    z-index: 0;
+  }
+
+  .srmdc-v2-art-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255, 248, 221, 0.15),
+        rgba(255, 251, 232, 0.08),
+        rgba(255, 248, 221, 0.12)
+      );
+
+    pointer-events: none;
+  }
+
+
+  /* Bodabanda emblem - upper left */
+
+  .srmdc-v2-top-emblem {
+    position: absolute;
+
+    left: 15px;
+    top: 17px;
+
+    width: 105px;
+    height: 105px;
+
+    object-fit: contain;
+
+    z-index: 4;
+
+    filter:
+      drop-shadow(
+        0 3px 4px
+        rgba(65, 31, 7, 0.28)
+      );
+  }
+
+
+  /* Ganesh - centre */
+
+  .srmdc-v2-ganesh {
+    position: absolute;
+
+    left: 50%;
+    top: 45px;
+
+    transform:
+      translateX(-50%);
+
+    width: 76px;
+    height: 76px;
+
+    object-fit: contain;
+
+    z-index: 4;
+
+    filter:
+      drop-shadow(
+        0 3px 4px
+        rgba(82, 42, 11, 0.24)
+      );
+  }
+
+
+  /* Sita Rama family - upper right */
+
+  .srmdc-v2-family {
+    position: absolute;
+
+    right: 6px;
+    bottom: -4px;
+
+    width: 206px;
+    height: 180px;
+
+    object-fit: contain;
+
+    object-position:
+      center bottom;
+
+    z-index: 4;
+
+    filter:
+      drop-shadow(
+        0 4px 5px
+        rgba(69, 34, 8, 0.25)
+      );
+  }
+
+
+  /* Devotional wording */
+
+  .srmdc-v2-jai {
+    position: absolute;
+
+    left: 50%;
+    top: 10px;
+
+    transform:
+      translateX(-50%);
+
+    width: 430px;
+
+    z-index: 5;
+
+    text-align: center;
+
+    color:
+      #79171d;
+
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+
+    font-size:
+      19px;
+
+    font-weight:
+      700;
+
+    letter-spacing:
+      0.4px;
+
+    text-shadow:
+      0 1px 1px
+      rgba(255,255,255,0.95);
+  }
+
+
+  /* ----------------------------------------------------------
+     OLD DEVOTIONAL HEADER
+     Hide only visually.
+     Existing underlying structure is not reconstructed.
+     ---------------------------------------------------------- */
+
+  .devotional-header {
+    display: none;
+  }
+
+
+  /* ----------------------------------------------------------
+     Existing watermark becomes much softer.
+     ---------------------------------------------------------- */
+
+  .receipt-watermark {
+    left: 13%;
+
+    top: 42%;
+
+    width: 74%;
+    height: 38%;
+
+    opacity: 0.055;
+
+    object-fit: contain;
+  }
+
+
+  /* ----------------------------------------------------------
+     TRUST HEADER
+     Existing HTML and dynamic contact values remain unchanged.
+     ---------------------------------------------------------- */
+
+  .trust-name {
+    margin:
+      5px auto
+      2px;
+
+    color:
+      #79171d;
+
+    font-size:
+      24px;
+
+    line-height:
+      1.12;
+
+    letter-spacing:
+      0.25px;
+
+    text-shadow:
+      0 1px 0
+      #ffffff;
+  }
+
+  .trust-address {
+    margin:
+      5px auto
+      0;
+
+    max-width:
+      760px;
+
+    color:
+      #263e61;
+
+    font-size:
+      11.5px;
+
+    line-height:
+      1.38;
+
+    font-weight:
+      600;
+  }
+
+
+  .divider {
+    height:
+      4px;
+
+    margin:
+      9px 0
+      8px;
+
+    border-top:
+      2px solid
+      #8a2025;
+
+    border-bottom:
+      1px solid
+      #c79531;
+  }
+
+
+  /* ----------------------------------------------------------
+     RECEIPT TITLE
+     ---------------------------------------------------------- */
+
+  .receipt-title {
+    margin:
+      0 auto
+      10px;
+
+    padding:
+      7px 18px
+      8px;
+
+    color:
+      #fff8df;
+
+    background:
+      linear-gradient(
+        180deg,
+        #9b1721,
+        #72131a
+      );
+
+    border:
+      2px solid
+      #c99832;
+
+    outline:
+      1px solid
+      rgba(
+        139,
+        94,
+        18,
+        0.65
+      );
+
+    font-size:
+      25px;
+
+    line-height:
+      1;
+
+    letter-spacing:
+      2px;
+
+    text-shadow:
+      0 1px 1px
+      rgba(0,0,0,0.25);
+  }
+
+
+  /* ----------------------------------------------------------
+     DONOR DETAILS
+     ---------------------------------------------------------- */
+
+  .receipt-meta {
+    gap:
+      5px
+      22px;
+
+    margin-bottom:
+      9px;
+
+    padding:
+      8px
+      14px
+      5px;
+
+    border:
+      1px solid
+      #c79b45;
+
+    background:
+      rgba(
+        255,
+        253,
+        245,
+        0.80
+      );
+  }
+
+  .field {
+    min-height:
+      45px;
+
+    padding:
+      5px 0;
+
+    border-bottom:
+      1px solid
+      rgba(
+        194,
+        151,
+        67,
+        0.50
+      );
+  }
+
+  .field span {
+    margin-bottom:
+      2px;
+
+    color:
+      #8a5c20;
+
+    font-size:
+      9px;
+
+    font-weight:
+      700;
+
+    letter-spacing:
+      0.7px;
+  }
+
+  .field strong {
+    color:
+      #17355c;
+
+    font-size:
+      15px;
+
+    line-height:
+      1.18;
+  }
+
+
+  /* ----------------------------------------------------------
+     DONATION AMOUNT
+     ---------------------------------------------------------- */
+
+  .amount-box {
+    margin:
+      9px 0;
+
+    padding:
+      9px
+      16px;
+
+    text-align:
+      center;
+
+    border:
+      2px solid
+      #bd8b2b;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255,239,190,0.76),
+        rgba(255,253,242,0.95),
+        rgba(255,239,190,0.76)
+      );
+  }
+
+  .amount-number {
+    color:
+      #8b1520;
+
+    font-size:
+      30px;
+
+    line-height:
+      1.05;
+  }
+
+  .amount-words {
+    margin-top:
+      3px;
+
+    color:
+      #263e61;
+
+    font-size:
+      12px;
+
+    line-height:
+      1.3;
+  }
+
+
+  /* ----------------------------------------------------------
+     VERIFICATION
+     ---------------------------------------------------------- */
+
+  .verification {
+    grid-template-columns:
+      1fr
+      158px;
+
+    gap:
+      16px;
+
+    margin-top:
+      9px;
+
+    padding:
+      9px
+      12px;
+
+    align-items:
+      center;
+
+    border:
+      1px solid
+      #c6973c;
+
+    background:
+      rgba(
+        255,
+        253,
+        246,
+        0.83
+      );
+  }
+
+  .verification h3 {
+    margin:
+      0 0
+      3px;
+
+    color:
+      #8b1821;
+
+    font-size:
+      17px;
+  }
+
+  .verification p {
+    margin:
+      2px 0;
+
+    color:
+      #263e61;
+
+    font-size:
+      10.5px;
+
+    line-height:
+      1.28;
+
+    overflow-wrap:
+      anywhere;
+  }
+
+  .qr {
+    width:
+      158px;
+
+    height:
+      158px;
+
+    padding:
+      1px;
+
+    border:
+      2px solid
+      #b98221;
+
+    background:
+      #ffffff;
+  }
+
+
+  /* ----------------------------------------------------------
+     SIGNATURE / BODABANDA
+     ---------------------------------------------------------- */
+
+  .signature {
+    min-height:
+      100px;
+
+    margin-top:
+      8px;
+
+    padding-top:
+      5px;
+
+    border-top:
+      1px solid
+      rgba(
+        192,
+        144,
+        51,
+        0.55
+      );
+  }
+
+  .signature-space {
+    height:
+      37px;
+  }
+
+  .signature strong {
+    color:
+      #79171d;
+
+    font-size:
+      12px;
+  }
+
+  .srmdc-receipt-bodabanda {
+    left:
+      12px;
+
+    bottom:
+      0;
+
+    width:
+      84px;
+
+    height:
+      84px;
+
+    transform:
+      rotate(-5deg);
+  }
+
+
+  /* ----------------------------------------------------------
+     FOOTER
+     ---------------------------------------------------------- */
+
+  .footer {
+    margin-top:
+      5px;
+
+    padding-top:
+      5px;
+
+    color:
+      #665237;
+
+    font-size:
+      8.7px;
+
+    line-height:
+      1.25;
+
+    border-top:
+      1px solid
+      #c39740;
+  }
+
+
+  /* ----------------------------------------------------------
+     PRINT OVERRIDES FOR V2 ART ONLY.
+     Existing fixed-canvas A4 architecture remains unchanged.
+     ---------------------------------------------------------- */
+
+  @media print {
+
+    .srmdc-v2-header-art,
+    .srmdc-v2-top-emblem,
+    .srmdc-v2-ganesh,
+    .srmdc-v2-family {
+
+      -webkit-print-color-adjust:
+        exact !important;
+
+      print-color-adjust:
+        exact !important;
+    }
+
+    .receipt-watermark {
+
+      left:
+        13% !important;
+
+      top:
+        42% !important;
+
+      width:
+        74% !important;
+
+      height:
+        38% !important;
+
+      opacity:
+        0.055 !important;
+    }
+
+    .ganesh-icon {
+      width:
+        52px !important;
+
+      height:
+        52px !important;
+    }
+  }
+
+
+  /* ==========================================================
+     SRMDC_RECEIPT_DESIGN_V2_1
+
+     Final header composition:
+     - V3 panoramic devotional artwork
+     - ONE Ganesh only (inside V3 artwork)
+     - ONE Sita-Rama family only (inside V3 artwork)
+     - No top Bodabanda emblem
+     - Jai Sri Ram text remains live HTML
+     - Larger bottom Bodabanda emblem
+     ========================================================== */
+
+  .srmdc-v2-art-panel {
+    height: 232px;
+
+    margin:
+      -7px
+      -14px
+      8px;
+
+    overflow: hidden;
+
+    background:
+      #f6df9f;
+
+    border-bottom:
+      3px double #a97820;
+  }
+
+  .srmdc-v2-header-art {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: fill;
+
+    object-position:
+      center center;
+
+    z-index: 0;
+  }
+
+  /*
+    Keep the actual artwork bright.
+    Only a very light top veil is used so the devotional
+    wording stays readable.
+  */
+  .srmdc-v2-art-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 249, 225, 0.32) 0%,
+        rgba(255, 249, 225, 0.08) 25%,
+        rgba(255, 249, 225, 0.00) 55%
+      );
+
+    z-index: 1;
+  }
+
+  /*
+    These Attempt-2 overlays are intentionally disabled.
+    V3 already contains the devotional figures.
+  */
+  .srmdc-v2-top-emblem,
+  .srmdc-v2-ganesh,
+  .srmdc-v2-family {
+    display: none !important;
+  }
+
+  /*
+    Live HTML devotional wording.
+    Always above the V3 image.
+  */
+  .srmdc-v2-jai {
+    top: 8px;
+
+    width: 520px;
+
+    z-index: 5;
+
+    color: #79171d;
+
+    font-size: 20px;
+
+    line-height: 1.15;
+
+    font-weight: 700;
+
+    letter-spacing: 0.6px;
+
+    text-shadow:
+      0 1px 0 #fff7dd,
+      0 0 5px rgba(255, 248, 220, 0.95);
+  }
+
+  /*
+    The original V1 devotional strip remains hidden.
+    This prevents a second Ganesh from appearing.
+  */
+  .devotional-header {
+    display: none !important;
+  }
+
+  /*
+    Bottom Bodabanda emblem becomes the single receipt emblem.
+  */
+  .srmdc-receipt-bodabanda {
+    left: 8px;
+
+    bottom: -3px;
+
+    width: 118px;
+
+    height: 118px;
+
+    transform: rotate(-3deg);
+
+    filter:
+      drop-shadow(
+        0 2px 3px
+        rgba(83, 45, 10, 0.20)
+      );
+  }
+
+  /*
+    Give the larger emblem enough space without disturbing
+    the authorized-signatory block.
+  */
+  .signature {
+    min-height: 126px;
+
+    padding-left: 145px;
+  }
+
+  .signature-space {
+    height: 45px;
+  }
+
+  /*
+    Softer body watermark.
+    It must never compete with donor data or QR.
+  */
+  .receipt-watermark {
+    left: 17%;
+
+    top: 44%;
+
+    width: 66%;
+    height: 34%;
+
+    opacity: 0.035;
+  }
+
+  @media print {
+
+    .srmdc-v2-art-panel,
+    .srmdc-v2-header-art,
+    .srmdc-v2-jai,
+    .srmdc-receipt-bodabanda {
+
+      -webkit-print-color-adjust:
+        exact !important;
+
+      print-color-adjust:
+        exact !important;
+    }
+
+    .srmdc-receipt-bodabanda {
+      width: 118px !important;
+      height: 118px !important;
+    }
+
+    .receipt-watermark {
+      left: 17% !important;
+      top: 44% !important;
+
+      width: 66% !important;
+      height: 34% !important;
+
+      opacity: 0.035 !important;
+    }
+  }
+
 </style>
 </head>
 
@@ -3980,6 +4882,43 @@
 
 <main class="receipt">
 
+  <!-- SRMDC_RECEIPT_DESIGN_V2_ATTEMPT2 -->
+
+  <section class="srmdc-v2-art-panel">
+
+    <img
+      class="srmdc-v2-header-art"
+      src="${window.location.origin}/assets/images/srmdc_receipt_header_v3.png"
+      alt=""
+    >
+
+    <div
+      class="srmdc-v2-art-overlay"
+    ></div>
+
+    <img
+      class="srmdc-v2-top-emblem"
+      src="${window.location.origin}/assets/images/srmdc_bodabanda_stamp.png"
+      alt="Sri Rama Mandiram Bodabanda"
+    >
+
+    <div class="srmdc-v2-jai">
+      Jai Sri Ram! &nbsp;&nbsp; Jai Jai Sriram!!
+    </div>
+
+    <img
+      class="srmdc-v2-ganesh"
+      src="${window.location.origin}/assets/images/ganesh.png"
+      alt="Sri Ganesh"
+    >
+
+    <img
+      class="srmdc-v2-family"
+      src="${window.location.origin}/assets/images/srmdc_sita_rama_family_v2.png"
+      alt="Sri Sita Rama Lakshmana and Hanuman"
+    >
+
+  </section>
     <!-- SRMDC_DEVOTIONAL_RECEIPT_V1 -->
 
   <img
@@ -3991,7 +4930,7 @@
   <div class="devotional-header">
 
     <span class="devotional-word">
-      Srirasthu
+      Jai Sri Ram!
     </span>
 
     <img
@@ -4001,7 +4940,7 @@
     >
 
     <span class="devotional-word">
-      Subhamasthu
+      Jai Jai Sriram!!
     </span>
 
   </div>
