@@ -1674,9 +1674,9 @@
         receipt.verification_token,
 
       receipt_date:
-        receipt.receipt_issued_at ||
+        receipt.donation_date ||
         receipt.payment_date ||
-        receipt.donation_date,
+        receipt.receipt_issued_at,
 
       amount:
         receipt.paid_amount ??
@@ -1686,7 +1686,7 @@
 
     const submission = {
       donor_name:
-        receipt.donor_name || "",
+        [receipt.donor_name, receipt.relationship_type, receipt.related_person_name].map((value) => String(value || "").trim()).filter(Boolean).join(" "),
 
       mobile:
         receipt.donor_mobile || "",
