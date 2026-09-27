@@ -1917,7 +1917,7 @@
             <div>
               Date:
               ${escapeHtml(
-                item.donation_date ||
+                (item.donation_date ? String(item.donation_date).slice(0, 10).split("-").reverse().join("/") : null) ||
                 "—"
               )}
             </div>
