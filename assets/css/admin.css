@@ -868,3 +868,2017 @@ input:focus {
     width: 100%;
   }
 }
+
+
+/* ============================================================
+   SRMDC_REPORTS_ANALYTICS_ADMIN_V1
+   ============================================================ */
+
+.srmdc-reports-toolbar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(170px, 1fr)) auto;
+  gap: 14px;
+  align-items: end;
+  margin: 0 0 18px;
+  padding: 18px;
+  border: 1px solid #e8dcc5;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fffdf8, #fff7e8);
+  box-shadow: 0 10px 30px rgba(56, 38, 20, 0.06);
+}
+
+.srmdc-reports-toolbar label {
+  display: grid;
+  gap: 7px;
+  font-weight: 700;
+  color: #40251e;
+}
+
+.srmdc-reports-toolbar input,
+.srmdc-reports-toolbar select {
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 11px;
+  border: 1px solid #d8c7aa;
+  border-radius: 10px;
+  background: #fff;
+  color: #241a17;
+  font: inherit;
+}
+
+.srmdc-reports-toolbar-actions {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.srmdc-reports-message {
+  min-height: 24px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.srmdc-reports-message.is-success {
+  color: #27613b;
+}
+
+.srmdc-reports-message.is-error {
+  color: #9c2929;
+}
+
+.srmdc-reports-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.srmdc-report-summary-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 7px;
+  min-height: 138px;
+  padding: 20px;
+  border: 1px solid #eadfc9;
+  border-radius: 18px;
+  background: #fffdf9;
+  box-shadow: 0 12px 32px rgba(56, 38, 20, 0.07);
+}
+
+.srmdc-report-summary-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: #8b6c38;
+}
+
+.srmdc-report-summary-card.is-income::before {
+  background: #2f7650;
+}
+
+.srmdc-report-summary-card.is-expense::before {
+  background: #a84238;
+}
+
+.srmdc-report-summary-card.is-balance::before {
+  background: #172f55;
+}
+
+.srmdc-report-summary-card span {
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  color: #765f50;
+}
+
+.srmdc-report-summary-card strong {
+  align-self: center;
+  font-size: clamp(1.35rem, 2.1vw, 2rem);
+  color: #241a17;
+}
+
+.srmdc-report-summary-card small {
+  color: #74665d;
+}
+
+.srmdc-reports-block {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #eadfc9;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 12px 34px rgba(56, 38, 20, 0.055);
+}
+
+.srmdc-reports-block-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.srmdc-reports-block-head h2 {
+  margin: 2px 0 0;
+}
+
+.srmdc-report-funds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.srmdc-report-fund-card {
+  padding: 17px;
+  border: 1px solid #e7dac2;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #fffdf8, #fff8ec);
+}
+
+.srmdc-report-fund-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: start;
+}
+
+.srmdc-report-fund-head > div {
+  display: grid;
+  gap: 4px;
+}
+
+.srmdc-report-fund-head span {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #956d30;
+  text-transform: uppercase;
+}
+
+.srmdc-report-fund-head strong {
+  color: #35241e;
+}
+
+.srmdc-report-fund-head b {
+  white-space: nowrap;
+  font-size: 1.2rem;
+  color: #17365f;
+}
+
+.srmdc-report-fund-numbers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+  padding-top: 13px;
+  border-top: 1px solid #eee2ce;
+}
+
+.srmdc-report-fund-numbers span {
+  display: grid;
+  gap: 4px;
+  color: #76685f;
+  font-size: 0.82rem;
+}
+
+.srmdc-report-fund-numbers strong {
+  color: #35241e;
+  font-size: 0.96rem;
+}
+
+.srmdc-statement-scroll {
+  overflow-x: auto;
+  border: 1px solid #eadfc9;
+  border-radius: 14px;
+}
+
+.srmdc-statement-table {
+  width: 100%;
+  min-width: 1180px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.srmdc-statement-table th {
+  padding: 12px 11px;
+  background: #172f55;
+  color: #fff;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  letter-spacing: 0.025em;
+}
+
+.srmdc-statement-table td {
+  padding: 12px 11px;
+  border-bottom: 1px solid #eee6d9;
+  vertical-align: top;
+  font-size: 0.88rem;
+}
+
+.srmdc-statement-table tbody tr:hover {
+  background: #fffaf0;
+}
+
+.srmdc-statement-particular {
+  display: grid;
+  gap: 4px;
+  min-width: 170px;
+}
+
+.srmdc-statement-particular span {
+  color: #786c64;
+  font-size: 0.78rem;
+}
+
+.srmdc-money-in {
+  color: #27613b;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.srmdc-money-out {
+  color: #9c2929;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.srmdc-running-balance {
+  color: #17365f;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.srmdc-report-type {
+  display: inline-flex;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.srmdc-report-type.is-receipt {
+  background: #e7f4eb;
+  color: #27613b;
+}
+
+.srmdc-report-type.is-expense {
+  background: #fae8e6;
+  color: #922f28;
+}
+
+.srmdc-reports-empty,
+.srmdc-reports-empty-cell {
+  padding: 28px;
+  text-align: center;
+  color: #776b62;
+}
+
+@media (max-width: 1050px) {
+  .srmdc-reports-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .srmdc-reports-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .srmdc-reports-toolbar,
+  .srmdc-reports-summary,
+  .srmdc-report-funds {
+    grid-template-columns: 1fr;
+  }
+
+  .srmdc-reports-toolbar-actions {
+    width: 100%;
+  }
+
+  .srmdc-reports-toolbar-actions button {
+    flex: 1 1 140px;
+  }
+
+  .srmdc-reports-block {
+    padding: 14px;
+  }
+
+  .srmdc-reports-block-head {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+/* ============================================================
+   SRMDC_REPORTS_INTERACTIVE_STATEMENT_V1_1_STAGE_A
+   ============================================================ */
+
+.srmdc-statement-controls {
+  display: grid;
+  grid-template-columns:
+    minmax(280px, 2fr)
+    minmax(130px, 0.7fr)
+    minmax(150px, 0.8fr)
+    minmax(150px, 0.8fr)
+    auto;
+  gap: 12px;
+  align-items: end;
+  margin: 0 0 12px;
+  padding: 14px;
+  border: 1px solid #eadfc9;
+  border-radius: 14px;
+  background: #fffaf0;
+}
+
+.srmdc-statement-controls label,
+.srmdc-statement-search-wrap {
+  display: grid;
+  gap: 6px;
+  color: #4b352c;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.srmdc-statement-controls input,
+.srmdc-statement-controls select {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid #d8c7aa;
+  border-radius: 9px;
+  background: #fff;
+  color: #241a17;
+  font: inherit;
+}
+
+.srmdc-statement-controls input:focus,
+.srmdc-statement-controls select:focus {
+  outline: 2px solid rgba(23, 54, 95, 0.18);
+  border-color: #17365f;
+}
+
+.srmdc-statement-filter-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  align-items: center;
+  margin: 0 0 12px;
+  padding: 10px 13px;
+  border-radius: 10px;
+  background: #f7f1e6;
+  color: #67584f;
+  font-size: 0.82rem;
+}
+
+.srmdc-statement-filter-summary > strong {
+  color: #17365f;
+  font-size: 1rem;
+}
+
+.srmdc-statement-filter-summary span {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.srmdc-statement-filter-summary b {
+  color: #35241e;
+}
+
+@media (max-width: 1100px) {
+  .srmdc-statement-controls {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .srmdc-statement-search-wrap {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 650px) {
+  .srmdc-statement-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .srmdc-statement-search-wrap {
+    grid-column: auto;
+  }
+
+  .srmdc-statement-controls button {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   SRMDC_REPORTS_STAGE_B2_INTERACTIVE_STYLE
+   Reports V1.1 - sortable statement + pagination
+   ========================================================= */
+
+.srmdc-statement-table thead th {
+  vertical-align: middle;
+}
+
+.srmdc-statement-sort {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: inherit;
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.srmdc-statement-sort:hover {
+  opacity: 0.78;
+}
+
+.srmdc-statement-sort:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+.srmdc-statement-sort-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1rem;
+  font-size: 0.72rem;
+  line-height: 1;
+  opacity: 0.48;
+}
+
+.srmdc-statement-sort.is-active
+  .srmdc-statement-sort-indicator {
+  opacity: 1;
+}
+
+.srmdc-statement-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.25rem;
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 12px;
+  background: rgba(248, 250, 252, 0.72);
+}
+
+.srmdc-statement-page-size {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  white-space: nowrap;
+}
+
+.srmdc-statement-page-size label {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.srmdc-statement-page-size select {
+  min-width: 72px;
+  padding: 0.45rem 1.8rem 0.45rem 0.65rem;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.srmdc-statement-page-info {
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.srmdc-statement-page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.srmdc-statement-page-button {
+  min-width: 36px;
+  min-height: 34px;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.srmdc-statement-page-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(15, 23, 42, 0.28);
+}
+
+.srmdc-statement-page-button.is-active {
+  border-color: currentColor;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.srmdc-statement-page-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.srmdc-statement-page-button:focus-visible,
+.srmdc-statement-page-size select:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .srmdc-statement-pagination {
+    align-items: stretch;
+  }
+
+  .srmdc-statement-page-size,
+  .srmdc-statement-page-info,
+  .srmdc-statement-page-nav {
+    width: 100%;
+  }
+
+  .srmdc-statement-page-info {
+    text-align: left;
+  }
+
+  .srmdc-statement-page-nav {
+    justify-content: flex-start;
+  }
+}
+
+/* =========================================================
+   SRMDC_REPORTS_STAGE_C2_VIEW_CONTROLS_STYLE
+   Reports Stage C - view preset / custom column shell
+   ========================================================= */
+
+.srmdc-statement-view-controls {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin: 0.9rem 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  border-radius: 12px;
+  background: rgba(248, 250, 252, 0.72);
+}
+
+.srmdc-statement-view-control,
+.srmdc-statement-columns-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.srmdc-statement-view-control label,
+.srmdc-statement-view-label {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.srmdc-statement-view-control select {
+  min-width: 210px;
+  min-height: 38px;
+  padding: 0.5rem 2rem 0.5rem 0.7rem;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+}
+
+.srmdc-statement-columns-button {
+  min-height: 38px;
+  white-space: nowrap;
+}
+
+.srmdc-statement-view-controls
+  select:disabled,
+.srmdc-statement-view-controls
+  button:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.srmdc-statement-view-stage-note {
+  align-self: center;
+  margin-left: auto;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+  color: #64748b;
+  font-size: 0.74rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .srmdc-statement-view-controls {
+    align-items: stretch;
+  }
+
+  .srmdc-statement-view-control,
+  .srmdc-statement-columns-wrap {
+    width: 100%;
+  }
+
+  .srmdc-statement-view-control select,
+  .srmdc-statement-columns-button {
+    width: 100%;
+  }
+
+  .srmdc-statement-view-stage-note {
+    align-self: flex-start;
+    margin-left: 0;
+  }
+}
+
+/* =========================================================
+   SRMDC_REPORTS_STAGE_C3_3_CUSTOM_COLUMNS_STYLE
+   ========================================================= */
+
+.srmdc-statement-columns-wrap {
+  position: relative;
+}
+
+.srmdc-statement-columns-panel {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  width: min(330px, calc(100vw - 2rem));
+  padding: 0.85rem;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow:
+    0 16px 35px rgba(15, 23, 42, 0.16);
+}
+
+.srmdc-statement-columns-panel[hidden] {
+  display: none !important;
+}
+
+.srmdc-statement-columns-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.srmdc-statement-columns-panel-head strong {
+  font-size: 0.92rem;
+}
+
+.srmdc-statement-columns-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #475569;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.srmdc-statement-columns-close:hover {
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.srmdc-statement-columns-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 0.65rem;
+  max-height: 310px;
+  overflow: auto;
+  padding: 0.75rem 0.1rem 0.35rem;
+}
+
+.srmdc-statement-column-option {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  padding: 0.38rem 0.45rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #334155;
+}
+
+.srmdc-statement-column-option:hover {
+  background: rgba(15, 23, 42, 0.045);
+}
+
+.srmdc-statement-column-option input {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.srmdc-statement-column-option span {
+  min-width: 0;
+}
+
+.srmdc-statement-columns-help {
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  color: #64748b;
+  font-size: 0.73rem;
+}
+
+@media (max-width: 760px) {
+  .srmdc-statement-columns-panel {
+    left: 0;
+    right: auto;
+    width: min(100%, 330px);
+  }
+
+  .srmdc-statement-columns-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   SRMDC_REPORTS_STAGE_C3_4_CUSTOM_COLUMNS_POLISH
+   Visual-only refinement of C3.3 column selector.
+   ========================================================= */
+
+.srmdc-statement-columns-panel {
+  width: min(360px, calc(100vw - 2rem));
+  max-width: 360px;
+  padding: 0.9rem;
+  overflow: hidden;
+}
+
+.srmdc-statement-columns-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+  max-height: 360px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0.6rem 0.1rem 0.35rem;
+}
+
+.srmdc-statement-column-option {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.48rem 0.5rem;
+}
+
+.srmdc-statement-column-option input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.srmdc-statement-column-option span {
+  display: block;
+  min-width: 0;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.srmdc-statement-columns-help {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .srmdc-statement-columns-panel {
+    width: min(320px, calc(100vw - 1.25rem));
+    max-width: none;
+  }
+}
+
+/* =========================================================
+   SRMDC_EXPENSE_ENTRY_ADMIN_D1_STYLE
+   UI only - no expense RPC connected.
+   ========================================================= */
+
+.srmdc-expense-add-button {
+  white-space: nowrap;
+}
+
+.srmdc-expense-modal[hidden] {
+  display: none !important;
+}
+
+.srmdc-expense-modal {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.srmdc-expense-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.58);
+  backdrop-filter: blur(2px);
+}
+
+.srmdc-expense-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow:
+    0 24px 70px rgba(15, 23, 42, 0.28);
+}
+
+.srmdc-expense-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 26px 20px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.srmdc-expense-dialog-header h2 {
+  margin: 4px 0 6px;
+}
+
+.srmdc-expense-dialog-header p {
+  margin-bottom: 0;
+}
+
+.srmdc-expense-close-button {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.05);
+  color: #475569;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.srmdc-expense-close-button:hover {
+  background: rgba(15, 23, 42, 0.09);
+}
+
+.srmdc-expense-stage-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 20px 26px 0;
+  padding: 12px 14px;
+  border: 1px solid #f0d9a5;
+  border-radius: 10px;
+  background: #fff9eb;
+  color: #765616;
+  font-size: 0.84rem;
+}
+
+.srmdc-expense-form {
+  padding: 0 26px 26px;
+}
+
+.srmdc-expense-section {
+  padding-top: 24px;
+}
+
+.srmdc-expense-section + .srmdc-expense-section {
+  margin-top: 24px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.srmdc-expense-section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.srmdc-expense-section-heading h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.srmdc-expense-section-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.82rem;
+}
+
+.srmdc-expense-form-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 16px 18px;
+}
+
+.srmdc-expense-form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.srmdc-expense-form-grid label > span {
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.srmdc-expense-form-grid label > span strong {
+  color: #a11d2f;
+}
+
+.srmdc-expense-form-grid input,
+.srmdc-expense-form-grid select,
+.srmdc-expense-form-grid textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.srmdc-expense-form-grid textarea {
+  resize: vertical;
+}
+
+.srmdc-expense-field-wide {
+  grid-column: 1 / -1;
+}
+
+.srmdc-expense-amount-field {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.srmdc-expense-amount-field > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-right: 0;
+  border-radius: 8px 0 0 8px;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+}
+
+.srmdc-expense-amount-field input {
+  border-radius: 0 8px 8px 0;
+}
+
+.srmdc-expense-status-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.srmdc-expense-payment-note {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 14px 16px;
+  border: 1px solid #dbe5ef;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.82rem;
+}
+
+.srmdc-expense-payment-note strong {
+  color: #17345f;
+}
+
+.srmdc-expense-ui-message {
+  min-height: 20px;
+  margin-top: 18px;
+  font-size: 0.82rem;
+}
+
+.srmdc-expense-dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.srmdc-expense-dialog-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+body.srmdc-expense-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .srmdc-expense-modal {
+    padding: 10px;
+  }
+
+  .srmdc-expense-dialog {
+    max-height: calc(100vh - 20px);
+    border-radius: 14px;
+  }
+
+  .srmdc-expense-dialog-header,
+  .srmdc-expense-form {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .srmdc-expense-stage-banner {
+    margin-left: 18px;
+    margin-right: 18px;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .srmdc-expense-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .srmdc-expense-field-wide {
+    grid-column: auto;
+  }
+}
+
+/* ============================================================
+   SRMDC_FINANCIAL_CANCELLATION_ADMIN_D2C_STYLE
+   ============================================================ */
+
+.srmdc-financial-records-panel {
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid rgba(15, 42, 68, 0.14);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(15, 42, 68, 0.08);
+}
+
+.srmdc-financial-records-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.srmdc-financial-records-actions,
+.srmdc-financial-cancel-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.srmdc-financial-record-group {
+  margin-top: 26px;
+}
+
+.srmdc-financial-records-message {
+  min-height: 22px;
+  margin: 14px 0;
+}
+
+.srmdc-financial-records-message[data-tone="error"] {
+  font-weight: 700;
+}
+
+.srmdc-financial-record-status {
+  display: inline-flex;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(15, 42, 68, 0.08);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.srmdc-cancel-reason,
+.srmdc-record-secondary {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.76rem;
+  opacity: 0.72;
+}
+
+.srmdc-record-cancel-button {
+  white-space: nowrap;
+}
+
+.srmdc-financial-cancel-modal[hidden] {
+  display: none !important;
+}
+
+.srmdc-financial-cancel-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.srmdc-financial-cancel-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 20, 32, 0.64);
+}
+
+.srmdc-financial-cancel-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(560px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+  padding: 24px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.srmdc-financial-cancel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.srmdc-financial-cancel-warning {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(143, 37, 37, 0.22);
+  border-radius: 12px;
+  background: rgba(143, 37, 37, 0.05);
+}
+
+.srmdc-financial-cancel-dialog label {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.srmdc-financial-cancel-dialog select,
+.srmdc-financial-cancel-dialog textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid rgba(15, 42, 68, 0.2);
+  border-radius: 10px;
+  background: #fff;
+  font: inherit;
+  font-weight: 400;
+}
+
+.srmdc-financial-cancel-footer {
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.srmdc-danger-button {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 10px;
+  background: #8f2525;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.srmdc-danger-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+body.srmdc-financial-cancel-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .srmdc-financial-records-heading {
+    flex-direction: column;
+  }
+
+  .srmdc-financial-records-actions,
+  .srmdc-financial-cancel-footer {
+    flex-wrap: wrap;
+  }
+}
+
+/* SRMDC_D2C2_SAFE_POLISH */
+
+.srmdc-financial-record-group .srmdc-report-table-wrap {
+  width: 100%;
+  margin-top: 14px;
+  overflow-x: auto;
+  border: 1px solid rgba(15, 42, 68, 0.12);
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.srmdc-financial-record-group .srmdc-report-table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.srmdc-financial-record-group .srmdc-report-table thead {
+  background: #17375f;
+}
+
+.srmdc-financial-record-group .srmdc-report-table th {
+  padding: 12px 14px;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.srmdc-financial-record-group .srmdc-report-table td {
+  padding: 13px 14px;
+  border-bottom: 1px solid rgba(15, 42, 68, 0.10);
+  line-height: 1.35;
+  text-align: left;
+  vertical-align: top;
+}
+
+.srmdc-financial-record-group .srmdc-report-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.srmdc-financial-record-group .srmdc-report-table tbody tr:hover {
+  background: rgba(15, 42, 68, 0.025);
+}
+
+.srmdc-financial-record-group .srmdc-report-table td[colspan] {
+  padding: 22px 14px;
+  text-align: center;
+}
+
+.srmdc-financial-record-group .srmdc-report-table td:first-child,
+.srmdc-financial-record-group .srmdc-report-table td:last-child {
+  white-space: nowrap;
+}
+
+.srmdc-financial-record-status {
+  white-space: nowrap;
+}
+
+.srmdc-financial-record-status[data-status="active"],
+.srmdc-financial-record-status[data-status="approved"],
+.srmdc-financial-record-status[data-status="paid"] {
+  background: rgba(31, 111, 73, 0.10);
+  color: #1f6f49;
+}
+
+.srmdc-financial-record-status[data-status="draft"],
+.srmdc-financial-record-status[data-status="partially_paid"] {
+  background: rgba(154, 104, 0, 0.10);
+  color: #805800;
+}
+
+.srmdc-financial-record-status[data-status="cancelled"] {
+  background: rgba(143, 37, 37, 0.10);
+  color: #8f2525;
+}
+
+.srmdc-cancel-reason {
+  display: block;
+  max-width: 240px;
+  margin-top: 5px;
+  color: #7b5050;
+  line-height: 1.3;
+}
+
+.srmdc-record-secondary {
+  display: block;
+  margin-top: 5px;
+  color: #687482;
+}
+
+@media (max-width: 760px) {
+  .srmdc-financial-record-group .srmdc-report-table {
+    min-width: 820px;
+  }
+}
+
+/* =========================================================
+   SRMDC_REPORTS_RESPONSIVE_POLISH_D4K
+   Reports & Analytics desktop / responsive polish
+   CSS ONLY - no accounting or approval logic
+   ========================================================= */
+
+/* ---------- Reports page top toolbar ---------- */
+.srmdc-reports-page .admin-page-header,
+.srmdc-reports-page .admin-section-header {
+  gap: 20px;
+}
+.srmdc-reports-page .admin-page-actions,
+.srmdc-reports-page .admin-section-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.srmdc-reports-page .admin-page-actions button,
+.srmdc-reports-page .admin-page-actions a,
+.srmdc-reports-page .admin-section-actions button,
+.srmdc-reports-page .admin-section-actions a {
+  width: auto;
+  min-width: 112px;
+  min-height: 44px;
+  padding: 9px 16px;
+}
+.srmdc-expense-add-button {
+  width: auto !important;
+  min-width: 150px;
+  white-space: nowrap;
+}
+
+/* ---------- Financial Records panel ---------- */
+.srmdc-financial-records-panel {
+  width: min(96vw, 1500px);
+  max-width: 1500px;
+  margin-inline: auto;
+}
+.srmdc-financial-records-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.srmdc-financial-records-actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.srmdc-financial-records-actions button {
+  width: auto;
+  min-width: 86px;
+  min-height: 40px;
+  padding: 8px 14px;
+}
+.srmdc-financial-record-group {
+  min-width: 0;
+}
+.srmdc-financial-record-group .srmdc-report-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-gutter: stable;
+}
+.srmdc-financial-record-group .srmdc-report-table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+.srmdc-financial-record-group .srmdc-report-table th,
+.srmdc-financial-record-group .srmdc-report-table td {
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.srmdc-financial-record-group .srmdc-report-table th {
+  white-space: nowrap;
+}
+
+/* ---------- Expense table: 8 columns ---------- */
+.srmdc-financial-record-group:first-of-type .srmdc-report-table th:nth-child(1),
+.srmdc-financial-record-group:first-of-type .srmdc-report-table td:nth-child(1) {
+  width: 10%;
+  white-space: nowrap;
+}
+.srmdc-financial-record-group:first-of-type .srmdc-report-table th:nth-child(2),
+.srmdc-financial-record-group:first-of-type .srmdc-report-table td:nth-child(2) {
+  width: 17%;
+}
+.srmdc-financial-record-group:first-of-type .srmdc-report-table th:nth-child(3),
+.srmdc-financial-record-group:first-of-type .srmdc-report-table td:nth-child(3) {
+  width: 21%;
+}
+.srmdc-financial-record-group:first-of-type .srmdc-report-table th:nth-child(4),
+.srmdc-financial-record-group:first-of-type .srmdc-report-table td:nth-child(4) {
+  width: 14%;
+}
+.srmdc-financial-record-group:first-of-type .srmdc-report-table th:nth-child(5),
+.srmdc-financial-record-group:first-of-type .srmdc-report-table td:nth-child(5) {
+  width: 10%;
+  white-space: nowrap;
+  text-align: right;
+}
+.srmdc-financial-record-group:first-of-type .srmdc-report-table th:nth-child(6),
+.srmdc-financial-record-group:first-of-type .srmdc-report-table td:nth-child(6) {
+  width: 8%;
+  white-space: nowrap;
+  text-align: right;
+}
+.srmdc-financial-record-group:first-of-type .srmdc-report-table th:nth-child(7),
+.srmdc-financial-record-group:first-of-type .srmdc-report-table td:nth-child(7) {
+  width: 8%;
+  white-space: nowrap;
+}
+.srmdc-financial-record-group:first-of-type .srmdc-report-table th:nth-child(8),
+.srmdc-financial-record-group:first-of-type .srmdc-report-table td:nth-child(8) {
+  width: 12%;
+  white-space: nowrap;
+}
+
+/* ---------- Donation table: 7 columns ---------- */
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table th:nth-child(1),
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table td:nth-child(1) {
+  width: 11%;
+  white-space: nowrap;
+}
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table th:nth-child(2),
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table td:nth-child(2) {
+  width: 18%;
+}
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table th:nth-child(3),
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table td:nth-child(3) {
+  width: 17%;
+}
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table th:nth-child(4),
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table td:nth-child(4) {
+  width: 19%;
+}
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table th:nth-child(5),
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table td:nth-child(5) {
+  width: 13%;
+  white-space: nowrap;
+  text-align: right;
+}
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table th:nth-child(6),
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table td:nth-child(6) {
+  width: 11%;
+}
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table th:nth-child(7),
+.srmdc-financial-record-group:nth-of-type(2) .srmdc-report-table td:nth-child(7) {
+  width: 11%;
+  white-space: nowrap;
+}
+
+/* ---------- Compact financial action buttons ---------- */
+.srmdc-financial-record-group .srmdc-expense-approve-button,
+.srmdc-financial-record-group .srmdc-record-cancel-button,
+.srmdc-financial-record-group td:last-child button {
+  display: inline-flex;
+  width: auto !important;
+  min-width: 72px;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  margin: 2px 4px 2px 0;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+.srmdc-financial-record-group .srmdc-expense-approve-button {
+  min-width: 82px;
+}
+.srmdc-financial-record-status {
+  white-space: nowrap;
+}
+.srmdc-record-secondary,
+.srmdc-cancel-reason {
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Add Expense dialog ---------- */
+.srmdc-expense-dialog {
+  width: min(94vw, 1180px);
+  max-width: 1180px;
+  max-height: 92vh;
+}
+.srmdc-expense-dialog-header {
+  padding-top: 18px;
+  padding-bottom: 14px;
+}
+.srmdc-expense-stage-banner {
+  margin-block: 10px;
+  padding-block: 10px;
+}
+.srmdc-expense-form {
+  padding-top: 10px;
+}
+.srmdc-expense-section {
+  padding-block: 12px;
+}
+.srmdc-expense-section-heading {
+  margin-bottom: 10px;
+}
+.srmdc-expense-form-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 12px;
+}
+.srmdc-expense-field-wide {
+  grid-column: 1 / -1;
+}
+.srmdc-expense-form-grid textarea {
+  min-height: 76px;
+  resize: vertical;
+}
+.srmdc-expense-payment-note {
+  padding: 12px 14px;
+}
+.srmdc-expense-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding-top: 14px;
+}
+.srmdc-expense-dialog-actions button {
+  width: auto;
+  min-width: 110px;
+}
+
+/* ---------- Medium desktop / tablet ---------- */
+@media (max-width: 1100px) {
+  .srmdc-expense-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .srmdc-financial-record-group .srmdc-report-table {
+    min-width: 980px;
+    table-layout: fixed;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 760px) {
+  .srmdc-financial-records-panel {
+    width: calc(100vw - 20px);
+  }
+  .srmdc-financial-records-heading {
+    flex-direction: column;
+  }
+  .srmdc-financial-records-actions {
+    width: 100%;
+  }
+  .srmdc-financial-records-actions button {
+    flex: 1 1 0;
+  }
+  .srmdc-financial-record-group .srmdc-report-table {
+    min-width: 920px;
+  }
+  .srmdc-expense-dialog {
+    width: calc(100vw - 20px);
+    max-height: 94vh;
+  }
+  .srmdc-expense-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .srmdc-expense-field-wide {
+    grid-column: auto;
+  }
+  .srmdc-expense-dialog-actions {
+    position: sticky;
+    bottom: 0;
+    background: inherit;
+  }
+}
+
+/* ---------- Small mobile ---------- */
+@media (max-width: 480px) {
+  .srmdc-financial-records-actions {
+    flex-direction: column;
+  }
+  .srmdc-financial-records-actions button,
+  .srmdc-expense-dialog-actions button {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   SRMDC_FINANCIAL_RECORD_TABLE_FIX_D4K1
+   Exact Financial Records table sizing
+   CSS ONLY
+   ========================================================= */
+
+/* ---------- Expense Records exact table ---------- */
+.srmdc-report-table:has(#reportsExpenseRecordsBody) {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) th,
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td {
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) th:nth-child(1),
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(1) {
+  width: 9%;
+  white-space: nowrap;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) th:nth-child(2),
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(2) {
+  width: 17%;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) th:nth-child(3),
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(3) {
+  width: 19%;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) th:nth-child(4),
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(4) {
+  width: 16%;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) th:nth-child(5),
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(5) {
+  width: 10%;
+  white-space: nowrap;
+  text-align: right;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) th:nth-child(6),
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(6) {
+  width: 7%;
+  white-space: nowrap;
+  text-align: right;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) th:nth-child(7),
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(7) {
+  width: 8%;
+  white-space: nowrap;
+  text-align: center;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) th:nth-child(8),
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(8) {
+  width: 14%;
+  white-space: nowrap;
+  text-align: right;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(2) strong {
+  overflow-wrap: anywhere;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(3),
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(4) {
+  overflow-wrap: anywhere;
+}
+
+/* Expense action buttons stay compact */
+.srmdc-report-table:has(#reportsExpenseRecordsBody) td:nth-child(8) button {
+  display: inline-flex;
+  width: auto !important;
+  min-width: 68px;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 10px;
+  margin: 1px 2px;
+  white-space: nowrap;
+}
+.srmdc-report-table:has(#reportsExpenseRecordsBody) .srmdc-expense-approve-button {
+  min-width: 78px;
+}
+
+/* ---------- Donation Records exact table ---------- */
+.srmdc-report-table:has(#reportsDonationRecordsBody) {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+.srmdc-report-table:has(#reportsDonationRecordsBody) th:nth-child(1),
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(1) {
+  width: 11%;
+  white-space: nowrap;
+}
+.srmdc-report-table:has(#reportsDonationRecordsBody) th:nth-child(2),
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(2) {
+  width: 18%;
+}
+.srmdc-report-table:has(#reportsDonationRecordsBody) th:nth-child(3),
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(3) {
+  width: 17%;
+}
+.srmdc-report-table:has(#reportsDonationRecordsBody) th:nth-child(4),
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(4) {
+  width: 18%;
+}
+.srmdc-report-table:has(#reportsDonationRecordsBody) th:nth-child(5),
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(5) {
+  width: 13%;
+  white-space: nowrap;
+  text-align: right;
+}
+.srmdc-report-table:has(#reportsDonationRecordsBody) th:nth-child(6),
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(6) {
+  width: 13%;
+}
+.srmdc-report-table:has(#reportsDonationRecordsBody) th:nth-child(7),
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(7) {
+  width: 10%;
+  white-space: nowrap;
+  text-align: center;
+}
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(2),
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(3),
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(4),
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(6) {
+  overflow-wrap: anywhere;
+}
+.srmdc-report-table:has(#reportsDonationRecordsBody) td:nth-child(7) button {
+  width: auto !important;
+  min-width: 68px;
+  min-height: 36px;
+  padding: 7px 10px;
+}
+
+/* ---------- Desktop wrapper ---------- */
+@media (min-width: 1101px) {
+  .srmdc-financial-record-group .srmdc-report-table-wrap {
+    overflow-x: visible;
+  }
+  .srmdc-report-table:has(#reportsExpenseRecordsBody),
+  .srmdc-report-table:has(#reportsDonationRecordsBody) {
+    min-width: 100%;
+  }
+}
+
+/* ---------- Tablet / mobile ---------- */
+@media (max-width: 1100px) {
+  .srmdc-financial-record-group .srmdc-report-table-wrap {
+    overflow-x: auto;
+  }
+  .srmdc-report-table:has(#reportsExpenseRecordsBody) {
+    min-width: 1050px;
+  }
+  .srmdc-report-table:has(#reportsDonationRecordsBody) {
+    min-width: 950px;
+  }
+}
+
+/* ============================================================
+   SRMDC_FINANCIAL_VIEW_EDIT_D4M_C
+   Financial Records - View / Controlled Edit
+   ============================================================ */
+
+.srmdc-financial-detail-modal[hidden] {
+  display: none !important;
+}
+
+.srmdc-financial-detail-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10100;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+
+.srmdc-financial-detail-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.62);
+  backdrop-filter: blur(3px);
+}
+
+.srmdc-financial-detail-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  max-height: calc(100vh - 44px);
+  overflow: auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.24);
+}
+
+.srmdc-financial-detail-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px 18px;
+  background: #fff;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.srmdc-financial-detail-header h2 {
+  margin: 3px 0 5px;
+}
+
+.srmdc-financial-detail-message {
+  margin: 18px 24px 0;
+  padding: 11px 13px;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.srmdc-financial-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  padding: 20px 24px;
+}
+
+.srmdc-financial-detail-field,
+.srmdc-financial-edit-field {
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.srmdc-financial-detail-field > span,
+.srmdc-financial-edit-field > span {
+  display: block;
+  margin-bottom: 6px;
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.035em;
+}
+
+.srmdc-financial-detail-field > strong {
+  display: block;
+  color: #0f172a;
+  font-size: 0.94rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.srmdc-financial-edit-field input,
+.srmdc-financial-edit-field select,
+.srmdc-financial-edit-field textarea,
+.srmdc-financial-edit-reason textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.srmdc-financial-edit-field textarea {
+  resize: vertical;
+}
+
+.srmdc-financial-edit-wide {
+  grid-column: span 2;
+}
+
+.srmdc-financial-edit-reason {
+  margin: 0 24px 20px;
+  padding: 16px;
+  border: 1px solid #f1d28a;
+  border-radius: 12px;
+  background: #fffbeb;
+}
+
+.srmdc-financial-edit-reason label > span {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #78350f;
+}
+
+.srmdc-financial-detail-footer {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  background: #fff;
+  border-top: 1px solid #e2e8f0;
+}
+
+body.srmdc-financial-detail-modal-open {
+  overflow: hidden;
+}
+
+.srmdc-record-view-button,
+.srmdc-record-edit-button,
+.srmdc-record-restore-button,
+.srmdc-record-cancel-button,
+.srmdc-expense-approve-button {
+  margin: 2px 3px 2px 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .srmdc-financial-detail-modal {
+    padding: 10px;
+  }
+
+  .srmdc-financial-detail-dialog {
+    max-height: calc(100vh - 20px);
+    border-radius: 14px;
+  }
+
+  .srmdc-financial-detail-header {
+    padding: 17px;
+  }
+
+  .srmdc-financial-detail-message {
+    margin: 14px 17px 0;
+  }
+
+  .srmdc-financial-detail-grid {
+    grid-template-columns: 1fr;
+    padding: 17px;
+  }
+
+  .srmdc-financial-edit-wide {
+    grid-column: auto;
+  }
+
+  .srmdc-financial-edit-reason {
+    margin: 0 17px 17px;
+  }
+
+  .srmdc-financial-detail-footer {
+    padding: 14px 17px;
+  }
+}

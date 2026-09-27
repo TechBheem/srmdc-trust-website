@@ -3671,12 +3671,12 @@
     }
   }
 
-  
+
 
 
 
   /* SRMDC_A4_FINAL_ONE_PAGE */
-  
+
 
 
   /* ==========================================================
@@ -3764,10 +3764,10 @@
 
 
   /* ==========================================================
-     PRINT â€” EXPLICIT SINGLE A4 PAGE
+     PRINT ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â EXPLICIT SINGLE A4 PAGE
      ========================================================== */
 
-  
+
 
 
   /* ==========================================================
@@ -3776,7 +3776,7 @@
      Keep A4 one-page sizing, but restore natural vertical flow.
      ========================================================== */
 
-  
+
 
 
   /* ==========================================================
@@ -5064,7 +5064,7 @@
 
   <section class="signature">
 
-    
+
     <!-- SRMDC_RECEIPT_BODABANDA_V1 -->
     <img
       class="srmdc-receipt-bodabanda"
@@ -5385,6 +5385,12 @@
           map.set(row.donor_id, {
             donor_id: row.donor_id,
             donor_name: row.donor_name,
+            // SRMDC_DONOR_RELATIONSHIP_MAPPING_D4M_D3
+            relationship_type:
+              row.relationship_type,
+
+            related_person_name:
+              row.related_person_name,
             mobile: row.mobile,
             email: row.email,
             address: row.address,
@@ -6299,7 +6305,18 @@
                 verificationUrl,
                 {
                   donor_name:
-                    currentDonor.donor_name,
+                    [
+                      // SRMDC_RECEIPT_RELATIONSHIP_DISPLAY_D4M_D2
+                      currentDonor.donor_name,
+                      currentDonor.relationship_type,
+                      currentDonor.related_person_name
+                    ]
+                      .map(
+                        value =>
+                          String(value || "").trim()
+                      )
+                      .filter(Boolean)
+                      .join(" "),
 
                   mobile:
                     currentDonor.mobile,
@@ -7281,6 +7298,5799 @@
 
   })();
 
+    // ============================================================
+  // SRMDC_REPORTS_ANALYTICS_ADMIN_V1
+  // ============================================================
+
+  const srmdcReportsAnalyticsAdmin = (() => {
+
+    const cardId = "reportsAnalyticsCard";
+    const viewId = "reportsAnalyticsView";
+
+    // SRMDC_REPORTS_INTERACTIVE_STATEMENT_V1_1_STAGE_A
+    let statementRows = [];
+
+    const statementFilters = {
+      search: "",
+      type: "",
+      mode: "",
+      status: ""
+    };
+    // SRMDC_REPORTS_STAGE_B1_STATE
+    const statementViewState = {
+      sortKey: "date",
+      sortDirection: "asc",
+      page: 1,
+      pageSize: 25
+    };
+
+    const getView = () =>
+      document.getElementById(viewId);
+
+    const escapeHtml = (value) =>
+      String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    const money = (value) =>
+      new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(Number(value || 0));
+
+    const displayDate = (value) => {
+      if (!value) {
+        return "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â";
+      }
+
+      const parts = String(value).split("-");
+
+      if (parts.length !== 3) {
+        return escapeHtml(value);
+      }
+
+      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    };
+
+    const currentFinancialYearDates = () => {
+      const today = new Date();
+
+      const year = today.getFullYear();
+      const month = today.getMonth() + 1;
+
+      const startYear =
+        month >= 4
+          ? year
+          : year - 1;
+
+      const toDate = [
+        today.getFullYear(),
+        String(today.getMonth() + 1).padStart(2, "0"),
+        String(today.getDate()).padStart(2, "0")
+      ].join("-");
+
+      return {
+        from: `${startYear}-04-01`,
+        to: toDate
+      };
+    };
+
+    const setMessage = (message = "", type = "") => {
+      const element =
+        document.getElementById(
+          "reportsAnalyticsMessage"
+        );
+
+      if (!element) {
+        return;
+      }
+
+      element.textContent = message;
+      element.className =
+        "srmdc-reports-message";
+
+      if (type) {
+        element.classList.add(
+          `is-${type}`
+        );
+      }
+    };
+
+    const renderSummary = (summary = {}) => {
+      const values = {
+        reportsOpeningBalance:
+          money(summary.opening_balance),
+
+        reportsTotalReceipts:
+          money(summary.total_receipts),
+
+        reportsTotalExpenses:
+          money(summary.total_expenses),
+
+        reportsClosingBalance:
+          money(summary.closing_balance),
+
+        reportsReceiptCount:
+          String(
+            Number(summary.receipt_count || 0)
+          ),
+
+        reportsExpenseCount:
+          String(
+            Number(
+              summary.expense_payment_count || 0
+            )
+          )
+      };
+
+      Object.entries(values)
+        .forEach(([id, value]) => {
+          const element =
+            document.getElementById(id);
+
+          if (element) {
+            element.textContent = value;
+          }
+        });
+    };
+
+    const renderFunds = (funds = []) => {
+      const container =
+        document.getElementById(
+          "reportsFundBalances"
+        );
+
+      if (!container) {
+        return;
+      }
+
+      if (!funds.length) {
+        container.innerHTML = `
+          <div class="srmdc-reports-empty">
+            No fund data for this selection.
+          </div>
+        `;
+
+        return;
+      }
+
+      container.innerHTML =
+        funds.map((fund) => `
+          <article class="srmdc-report-fund-card">
+
+            <div class="srmdc-report-fund-head">
+
+              <div>
+                <span>
+                  ${escapeHtml(
+                    fund.fund_code || ""
+                  )}
+                </span>
+
+                <strong>
+                  ${escapeHtml(
+                    fund.fund_name || "Fund"
+                  )}
+                </strong>
+              </div>
+
+              <b>
+                ${escapeHtml(
+                  money(fund.balance)
+                )}
+              </b>
+
+            </div>
+
+            <div class="srmdc-report-fund-numbers">
+
+              <span>
+                Receipts
+
+                <strong>
+                  ${escapeHtml(
+                    money(
+                      fund.total_receipts
+                    )
+                  )}
+                </strong>
+              </span>
+
+              <span>
+                Expenses
+
+                <strong>
+                  ${escapeHtml(
+                    money(
+                      fund.total_expenses
+                    )
+                  )}
+                </strong>
+              </span>
+
+            </div>
+
+          </article>
+        `).join("");
+    };
+    const normalizeStatementValue = (value) =>
+      String(value ?? "")
+        .trim()
+        .toLowerCase();
+
+    const uniqueStatementValues = (rows, key) =>
+      [
+        ...new Set(
+          rows
+            .map((row) =>
+              String(row?.[key] ?? "").trim()
+            )
+            .filter(Boolean)
+        )
+      ].sort((a, b) =>
+        a.localeCompare(
+          b,
+          "en",
+          {
+            sensitivity: "base"
+          }
+        )
+      );
+
+    const populateStatementFilters = (rows = []) => {
+      const modeSelect =
+        document.getElementById(
+          "reportsStatementModeFilter"
+        );
+
+      const statusSelect =
+        document.getElementById(
+          "reportsStatementStatusFilter"
+        );
+
+      if (modeSelect) {
+        const previous =
+          modeSelect.value;
+
+        const modes =
+          uniqueStatementValues(
+            rows,
+            "payment_method"
+          );
+
+        modeSelect.innerHTML = `
+          <option value="">All Modes</option>
+          ${modes.map((mode) => `
+            <option value="${escapeHtml(mode)}">
+              ${escapeHtml(mode)}
+            </option>
+          `).join("")}
+        `;
+
+        if (modes.includes(previous)) {
+          modeSelect.value = previous;
+        }
+      }
+
+      if (statusSelect) {
+        const previous =
+          statusSelect.value;
+
+        const statuses =
+          uniqueStatementValues(
+            rows,
+            "status"
+          );
+
+        statusSelect.innerHTML = `
+          <option value="">All Statuses</option>
+          ${statuses.map((status) => `
+            <option value="${escapeHtml(status)}">
+              ${escapeHtml(status)}
+            </option>
+          `).join("")}
+        `;
+
+        if (statuses.includes(previous)) {
+          statusSelect.value = previous;
+        }
+      }
+    };
+
+    const getFilteredStatementRows = () => {
+      const search =
+        normalizeStatementValue(
+          statementFilters.search
+        );
+
+      const type =
+        normalizeStatementValue(
+          statementFilters.type
+        );
+
+      const mode =
+        normalizeStatementValue(
+          statementFilters.mode
+        );
+
+      const status =
+        normalizeStatementValue(
+          statementFilters.status
+        );
+
+      return statementRows.filter((row) => {
+        if (
+          type &&
+          normalizeStatementValue(row.type) !== type
+        ) {
+          return false;
+        }
+
+        if (
+          mode &&
+          normalizeStatementValue(
+            row.payment_method
+          ) !== mode
+        ) {
+          return false;
+        }
+
+        if (
+          status &&
+          normalizeStatementValue(
+            row.status
+          ) !== status
+        ) {
+          return false;
+        }
+
+        if (!search) {
+          return true;
+        }
+
+        const searchable = [
+          row.date,
+          row.type,
+          row.reference,
+          row.fund,
+          row.party,
+          row.particulars,
+          row.payment_method,
+          row.payment_reference,
+          row.status,
+          row.receipt,
+          row.expense
+        ]
+          .map(normalizeStatementValue)
+          .join(" ");
+
+        return searchable.includes(search);
+      });
+    };
+
+    // SRMDC_REPORTS_STAGE_C1_COLUMN_MODEL
+    const statementColumnDefinitions = Object.freeze({
+      date: Object.freeze({
+        key: "date",
+        label: "Date",
+        sortKey: "date",
+        defaultVisible: true
+      }),
+
+      particulars: Object.freeze({
+        key: "particulars",
+        label: "Particulars",
+        sortKey: "particulars",
+        defaultVisible: true
+      }),
+
+      party: Object.freeze({
+        key: "party",
+        label: "Party",
+        sortKey: "party",
+        defaultVisible: false
+      }),
+
+      reference: Object.freeze({
+        key: "reference",
+        label: "Reference",
+        sortKey: "reference",
+        defaultVisible: true
+      }),
+
+      fund: Object.freeze({
+        key: "fund",
+        label: "Fund",
+        sortKey: "fund",
+        defaultVisible: true
+      }),
+
+      receipt: Object.freeze({
+        key: "receipt",
+        label: "Receipt (+)",
+        sortKey: "receipt",
+        defaultVisible: true
+      }),
+
+      expense: Object.freeze({
+        key: "expense",
+        label: "Expense (-)",
+        sortKey: "expense",
+        defaultVisible: true
+      }),
+
+      running_balance: Object.freeze({
+        key: "running_balance",
+        label: "Running Balance",
+        sortKey: "running_balance",
+        defaultVisible: true
+      }),
+
+      payment_method: Object.freeze({
+        key: "payment_method",
+        label: "Mode",
+        sortKey: "payment_method",
+        defaultVisible: true
+      }),
+
+      payment_reference: Object.freeze({
+        key: "payment_reference",
+        label: "Payment Reference",
+        sortKey: "payment_reference",
+        defaultVisible: false
+      }),
+
+      type: Object.freeze({
+        key: "type",
+        label: "Type",
+        sortKey: "type",
+        defaultVisible: true
+      }),
+
+      status: Object.freeze({
+        key: "status",
+        label: "Status",
+        sortKey: "status",
+        defaultVisible: true
+      })
+    });
+
+    const statementColumnOrder = Object.freeze([
+      "date",
+      "particulars",
+      "party",
+      "reference",
+      "fund",
+      "receipt",
+      "expense",
+      "running_balance",
+      "payment_method",
+      "payment_reference",
+      "type",
+      "status"
+    ]);
+
+    const statementViewPresets = Object.freeze({
+      standard: Object.freeze({
+        label: "Standard Statement",
+        columns: Object.freeze([
+          "date",
+          "particulars",
+          "reference",
+          "fund",
+          "receipt",
+          "expense",
+          "running_balance",
+          "payment_method",
+          "type",
+          "status"
+        ])
+      }),
+
+      bank_reconciliation: Object.freeze({
+        label: "Bank Reconciliation",
+        columns: Object.freeze([
+          "date",
+          "party",
+          "reference",
+          "fund",
+          "receipt",
+          "expense",
+          "payment_method",
+          "payment_reference",
+          "status"
+        ])
+      }),
+
+      donation_register: Object.freeze({
+        label: "Donation Register",
+        columns: Object.freeze([
+          "date",
+          "party",
+          "particulars",
+          "reference",
+          "fund",
+          "receipt",
+          "payment_method",
+          "payment_reference",
+          "status"
+        ])
+      }),
+
+      expense_register: Object.freeze({
+        label: "Expense Register",
+        columns: Object.freeze([
+          "date",
+          "party",
+          "particulars",
+          "reference",
+          "fund",
+          "expense",
+          "payment_method",
+          "payment_reference",
+          "status"
+        ])
+      }),
+
+      fund_ledger: Object.freeze({
+        label: "Fund Ledger",
+        columns: Object.freeze([
+          "date",
+          "particulars",
+          "reference",
+          "fund",
+          "receipt",
+          "expense",
+          "running_balance",
+          "type",
+          "status"
+        ])
+      })
+    });
+
+    const statementColumnState = {
+      activePreset: "standard",
+      visibleColumns: new Set(
+        statementViewPresets.standard.columns
+      )
+    };
+
+    const getStatementVisibleColumns = () =>
+      statementColumnOrder.filter(
+        (key) =>
+          statementColumnState.visibleColumns.has(key)
+      );
+
+    const isStatementColumnVisible = (key) =>
+      statementColumnState.visibleColumns.has(key);
+
+    const setStatementVisibleColumns = (
+      columns,
+      preset = "custom"
+    ) => {
+      const allowed =
+        new Set(statementColumnOrder);
+
+      const normalized =
+        Array.from(
+          new Set(
+            Array.isArray(columns)
+              ? columns.filter(
+                  (key) => allowed.has(key)
+                )
+              : []
+          )
+        );
+
+      if (!normalized.length) {
+        return false;
+      }
+
+      statementColumnState.visibleColumns =
+        new Set(normalized);
+
+      statementColumnState.activePreset =
+        preset;
+
+      return true;
+    };
+
+    const applyStatementViewPreset = (
+      presetKey
+    ) => {
+      const preset =
+        statementViewPresets[presetKey];
+
+      if (!preset) {
+        return false;
+      }
+
+      return setStatementVisibleColumns(
+        preset.columns,
+        presetKey
+      );
+    };
+    // SRMDC_REPORTS_STAGE_B1_SORT_ENGINE
+    const statementSortDefinitions = Object.freeze({
+      date: {
+        type: "date",
+        value: (row) => row.date
+      },
+
+      particulars: {
+        type: "text",
+        value: (row) =>
+          row.particulars || row.party
+      },
+
+      party: {
+        type: "text",
+        value: (row) => row.party
+      },
+      reference: {
+        type: "text",
+        value: (row) => row.reference
+      },
+
+      fund: {
+        type: "text",
+        value: (row) => row.fund
+      },
+
+      receipt: {
+        type: "number",
+        value: (row) => row.receipt
+      },
+
+      expense: {
+        type: "number",
+        value: (row) => row.expense
+      },
+
+      running_balance: {
+        type: "number",
+        value: (row) => row.running_balance
+      },
+
+      payment_method: {
+        type: "text",
+        value: (row) => row.payment_method
+      },
+
+      payment_reference: {
+        type: "text",
+        value: (row) => row.payment_reference
+      },
+      type: {
+        type: "text",
+        value: (row) => row.type
+      },
+
+      status: {
+        type: "text",
+        value: (row) => row.status
+      }
+    });
+
+    const compareStatementValues = (
+      left,
+      right,
+      type
+    ) => {
+      if (type === "number") {
+        return Number(left || 0) -
+          Number(right || 0);
+      }
+
+      if (type === "date") {
+        const leftTime =
+          Date.parse(String(left || ""));
+
+        const rightTime =
+          Date.parse(String(right || ""));
+
+        return (
+          (Number.isNaN(leftTime) ? 0 : leftTime) -
+          (Number.isNaN(rightTime) ? 0 : rightTime)
+        );
+      }
+
+      return String(left ?? "").localeCompare(
+        String(right ?? ""),
+        "en",
+        {
+          numeric: true,
+          sensitivity: "base"
+        }
+      );
+    };
+
+    const getSortedStatementRows = (
+      rows = []
+    ) => {
+      const definition =
+        statementSortDefinitions[
+          statementViewState.sortKey
+        ];
+
+      if (!definition) {
+        return [...rows];
+      }
+
+      const direction =
+        statementViewState.sortDirection === "desc"
+          ? -1
+          : 1;
+
+      return rows
+        .map((row, index) => ({
+          row,
+          index
+        }))
+        .sort((leftItem, rightItem) => {
+          const result =
+            compareStatementValues(
+              definition.value(leftItem.row),
+              definition.value(rightItem.row),
+              definition.type
+            );
+
+          if (result !== 0) {
+            return result * direction;
+          }
+
+          return leftItem.index -
+            rightItem.index;
+        })
+        .map((item) => item.row);
+    };
+
+    // SRMDC_REPORTS_STAGE_B1_PAGINATION_ENGINE
+    const getStatementPageData = (
+      rows = []
+    ) => {
+      if (statementViewState.pageSize === "all") {
+        statementViewState.page = 1;
+
+        return {
+          rows: [...rows],
+          page: 1,
+          totalPages: 1,
+          start: rows.length ? 1 : 0,
+          end: rows.length
+        };
+      }
+
+      const pageSize =
+        Number(statementViewState.pageSize) || 25;
+
+      const totalPages =
+        Math.max(
+          1,
+          Math.ceil(rows.length / pageSize)
+        );
+
+      const page =
+        Math.min(
+          Math.max(
+            1,
+            Number(statementViewState.page) || 1
+          ),
+          totalPages
+        );
+
+      statementViewState.page = page;
+
+      const startIndex =
+        (page - 1) * pageSize;
+
+      const endIndex =
+        Math.min(
+          startIndex + pageSize,
+          rows.length
+        );
+
+      return {
+        rows: rows.slice(
+          startIndex,
+          endIndex
+        ),
+        page,
+        totalPages,
+        start: rows.length
+          ? startIndex + 1
+          : 0,
+        end: endIndex
+      };
+    };
+
+    const renderInteractiveStatement = (
+      rows = []
+    ) => {
+      const sortedRows =
+        getSortedStatementRows(rows);
+
+      const pageData =
+        getStatementPageData(sortedRows);
+
+      /*
+       * Running Balance comes from the backend.
+       * Sorting and pagination move the complete
+       * transaction row only.
+       *
+       * Never recalculate running_balance here.
+       */
+      renderStatement(pageData.rows);
+
+      if (
+        typeof updateStatementSortIndicators ===
+        "function"
+      ) {
+        updateStatementSortIndicators();
+      }
+
+      if (
+        typeof renderStatementPagination ===
+        "function"
+      ) {
+        renderStatementPagination(
+          sortedRows.length,
+          pageData
+        );
+      }
+    };
+    // SRMDC_REPORTS_STAGE_B2_BEHAVIOR
+    const updateStatementSortIndicators = () => {
+      document
+        .querySelectorAll(
+          "[data-statement-sort]"
+        )
+        .forEach((button) => {
+          const key =
+            button.dataset.statementSort;
+
+          const indicator =
+            button.querySelector(
+              ".srmdc-statement-sort-indicator"
+            );
+
+          if (!indicator) {
+            return;
+          }
+
+          const isActive =
+            key === statementViewState.sortKey;
+
+          button.classList.toggle(
+            "is-active",
+            isActive
+          );
+
+          button.setAttribute(
+            "aria-sort",
+            isActive
+              ? (
+                  statementViewState.sortDirection ===
+                  "desc"
+                    ? "descending"
+                    : "ascending"
+                )
+              : "none"
+          );
+
+          if (!isActive) {
+            indicator.textContent = "\u2195";
+            return;
+          }
+
+          indicator.textContent =
+            statementViewState.sortDirection ===
+            "desc"
+              ? "\u2193"
+              : "\u2191";
+        });
+    };
+
+    const renderStatementPagination = (
+      totalRows,
+      pageData
+    ) => {
+      const info =
+        document.getElementById(
+          "reportsStatementPageInfo"
+        );
+
+      const nav =
+        document.getElementById(
+          "reportsStatementPageNav"
+        );
+
+      const pageSize =
+        document.getElementById(
+          "reportsStatementPageSize"
+        );
+
+      if (pageSize) {
+        pageSize.value =
+          String(statementViewState.pageSize);
+      }
+
+      if (info) {
+        if (!totalRows) {
+          info.textContent =
+            "Showing 0 of 0 transactions";
+        }
+        else {
+          info.textContent =
+            `Showing ${pageData.start}-${pageData.end} ` +
+            `of ${totalRows} transactions`;
+        }
+      }
+
+      if (!nav) {
+        return;
+      }
+
+      if (
+        !totalRows ||
+        statementViewState.pageSize === "all" ||
+        pageData.totalPages <= 1
+      ) {
+        nav.innerHTML = "";
+        return;
+      }
+
+      const page = pageData.page;
+      const totalPages = pageData.totalPages;
+
+      const pageNumbers = [];
+
+      const startPage =
+        Math.max(
+          1,
+          Math.min(
+            page - 2,
+            Math.max(1, totalPages - 4)
+          )
+        );
+
+      const endPage =
+        Math.min(
+          totalPages,
+          startPage + 4
+        );
+
+      for (
+        let number = startPage;
+        number <= endPage;
+        number += 1
+      ) {
+        pageNumbers.push(number);
+      }
+
+      nav.innerHTML = `
+        <button
+          type="button"
+          class="srmdc-statement-page-button"
+          data-statement-page="${page - 1}"
+          ${page <= 1 ? "disabled" : ""}
+        >
+          Previous
+        </button>
+
+        ${pageNumbers
+          .map(
+            (number) => `
+              <button
+                type="button"
+                class="srmdc-statement-page-button ${
+                  number === page
+                    ? "is-active"
+                    : ""
+                }"
+                data-statement-page="${number}"
+                ${
+                  number === page
+                    ? 'aria-current="page"'
+                    : ""
+                }
+              >
+                ${number}
+              </button>
+            `
+          )
+          .join("")}
+
+        <button
+          type="button"
+          class="srmdc-statement-page-button"
+          data-statement-page="${page + 1}"
+          ${page >= totalPages ? "disabled" : ""}
+        >
+          Next
+        </button>
+      `;
+    };
+
+    // SRMDC_REPORTS_STAGE_B2_FILTER_PAGE_RESET
+    const wireStatementFilterPageReset = () => {
+      const controls = [
+        "reportsStatementSearch",
+        "reportsStatementType",
+        "reportsStatementMode",
+        "reportsStatementStatus"
+      ];
+
+      controls.forEach((id) => {
+        const element =
+          document.getElementById(id);
+
+        if (!element) {
+          return;
+        }
+
+        const eventName =
+          id === "reportsStatementSearch"
+            ? "input"
+            : "change";
+
+        element.addEventListener(
+          eventName,
+          () => {
+            statementViewState.page = 1;
+          }
+        );
+      });
+
+      document
+        .getElementById(
+          "reportsStatementClearFilters"
+        )
+        ?.addEventListener(
+          "click",
+          () => {
+            statementViewState.page = 1;
+          }
+        );
+    };
+    // SRMDC_REPORTS_STAGE_C3_3_CUSTOM_COLUMNS
+    const syncStatementColumnChecklist = () => {
+      const list =
+        document.getElementById(
+          "reportsStatementColumnsList"
+        );
+
+      if (!list) {
+        return;
+      }
+
+      list.innerHTML =
+        statementColumnOrder
+          .map((key) => {
+            const definition =
+              statementColumnDefinitions[key];
+
+            if (!definition) {
+              return "";
+            }
+
+            const checked =
+              isStatementColumnVisible(key)
+                ? "checked"
+                : "";
+
+            return `
+              <label
+                class="srmdc-statement-column-option"
+              >
+                <input
+                  type="checkbox"
+                  value="${escapeHtml(key)}"
+                  data-statement-column-toggle="${escapeHtml(key)}"
+                  ${checked}
+                />
+
+                <span>
+                  ${escapeHtml(definition.label)}
+                </span>
+              </label>
+            `;
+          })
+          .join("");
+    };
+
+    const setStatementColumnsPanelOpen = (
+      open
+    ) => {
+      const panel =
+        document.getElementById(
+          "reportsStatementColumnsPanel"
+        );
+
+      const button =
+        document.getElementById(
+          "reportsStatementColumnsButton"
+        );
+
+      if (!panel || !button) {
+        return;
+      }
+
+      panel.hidden = !open;
+
+      button.setAttribute(
+        "aria-expanded",
+        open ? "true" : "false"
+      );
+
+      if (open) {
+        syncStatementColumnChecklist();
+      }
+    };
+
+    const toggleStatementColumnsPanel = () => {
+      const panel =
+        document.getElementById(
+          "reportsStatementColumnsPanel"
+        );
+
+      if (!panel) {
+        return;
+      }
+
+      setStatementColumnsPanelOpen(
+        panel.hidden
+      );
+    };
+
+    const applyStatementCustomColumns = () => {
+      const list =
+        document.getElementById(
+          "reportsStatementColumnsList"
+        );
+
+      if (!list) {
+        return;
+      }
+
+      const checked =
+        Array.from(
+          list.querySelectorAll(
+            "[data-statement-column-toggle]:checked"
+          )
+        ).map(
+          (input) => input.value
+        );
+
+      if (!checked.length) {
+        syncStatementColumnChecklist();
+        return;
+      }
+
+      const changed =
+        setStatementVisibleColumns(
+          checked,
+          "custom"
+        );
+
+      if (!changed) {
+        syncStatementColumnChecklist();
+        return;
+      }
+
+      statementViewState.page = 1;
+
+      applyStatementFilters();
+      syncStatementViewPresetControl();
+      syncStatementColumnChecklist();
+    };
+
+    const wireStatementCustomColumnEvents = () => {
+      const button =
+        document.getElementById(
+          "reportsStatementColumnsButton"
+        );
+
+      const close =
+        document.getElementById(
+          "reportsStatementColumnsClose"
+        );
+
+      const list =
+        document.getElementById(
+          "reportsStatementColumnsList"
+        );
+
+      const panel =
+        document.getElementById(
+          "reportsStatementColumnsPanel"
+        );
+
+      if (!button || !list || !panel) {
+        return;
+      }
+
+      button.disabled = false;
+
+      button.addEventListener(
+        "click",
+        (event) => {
+          event.stopPropagation();
+          toggleStatementColumnsPanel();
+        }
+      );
+
+      close?.addEventListener(
+        "click",
+        () => {
+          setStatementColumnsPanelOpen(false);
+        }
+      );
+
+      list.addEventListener(
+        "change",
+        (event) => {
+          const input =
+            event.target.closest(
+              "[data-statement-column-toggle]"
+            );
+
+          if (!input) {
+            return;
+          }
+
+          const checkedCount =
+            list.querySelectorAll(
+              "[data-statement-column-toggle]:checked"
+            ).length;
+
+          if (!checkedCount) {
+            input.checked = true;
+            return;
+          }
+
+          applyStatementCustomColumns();
+        }
+      );
+
+      document.addEventListener(
+        "click",
+        (event) => {
+          if (
+            panel.hidden ||
+            panel.contains(event.target) ||
+            button.contains(event.target)
+          ) {
+            return;
+          }
+
+          setStatementColumnsPanelOpen(false);
+        }
+      );
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+          if (
+            event.key === "Escape" &&
+            !panel.hidden
+          ) {
+            setStatementColumnsPanelOpen(false);
+            button.focus();
+          }
+        }
+      );
+
+      syncStatementColumnChecklist();
+    };
+    // SRMDC_REPORTS_STAGE_C3_2_VIEW_PRESETS
+    const syncStatementViewPresetControl = () => {
+      const select =
+        document.getElementById(
+          "reportsStatementViewPreset"
+        );
+
+      if (!select) {
+        return;
+      }
+
+      select.value =
+        statementColumnState.activePreset;
+    };
+
+    const applyStatementPresetFromUi = (
+      presetKey
+    ) => {
+      if (
+        presetKey === "custom" ||
+        !statementViewPresets[presetKey]
+      ) {
+        syncStatementViewPresetControl();
+        return;
+      }
+
+      const applied =
+        applyStatementViewPreset(presetKey);
+
+      if (!applied) {
+        syncStatementViewPresetControl();
+        return;
+      }
+
+      /*
+       * Changing visible columns is a presentation
+       * operation only. It does not alter report data,
+       * accounting totals or backend Running Balance.
+       */
+      statementViewState.page = 1;
+
+      applyStatementFilters();
+      syncStatementViewPresetControl();
+
+      if (
+        typeof syncStatementColumnChecklist ===
+        "function"
+      ) {
+        syncStatementColumnChecklist();
+      }
+    };
+
+    const wireStatementViewPresetEvents = () => {
+      const select =
+        document.getElementById(
+          "reportsStatementViewPreset"
+        );
+
+      if (!select) {
+        return;
+      }
+
+      select.disabled = false;
+
+      select.addEventListener(
+        "change",
+        () => {
+          applyStatementPresetFromUi(
+            select.value
+          );
+        }
+      );
+
+      syncStatementViewPresetControl();
+    };
+    const wireStatementInteractiveEvents = () => {
+      const view =
+        document.getElementById(
+          "reportsAnalyticsView"
+        );
+
+      if (!view) {
+        return;
+      }
+
+      view.addEventListener(
+        "click",
+        (event) => {
+          const sortButton =
+            event.target.closest(
+              "[data-statement-sort]"
+            );
+
+          if (sortButton) {
+            setStatementSort(
+              sortButton.dataset.statementSort
+            );
+
+            return;
+          }
+
+          const pageButton =
+            event.target.closest(
+              "[data-statement-page]"
+            );
+
+          if (
+            pageButton &&
+            !pageButton.disabled
+          ) {
+            const requestedPage =
+              Number(
+                pageButton.dataset.statementPage
+              );
+
+            if (
+              Number.isInteger(requestedPage) &&
+              requestedPage >= 1
+            ) {
+              statementViewState.page =
+                requestedPage;
+
+              applyStatementFilters();
+            }
+          }
+        }
+      );
+
+      const pageSize =
+        document.getElementById(
+          "reportsStatementPageSize"
+        );
+
+      pageSize?.addEventListener(
+        "change",
+        (event) => {
+          const value =
+            event.target.value;
+
+          statementViewState.pageSize =
+            value === "all"
+              ? "all"
+              : Number(value) || 25;
+
+          statementViewState.page = 1;
+
+          applyStatementFilters();
+        }
+      );
+    };
+    const setStatementSort = (key) => {
+      if (!statementSortDefinitions[key]) {
+        return;
+      }
+
+      if (statementViewState.sortKey === key) {
+        statementViewState.sortDirection =
+          statementViewState.sortDirection === "asc"
+            ? "desc"
+            : "asc";
+      }
+      else {
+        statementViewState.sortKey = key;
+        statementViewState.sortDirection = "asc";
+      }
+
+      statementViewState.page = 1;
+
+      applyStatementFilters();
+    };
+    const renderStatementFilteredSummary = (
+      rows = []
+    ) => {
+      const element =
+        document.getElementById(
+          "reportsStatementFilteredSummary"
+        );
+
+      if (!element) {
+        return;
+      }
+
+      const receipts =
+        rows.reduce(
+          (total, row) =>
+            total +
+            Number(row.receipt || 0),
+          0
+        );
+
+      const expenses =
+        rows.reduce(
+          (total, row) =>
+            total +
+            Number(row.expense || 0),
+          0
+        );
+
+      const net =
+        receipts - expenses;
+
+      element.innerHTML = `
+        <strong>${rows.length}</strong>
+        matching transaction${
+          rows.length === 1 ? "" : "s"
+        }
+
+        <span>
+          Receipts
+          <b>${escapeHtml(money(receipts))}</b>
+        </span>
+
+        <span>
+          Expenses
+          <b>${escapeHtml(money(expenses))}</b>
+        </span>
+
+        <span>
+          Net
+          <b>${escapeHtml(money(net))}</b>
+        </span>
+      `;
+    };
+
+    // SRMDC_REPORTS_STAGE_B1_PIPELINE
+    const applyStatementFilters = () => {
+      const rows =
+        getFilteredStatementRows();
+
+      /*
+       * Filter summary represents every matching
+       * transaction, independent of pagination.
+       */
+      renderStatementFilteredSummary(rows);
+
+      renderInteractiveStatement(rows);
+    };
+
+    const clearStatementFilters = () => {
+      statementFilters.search = "";
+      statementFilters.type = "";
+      statementFilters.mode = "";
+      statementFilters.status = "";
+
+      const ids = [
+        "reportsStatementSearch",
+        "reportsStatementTypeFilter",
+        "reportsStatementModeFilter",
+        "reportsStatementStatusFilter"
+      ];
+
+      ids.forEach((id) => {
+        const element =
+          document.getElementById(id);
+
+        if (element) {
+          element.value = "";
+        }
+      });
+
+      applyStatementFilters();
+    };
+
+    // SRMDC_REPORTS_STAGE_C3_1_DYNAMIC_RENDERER
+    const renderStatementHeader = () => {
+      const headerRow =
+        document.getElementById(
+          "reportsStatementHeaderRow"
+        );
+
+      if (!headerRow) {
+        return;
+      }
+
+      const visibleColumns =
+        getStatementVisibleColumns();
+
+      headerRow.innerHTML =
+        visibleColumns
+          .map((key) => {
+            const definition =
+              statementColumnDefinitions[key];
+
+            if (!definition) {
+              return "";
+            }
+
+            return `
+              <th
+                data-statement-column="${escapeHtml(key)}"
+              >
+                <button
+                  type="button"
+                  class="srmdc-statement-sort"
+                  data-statement-sort="${escapeHtml(
+                    definition.sortKey
+                  )}"
+                >
+                  <span>
+                    ${escapeHtml(definition.label)}
+                  </span>
+
+                  <span
+                    class="srmdc-statement-sort-indicator"
+                    aria-hidden="true"
+                  >&#8597;</span>
+                </button>
+              </th>
+            `;
+          })
+          .join("");
+
+      updateStatementSortIndicators();
+    };
+
+    const renderStatementCell = (
+      row,
+      key
+    ) => {
+      const dash = "&mdash;";
+
+      switch (key) {
+        case "date":
+          return `
+            <td data-statement-column="date">
+              ${displayDate(row.date)}
+            </td>
+          `;
+
+        case "particulars":
+          return `
+            <td data-statement-column="particulars">
+              <div class="srmdc-statement-particular">
+                <strong>
+                  ${escapeHtml(
+                    row.particulars ||
+                    row.party ||
+                    "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
+                  )}
+                </strong>
+
+                ${
+                  row.party
+                    ? `
+                      <span>
+                        ${escapeHtml(row.party)}
+                      </span>
+                    `
+                    : ""
+                }
+              </div>
+            </td>
+          `;
+
+        case "party":
+          return `
+            <td data-statement-column="party">
+              ${escapeHtml(row.party || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â")}
+            </td>
+          `;
+
+        case "reference":
+          return `
+            <td data-statement-column="reference">
+              ${escapeHtml(row.reference || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â")}
+            </td>
+          `;
+
+        case "fund":
+          return `
+            <td data-statement-column="fund">
+              ${escapeHtml(row.fund || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â")}
+            </td>
+          `;
+
+        case "receipt": {
+          const amount =
+            Number(row.receipt || 0);
+
+          return `
+            <td
+              class="srmdc-money-in"
+              data-statement-column="receipt"
+            >
+              ${
+                amount > 0
+                  ? escapeHtml(money(amount))
+                  : dash
+              }
+            </td>
+          `;
+        }
+
+        case "expense": {
+          const amount =
+            Number(row.expense || 0);
+
+          return `
+            <td
+              class="srmdc-money-out"
+              data-statement-column="expense"
+            >
+              ${
+                amount > 0
+                  ? escapeHtml(money(amount))
+                  : dash
+              }
+            </td>
+          `;
+        }
+
+        case "running_balance":
+          return `
+            <td
+              class="srmdc-running-balance"
+              data-statement-column="running_balance"
+            >
+              ${escapeHtml(
+                money(row.running_balance)
+              )}
+            </td>
+          `;
+
+        case "payment_method":
+          return `
+            <td data-statement-column="payment_method">
+              ${escapeHtml(
+                row.payment_method || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
+              )}
+            </td>
+          `;
+
+        case "payment_reference":
+          return `
+            <td data-statement-column="payment_reference">
+              ${escapeHtml(
+                row.payment_reference || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
+              )}
+            </td>
+          `;
+
+        case "type": {
+          const type =
+            row.type === "expense"
+              ? "expense"
+              : "receipt";
+
+          return `
+            <td data-statement-column="type">
+              <span
+                class="srmdc-report-type is-${type}"
+              >
+                ${
+                  type === "expense"
+                    ? "Expense"
+                    : "Receipt"
+                }
+              </span>
+            </td>
+          `;
+        }
+
+        case "status":
+          return `
+            <td data-statement-column="status">
+              ${escapeHtml(row.status || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â")}
+            </td>
+          `;
+
+        default:
+          return `
+            <td>${dash}</td>
+          `;
+      }
+    };
+
+    const renderStatement = (rows = []) => {
+      const body =
+        document.getElementById(
+          "reportsStatementBody"
+        );
+
+      if (!body) {
+        return;
+      }
+
+      const visibleColumns =
+        getStatementVisibleColumns();
+
+      renderStatementHeader();
+
+      if (!rows.length) {
+        body.innerHTML = `
+          <tr>
+            <td
+              colspan="${visibleColumns.length}"
+              class="srmdc-reports-empty-cell"
+            >
+              No financial transactions
+              for this period.
+            </td>
+          </tr>
+        `;
+
+        return;
+      }
+
+      body.innerHTML =
+        rows
+          .map(
+            (row) => `
+              <tr>
+                ${visibleColumns
+                  .map(
+                    (key) =>
+                      renderStatementCell(
+                        row,
+                        key
+                      )
+                  )
+                  .join("")}
+              </tr>
+            `
+          )
+          .join("");
+    };
+    const populateFundFilter = (funds = []) => {
+      const select =
+        document.getElementById(
+          "reportsFundFilter"
+        );
+
+      if (!select) {
+        return;
+      }
+
+      const selected = select.value;
+
+      const options =
+        funds.map((fund) => `
+          <option
+            value="${escapeHtml(fund.fund_id)}"
+          >
+            ${escapeHtml(fund.fund_name)}
+          </option>
+        `).join("");
+
+      select.innerHTML =
+        `<option value="">All Funds</option>${options}`;
+
+      if (
+        selected &&
+        funds.some(
+          (fund) =>
+            fund.fund_id === selected
+        )
+      ) {
+        select.value = selected;
+      }
+    };
+
+    const loadReport = async () => {
+      const fromDate =
+        document.getElementById(
+          "reportsFromDate"
+        )?.value;
+
+      const toDate =
+        document.getElementById(
+          "reportsToDate"
+        )?.value;
+
+      const fundId =
+        document.getElementById(
+          "reportsFundFilter"
+        )?.value || null;
+
+      if (!fromDate || !toDate) {
+        setMessage(
+          "Select both From and To dates.",
+          "error"
+        );
+
+        return;
+      }
+
+      if (fromDate > toDate) {
+        setMessage(
+          "From date cannot be after To date.",
+          "error"
+        );
+
+        return;
+      }
+
+      const refreshButton =
+        document.getElementById(
+          "reportsAnalyticsRefreshButton"
+        );
+
+      if (refreshButton) {
+        refreshButton.disabled = true;
+        refreshButton.textContent =
+          "Loading...";
+      }
+
+      setMessage(
+        "Loading live financial statement..."
+      );
+
+      try {
+        const { data, error } =
+          await client.rpc(
+            "get_srmdc_financial_report",
+            {
+              p_from_date: fromDate,
+              p_to_date: toDate,
+              p_fund_id: fundId
+            }
+          );
+
+        if (error) {
+          throw error;
+        }
+
+        const report =
+          Array.isArray(data)
+            ? data[0]
+            : data;
+
+        if (!report) {
+          throw new Error(
+            "Financial report returned no data."
+          );
+        }
+
+        renderSummary(
+          report.summary || {}
+        );
+
+        renderFunds(
+          report.funds || []
+        );
+
+        statementRows =
+          Array.isArray(report.statement)
+            ? report.statement
+            : [];
+
+        populateStatementFilters(
+          statementRows
+        );
+
+        applyStatementFilters();
+
+        if (!fundId) {
+          populateFundFilter(
+            report.funds || []
+          );
+        }
+
+        const generated =
+          document.getElementById(
+            "reportsGeneratedAt"
+          );
+
+        if (generated) {
+          const generatedAt =
+            report.generated_at
+              ? new Date(report.generated_at)
+              : new Date();
+
+          generated.textContent =
+            `Live statement refreshed: ${
+              generatedAt.toLocaleString(
+                "en-IN"
+              )
+            }`;
+        }
+
+        setMessage(
+          "Financial statement loaded successfully.",
+          "success"
+        );
+      }
+      catch (error) {
+        console.error(
+          "SRMDC Reports:",
+          error
+        );
+
+        setMessage(
+          error?.message ||
+          "Unable to load financial report.",
+          "error"
+        );
+      }
+      finally {
+        if (refreshButton) {
+          refreshButton.disabled = false;
+          refreshButton.textContent =
+            "Refresh";
+        }
+      }
+    };
+
+    const showDashboardView = () => {
+      getView()?.classList.add(
+        "hidden"
+      );
+
+      if (
+        typeof showDashboard === "function"
+      ) {
+        showDashboard();
+      }
+    };
+
+    const open = async () => {
+      document
+        .querySelectorAll(
+          "main > section.dashboard"
+        )
+        .forEach((section) => {
+          if (section.id !== viewId) {
+            section.classList.add(
+              "hidden"
+            );
+          }
+        });
+
+      const view = getView();
+
+      if (!view) {
+        return;
+      }
+
+      view.classList.remove(
+        "hidden"
+      );
+
+      await loadReport();
+    };
+
+    const resetFilters = async () => {
+      const dates =
+        currentFinancialYearDates();
+
+      const from =
+        document.getElementById(
+          "reportsFromDate"
+        );
+
+      const to =
+        document.getElementById(
+          "reportsToDate"
+        );
+
+      const fund =
+        document.getElementById(
+          "reportsFundFilter"
+        );
+
+      if (from) {
+        from.value = dates.from;
+      }
+
+      if (to) {
+        to.value = dates.to;
+      }
+
+      if (fund) {
+        fund.value = "";
+      }
+
+      await loadReport();
+    };
+
+
+    // SRMDC_FINANCIAL_CANCELLATION_ADMIN_D2C
+    let financialCancellationState = {
+      entityType: "",
+      entityId: "",
+      reference: ""
+    };
+
+    const getFinancialCancelModal = () =>
+      document.getElementById(
+        "reportsFinancialCancelModal"
+      );
+
+    const setFinancialRecordsMessage = (
+      message,
+      tone = ""
+    ) => {
+      const element =
+        document.getElementById(
+          "reportsFinancialRecordsMessage"
+        );
+
+      if (!element) {
+        return;
+      }
+
+      element.textContent = message || "";
+      element.dataset.tone = tone;
+    };
+
+    const renderFinancialExpenseRecords = (
+      rows = []
+    ) => {
+      const body =
+        document.getElementById(
+          "reportsExpenseRecordsBody"
+        );
+
+      if (!body) {
+        return;
+      }
+
+      if (!rows.length) {
+        body.innerHTML = `
+          <tr>
+            <td colspan="8">
+              No expense records found.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      body.innerHTML =
+        rows
+          .map((row) => {
+            const canCancel =
+              row.can_cancel === true;
+
+            const paidAmount =
+              Number(row.paid_amount || 0);
+
+            return `
+              <tr>
+                <td>
+                  ${displayDate(row.expense_date)}
+                </td>
+
+                <td>
+                  <strong>
+                    ${escapeHtml(
+                      row.expense_number || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
+                    )}
+                  </strong>
+                </td>
+
+                <td>
+                  ${escapeHtml(
+                    row.description ||
+                    row.expense_category ||
+                    "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
+                  )}
+                </td>
+
+                <td>
+                  ${escapeHtml(
+                    row.fund_name || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
+                  )}
+                </td>
+
+                <td>
+                  ${escapeHtml(
+                    money(row.amount)
+                  )}
+                </td>
+
+                <td>
+                  ${escapeHtml(
+                    money(paidAmount)
+                  )}
+                </td>
+
+                <td>
+                  <span
+                    class="srmdc-financial-record-status"
+                    data-status="${escapeHtml(
+                      row.status || ""
+                    )}"
+                  >
+                    ${escapeHtml(
+                      row.status || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
+                    )}
+                  </span>
+
+                  ${
+                    row.cancel_reason
+                      ? `
+                        <small
+                          class="srmdc-cancel-reason"
+                        >
+                          ${escapeHtml(
+                            row.cancel_reason
+                          )}
+                        </small>
+                      `
+                      : ""
+                  }
+                </td>
+
+                <td>
+                  ${
+                    row.status === "cancelled"
+                      ? `
+                        <button
+                                  type="button"
+                                  class="secondary-button srmdc-record-view-button"
+                                  data-financial-view-type="expense"
+                                  data-financial-view-id="${escapeHtml(row.id)}"
+                                >
+                                  View
+                                </button>
+
+                                <button
+                          type="button"
+                          class="secondary-button srmdc-record-restore-button"
+                          data-financial-restore-type="expense"
+                          data-financial-restore-id="${escapeHtml(row.id)}"
+                          data-financial-restore-reference="${escapeHtml(
+                            row.expense_number || ""
+                          )}"
+                        >
+                          Restore
+                        </button>
+                      `
+                      : canCancel
+                        ? `
+                                                    ${
+                            row.status === "draft"
+                              ? `
+                                <button
+                                  type="button"
+                                  class="secondary-button srmdc-record-view-button"
+                                  data-financial-view-type="expense"
+                                  data-financial-view-id="${escapeHtml(row.id)}"
+                                >
+                                  View
+                                </button>
+
+                                <button
+                                  type="button"
+                                  class="secondary-button srmdc-record-edit-button"
+                                  data-financial-edit-type="expense"
+                                  data-financial-edit-id="${escapeHtml(row.id)}"
+                                >
+                                  Edit
+                                </button>
+
+                                <button
+                                  type="button"
+                                  class="primary-button srmdc-expense-approve-button"
+                                  data-expense-approve-id="${escapeHtml(
+                                    row.id
+                                  )}"
+                                  data-expense-approve-reference="${escapeHtml(
+                                    row.expense_number || ""
+                                  )}"
+                                >
+                                  Approve
+                                </button>
+                              `
+                              : ""
+                          }
+
+                          ${
+                            row.status !== "draft"
+                              ? `
+                                <button
+                                  type="button"
+                                  class="secondary-button srmdc-record-view-button"
+                                  data-financial-view-type="expense"
+                                  data-financial-view-id="${escapeHtml(row.id)}"
+                                >
+                                  View
+                                </button>
+                              `
+                              : ""
+                          }
+
+                          <button
+                            type="button"
+                            class="secondary-button srmdc-record-cancel-button"
+                            data-financial-cancel-type="expense"
+                            data-financial-cancel-id="${escapeHtml(
+                              row.id
+                            )}"
+                            data-financial-cancel-reference="${escapeHtml(
+                              row.expense_number || ""
+                            )}"
+                          >
+                            Cancel
+                          </button>
+                        `
+                        : `
+                          <button
+                            type="button"
+                            class="secondary-button srmdc-record-view-button"
+                            data-financial-view-type="expense"
+                            data-financial-view-id="${escapeHtml(row.id)}"
+                          >
+                            View
+                          </button>
+
+                          <button
+                            type="button"
+                            class="secondary-button"
+                            disabled
+                            title="Payment history exists. Payment reversal/correction is required before cancellation."
+                          >
+                            Protected
+                          </button>
+                        `
+                  }
+                </td>
+              </tr>
+            `;
+          })
+          .join("");
+    };
+
+    const renderFinancialDonationRecords = (
+      rows = []
+    ) => {
+      const body =
+        document.getElementById(
+          "reportsDonationRecordsBody"
+        );
+
+      if (!body) {
+        return;
+      }
+
+      if (!rows.length) {
+        body.innerHTML = `
+          <tr>
+            <td colspan="7">
+              No donation records found.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      body.innerHTML =
+        rows
+          .map((row) => {
+            const reference =
+              row.receipt_number ||
+              row.id ||
+              "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â";
+
+            return `
+              <tr>
+                <td>
+                  ${displayDate(row.donation_date)}
+                </td>
+
+                <td>
+                  <strong>
+                    ${escapeHtml(reference)}
+                  </strong>
+
+                  ${
+                    row.receipt_status
+                      ? `
+                        <small
+                          class="srmdc-record-secondary"
+                        >
+                          Receipt:
+                          ${escapeHtml(
+                            row.receipt_status
+                          )}
+                        </small>
+                      `
+                      : ""
+                  }
+                </td>
+
+                <td>
+                  ${escapeHtml(
+                    row.donation_type || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
+                  )}
+                </td>
+
+                <td>
+                  ${escapeHtml(
+                    row.fund_name || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
+                  )}
+                </td>
+
+                <td>
+                  ${escapeHtml(
+                    money(row.amount)
+                  )}
+                </td>
+
+                <td>
+                  <span
+                    class="srmdc-financial-record-status"
+                    data-status="${escapeHtml(
+                      row.status || ""
+                    )}"
+                  >
+                    ${escapeHtml(
+                      row.status || "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
+                    )}
+                  </span>
+
+                  ${
+                    row.cancel_reason
+                      ? `
+                        <small
+                          class="srmdc-cancel-reason"
+                        >
+                          ${escapeHtml(
+                            row.cancel_reason
+                          )}
+                        </small>
+                      `
+                      : ""
+                  }
+                </td>
+
+                <td>
+                  ${
+                    row.status === "cancelled"
+                      ? `
+                        <button
+                          type="button"
+                          class="secondary-button srmdc-record-view-button"
+                          data-financial-view-type="donation"
+                          data-financial-view-id="${escapeHtml(row.id)}"
+                        >
+                          View
+                        </button>
+
+                        <button
+                          type="button"
+                          class="secondary-button srmdc-record-restore-button"
+                          data-financial-restore-type="donation"
+                          data-financial-restore-id="${escapeHtml(row.id)}"
+                          data-financial-restore-reference="${escapeHtml(reference)}"
+                        >
+                          Restore
+                        </button>
+                      `
+                      : row.can_cancel === true
+                        ? `
+                          <button
+                            type="button"
+                            class="secondary-button srmdc-record-view-button"
+                            data-financial-view-type="donation"
+                            data-financial-view-id="${escapeHtml(row.id)}"
+                          >
+                            View
+                          </button>
+
+                          <button
+                            type="button"
+                            class="secondary-button srmdc-record-edit-button"
+                            data-financial-edit-type="donation"
+                            data-financial-edit-id="${escapeHtml(row.id)}"
+                          >
+                            Edit
+                          </button>
+
+                          <button
+                            type="button"
+                            class="secondary-button srmdc-record-cancel-button"
+                            data-financial-cancel-type="donation"
+                            data-financial-cancel-id="${escapeHtml(
+                              row.id
+                            )}"
+                            data-financial-cancel-reference="${escapeHtml(
+                              reference
+                            )}"
+                          >
+                            Cancel
+                          </button>
+                        `
+                        : `
+                          <span class="muted">
+                            Protected
+                          </span>
+                        `
+                  }
+                </td>
+              </tr>
+            `;
+          })
+          .join("");
+    };
+
+        // SRMDC_FINANCIAL_VIEW_EDIT_D4M_C
+    let srmdcFinancialDetailState = null;
+
+    const ensureFinancialDetailModal = () => {
+      let modal =
+        document.getElementById(
+          "reportsFinancialDetailModal"
+        );
+
+      if (modal) {
+        return modal;
+      }
+
+      const holder =
+        document.createElement("div");
+
+      holder.innerHTML = `
+        <div
+          id="reportsFinancialDetailModal"
+          class="srmdc-financial-detail-modal"
+          hidden
+        >
+          <div
+            class="srmdc-financial-detail-backdrop"
+            data-financial-detail-close
+          ></div>
+
+          <section
+            class="srmdc-financial-detail-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="reportsFinancialDetailTitle"
+          >
+            <header class="srmdc-financial-detail-header">
+              <div>
+                <p class="eyebrow">SRMDC TRUST</p>
+                <h2 id="reportsFinancialDetailTitle">
+                  Financial Record
+                </h2>
+                <p
+                  id="reportsFinancialDetailReference"
+                  class="muted"
+                ></p>
+              </div>
+
+              <button
+                type="button"
+                class="srmdc-expense-close-button"
+                data-financial-detail-close
+                aria-label="Close"
+              >
+                &times;
+              </button>
+            </header>
+
+            <div
+              id="reportsFinancialDetailMessage"
+              class="srmdc-financial-detail-message"
+            ></div>
+
+            <form
+              id="reportsFinancialDetailForm"
+              novalidate
+            >
+              <div
+                id="reportsFinancialDetailFields"
+                class="srmdc-financial-detail-grid"
+              ></div>
+
+              <div
+                id="reportsFinancialEditReasonWrap"
+                class="srmdc-financial-edit-reason"
+                hidden
+              >
+                <label>
+                  <span>
+                    Reason for Change
+                    <strong>*</strong>
+                  </span>
+
+                  <textarea
+                    id="reportsFinancialEditReason"
+                    rows="3"
+                    maxlength="500"
+                    placeholder="Explain why this correction is required."
+                  ></textarea>
+                </label>
+              </div>
+
+              <footer class="srmdc-financial-detail-footer">
+                <button
+                  type="button"
+                  class="secondary-button"
+                  data-financial-detail-close
+                >
+                  Close
+                </button>
+
+                <button
+                  type="submit"
+                  id="reportsFinancialDetailSave"
+                  class="primary-button"
+                  hidden
+                >
+                  Save Changes
+                </button>
+              </footer>
+            </form>
+          </section>
+        </div>
+      `;
+
+      modal = holder.firstElementChild;
+      document.body.appendChild(modal);
+
+      modal
+        .querySelectorAll(
+          "[data-financial-detail-close]"
+        )
+        .forEach((element) => {
+          element.addEventListener(
+            "click",
+            closeFinancialDetailModal
+          );
+        });
+
+      modal
+        .querySelector(
+          "#reportsFinancialDetailForm"
+        )
+        ?.addEventListener(
+          "submit",
+          submitFinancialDetailEdit
+        );
+
+      return modal;
+    };
+
+    function closeFinancialDetailModal() {
+      const modal =
+        document.getElementById(
+          "reportsFinancialDetailModal"
+        );
+
+      if (modal) {
+        modal.hidden = true;
+      }
+
+      document.body.classList.remove(
+        "srmdc-financial-detail-modal-open"
+      );
+
+      srmdcFinancialDetailState = null;
+    }
+
+    const detailValue = (
+      label,
+      value
+    ) => `
+      <div class="srmdc-financial-detail-field">
+        <span>${escapeHtml(label)}</span>
+        <strong>${escapeHtml(
+          value === null ||
+          value === undefined ||
+          value === ""
+            ? "-"
+            : String(value)
+        )}</strong>
+      </div>
+    `;
+
+    const editInput = (
+      label,
+      id,
+      value,
+      type = "text",
+      required = false
+    ) => `
+      <label class="srmdc-financial-edit-field">
+        <span>
+          ${escapeHtml(label)}
+          ${required ? "<strong>*</strong>" : ""}
+        </span>
+
+        <input
+          id="${escapeHtml(id)}"
+          type="${escapeHtml(type)}"
+          value="${escapeHtml(
+            value === null ||
+            value === undefined
+              ? ""
+              : String(value)
+          )}"
+          ${required ? "required" : ""}
+        >
+      </label>
+    `;
+
+    const renderFinancialDetail = (
+      detail,
+      mode
+    ) => {
+      const fields =
+        document.getElementById(
+          "reportsFinancialDetailFields"
+        );
+
+      const title =
+        document.getElementById(
+          "reportsFinancialDetailTitle"
+        );
+
+      const reference =
+        document.getElementById(
+          "reportsFinancialDetailReference"
+        );
+
+      const save =
+        document.getElementById(
+          "reportsFinancialDetailSave"
+        );
+
+      const reasonWrap =
+        document.getElementById(
+          "reportsFinancialEditReasonWrap"
+        );
+
+      if (
+        !fields ||
+        !title ||
+        !reference ||
+        !save ||
+        !reasonWrap
+      ) {
+        return;
+      }
+
+      const isExpense =
+        detail.record_type === "expense";
+
+      const editing =
+        mode === "edit";
+
+      title.textContent =
+        editing
+          ? isExpense
+            ? "Edit Draft Expense"
+            : "Edit Donor Profile"
+          : isExpense
+            ? "Expense Details"
+            : "Donation & Receipt Details";
+
+      reference.textContent =
+        isExpense
+          ? detail.expense_number || ""
+          : detail.receipt_number ||
+            detail.id ||
+            "";
+
+      save.hidden = !editing;
+      reasonWrap.hidden = !editing;
+
+      const reason =
+        document.getElementById(
+          "reportsFinancialEditReason"
+        );
+
+      if (reason) {
+        reason.value = "";
+      }
+
+      if (!editing) {
+        if (isExpense) {
+          fields.innerHTML = [
+            detailValue(
+              "Expense Date",
+              displayDate(detail.expense_date)
+            ),
+            detailValue(
+              "Expense Number",
+              detail.expense_number
+            ),
+            detailValue("Status", detail.status),
+            detailValue("Fund", detail.fund_name),
+            detailValue(
+              "Category",
+              detail.expense_category
+            ),
+            detailValue(
+              "Vendor / Payee",
+              detail.vendor_name
+            ),
+            detailValue(
+              "Purpose / Description",
+              detail.description
+            ),
+            detailValue(
+              "Amount",
+              money(detail.amount)
+            ),
+            detailValue(
+              "Amount Paid",
+              money(detail.paid_amount || 0)
+            ),
+            detailValue(
+              "Bill / Invoice No.",
+              detail.bill_number
+            ),
+            detailValue(
+              "Bill Date",
+              detail.bill_date
+                ? displayDate(detail.bill_date)
+                : "-"
+            ),
+            detailValue("Notes", detail.notes),
+            detailValue(
+              "Cancellation Reason",
+              detail.cancel_reason
+            )
+          ].join("");
+        } else {
+          const relation =
+            detail.relationship_type &&
+            detail.related_person_name
+              ? `${detail.relationship_type} ${detail.related_person_name}`
+              : "-";
+
+          fields.innerHTML = [
+            detailValue(
+              "Donation Date",
+              displayDate(detail.donation_date)
+            ),
+            detailValue(
+              "Receipt Number",
+              detail.receipt_number
+            ),
+            detailValue(
+              "Donation Status",
+              detail.status
+            ),
+            detailValue(
+              "Receipt Status",
+              detail.receipt_status
+            ),
+            detailValue(
+              "Donation Type",
+              detail.donation_type
+            ),
+            detailValue("Fund", detail.fund_name),
+            detailValue(
+              "Amount",
+              money(detail.amount)
+            ),
+            detailValue(
+              "Donor Name",
+              detail.donor_name
+            ),
+            detailValue(
+              "Relationship",
+              relation
+            ),
+            detailValue("Mobile", detail.mobile),
+            detailValue("Address", detail.address),
+            detailValue(
+              "PAN / ID",
+              detail.pan_or_id
+            ),
+            detailValue(
+              "Cancellation Reason",
+              detail.cancel_reason
+            )
+          ].join("");
+        }
+
+        return;
+      }
+
+      if (isExpense) {
+        if (detail.can_edit !== true) {
+          throw new Error(
+            "Only Draft expenses with no payment history can be edited."
+          );
+        }
+
+        fields.innerHTML = `
+          ${editInput(
+            "Expense Date",
+            "reportsFinancialEditExpenseDate",
+            detail.expense_date,
+            "date",
+            true
+          )}
+
+          <label class="srmdc-financial-edit-field">
+            <span>Fund <strong>*</strong></span>
+
+            <select
+              id="reportsFinancialEditExpenseFund"
+              required
+            >
+              <option
+                value="${escapeHtml(
+                  detail.fund_id || ""
+                )}"
+              >
+                ${escapeHtml(
+                  detail.fund_name || "Current Fund"
+                )}
+              </option>
+            </select>
+          </label>
+
+          ${editInput(
+            "Category",
+            "reportsFinancialEditExpenseCategory",
+            detail.expense_category,
+            "text",
+            true
+          )}
+
+          <div class="srmdc-financial-detail-field">
+            <span>Vendor / Payee</span>
+            <strong>
+              ${escapeHtml(
+                detail.vendor_name || "-"
+              )}
+            </strong>
+          </div>
+
+          <label class="srmdc-financial-edit-field srmdc-financial-edit-wide">
+            <span>
+              Purpose / Description
+              <strong>*</strong>
+            </span>
+
+            <textarea
+              id="reportsFinancialEditExpenseDescription"
+              rows="3"
+              maxlength="500"
+              required
+            >${escapeHtml(
+              detail.description || ""
+            )}</textarea>
+          </label>
+
+          ${editInput(
+            "Amount",
+            "reportsFinancialEditExpenseAmount",
+            detail.amount,
+            "number",
+            true
+          )}
+
+          ${editInput(
+            "Bill / Invoice No.",
+            "reportsFinancialEditExpenseBillNumber",
+            detail.bill_number
+          )}
+
+          ${editInput(
+            "Bill Date",
+            "reportsFinancialEditExpenseBillDate",
+            detail.bill_date,
+            "date"
+          )}
+
+          <label class="srmdc-financial-edit-field srmdc-financial-edit-wide">
+            <span>Notes</span>
+
+            <textarea
+              id="reportsFinancialEditExpenseNotes"
+              rows="3"
+              maxlength="1000"
+            >${escapeHtml(
+              detail.notes || ""
+            )}</textarea>
+          </label>
+        `;
+      } else {
+        if (detail.can_edit !== true) {
+          throw new Error(
+            "This donation is not available for donor profile editing."
+          );
+        }
+
+        fields.innerHTML = `
+          ${detailValue(
+            "Receipt Number",
+            detail.receipt_number
+          )}
+
+          ${detailValue(
+            "Amount",
+            money(detail.amount)
+          )}
+
+          ${detailValue(
+            "Fund",
+            detail.fund_name
+          )}
+
+          ${editInput(
+            "Donor Name",
+            "reportsFinancialEditDonorName",
+            detail.donor_name,
+            "text",
+            true
+          )}
+
+          <label class="srmdc-financial-edit-field">
+            <span>Relationship</span>
+
+            <select id="reportsFinancialEditRelationship">
+              <option value="">None</option>
+              <option value="S/o">S/o</option>
+              <option value="D/o">D/o</option>
+              <option value="W/o">W/o</option>
+              <option value="H/o">H/o</option>
+            </select>
+          </label>
+
+          ${editInput(
+            "Related Person Name",
+            "reportsFinancialEditRelatedPerson",
+            detail.related_person_name
+          )}
+
+          ${editInput(
+            "Mobile",
+            "reportsFinancialEditDonorMobile",
+            detail.mobile
+          )}
+
+          <label class="srmdc-financial-edit-field srmdc-financial-edit-wide">
+            <span>Address</span>
+
+            <textarea
+              id="reportsFinancialEditDonorAddress"
+              rows="3"
+              maxlength="500"
+            >${escapeHtml(
+              detail.address || ""
+            )}</textarea>
+          </label>
+
+          ${editInput(
+            "PAN / ID",
+            "reportsFinancialEditDonorPan",
+            detail.pan_or_id
+          )}
+        `;
+
+        const relationSelect =
+          document.getElementById(
+            "reportsFinancialEditRelationship"
+          );
+
+        if (relationSelect) {
+          relationSelect.value =
+            detail.relationship_type || "";
+        }
+      }
+    };
+
+    const openFinancialDetail = async (
+      type,
+      id,
+      mode = "view"
+    ) => {
+      const modal =
+        ensureFinancialDetailModal();
+
+      const message =
+        document.getElementById(
+          "reportsFinancialDetailMessage"
+        );
+
+      const fields =
+        document.getElementById(
+          "reportsFinancialDetailFields"
+        );
+
+      if (message) {
+        message.textContent =
+          "Loading record details...";
+      }
+
+      if (fields) {
+        fields.innerHTML = "";
+      }
+
+      modal.hidden = false;
+
+      document.body.classList.add(
+        "srmdc-financial-detail-modal-open"
+      );
+
+      try {
+        const { data, error } =
+          await client.rpc(
+            "get_srmdc_financial_record_detail",
+            {
+              p_record_type: type,
+              p_record_id: id
+            }
+          );
+
+        if (error) {
+          throw error;
+        }
+
+        const detail = data || {};
+
+        srmdcFinancialDetailState = {
+          type,
+          id,
+          mode,
+          detail
+        };
+
+        renderFinancialDetail(detail, mode);
+
+        if (message) {
+          message.textContent =
+            mode === "edit"
+              ? "Only permitted fields can be changed. Reason for Change is mandatory and audited."
+              : "Read-only financial record details.";
+        }
+      } catch (error) {
+        console.error(
+          "SRMDC financial detail load failed:",
+          error
+        );
+
+        if (message) {
+          message.textContent =
+            error?.message ||
+            "Unable to load record details.";
+        }
+      }
+    };
+
+    async function submitFinancialDetailEdit(
+      event
+    ) {
+      event.preventDefault();
+
+      const state =
+        srmdcFinancialDetailState;
+
+      if (!state || state.mode !== "edit") {
+        return;
+      }
+
+      const reason =
+        document.getElementById(
+          "reportsFinancialEditReason"
+        )?.value?.trim() || "";
+
+      if (!reason) {
+        alert(
+          "Please enter a Reason for Change."
+        );
+        return;
+      }
+
+      const save =
+        document.getElementById(
+          "reportsFinancialDetailSave"
+        );
+
+      const message =
+        document.getElementById(
+          "reportsFinancialDetailMessage"
+        );
+
+      if (save) {
+        save.disabled = true;
+        save.textContent = "Saving...";
+      }
+
+      try {
+        if (state.type === "donation") {
+          const donorName =
+            document.getElementById(
+              "reportsFinancialEditDonorName"
+            )?.value?.trim() || "";
+
+          const relationship =
+            document.getElementById(
+              "reportsFinancialEditRelationship"
+            )?.value?.trim() || "";
+
+          const relatedPerson =
+            document.getElementById(
+              "reportsFinancialEditRelatedPerson"
+            )?.value?.trim() || "";
+
+          const mobile =
+            document.getElementById(
+              "reportsFinancialEditDonorMobile"
+            )?.value?.trim() || "";
+
+          const address =
+            document.getElementById(
+              "reportsFinancialEditDonorAddress"
+            )?.value?.trim() || "";
+
+          const pan =
+            document.getElementById(
+              "reportsFinancialEditDonorPan"
+            )?.value?.trim() || "";
+
+          if (!donorName) {
+            throw new Error(
+              "Donor Name is required."
+            );
+          }
+
+          if (
+            Boolean(relationship) !==
+            Boolean(relatedPerson)
+          ) {
+            throw new Error(
+              "Relationship and Related Person Name must be entered together."
+            );
+          }
+
+          const { error } =
+            await client.rpc(
+              "update_srmdc_donor_profile",
+              {
+                p_donation_id: state.id,
+                p_donor_name: donorName,
+                p_relationship_type:
+                  relationship || null,
+                p_related_person_name:
+                  relatedPerson || null,
+                p_mobile: mobile || null,
+                p_address: address || null,
+                p_pan_or_id: pan || null,
+                p_reason: reason
+              }
+            );
+
+          if (error) {
+            throw error;
+          }
+        } else {
+          const detail =
+            state.detail || {};
+
+          const expenseDate =
+            document.getElementById(
+              "reportsFinancialEditExpenseDate"
+            )?.value || "";
+
+          const fundId =
+            document.getElementById(
+              "reportsFinancialEditExpenseFund"
+            )?.value || "";
+
+          const category =
+            document.getElementById(
+              "reportsFinancialEditExpenseCategory"
+            )?.value?.trim() || "";
+
+          const description =
+            document.getElementById(
+              "reportsFinancialEditExpenseDescription"
+            )?.value?.trim() || "";
+
+          const amount =
+            Number(
+              document.getElementById(
+                "reportsFinancialEditExpenseAmount"
+              )?.value || ""
+            );
+
+          const billNumber =
+            document.getElementById(
+              "reportsFinancialEditExpenseBillNumber"
+            )?.value?.trim() || "";
+
+          const billDate =
+            document.getElementById(
+              "reportsFinancialEditExpenseBillDate"
+            )?.value || "";
+
+          const notes =
+            document.getElementById(
+              "reportsFinancialEditExpenseNotes"
+            )?.value?.trim() || "";
+
+          if (
+            !expenseDate ||
+            !fundId ||
+            !category ||
+            !description ||
+            !Number.isFinite(amount) ||
+            amount <= 0
+          ) {
+            throw new Error(
+              "Expense Date, Fund, Category, Purpose and valid Amount are required."
+            );
+          }
+
+          const { error } =
+            await client.rpc(
+              "update_srmdc_draft_expense",
+              {
+                p_expense_id: state.id,
+                p_expense_date: expenseDate,
+                p_fund_id: fundId,
+                p_vendor_id:
+                  detail.vendor_id || null,
+                p_expense_category: category,
+                p_description: description,
+                p_amount: amount,
+                p_bill_number:
+                  billNumber || null,
+                p_bill_date:
+                  billDate || null,
+                p_notes: notes || null,
+                p_reason: reason
+              }
+            );
+
+          if (error) {
+            throw error;
+          }
+        }
+
+        closeFinancialDetailModal();
+
+        await loadFinancialRecords();
+
+        if (
+          typeof loadFinancialReport ===
+          "function"
+        ) {
+          await loadFinancialReport();
+        }
+
+        alert(
+          "Financial record updated successfully."
+        );
+      } catch (error) {
+        console.error(
+          "SRMDC financial record update failed:",
+          error
+        );
+
+        if (message) {
+          message.textContent =
+            error?.message ||
+            "Unable to save changes.";
+        }
+
+        alert(
+          error?.message ||
+          "Unable to save changes."
+        );
+      } finally {
+        if (save) {
+          save.disabled = false;
+          save.textContent = "Save Changes";
+        }
+      }
+    }
+
+    const wireFinancialViewEditUi = () => {
+      document
+        .getElementById(
+          "reportsFinancialRecordsPanel"
+        )
+        ?.addEventListener(
+          "click",
+          async (event) => {
+            const view =
+              event.target.closest(
+                "[data-financial-view-type]"
+              );
+
+            if (view) {
+              event.preventDefault();
+
+              await openFinancialDetail(
+                view.dataset.financialViewType,
+                view.dataset.financialViewId,
+                "view"
+              );
+
+              return;
+            }
+
+            const edit =
+              event.target.closest(
+                "[data-financial-edit-type]"
+              );
+
+            if (edit) {
+              event.preventDefault();
+
+              await openFinancialDetail(
+                edit.dataset.financialEditType,
+                edit.dataset.financialEditId,
+                "edit"
+              );
+            }
+          }
+        );
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+          const modal =
+            document.getElementById(
+              "reportsFinancialDetailModal"
+            );
+
+          if (
+            event.key === "Escape" &&
+            modal &&
+            !modal.hidden
+          ) {
+            closeFinancialDetailModal();
+          }
+        }
+      );
+    };
+const loadFinancialRecords = async () => {
+      setFinancialRecordsMessage(
+        "Loading financial records..."
+      );
+
+      try {
+        const { data, error } =
+          await client.rpc(
+            "get_srmdc_financial_records"
+          );
+
+        if (error) {
+          throw error;
+        }
+
+        const result = data || {};
+
+        const expenses =
+          Array.isArray(result.expenses)
+            ? result.expenses
+            : [];
+
+        const donations =
+          Array.isArray(result.donations)
+            ? result.donations
+            : [];
+
+        renderFinancialExpenseRecords(
+          expenses
+        );
+
+        renderFinancialDonationRecords(
+          donations
+        );
+
+        setFinancialRecordsMessage(
+          `${expenses.length} expense record(s) | ${donations.length} donation record(s)`
+        );
+
+      } catch (error) {
+        console.error(
+          "SRMDC financial records load failed:",
+          error
+        );
+
+        setFinancialRecordsMessage(
+          error?.message ||
+            "Unable to load financial records.",
+          "error"
+        );
+      }
+    };
+
+    const openFinancialRecords = async () => {
+      const panel =
+        document.getElementById(
+          "reportsFinancialRecordsPanel"
+        );
+
+      if (!panel) {
+        return;
+      }
+
+      panel.hidden = false;
+
+      await loadFinancialRecords();
+
+      panel.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    };
+
+    const closeFinancialRecords = () => {
+      const panel =
+        document.getElementById(
+          "reportsFinancialRecordsPanel"
+        );
+
+      if (panel) {
+        panel.hidden = true;
+      }
+    };
+
+    const openFinancialCancelModal = (
+      button
+    ) => {
+      const modal =
+        getFinancialCancelModal();
+
+      if (!modal || !button) {
+        return;
+      }
+
+      financialCancellationState = {
+        entityType:
+          button.dataset.financialCancelType ||
+          "",
+        entityId:
+          button.dataset.financialCancelId ||
+          "",
+        reference:
+          button.dataset
+            .financialCancelReference ||
+          ""
+      };
+
+      const form =
+        document.getElementById(
+          "reportsFinancialCancelForm"
+        );
+
+      form?.reset();
+
+      const reference =
+        document.getElementById(
+          "reportsFinancialCancelReference"
+        );
+
+      const warning =
+        document.getElementById(
+          "reportsFinancialCancelWarning"
+        );
+
+      if (reference) {
+        reference.textContent =
+          financialCancellationState
+            .reference ||
+          "Selected record";
+      }
+
+      if (warning) {
+        warning.textContent =
+          financialCancellationState
+            .entityType === "donation"
+            ? "The donation and its active official receipt will be cancelled. The receipt number remains permanently reserved and will never be reused."
+            : "Only an unpaid Draft or Approved expense can be cancelled. Payment history prevents direct cancellation.";
+      }
+
+      modal.hidden = false;
+
+      document.body.classList.add(
+        "srmdc-financial-cancel-modal-open"
+      );
+
+      window.setTimeout(
+        () =>
+          document
+            .getElementById(
+              "reportsFinancialCancelReason"
+            )
+            ?.focus(),
+        0
+      );
+    };
+
+    const closeFinancialCancelModal = () => {
+      const modal =
+        getFinancialCancelModal();
+
+      if (modal) {
+        modal.hidden = true;
+      }
+
+      document.body.classList.remove(
+        "srmdc-financial-cancel-modal-open"
+      );
+
+      financialCancellationState = {
+        entityType: "",
+        entityId: "",
+        reference: ""
+      };
+    };
+
+    const submitFinancialCancellation =
+      async (event) => {
+        event.preventDefault();
+
+        const state = {
+          ...financialCancellationState
+        };
+
+        if (
+          !state.entityId ||
+          !["expense", "donation"].includes(
+            state.entityType
+          )
+        ) {
+          window.alert(
+            "No valid financial record selected."
+          );
+          return;
+        }
+
+        const reasonElement =
+          document.getElementById(
+            "reportsFinancialCancelReason"
+          );
+
+        const detailsElement =
+          document.getElementById(
+            "reportsFinancialCancelDetails"
+          );
+
+        const submitButton =
+          document.getElementById(
+            "reportsFinancialCancelSubmit"
+          );
+
+        const category =
+          reasonElement?.value?.trim() ||
+          "";
+
+        const details =
+          detailsElement?.value?.trim() ||
+          "";
+
+        if (!category) {
+          window.alert(
+            "Please select a cancellation reason."
+          );
+
+          reasonElement?.focus();
+          return;
+        }
+
+        if (
+          category === "Other" &&
+          !details
+        ) {
+          window.alert(
+            "Please enter cancellation details for Other."
+          );
+
+          detailsElement?.focus();
+          return;
+        }
+
+        const reason =
+          details
+            ? `${category}: ${details}`
+            : category;
+
+        const confirmation =
+          state.entityType === "donation"
+            ? `Cancel ${state.reference}? This will also cancel its active official receipt. The receipt number will never be reused.`
+            : `Cancel ${state.reference}? The record will remain permanently in the Trust audit history.`;
+
+        if (
+          !window.confirm(confirmation)
+        ) {
+          return;
+        }
+
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent =
+            "Cancelling...";
+        }
+
+        try {
+          const rpcName =
+            state.entityType === "expense"
+              ? "cancel_srmdc_expense"
+              : "cancel_srmdc_donation";
+
+          const args =
+            state.entityType === "expense"
+              ? {
+                  p_expense_id:
+                    state.entityId,
+                  p_reason:
+                    reason
+                }
+              : {
+                  p_donation_id:
+                    state.entityId,
+                  p_reason:
+                    reason
+                };
+
+          const { error } =
+            await client.rpc(
+              rpcName,
+              args
+            );
+
+          if (error) {
+            throw error;
+          }
+
+          closeFinancialCancelModal();
+
+          await loadFinancialRecords();
+          await loadReport();
+
+          window.alert(
+            `${state.reference} cancelled successfully.`
+          );
+
+        } catch (error) {
+          console.error(
+            "SRMDC cancellation failed:",
+            error
+          );
+
+          window.alert(
+            error?.message ||
+              "Cancellation failed."
+          );
+
+        } finally {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent =
+              "Confirm Cancellation";
+          }
+        }
+      };
+
+        // SRMDC_EXPENSE_APPROVAL_D4J
+    const approveExpenseFromFinancialRecords =
+      async (button) => {
+
+        const expenseId =
+          button?.dataset?.expenseApproveId || "";
+
+        const reference =
+          button?.dataset?.expenseApproveReference ||
+          "Expense";
+
+        if (!expenseId) {
+          window.alert(
+            "Expense ID is missing. Approval was not performed."
+          );
+          return;
+        }
+
+        const confirmed =
+          window.confirm(
+            [
+              `Approve ${reference}?`,
+              "",
+              "This changes the expense from Draft to Approved.",
+              "",
+              "No payment will be recorded.",
+              "Available Balance will NOT change.",
+              "",
+              "Only an actual recorded payment will reduce the Trust balance."
+            ].join("\n")
+          );
+
+        if (!confirmed) {
+          return;
+        }
+
+        const originalText =
+          button.textContent || "Approve";
+
+        button.disabled = true;
+        button.textContent = "Approving...";
+
+        try {
+          const { error } =
+            await client.rpc(
+              "approve_srmdc_expense",
+              {
+                p_expense_id: expenseId
+              }
+            );
+
+          if (error) {
+            throw error;
+          }
+
+          await loadFinancialRecords();
+          await loadReport();
+
+          window.alert(
+            [
+              `${reference} approved successfully.`,
+              "",
+              "Status: Approved",
+              "Payment recorded: No",
+              "Available Balance has not changed."
+            ].join("\n")
+          );
+
+        } catch (error) {
+          console.error(
+            "SRMDC expense approval failed:",
+            error
+          );
+
+          window.alert(
+            error?.message ||
+              "Unable to approve the expense."
+          );
+
+        } finally {
+          if (button?.isConnected) {
+            button.disabled = false;
+            button.textContent = originalText;
+          }
+        }
+      };
+
+
+    // SRMDC_FINANCIAL_RESTORE_D4L_C1
+    const restoreFinancialRecord = async (
+      button
+    ) => {
+      if (!button) {
+        return;
+      }
+
+      const entityType =
+        button.dataset.financialRestoreType || "";
+
+      const entityId =
+        button.dataset.financialRestoreId || "";
+
+      const reference =
+        button.dataset.financialRestoreReference ||
+        "Selected record";
+
+      if (
+        !entityId ||
+        !["expense", "donation"].includes(
+          entityType
+        )
+      ) {
+        window.alert(
+          "Unable to identify the record to restore."
+        );
+        return;
+      }
+
+      const reason = window.prompt(
+        [
+          `Restore ${reference}?`,
+          "",
+          "Enter the reason for restoring this record.",
+          "Example: Cancelled by mistake - verified original record."
+        ].join("\n")
+      );
+
+      if (reason === null) {
+        return;
+      }
+
+      const cleanReason = reason.trim();
+
+      if (!cleanReason) {
+        window.alert(
+          "Restore reason is required."
+        );
+        return;
+      }
+
+      const confirmed = window.confirm(
+        [
+          `Restore ${reference}?`,
+          "",
+          entityType === "donation"
+            ? "The original donation, original receipt number and receipt verification will be restored."
+            : "The expense will return to its status immediately before cancellation.",
+          "",
+          "No new financial record or receipt number will be created.",
+          "",
+          `Reason: ${cleanReason}`
+        ].join("\n")
+      );
+
+      if (!confirmed) {
+        return;
+      }
+
+      const rpcName =
+        entityType === "donation"
+          ? "restore_srmdc_donation"
+          : "restore_srmdc_expense";
+
+      const rpcArgs =
+        entityType === "donation"
+          ? {
+              p_donation_id: entityId,
+              p_reason: cleanReason
+            }
+          : {
+              p_expense_id: entityId,
+              p_reason: cleanReason
+            };
+
+      const originalText =
+        button.textContent || "Restore";
+
+      button.disabled = true;
+      button.textContent = "Restoring...";
+
+      try {
+        const { error } =
+          await client.rpc(
+            rpcName,
+            rpcArgs
+          );
+
+        if (error) {
+          throw error;
+        }
+
+        await loadFinancialRecords();
+        await loadReport();
+
+        window.alert(
+          [
+            `${reference} restored successfully.`,
+            "",
+            entityType === "donation"
+              ? "The original donation and receipt have been reactivated."
+              : "The expense has been returned to its previous valid status.",
+            "",
+            "The restoration has been recorded in the audit trail."
+          ].join("\n")
+        );
+      } catch (error) {
+        console.error(
+          "SRMDC financial restore failed:",
+          error
+        );
+
+        window.alert(
+          error?.message ||
+            "Unable to restore the financial record."
+        );
+      } finally {
+        if (button?.isConnected) {
+          button.disabled = false;
+          button.textContent =
+            originalText;
+        }
+      }
+    };
+
+    const wireFinancialRestoreUi = () => {
+      document
+        .getElementById(
+          "reportsFinancialRecordsPanel"
+        )
+        ?.addEventListener(
+          "click",
+          async (event) => {
+            const button =
+              event.target.closest(
+                "[data-financial-restore-type]"
+              );
+
+            if (!button) {
+              return;
+            }
+
+            event.preventDefault();
+
+            await restoreFinancialRecord(
+              button
+            );
+          }
+        );
+    };
+const wireFinancialCancellationUi =
+      () => {
+        document
+          .getElementById(
+            "reportsManageFinancialRecordsButton"
+          )
+          ?.addEventListener(
+            "click",
+            openFinancialRecords
+          );
+
+        document
+          .getElementById(
+            "reportsFinancialRecordsClose"
+          )
+          ?.addEventListener(
+            "click",
+            closeFinancialRecords
+          );
+
+        document
+          .getElementById(
+            "reportsFinancialRecordsRefresh"
+          )
+          ?.addEventListener(
+            "click",
+            loadFinancialRecords
+          );
+
+        document
+          .getElementById(
+            "reportsFinancialRecordsPanel"
+          )
+          ?.addEventListener(
+            "click",
+            (event) => {
+              const button =
+                event.target.closest(
+                  "[data-financial-cancel-type]"
+                );
+
+              if (button) {
+                openFinancialCancelModal(
+                  button
+                );
+              }
+            }
+          );
+
+        document
+          .getElementById(
+            "reportsFinancialCancelForm"
+          )
+          ?.addEventListener(
+            "submit",
+            submitFinancialCancellation
+          );
+
+        document
+          .querySelectorAll(
+            "[data-financial-cancel-close]"
+          )
+          .forEach((element) => {
+            element.addEventListener(
+              "click",
+              closeFinancialCancelModal
+            );
+          });
+
+        document.addEventListener(
+          "keydown",
+          (event) => {
+            const modal =
+              getFinancialCancelModal();
+
+            if (
+              event.key === "Escape" &&
+              modal &&
+              !modal.hidden
+            ) {
+              closeFinancialCancelModal();
+            }
+          }
+        );
+      };
+// SRMDC_EXPENSE_ENTRY_ADMIN_D1_BEHAVIOR
+    const getExpenseModal = () =>
+      document.getElementById(
+        "reportsExpenseModal"
+      );
+
+    const populateExpenseFundOptions = () => {
+      const expenseFund =
+        document.getElementById(
+          "reportsExpenseFund"
+        );
+
+      const reportFund =
+        document.getElementById(
+          "reportsFundFilter"
+        );
+
+      if (!expenseFund || !reportFund) {
+        return;
+      }
+
+      const options =
+        Array.from(reportFund.options)
+          .filter((option) => option.value)
+          .map((option) => ({
+            value: option.value,
+            label: option.textContent.trim()
+          }));
+
+      expenseFund.innerHTML = `
+        <option value="">
+          Select Fund
+        </option>
+        ${options
+          .map(
+            (option) => `
+              <option
+                value="${escapeHtml(option.value)}"
+              >
+                ${escapeHtml(option.label)}
+              </option>
+            `
+          )
+          .join("")}
+      `;
+    };
+
+    const openExpenseModal = () => {
+      const modal =
+        getExpenseModal();
+
+      const form =
+        document.getElementById(
+          "reportsExpenseForm"
+        );
+
+      const dateInput =
+        document.getElementById(
+          "reportsExpenseDate"
+        );
+
+      if (!modal || !form) {
+        return;
+      }
+
+      form.reset();
+
+      populateExpenseFundOptions();
+
+      if (dateInput) {
+        const now = new Date();
+
+        dateInput.value =
+          new Date(
+            now.getTime() -
+            now.getTimezoneOffset() * 60000
+          )
+            .toISOString()
+            .slice(0, 10);
+      }
+
+      modal.hidden = false;
+
+      document.body.classList.add(
+        "srmdc-expense-modal-open"
+      );
+
+      window.setTimeout(
+        () => dateInput?.focus(),
+        0
+      );
+    };
+
+    const closeExpenseModal = () => {
+      const modal =
+        getExpenseModal();
+
+      if (!modal) {
+        return;
+      }
+
+      modal.hidden = true;
+
+      document.body.classList.remove(
+        "srmdc-expense-modal-open"
+      );
+
+      document
+        .getElementById(
+          "reportsAddExpenseButton"
+        )
+        ?.focus();
+    };
+
+
+    // SRMDC_EXPENSE_SAVE_DRAFT_D3
+    const saveExpenseDraft = async (form) => {
+      if (!form) {
+        return;
+      }
+
+      const saveButton =
+        document.getElementById(
+          "reportsExpenseSaveButton"
+        );
+
+      const expenseDate =
+        document.getElementById(
+          "reportsExpenseDate"
+        )?.value?.trim() || "";
+
+      const fundId =
+        document.getElementById(
+          "reportsExpenseFund"
+        )?.value?.trim() || "";
+
+      const category =
+        document.getElementById(
+          "reportsExpenseCategory"
+        )?.value?.trim() || "";
+
+      const vendorPayee =
+        document.getElementById(
+          "reportsExpenseVendor"
+        )?.value?.trim() || "";
+
+      const description =
+        document.getElementById(
+          "reportsExpensePurpose"
+        )?.value?.trim() || "";
+
+      const amountRaw =
+        document.getElementById(
+          "reportsExpenseAmount"
+        )?.value?.trim() || "";
+
+      const billNumber =
+        document.getElementById(
+          "reportsExpenseBillNumber"
+        )?.value?.trim() || "";
+
+      const billDate =
+        document.getElementById(
+          "reportsExpenseBillDate"
+        )?.value?.trim() || "";
+
+      const notesInput =
+        document.getElementById(
+          "reportsExpenseNotes"
+        )?.value?.trim() || "";
+
+      const amount =
+        Number(amountRaw);
+
+      if (!expenseDate) {
+        window.alert(
+          "Please select the Expense Date."
+        );
+        return;
+      }
+
+      if (!fundId) {
+        window.alert(
+          "Please select the Fund."
+        );
+        return;
+      }
+
+      if (!category) {
+        window.alert(
+          "Please select the Category."
+        );
+        return;
+      }
+
+      if (!description) {
+        window.alert(
+          "Please enter the Purpose / Description."
+        );
+        return;
+      }
+
+      if (
+        !Number.isFinite(amount) ||
+        amount <= 0
+      ) {
+        window.alert(
+          "Please enter a valid Amount greater than zero."
+        );
+        return;
+      }
+
+      const noteParts = [];
+
+      if (vendorPayee) {
+        noteParts.push(
+          `Vendor / Payee: ${vendorPayee}`
+        );
+      }
+
+      if (notesInput) {
+        noteParts.push(notesInput);
+      }
+
+      const notes =
+        noteParts.length > 0
+          ? noteParts.join("\n")
+          : null;
+
+      const summaryLines = [
+        "Create this expense as a Draft?",
+        "",
+        `Date: ${expenseDate}`,
+        `Category: ${category}`,
+        `Amount: ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¹${Number(amount).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+      ];
+
+      if (vendorPayee) {
+        summaryLines.push(
+          `Vendor / Payee: ${vendorPayee}`
+        );
+      }
+
+      summaryLines.push(
+        "",
+        "An official expense number will be created.",
+        "The Trust balance will NOT change.",
+        "Only an actual recorded payment reduces the balance."
+      );
+
+      if (
+        !window.confirm(
+          summaryLines.join("\n")
+        )
+      ) {
+        return;
+      }
+
+      const originalText =
+        saveButton?.textContent ||
+        "Save Draft";
+
+      if (saveButton) {
+        saveButton.disabled = true;
+        saveButton.textContent =
+          "Saving Draft...";
+      }
+
+      try {
+        const { data, error } =
+          await client.rpc(
+            "create_srmdc_expense",
+            {
+              p_expense_date:
+                expenseDate,
+
+              p_fund_id:
+                fundId,
+
+              p_vendor_id:
+                null,
+
+              p_expense_category:
+                category,
+
+              p_description:
+                description,
+
+              p_amount:
+                amount,
+
+              p_bill_number:
+                billNumber || null,
+
+              p_bill_date:
+                billDate || null,
+
+              p_notes:
+                notes
+            }
+          );
+
+        if (error) {
+          throw error;
+        }
+
+        const result =
+          Array.isArray(data)
+            ? data[0]
+            : data;
+
+        const expenseNumber =
+          result?.expense_number ||
+          "Expense draft";
+
+        closeExpenseModal();
+
+        await loadFinancialRecords();
+
+        window.alert(
+          `${expenseNumber} created successfully as Draft.\n\n` +
+          "No payment has been recorded.\n" +
+          "Available Balance has not changed."
+        );
+      }
+      catch (error) {
+        console.error(
+          "SRMDC expense draft creation failed:",
+          error
+        );
+
+        window.alert(
+          "Unable to save the expense draft.\n\n" +
+          (
+            error?.message ||
+            "Please try again."
+          )
+        );
+      }
+      finally {
+        if (saveButton) {
+          saveButton.disabled = false;
+          saveButton.textContent =
+            originalText;
+        }
+      }
+    };
+    const wireExpenseEntryUi = () => {
+      const addButton =
+        document.getElementById(
+          "reportsAddExpenseButton"
+        );
+
+      const closeButton =
+        document.getElementById(
+          "reportsExpenseCloseButton"
+        );
+
+      const cancelButton =
+        document.getElementById(
+          "reportsExpenseCancelButton"
+        );
+
+      const form =
+        document.getElementById(
+          "reportsExpenseForm"
+        );
+
+      const modal =
+        getExpenseModal();
+
+      if (
+        !addButton ||
+        !form ||
+        !modal
+      ) {
+        return;
+      }
+
+      addButton.addEventListener(
+        "click",
+        openExpenseModal
+      );
+
+      closeButton?.addEventListener(
+        "click",
+        closeExpenseModal
+      );
+
+      cancelButton?.addEventListener(
+        "click",
+        closeExpenseModal
+      );
+
+      modal
+        .querySelectorAll(
+          "[data-expense-modal-close]"
+        )
+        .forEach((element) => {
+          element.addEventListener(
+            "click",
+            closeExpenseModal
+          );
+        });
+
+      form.addEventListener(
+        "submit",
+        async (event) => {
+          event.preventDefault();
+
+          await saveExpenseDraft(form);
+        }
+      );
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+          if (
+            event.key === "Escape" &&
+            !modal.hidden
+          ) {
+            closeExpenseModal();
+          }
+        }
+      );
+    };
+    const buildUi = () => {
+      const moduleGrid =
+        document.querySelector(
+          ".module-grid"
+        );
+
+      if (!moduleGrid) {
+        throw new Error(
+          "Admin module grid not found."
+        );
+      }
+
+      if (
+        !document.getElementById(cardId)
+      ) {
+        const card =
+          document.createElement(
+            "button"
+          );
+
+        card.type = "button";
+        card.id = cardId;
+        card.className =
+          "module-card";
+
+        card.innerHTML = `
+          <span class="module-icon">
+            &#128202;
+          </span>
+
+          <strong>
+            Reports &amp; Analytics
+          </strong>
+
+          <span>
+            Receipts, expenses, balances
+            and live Trust statement
+          </span>
+        `;
+
+        const trustSettingsCard =
+          document.getElementById(
+            "trustSettingsCard"
+          );
+
+        if (trustSettingsCard) {
+          moduleGrid.insertBefore(
+            card,
+            trustSettingsCard
+          );
+        }
+        else {
+          moduleGrid.appendChild(
+            card
+          );
+        }
+
+        card.addEventListener(
+          "click",
+          open
+        );
+      }
+
+      if (getView()) {
+        return;
+      }
+
+      const main =
+        document.querySelector(
+          "main"
+        );
+
+      if (!main) {
+        throw new Error(
+          "Admin main container not found."
+        );
+      }
+
+      const dates =
+        currentFinancialYearDates();
+
+      const section =
+        document.createElement(
+          "section"
+        );
+
+      section.id = viewId;
+
+      section.className =
+        "dashboard hidden";
+
+      section.innerHTML = `
+        <header class="dashboard-header">
+
+          <div>
+            <p class="eyebrow">
+              SRMDC TRUST
+            </p>
+
+            <h1>
+              Reports &amp; Analytics
+            </h1>
+
+            <p class="muted">
+              Live financial position from
+              official receipts and actual
+              expense payments.
+            </p>
+          </div>
+
+          <div class="header-actions">
+
+                        <!-- SRMDC_EXPENSE_ENTRY_ADMIN_D1 -->
+            <button
+              type="button"
+              id="reportsAddExpenseButton"
+              class="primary-button srmdc-expense-add-button"
+            >
+              + Add Expense
+            </button>
+            <!-- SRMDC_FINANCIAL_CANCELLATION_ADMIN_D2C_BUTTON -->
+            <button
+              type="button"
+              id="reportsManageFinancialRecordsButton"
+              class="secondary-button"
+            >
+              Manage Records
+            </button>
+<button
+              type="button"
+              id="reportsAnalyticsRefreshButton"
+              class="primary-button"
+            >
+              Refresh
+            </button>
+
+            <button
+              type="button"
+              id="reportsAnalyticsBackButton"
+              class="secondary-button"
+            >
+              Back to Dashboard
+            </button>
+
+          </div>
+
+        </header>
+
+        <div class="srmdc-reports-toolbar">
+
+          <label>
+            From
+
+            <input
+              id="reportsFromDate"
+              type="date"
+              value="${dates.from}"
+            >
+          </label>
+
+          <label>
+            To
+
+            <input
+              id="reportsToDate"
+              type="date"
+              value="${dates.to}"
+            >
+          </label>
+
+          <label>
+            Fund
+
+            <select id="reportsFundFilter">
+              <option value="">
+                All Funds
+              </option>
+            </select>
+          </label>
+
+          <div
+            class="srmdc-reports-toolbar-actions"
+          >
+
+            <button
+              type="button"
+              id="reportsApplyButton"
+              class="primary-button"
+            >
+              Apply
+            </button>
+
+            <button
+              type="button"
+              id="reportsResetButton"
+              class="secondary-button"
+            >
+              Current FY
+            </button>
+
+          </div>
+
+        </div>
+
+        <div
+          id="reportsAnalyticsMessage"
+          class="srmdc-reports-message"
+          aria-live="polite"
+        ></div>
+
+        <div class="srmdc-reports-summary">
+
+          <article
+            class="srmdc-report-summary-card"
+          >
+            <span>
+              Opening Balance
+            </span>
+
+            <strong
+              id="reportsOpeningBalance"
+            >
+              ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹0.00
+            </strong>
+          </article>
+
+          <article
+            class="
+              srmdc-report-summary-card
+              is-income
+            "
+          >
+            <span>
+              Total Receipts
+            </span>
+
+            <strong
+              id="reportsTotalReceipts"
+            >
+              ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹0.00
+            </strong>
+
+            <small>
+              <b id="reportsReceiptCount">
+                0
+              </b>
+              official receipts
+            </small>
+          </article>
+
+          <article
+            class="
+              srmdc-report-summary-card
+              is-expense
+            "
+          >
+            <span>
+              Total Expenses
+            </span>
+
+            <strong
+              id="reportsTotalExpenses"
+            >
+              ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹0.00
+            </strong>
+
+            <small>
+              <b id="reportsExpenseCount">
+                0
+              </b>
+              payments
+            </small>
+          </article>
+
+          <article
+            class="
+              srmdc-report-summary-card
+              is-balance
+            "
+          >
+            <span>
+              Available Balance
+            </span>
+
+            <strong
+              id="reportsClosingBalance"
+            >
+              ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹0.00
+            </strong>
+          </article>
+
+        </div>
+
+        <section
+          class="srmdc-reports-block"
+        >
+
+          <div
+            class="srmdc-reports-block-head"
+          >
+
+            <div>
+              <p class="eyebrow">
+                FUND POSITION
+              </p>
+
+              <h2>
+                Fund-wise Balance
+              </h2>
+            </div>
+
+            <span class="muted">
+              Lifetime through selected
+              To date
+            </span>
+
+          </div>
+
+          <div
+            id="reportsFundBalances"
+            class="srmdc-report-funds"
+          ></div>
+
+        </section>
+
+        <section
+          class="srmdc-reports-block"
+        >
+
+          <div
+            class="srmdc-reports-block-head"
+          >
+
+            <div>
+              <p class="eyebrow">
+                LIVE STATEMENT
+              </p>
+
+              <h2>
+                Receipts &amp; Expenses
+              </h2>
+            </div>
+
+            <span
+              id="reportsGeneratedAt"
+              class="muted"
+            ></span>
+
+          </div>
+          <div
+            class="srmdc-statement-controls"
+          >
+
+            <div
+              class="srmdc-statement-search-wrap"
+            >
+              <label
+                for="reportsStatementSearch"
+              >
+                Search statement
+              </label>
+
+              <input
+                id="reportsStatementSearch"
+                type="search"
+                placeholder="Search donor, vendor, receipt, reference, fund, purpose..."
+                autocomplete="off"
+              >
+            </div>
+
+            <label>
+              Type
+
+              <select
+                id="reportsStatementTypeFilter"
+              >
+                <option value="">
+                  All Types
+                </option>
+
+                <option value="receipt">
+                  Receipts
+                </option>
+
+                <option value="expense">
+                  Expenses
+                </option>
+              </select>
+            </label>
+
+            <label>
+              Mode
+
+              <select
+                id="reportsStatementModeFilter"
+              >
+                <option value="">
+                  All Modes
+                </option>
+              </select>
+            </label>
+
+            <label>
+              Status
+
+              <select
+                id="reportsStatementStatusFilter"
+              >
+                <option value="">
+                  All Statuses
+                </option>
+              </select>
+            </label>
+
+            <button
+              type="button"
+              id="reportsStatementClearFilters"
+              class="secondary-button"
+            >
+              Clear Filters
+            </button>
+
+          </div>
+
+          <!-- SRMDC_REPORTS_STAGE_C2_VIEW_CONTROLS -->
+          <div
+            class="srmdc-statement-view-controls"
+            id="reportsStatementViewControls"
+          >
+            <div
+              class="srmdc-statement-view-control"
+            >
+              <label
+                for="reportsStatementViewPreset"
+              >
+                View
+              </label>
+
+              <select
+                id="reportsStatementViewPreset"
+                aria-label="Statement view preset"
+              >
+                <option
+                  value="standard"
+                  selected
+                >
+                  Standard Statement
+                </option>
+
+                <option value="bank_reconciliation">
+                  Bank Reconciliation
+                </option>
+
+                <option value="donation_register">
+                  Donation Register
+                </option>
+
+                <option value="expense_register">
+                  Expense Register
+                </option>
+
+                <option value="fund_ledger">
+                  Fund Ledger
+                </option>
+
+                <option value="custom">
+                  Custom
+                </option>
+              </select>
+            </div>
+
+            <div
+              class="srmdc-statement-columns-wrap"
+            >
+              <span
+                class="srmdc-statement-view-label"
+              >
+                Columns
+              </span>
+
+              <button
+                type="button"
+                id="reportsStatementColumnsButton"
+                class="secondary-button srmdc-statement-columns-button"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Customize Columns
+              </button>
+
+              <!-- SRMDC_REPORTS_STAGE_C3_3_CUSTOM_COLUMNS_PANEL -->
+              <div
+                id="reportsStatementColumnsPanel"
+                class="srmdc-statement-columns-panel"
+                hidden
+              >
+                <div class="srmdc-statement-columns-panel-head">
+                  <strong>Choose columns</strong>
+
+                  <button
+                    type="button"
+                    id="reportsStatementColumnsClose"
+                    class="srmdc-statement-columns-close"
+                    aria-label="Close column selector"
+                  >
+                    &times;
+                  </button>
+                </div>
+
+                <div
+                  id="reportsStatementColumnsList"
+                  class="srmdc-statement-columns-list"
+                ></div>
+
+                <div class="srmdc-statement-columns-help">
+                  Select at least one column.
+                </div>
+              </div></div>
+
+
+          </div>
+          <div
+            id="reportsStatementFilteredSummary"
+            class="srmdc-statement-filter-summary"
+          >
+            <strong>0</strong>
+            matching transactions
+          </div>
+
+          <div
+            class="srmdc-statement-scroll"
+          >
+
+            <table
+              class="srmdc-statement-table"
+            >
+
+              <thead>
+                <tr id="reportsStatementHeaderRow">
+                  <!-- SRMDC_REPORTS_STAGE_B2_SORTABLE_HEADERS -->
+                  <!-- SRMDC_REPORTS_STAGE_C3_1_DYNAMIC_HEADER -->
+                </tr>
+              </thead>
+
+              <tbody
+                id="reportsStatementBody"
+              >
+                <tr>
+                  <td
+                    colspan="10"
+                    class="srmdc-reports-empty-cell"
+                  >
+                    Open Reports to load
+                    the live statement.
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+            <!-- SRMDC_REPORTS_STAGE_B2_PAGINATION_UI -->
+            <div
+              class="srmdc-statement-pagination"
+              id="reportsStatementPagination"
+            >
+              <div
+                class="srmdc-statement-page-size"
+              >
+                <label
+                  for="reportsStatementPageSize"
+                >
+                  Rows per page
+                </label>
+
+                <select
+                  id="reportsStatementPageSize"
+                  aria-label="Rows per page"
+                >
+                  <option value="25" selected>
+                    25
+                  </option>
+                  <option value="50">
+                    50
+                  </option>
+                  <option value="100">
+                    100
+                  </option>
+                  <option value="all">
+                    All
+                  </option>
+                </select>
+              </div>
+
+              <div
+                class="srmdc-statement-page-info"
+                id="reportsStatementPageInfo"
+                aria-live="polite"
+              >
+                Showing 0 of 0 transactions
+              </div>
+
+              <div
+                class="srmdc-statement-page-nav"
+                id="reportsStatementPageNav"
+                aria-label="Statement pagination"
+              ></div>
+            </div>
+
+          </div>
+
+        </section>
+
+                    <!-- SRMDC_FINANCIAL_CANCELLATION_ADMIN_D2C_UI -->
+          <section
+            id="reportsFinancialRecordsPanel"
+            class="srmdc-financial-records-panel"
+            hidden
+          >
+            <div class="srmdc-financial-records-heading">
+              <div>
+                <p class="eyebrow">
+                  FINANCIAL CONTROL
+                </p>
+
+                <h3>Financial Records</h3>
+
+                <p class="muted">
+                  Cancel duplicate, test or incorrect records without deleting Trust history.
+                </p>
+              </div>
+
+              <div class="srmdc-financial-records-actions">
+                <button
+                  type="button"
+                  id="reportsFinancialRecordsRefresh"
+                  class="secondary-button"
+                >
+                  Refresh
+                </button>
+
+                <button
+                  type="button"
+                  id="reportsFinancialRecordsClose"
+                  class="secondary-button"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+
+            <p
+              id="reportsFinancialRecordsMessage"
+              class="srmdc-financial-records-message"
+            ></p>
+
+            <div class="srmdc-financial-record-group">
+              <h4>Expenses</h4>
+
+              <p class="muted">
+                Draft and Approved unpaid expenses may be cancelled. Paid or partially paid expenses are protected.
+              </p>
+
+              <div class="srmdc-report-table-wrap">
+                <table class="srmdc-report-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Expense No.</th>
+                      <th>Particulars</th>
+                      <th>Fund</th>
+                      <th>Amount</th>
+                      <th>Amount Paid</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="reportsExpenseRecordsBody">
+                    <tr>
+                      <td colspan="8">
+                        Loading is available through Manage Records.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="srmdc-financial-record-group">
+              <h4>Donations &amp; Receipts</h4>
+
+              <p class="muted">
+                Cancelling a donation also voids its active official receipt. Receipt numbers are never reused.
+              </p>
+
+              <div class="srmdc-report-table-wrap">
+                <table class="srmdc-report-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Receipt / Reference</th>
+                      <th>Type</th>
+                      <th>Fund</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="reportsDonationRecordsBody">
+                    <tr>
+                      <td colspan="7">
+                        Loading is available through Manage Records.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- SRMDC_FINANCIAL_CANCELLATION_ADMIN_D2C_MODAL -->
+          <div
+            id="reportsFinancialCancelModal"
+            class="srmdc-financial-cancel-modal"
+            hidden
+          >
+            <div
+              class="srmdc-financial-cancel-backdrop"
+              data-financial-cancel-close
+            ></div>
+
+            <div
+              class="srmdc-financial-cancel-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="reportsFinancialCancelTitle"
+            >
+              <header class="srmdc-financial-cancel-header">
+                <div>
+                  <p class="eyebrow">
+                    SRMDC TRUST
+                  </p>
+
+                  <h2 id="reportsFinancialCancelTitle">
+                    Cancel Financial Record
+                  </h2>
+
+                  <p>
+                    <strong id="reportsFinancialCancelReference">
+                      Selected record
+                    </strong>
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  class="srmdc-expense-close-button"
+                  data-financial-cancel-close
+                  aria-label="Close"
+                >
+                  &times;
+                </button>
+              </header>
+
+              <form
+                id="reportsFinancialCancelForm"
+                novalidate
+              >
+                <div class="srmdc-financial-cancel-warning">
+                  <strong>Important</strong>
+
+                  <p id="reportsFinancialCancelWarning"></p>
+                </div>
+
+                <label>
+                  Cancellation Reason
+
+                  <select
+                    id="reportsFinancialCancelReason"
+                    required
+                  >
+                    <option value="">
+                      Select reason
+                    </option>
+
+                    <option value="Duplicate">
+                      Duplicate
+                    </option>
+
+                    <option value="Test Entry">
+                      Test Entry
+                    </option>
+
+                    <option value="Incorrect Entry">
+                      Incorrect Entry
+                    </option>
+
+                    <option value="Other">
+                      Other
+                    </option>
+                  </select>
+                </label>
+
+                <label>
+                  Details
+
+                  <textarea
+                    id="reportsFinancialCancelDetails"
+                    rows="3"
+                    placeholder="Optional for standard reasons; required for Other."
+                  ></textarea>
+                </label>
+
+                <footer class="srmdc-financial-cancel-footer">
+                  <button
+                    type="button"
+                    class="secondary-button"
+                    data-financial-cancel-close
+                  >
+                    Keep Record
+                  </button>
+
+                  <button
+                    type="submit"
+                    id="reportsFinancialCancelSubmit"
+                    class="srmdc-danger-button"
+                  >
+                    Confirm Cancellation
+                  </button>
+                </footer>
+              </form>
+            </div>
+          </div>
+<!-- SRMDC_EXPENSE_ENTRY_ADMIN_D1_MODAL -->
+          <div
+            id="reportsExpenseModal"
+            class="srmdc-expense-modal"
+            hidden
+          >
+            <div
+              class="srmdc-expense-modal-backdrop"
+              data-expense-modal-close
+            ></div>
+
+            <section
+              class="srmdc-expense-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="reportsExpenseModalTitle"
+            >
+              <header class="srmdc-expense-dialog-header">
+
+                <div>
+                  <p class="eyebrow">
+                    SRMDC TRUST
+                  </p>
+
+                  <h2 id="reportsExpenseModalTitle">
+                    Add Expense
+                  </h2>
+
+                  <p class="muted">
+                    Prepare a Trust expense draft.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  id="reportsExpenseCloseButton"
+                  class="srmdc-expense-close-button"
+                  aria-label="Close Add Expense"
+                >
+                  &times;
+                </button>
+
+              </header>
+
+              <div class="srmdc-expense-stage-banner">
+                <strong>
+                  Draft preparation only
+                </strong>
+
+                <span>
+                  No expense number or accounting entry
+                  is created from this screen yet.
+                </span>
+              </div>
+
+              <form
+                id="reportsExpenseForm"
+                class="srmdc-expense-form"
+                novalidate
+              >
+
+                <div class="srmdc-expense-section">
+
+                  <div class="srmdc-expense-section-heading">
+                    <div>
+                      <h3>Expense Details</h3>
+
+                      <p>
+                        Enter the bill or expenditure
+                        information.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="srmdc-expense-form-grid">
+
+                    <label>
+                      <span>
+                        Expense Date
+                        <strong>*</strong>
+                      </span>
+
+                      <input
+                        id="reportsExpenseDate"
+                        name="expense_date"
+                        type="date"
+                        required
+                      >
+                    </label>
+
+                    <label>
+                      <span>
+                        Fund
+                        <strong>*</strong>
+                      </span>
+
+                      <select
+                        id="reportsExpenseFund"
+                        name="fund_id"
+                        required
+                      >
+                        <option value="">
+                          Select Fund
+                        </option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>Category</span>
+
+                      <select
+                        id="reportsExpenseCategory"
+                        name="category"
+                      >
+                        <option value="">
+                          Select Category
+                        </option>
+
+                        <option value="temple_materials">
+                          Temple Materials
+                        </option>
+
+                        <option value="construction">
+                          Construction
+                        </option>
+
+                        <option value="religious_activity">
+                          Religious Activity
+                        </option>
+
+                        <option value="charitable_activity">
+                          Charitable Activity
+                        </option>
+
+                        <option value="utilities">
+                          Utilities
+                        </option>
+
+                        <option value="maintenance">
+                          Maintenance
+                        </option>
+
+                        <option value="professional_fees">
+                          Professional Fees
+                        </option>
+
+                        <option value="administration">
+                          Administration
+                        </option>
+
+                        <option value="travel">
+                          Travel
+                        </option>
+
+                        <option value="other">
+                          Other
+                        </option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>Vendor / Payee</span>
+
+                      <input
+                        id="reportsExpensePayee"
+                        name="payee"
+                        type="text"
+                        maxlength="150"
+                        placeholder="Name of vendor or payee"
+                      >
+                    </label>
+
+                    <label class="srmdc-expense-field-wide">
+                      <span>
+                        Purpose / Description
+                        <strong>*</strong>
+                      </span>
+
+                      <textarea
+                        id="reportsExpensePurpose"
+                        name="purpose"
+                        rows="3"
+                        maxlength="500"
+                        required
+                        placeholder="What was this expense for?"
+                      ></textarea>
+                    </label>
+
+                    <label>
+                      <span>
+                        Amount
+                        <strong>*</strong>
+                      </span>
+
+                      <div class="srmdc-expense-amount-field">
+                        <span>&#8377;</span>
+
+                        <input
+                          id="reportsExpenseAmount"
+                          name="amount"
+                          type="number"
+                          min="0.01"
+                          step="0.01"
+                          inputmode="decimal"
+                          placeholder="0.00"
+                          required
+                        >
+                      </div>
+                    </label>
+
+                    <label>
+                      <span>Bill / Invoice Number</span>
+
+                      <input
+                        id="reportsExpenseBillNumber"
+                        name="bill_number"
+                        type="text"
+                        maxlength="100"
+                        placeholder="Optional"
+                      >
+                    </label>
+
+                    <label>
+                      <span>Bill Date</span>
+
+                      <input
+                        id="reportsExpenseBillDate"
+                        name="bill_date"
+                        type="date"
+                      >
+                    </label>
+
+                    <label class="srmdc-expense-field-wide">
+                      <span>Notes</span>
+
+                      <textarea
+                        id="reportsExpenseNotes"
+                        name="notes"
+                        rows="2"
+                        maxlength="500"
+                        placeholder="Optional internal notes"
+                      ></textarea>
+                    </label>
+
+                  </div>
+                </div>
+
+                <div class="srmdc-expense-section">
+
+                  <div class="srmdc-expense-section-heading">
+
+                    <div>
+                      <h3>Payment</h3>
+
+                      <p>
+                        Payment is recorded separately
+                        after approval.
+                      </p>
+                    </div>
+
+                    <span class="srmdc-expense-status-chip">
+                      Not Paid
+                    </span>
+
+                  </div>
+
+                  <div class="srmdc-expense-payment-note">
+
+                    <strong>
+                      Available Balance will not change now.
+                    </strong>
+
+                    <span>
+                      Only an actual recorded payment will
+                      reduce the Trust balance and appear as
+                      Expense (-) in the Live Statement.
+                    </span>
+
+                  </div>
+                </div>
+
+                <div
+                  id="reportsExpenseUiMessage"
+                  class="srmdc-expense-ui-message"
+                  aria-live="polite"
+                ></div>
+
+                <footer class="srmdc-expense-dialog-actions">
+
+                  <button
+                    type="button"
+                    id="reportsExpenseCancelButton"
+                    class="secondary-button"
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    type="submit"
+                    id="reportsExpenseSaveButton"
+                    class="primary-button"
+
+                    title="Create this expense as a Draft"
+                  >
+                    Save Draft
+                  </button>
+
+                </footer>
+
+              </form>
+            </section>
+          </div>
+      `;
+
+      main.appendChild(
+        section
+      );
+
+      document
+        .getElementById(
+          "reportsAnalyticsBackButton"
+        )
+        ?.addEventListener(
+          "click",
+          showDashboardView
+        );
+
+      document
+        .getElementById(
+          "reportsAnalyticsRefreshButton"
+        )
+        ?.addEventListener(
+          "click",
+          loadReport
+        );
+
+      document
+        .getElementById(
+          "reportsApplyButton"
+        )
+        ?.addEventListener(
+          "click",
+          loadReport
+        );
+
+      document
+        .getElementById(
+          "reportsResetButton"
+        )
+        ?.addEventListener(
+          "click",
+          resetFilters
+        );
+      document
+        .getElementById(
+          "reportsStatementSearch"
+        )
+        ?.addEventListener(
+          "input",
+          (event) => {
+            statementFilters.search =
+              event.target.value;
+
+            applyStatementFilters();
+          }
+        );
+
+      document
+        .getElementById(
+          "reportsStatementTypeFilter"
+        )
+        ?.addEventListener(
+          "change",
+          (event) => {
+            statementFilters.type =
+              event.target.value;
+
+            applyStatementFilters();
+          }
+        );
+
+      document
+        .getElementById(
+          "reportsStatementModeFilter"
+        )
+        ?.addEventListener(
+          "change",
+          (event) => {
+            statementFilters.mode =
+              event.target.value;
+
+            applyStatementFilters();
+          }
+        );
+
+      document
+        .getElementById(
+          "reportsStatementStatusFilter"
+        )
+        ?.addEventListener(
+          "change",
+          (event) => {
+            statementFilters.status =
+              event.target.value;
+
+            applyStatementFilters();
+          }
+        );
+
+      document
+        .getElementById(
+          "reportsStatementClearFilters"
+        )
+        ?.addEventListener(
+          "click",
+          clearStatementFilters
+        );
+      wireStatementFilterPageReset();
+      wireStatementViewPresetEvents();
+      wireStatementCustomColumnEvents();
+      wireExpenseEntryUi();
+            document.addEventListener(
+        "click",
+        async (event) => {
+          const approveButton =
+            event.target.closest(
+              "[data-expense-approve-id]"
+            );
+
+          if (!approveButton) {
+            return;
+          }
+
+          event.preventDefault();
+
+          await approveExpenseFromFinancialRecords(
+            approveButton
+          );
+        }
+      );
+
+      wireFinancialViewEditUi();
+    wireFinancialRestoreUi();
+      wireFinancialCancellationUi();
+      wireStatementInteractiveEvents();
+    };
+
+    const init = () => {
+      buildUi();
+    };
+
+    return Object.freeze({
+      init,
+      open,
+      reload: loadReport
+    });
+
+  })();
 
   // START APPLICATION
   // ============================================================
@@ -7290,8 +13100,12 @@
   // SRMDC_PROFILE_LINK_ADMIN_INIT_V1_1
   srmdcProfileLinkAdmin.init();
 
-  // SRMDC_TRUST_SETTINGS_ADMIN_INIT_V1_1
+    // SRMDC_TRUST_SETTINGS_ADMIN_INIT_V1_1
   srmdcTrustSettingsAdmin.init();
+
+  // SRMDC_REPORTS_ANALYTICS_ADMIN_INIT_V1
+  srmdcReportsAnalyticsAdmin.init();
+
   initialize();
 
 })();
