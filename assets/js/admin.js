@@ -137,6 +137,10 @@
       }
     );
 
+  // Shared authenticated Admin client.
+  // Village Management must reuse this instance.
+  window.srmdcSupabase = client;
+
   async function loadAuthorizedDashboard(user) {
     currentAdminUser = user;
 
@@ -743,6 +747,10 @@
 
           if (name === "Trust Profile") {
             await openTrustProfile();
+            return;
+          }
+
+          if (name === "Village Management") {
             return;
           }
 

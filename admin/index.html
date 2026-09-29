@@ -19,6 +19,10 @@
     rel="stylesheet"
     href="../assets/css/admin.css?v=receipt-print-20260924"
   >
+  <link
+    rel="stylesheet"
+    href="../assets/css/village-admin.css?v=20260927"
+  >
 </head>
 
 <body>
@@ -232,6 +236,18 @@
           <span class="module-icon">&#9776;</span>
           <strong>Audit Log</strong>
           <span>Review administrative changes</span>
+        </button>
+        <button
+          class="module-card"
+          data-module="Village Management"
+          id="villageManagementCard"
+          type="button"
+        >
+          <span class="module-icon">&#127968;</span>
+          <strong>Village Management</strong>
+          <span>
+            Mana Bodabanda and assigned village portals
+          </span>
         </button>
 
       </div>
@@ -589,6 +605,1341 @@
 
     </section>
 
+
+    <section
+      id="villageAdminView"
+      class="editor-view village-admin-view hidden"
+    >
+
+      <header class="village-admin-header">
+
+        <div>
+          <button
+            id="villageAdminBack"
+            class="village-admin-back"
+            type="button"
+          >
+            &larr; Back to Dashboard
+          </button>
+
+          <p class="village-admin-kicker">
+            VILLAGE PORTAL MANAGEMENT
+          </p>
+
+          <h2 id="villageAdminTitle">
+            Mana Bodabanda
+          </h2>
+
+          <p
+            id="villageAdminSubtitle"
+            class="muted"
+          >
+            Village Information Portal
+          </p>
+        </div>
+
+        <div class="village-admin-selector-wrap">
+          <label for="villageAdminSelector">
+            Village
+          </label>
+
+          <select id="villageAdminSelector">
+            <option value="">
+              Loading villages...
+            </option>
+          </select>
+        </div>
+
+      </header>
+
+      <div
+        id="villageAdminMessage"
+        class="village-admin-message hidden"
+      ></div>
+
+      <nav
+        class="village-admin-tabs"
+        aria-label="Village Management"
+      >
+        <button
+          type="button"
+          class="village-admin-tab active"
+          data-village-tab="overview"
+        >
+          Overview
+        </button>
+
+        <button
+          type="button"
+          class="village-admin-tab"
+          data-village-tab="activities"
+        >
+          Activities
+        </button>
+
+        <button
+          type="button"
+          class="village-admin-tab"
+          data-village-tab="donations"
+        >
+          Donors
+        </button>
+
+        <button
+          type="button"
+          class="village-admin-tab"
+          data-village-tab="expenses"
+        >
+          Expenses
+        </button>
+
+        <button
+          type="button"
+          class="village-admin-tab"
+          data-village-tab="temple"
+        >
+          Temple Fund
+        </button>
+
+        <button
+          type="button"
+          class="village-admin-tab"
+          data-village-tab="documents"
+        >
+          Documents
+        </button>
+
+        <button
+          type="button"
+          class="village-admin-tab"
+          data-village-tab="gallery"
+        >
+          Gallery
+        </button>
+
+        <button
+          type="button"
+          class="village-admin-tab"
+          data-village-tab="settings"
+        >
+          Settings
+        </button>
+      </nav>
+
+      <!-- OVERVIEW -->
+
+      <section
+        class="village-admin-panel active"
+        data-village-panel="overview"
+      >
+
+        <div class="village-admin-toolbar">
+          <div>
+            <p class="village-admin-kicker">
+              VILLAGE DASHBOARD
+            </p>
+            <h3>Overview</h3>
+          </div>
+
+          <a
+            class="village-admin-primary"
+            href="../village/"
+            target="_blank"
+            rel="noopener"
+          >
+            Open Village Portal
+          </a>
+        </div>
+
+        <div class="village-admin-summary">
+
+          <button
+            type="button"
+            data-open-village-tab="donations"
+          >
+            <span>Total Committed</span>
+            <strong id="vaCommitted">&#8377;0</strong>
+            <small>View donors</small>
+          </button>
+
+          <button
+            type="button"
+            data-open-village-tab="donations"
+          >
+            <span>Total Received</span>
+            <strong id="vaReceived">&#8377;0</strong>
+            <small>View payments</small>
+          </button>
+
+          <button
+            type="button"
+            data-open-village-tab="expenses"
+          >
+            <span>Total Expenses</span>
+            <strong id="vaExpenses">&#8377;0</strong>
+            <small>View expenses</small>
+          </button>
+
+          <button
+            type="button"
+            data-open-village-tab="temple"
+          >
+            <span>Temple Fund Available</span>
+            <strong id="vaTempleFund">&#8377;0</strong>
+            <small>View Temple Fund</small>
+          </button>
+
+        </div>
+
+        <div class="village-admin-module-grid">
+
+          <button
+            type="button"
+            data-open-village-tab="activities"
+          >
+            <strong>Village Activities</strong>
+            <span>
+              Activity-wise funds, expenses and balances
+            </span>
+          </button>
+
+          <button
+            type="button"
+            data-open-village-tab="donations"
+          >
+            <strong>&#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33;&#x0C3E;&#x0C32; &#x0C38;&#x0C2E;&#x0C3E;&#x0C1A;&#x0C3E;&#x0C30;&#x0C02;</strong>
+            <span>
+              Commitments, payments and pending amounts
+            </span>
+          </button>
+
+          <button
+            type="button"
+            data-open-village-tab="expenses"
+          >
+            <strong>Expenses</strong>
+            <span>
+              Expense register, bills and payment status
+            </span>
+          </button>
+
+          <button
+            type="button"
+            data-open-village-tab="temple"
+          >
+            <strong>Temple Fund</strong>
+            <span>
+              Fund ledger, accounts and repayments
+            </span>
+          </button>
+
+          <button
+            type="button"
+            data-open-village-tab="documents"
+          >
+            <strong>Village Documents</strong>
+            <span>
+              Publish and manage village documents
+            </span>
+          </button>
+
+          <button
+            type="button"
+            data-open-village-tab="gallery"
+          >
+            <strong>Event Gallery</strong>
+            <span>
+              Event-wise photos and videos
+            </span>
+          </button>
+
+        </div>
+
+      </section>
+
+      <!-- ACTIVITIES -->
+
+      <section
+        class="village-admin-panel"
+        data-village-panel="activities"
+      >
+        <div class="village-admin-toolbar">
+          <div>
+            <p class="village-admin-kicker">
+              VILLAGE ACTIVITIES
+            </p>
+            <h3>Activities</h3>
+          </div>
+
+          <div class="village-admin-actions">
+            <button type="button">+ New Activity</button>
+            <button type="button">Import</button>
+            <button type="button">Export</button>
+          </div>
+        </div>
+
+        <div class="village-admin-placeholder">
+          <strong>Activities Manager</strong>
+          <p>
+            Activity-wise funds, expenses and balances
+            will be managed here.
+          </p>
+        </div>
+      </section>
+      <!-- DONORS -->
+
+      <section
+        class="village-admin-panel"
+        data-village-panel="donations"
+      >
+        <div class="village-admin-toolbar">
+          <div>
+            <p class="village-admin-kicker">
+              &#x0C17;&#x0C4D;&#x0C30;&#x0C3E;&#x0C2E; &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33;&#x0C3E;&#x0C32;&#x0C41;
+            </p>
+
+            <h3>&#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33;&#x0C3E;&#x0C32; &#x0C38;&#x0C2E;&#x0C3E;&#x0C1A;&#x0C3E;&#x0C30;&#x0C02;</h3>
+
+            <p class="muted">
+              &#x0C39;&#x0C3E;&#x0C2E;&#x0C40; &#x0C07;&#x0C1A;&#x0C4D;&#x0C1A;&#x0C3F;&#x0C28; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02;, &#x0C28;&#x0C3F;&#x0C1C;&#x0C02;&#x0C17;&#x0C3E; &#x0C05;&#x0C02;&#x0C26;&#x0C3F;&#x0C28; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02; &#x0C35;&#x0C47;&#x0C30;&#x0C4D;&#x0C35;&#x0C47;&#x0C30;&#x0C41;&#x0C17;&#x0C3E; &#x0C32;&#x0C46;&#x0C15;&#x0C4D;&#x0C15;&#x0C3F;&#x0C02;&#x0C1A;&#x0C2C;&#x0C21;&#x0C24;&#x0C3E;&#x0C2F;&#x0C3F;.
+            </p>
+          </div>
+
+          <div class="village-admin-actions">
+            <button
+              id="villageNewCommitmentButton"
+              type="button"
+              onclick="document.getElementById('villageDonationFormPanel').classList.remove('hidden'); document.getElementById('villageDonationDonorName').focus();"
+            >
+              + &#x0C15;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24; &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33;&#x0C02; &#x0C28;&#x0C2E;&#x0C4B;&#x0C26;&#x0C41;
+            </button>
+
+            <button
+              id="villageRecordPaymentButton"
+              type="button"
+              class="secondary-button"
+            >
+              &#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C2A;&#x0C41; &#x0C28;&#x0C2E;&#x0C4B;&#x0C26;&#x0C41;
+            </button>
+
+            <button
+              id="villageDonorImportButton"
+              type="button"
+              class="secondary-button"
+            >
+              &#x0C26;&#x0C3F;&#x0C17;&#x0C41;&#x0C2E;&#x0C24;&#x0C3F;
+            </button>
+
+            <button
+              id="villageDonorExportButton"
+              type="button"
+              class="secondary-button"
+            >
+              &#x0C0E;&#x0C17;&#x0C41;&#x0C2E;&#x0C24;&#x0C3F;
+            </button>
+          </div>
+        </div>
+
+
+          <!-- PHASE 1D-1C2 - RECORD PAYMENT FORM -->
+          <section
+            id="villagePaymentFormPanel"
+            class="village-donation-form-panel hidden"
+            aria-labelledby="villagePaymentFormTitle"
+          >
+            <div class="village-donation-form-heading">
+              <div>
+                <div class="eyebrow">
+                  PAYMENT ENTRY
+                </div>
+
+                <h3 id="villagePaymentFormTitle">
+                  &#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C2A;&#x0C41; &#x0C28;&#x0C2E;&#x0C4B;&#x0C26;&#x0C41;
+                </h3>
+
+                <p class="muted">
+                  Select a donor commitment and record the amount actually received.
+                </p>
+              </div>
+
+              <button
+                id="villagePaymentFormClose"
+                type="button"
+                class="secondary-button"
+              >
+                Close
+              </button>
+            </div>
+
+            <form
+              id="villagePaymentForm"
+              autocomplete="off"
+            >
+              <div class="village-donation-form-grid">
+
+                <label class="village-donation-field">
+                  <span>Donor / Commitment *</span>
+
+                  <select
+                    id="villagePaymentCommitment"
+                    required
+                  >
+                    <option value="">
+                      Select donor commitment
+                    </option>
+                  </select>
+                </label>
+
+                <label class="village-donation-field">
+                  <span>Payment Date *</span>
+
+                  <input
+                    id="villagePaymentDate"
+                    type="date"
+                    required
+                  >
+                </label>
+
+                <label class="village-donation-field">
+                  <span>Committed Amount</span>
+
+                  <input
+                    id="villagePaymentCommitted"
+                    type="text"
+                    value="&#x20B9;0"
+                    readonly
+                  >
+                </label>
+
+                <label class="village-donation-field">
+                  <span>Already Received</span>
+
+                  <input
+                    id="villagePaymentAlreadyReceived"
+                    type="text"
+                    value="&#x20B9;0"
+                    readonly
+                  >
+                </label>
+
+                <label class="village-donation-field">
+                  <span>Pending Amount</span>
+
+                  <input
+                    id="villagePaymentPending"
+                    type="text"
+                    value="&#x20B9;0"
+                    readonly
+                  >
+                </label>
+
+                <label class="village-donation-field">
+                  <span>Payment Amount (&#x20B9;) *</span>
+
+                  <input
+                    id="villagePaymentAmount"
+                    type="number"
+                    min="0.01"
+                    step="0.01"
+                    inputmode="decimal"
+                    required
+                  >
+                </label>
+
+                <label class="village-donation-field">
+                  <span>Payment Mode</span>
+
+                  <select id="villagePaymentMode">
+                    <option value="">Select</option>
+                    <option value="Cash">Cash</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                    <option value="Cheque">Cheque</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+
+                <label class="village-donation-field">
+                  <span>Reference / Transaction No.</span>
+
+                  <input
+                    id="villagePaymentReference"
+                    type="text"
+                    maxlength="150"
+                  >
+                </label>
+
+                <label class="village-donation-field">
+                  <span>Receipt No.</span>
+
+                  <input
+                    id="villagePaymentReceipt"
+                    type="text"
+                    value="Auto-generated on save"
+                    readonly
+                    aria-readonly="true"
+                  >
+                </label>
+
+                <label class="village-donation-field village-donation-field-wide">
+                  <span>Notes</span>
+
+                  <textarea
+                    id="villagePaymentNotes"
+                    rows="3"
+                    maxlength="1000"
+                  ></textarea>
+                </label>
+
+              </div>
+
+              <div
+                id="villagePaymentFormMessage"
+                class="village-donation-form-message"
+                aria-live="polite"
+              ></div>
+
+              <div class="village-donation-form-actions">
+                <button
+                  id="villagePaymentCancelButton"
+                  type="button"
+                  class="secondary-button"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  id="villagePaymentSaveButton"
+                  type="submit"
+                >
+                  Save Payment
+                </button>
+              </div>
+            </form>
+          </section>
+          <!-- PHASE 1D-1C1A - TELUGU DONATION FORM -->
+                  <section
+          id="villageDonorHistoryPanel"
+          class="village-donation-form-panel hidden"
+          aria-label="Donor payment history"
+        >
+          <div class="village-donation-form-heading">
+            <div>
+              <p class="eyebrow">DONOR HISTORY</p>
+              <h3 id="villageDonorHistoryName">Payment History</h3>
+              <p id="villageDonorHistoryResidence"></p>
+            </div>
+
+            <button
+              id="villageDonorHistoryClose"
+              type="button"
+              class="secondary-button"
+            >
+              Close
+            </button>
+          </div>
+
+          <div class="village-donor-history-summary">
+            <article>
+              <span>Committed</span>
+              <strong id="villageDonorHistoryCommitted">ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¹0</strong>
+            </article>
+
+            <article>
+              <span>Received</span>
+              <strong
+                id="villageDonorHistoryReceived"
+                class="village-positive-amount"
+              >ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¹0</strong>
+            </article>
+
+            <article>
+              <span>Remaining</span>
+              <strong id="villageDonorHistoryPending">ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¹0</strong>
+            </article>
+          </div>
+
+          <div class="village-donor-history-table-wrap">
+            <table class="village-donor-history-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Mode</th>
+                  <th>Reference</th>
+                  <th>Receipt</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+
+              <tbody id="villageDonorHistoryBody">
+                <tr>
+                  <td colspan="7">
+                    No payments recorded.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+<section
+            id="villageDonationFormPanel"
+            class="village-donation-form-panel hidden"
+            aria-labelledby="villageDonationFormTitle"
+          >
+
+            <div class="village-donation-form-heading">
+
+              <div>
+                <div class="eyebrow">
+                  &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33;&#x0C3E;&#x0C32; &#x0C38;&#x0C2E;&#x0C3E;&#x0C1A;&#x0C3E;&#x0C30;&#x0C02;
+                </div>
+
+                <h3 id="villageDonationFormTitle">
+                  &#x0C15;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24; &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33;&#x0C02; &#x0C28;&#x0C2E;&#x0C4B;&#x0C26;&#x0C41;
+                </h3>
+
+                <p class="muted">
+                  &#x0C26;&#x0C3E;&#x0C24; &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33; &#x0C35;&#x0C3F;&#x0C35;&#x0C30;&#x0C3E;&#x0C32;&#x0C28;&#x0C41; &#x0C28;&#x0C2E;&#x0C4B;&#x0C26;&#x0C41; &#x0C1A;&#x0C47;&#x0C2F;&#x0C02;&#x0C21;&#x0C3F;.
+                </p>
+              </div>
+
+              <button
+                id="villageDonationFormClose"
+                type="button"
+                class="secondary-button"
+                onclick="document.getElementById('villageDonationFormPanel').classList.add('hidden');"
+              >
+                &#x0C2E;&#x0C42;&#x0C38;&#x0C3F;&#x0C35;&#x0C47;&#x0C2F;&#x0C3F;
+              </button>
+
+            </div>
+
+            <form
+              id="villageDonationForm"
+              autocomplete="off"
+              onsubmit="return false;"
+            >
+
+              <div class="village-donation-form-grid">
+
+                <label class="village-donation-field">
+                  <span>
+                    &#x0C26;&#x0C3E;&#x0C24; &#x0C2A;&#x0C47;&#x0C30;&#x0C41; *
+                  </span>
+
+                  <input
+                    id="villageDonationDonorName"
+                    name="donorName"
+                    type="text"
+                    maxlength="160"
+                    required
+                  >
+                </label>
+
+                <label class="village-donation-field">
+                  <span>
+                    &#x0C28;&#x0C3F;&#x0C35;&#x0C3E;&#x0C38;&#x0C02; / &#x0C1A;&#x0C3F;&#x0C30;&#x0C41;&#x0C28;&#x0C3E;&#x0C2E;&#x0C3E;
+                  </span>
+
+                  <input
+                    id="villageDonationResidence"
+                    name="residence"
+                    type="text"
+                    maxlength="200"
+                  >
+                </label>
+
+                <label class="village-donation-field">
+                  <span>
+                    &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33; &#x0C39;&#x0C3E;&#x0C2E;&#x0C40; &#x0C24;&#x0C47;&#x0C26;&#x0C40; *
+                  </span>
+
+                  <input
+                    id="villageDonationCommitmentDate"
+                    name="commitmentDate"
+                    type="date"
+                    required
+                  >
+                </label>
+
+                <label class="village-donation-field">
+                  <span>
+                    &#x0C39;&#x0C3E;&#x0C2E;&#x0C40; &#x0C07;&#x0C1A;&#x0C4D;&#x0C1A;&#x0C3F;&#x0C28; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02; (&#8377;) *
+                  </span>
+
+                  <input
+                    id="villageDonationCommittedAmount"
+                    name="committedAmount"
+                    type="number"
+                    min="1"
+                    step="1"
+                    inputmode="decimal"
+                    required
+                    placeholder="10000"
+                  >
+                </label>
+
+                <label class="village-donation-field">
+                  <span>
+                    &#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C1A;&#x0C3E;&#x0C32;&#x0C4D;&#x0C38;&#x0C3F;&#x0C28; &#x0C05;&#x0C02;&#x0C1A;&#x0C28;&#x0C3E; &#x0C24;&#x0C47;&#x0C26;&#x0C40;
+                  </span>
+
+                  <input
+                    id="villageDonationExpectedDate"
+                    name="expectedPaymentDate"
+                    type="date"
+                  >
+                </label>
+
+                <div class="village-donation-field">
+
+                  <span>
+                    &#x0C07;&#x0C2A;&#x0C4D;&#x0C2A;&#x0C1F;&#x0C3F;&#x0C35;&#x0C30;&#x0C15;&#x0C41; &#x0C05;&#x0C02;&#x0C26;&#x0C3F;&#x0C28; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02;
+                  </span>
+
+                  <div class="village-donation-calculated">
+                    &#8377;0
+                  </div>
+
+                  <small>
+                    &#x0C08; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02; &#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C2A;&#x0C41;&#x0C32; &#x0C06;&#x0C27;&#x0C3E;&#x0C30;&#x0C02;&#x0C17;&#x0C3E; &#x0C38;&#x0C4D;&#x0C35;&#x0C2F;&#x0C02;&#x0C1A;&#x0C3E;&#x0C32;&#x0C15;&#x0C02;&#x0C17;&#x0C3E; &#x0C32;&#x0C46;&#x0C15;&#x0C4D;&#x0C15;&#x0C3F;&#x0C02;&#x0C1A;&#x0C2C;&#x0C21;&#x0C41;&#x0C24;&#x0C41;&#x0C02;&#x0C26;&#x0C3F;.
+                  </small>
+
+                </div>
+
+                <label
+                  class="village-donation-field village-donation-field-wide"
+                >
+                  <span>
+                    &#x0C17;&#x0C2E;&#x0C28;&#x0C3F;&#x0C15;&#x0C32;&#x0C41;
+                  </span>
+
+                  <textarea
+                    id="villageDonationNotes"
+                    name="notes"
+                    rows="3"
+                    maxlength="1000"
+                  ></textarea>
+                </label>
+
+              </div>
+
+              <div
+                id="villageDonationFormMessage"
+                class="village-donation-form-message"
+                aria-live="polite"
+              ></div>
+
+              <div class="village-donation-form-actions">
+
+                <button
+                  id="villageDonationCancelButton"
+                  type="button"
+                  class="secondary-button"
+                  onclick="document.getElementById('villageDonationFormPanel').classList.add('hidden');"
+                >
+                  &#x0C30;&#x0C26;&#x0C4D;&#x0C26;&#x0C41;
+                </button>
+
+                <button
+                  id="villageDonationSaveButton"
+                  type="submit"
+                >
+                  &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33;&#x0C3E;&#x0C28;&#x0C4D;&#x0C28;&#x0C3F; &#x0C38;&#x0C47;&#x0C35;&#x0C4D; &#x0C1A;&#x0C47;&#x0C2F;&#x0C3F;
+                </button>
+
+              </div>
+
+            </form>
+
+          </section>
+        <div
+          class="village-donor-summary"
+          id="villageDonorSummary"
+        >
+          <article class="village-donor-summary-card">
+            <span>&#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02; &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33; &#x0C39;&#x0C3E;&#x0C2E;&#x0C40;</span>
+            <strong id="villageDonorCommitted">
+              &#8377;0
+            </strong>
+          </article>
+
+          <article class="village-donor-summary-card">
+            <span>&#x0C05;&#x0C02;&#x0C26;&#x0C3F;&#x0C28; &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33;&#x0C3E;&#x0C32;&#x0C41;</span>
+            <strong id="villageDonorReceived">
+              &#8377;0
+            </strong>
+          </article>
+
+          <article class="village-donor-summary-card">
+            <span>&#x0C05;&#x0C02;&#x0C26;&#x0C35;&#x0C32;&#x0C38;&#x0C3F;&#x0C28; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02;</span>
+            <strong id="villageDonorPending">
+              &#8377;0
+            </strong>
+          </article>
+
+          <article class="village-donor-summary-card">
+            <span>&#x0C2A;&#x0C3E;&#x0C15;&#x0C4D;&#x0C37;&#x0C3F;&#x0C15; &#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C2A;&#x0C41;&#x0C32;&#x0C41;</span>
+            <strong id="villageDonorPartPayments">
+              0
+            </strong>
+          </article>
+        </div>
+
+        <div class="village-donor-register-card">
+
+          <div class="village-donor-register-header">
+            <div>
+              <strong>&#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33;&#x0C3E;&#x0C32; &#x0C1C;&#x0C3E;&#x0C2C;&#x0C3F;&#x0C24;&#x0C3E;</strong>
+
+              <p class="muted">
+                &#x0C05;&#x0C02;&#x0C26;&#x0C3F;&#x0C28; &#x0C2E;&#x0C30;&#x0C3F;&#x0C2F;&#x0C41; &#x0C05;&#x0C02;&#x0C26;&#x0C35;&#x0C32;&#x0C38;&#x0C3F;&#x0C28; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C3E;&#x0C32;&#x0C41; &#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C2A;&#x0C41;&#x0C32; &#x0C35;&#x0C3F;&#x0C35;&#x0C30;&#x0C3E;&#x0C32; &#x0C06;&#x0C27;&#x0C3E;&#x0C30;&#x0C02;&#x0C17;&#x0C3E; &#x0C32;&#x0C46;&#x0C15;&#x0C4D;&#x0C15;&#x0C3F;&#x0C02;&#x0C1A;&#x0C2C;&#x0C21;&#x0C24;&#x0C3E;&#x0C2F;&#x0C3F;.
+              </p>
+            </div>
+
+            <label class="village-donor-search">
+              <span>&#x0C35;&#x0C46;&#x0C24;&#x0C15;&#x0C02;&#x0C21;&#x0C3F;</span>
+
+              <input
+                id="villageDonorSearch"
+                type="search"
+                placeholder="&#x0C26;&#x0C3E;&#x0C24; &#x0C2A;&#x0C47;&#x0C30;&#x0C41; &#x0C32;&#x0C47;&#x0C26;&#x0C3E; &#x0C28;&#x0C3F;&#x0C35;&#x0C3E;&#x0C38;&#x0C02;"
+                autocomplete="off"
+              >
+            </label>
+          </div>
+
+          <div
+            id="villageDonorStatus"
+            class="village-donor-status"
+          >
+            &#x0C07;&#x0C02;&#x0C15;&#x0C3E; &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33; &#x0C35;&#x0C3F;&#x0C35;&#x0C30;&#x0C3E;&#x0C32;&#x0C41; &#x0C32;&#x0C4B;&#x0C21;&#x0C4D; &#x0C15;&#x0C3E;&#x0C32;&#x0C47;&#x0C26;&#x0C41;.
+          </div>
+
+          <div class="village-donor-table-wrap">
+
+            <table
+              id="villageDonorRegister"
+              class="village-donor-table"
+            >
+              <thead>
+                <tr>
+                  <th>&#x0C15;&#x0C4D;&#x0C30;.&#x0C38;&#x0C02;.</th>
+                  <th>&#x0C26;&#x0C3E;&#x0C24; &#x0C2A;&#x0C47;&#x0C30;&#x0C41;</th>
+                  <th>&#x0C28;&#x0C3F;&#x0C35;&#x0C3E;&#x0C38;&#x0C02;</th>
+                  <th>&#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33; &#x0C39;&#x0C3E;&#x0C2E;&#x0C40; &#x0C24;&#x0C47;&#x0C26;&#x0C40;</th>
+                  <th class="amount-column">
+                    &#x0C39;&#x0C3E;&#x0C2E;&#x0C40; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02;
+                  </th>
+                  <th class="amount-column">
+                    &#x0C05;&#x0C02;&#x0C26;&#x0C3F;&#x0C28; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02;
+                  </th>
+                  <th class="amount-column">
+                    &#x0C05;&#x0C02;&#x0C26;&#x0C35;&#x0C32;&#x0C38;&#x0C3F;&#x0C28; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02;
+                  </th>
+                  <th>&#x0C38;&#x0C4D;&#x0C25;&#x0C3F;&#x0C24;&#x0C3F;</th>
+                  <th>&#x0C1A;&#x0C3F;&#x0C35;&#x0C30;&#x0C3F; &#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C2A;&#x0C41;</th>
+                  <th>&#x0C35;&#x0C3F;&#x0C35;&#x0C30;&#x0C3E;&#x0C32;&#x0C41;</th>
+                </tr>
+              </thead>
+
+              <tbody id="villageDonorTableBody">
+                <tr>
+                  <td
+                    colspan="10"
+                    class="village-donor-empty"
+                  >
+                    &#x0C07;&#x0C02;&#x0C15;&#x0C3E; &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33; &#x0C35;&#x0C3F;&#x0C35;&#x0C30;&#x0C3E;&#x0C32;&#x0C41; &#x0C32;&#x0C47;&#x0C35;&#x0C41;.
+                  </td>
+                </tr>
+              </tbody>
+
+              <tfoot>
+                <tr>
+                  <th colspan="4">
+                    &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02;
+                  </th>
+
+                  <th
+                    id="villageDonorTableCommitted"
+                    class="amount-column"
+                  >
+                    &#8377;0
+                  </th>
+
+                  <th
+                    id="villageDonorTableReceived"
+                    class="amount-column"
+                  >
+                    &#8377;0
+                  </th>
+
+                  <th
+                    id="villageDonorTablePending"
+                    class="amount-column"
+                  >
+                    &#8377;0
+                  </th>
+
+                  <th colspan="3"></th>
+                </tr>
+              </tfoot>
+            </table>
+
+          </div>
+        </div>
+
+        <p class="village-donor-note">
+          &#x0C39;&#x0C3E;&#x0C2E;&#x0C40; &#x0C07;&#x0C1A;&#x0C4D;&#x0C1A;&#x0C3F;&#x0C28; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C3E;&#x0C28;&#x0C4D;&#x0C28;&#x0C3F; &#x0C05;&#x0C02;&#x0C26;&#x0C3F;&#x0C28; &#x0C35;&#x0C3F;&#x0C30;&#x0C3E;&#x0C33;&#x0C02;&#x0C17;&#x0C3E; &#x0C2A;&#x0C30;&#x0C3F;&#x0C17;&#x0C23;&#x0C3F;&#x0C02;&#x0C1A;&#x0C2E;&#x0C41;.
+          &#x0C28;&#x0C2E;&#x0C4B;&#x0C26;&#x0C41; &#x0C1A;&#x0C47;&#x0C38;&#x0C3F;&#x0C28; &#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C2A;&#x0C41;&#x0C32;&#x0C41; &#x0C2E;&#x0C3E;&#x0C24;&#x0C4D;&#x0C30;&#x0C2E;&#x0C47; &#x0C05;&#x0C02;&#x0C26;&#x0C3F;&#x0C28; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02;&#x0C32;&#x0C4B; &#x0C15;&#x0C32;&#x0C41;&#x0C38;&#x0C4D;&#x0C24;&#x0C3E;&#x0C2F;&#x0C3F;.
+        </p>
+
+      </section>
+
+
+      <!-- EXPENSES -->
+
+      <section
+        class="village-admin-panel"
+        data-village-panel="expenses"
+      >
+        <div class="village-admin-toolbar">
+          <div>
+            <p class="village-admin-kicker">
+              VILLAGE FINANCE
+            </p>
+            <h3>Expenses</h3>
+          </div>
+
+          <div class="village-admin-actions">
+            <button type="button">+ New Expense</button>
+            <button type="button">Import</button>
+            <button type="button">Export</button>
+          </div>
+        </div>
+
+        <div class="village-admin-placeholder">
+          <strong>Expense Register</strong>
+          <p>
+            Date, paid to, purpose, amount, status,
+            bill or voucher and notes.
+          </p>
+        </div>
+      </section>
+      <!-- TEMPLE FUND -->
+      <!-- PHASE 1E-1 TEMPLE FUND REGISTER -->
+
+      <section
+        class="village-admin-panel"
+        data-village-panel="temple"
+      >
+        <div class="village-admin-toolbar">
+          <div>
+            <p class="village-admin-kicker">
+              TEMPLE FINANCE
+            </p>
+
+            <h3>Temple Fund</h3>
+
+            <p class="village-admin-muted">
+              Temple Fund accounts, repayments and available cash.
+            </p>
+          </div>
+
+          <div class="village-admin-actions">
+            <button
+              id="villageTempleNewAccountButton"
+              type="button"
+            >
+              + New Account
+            </button>
+
+            <button
+              id="villageTempleRecordPaymentButton"
+              type="button"
+            >
+              Record Payment
+            </button>
+
+            <button
+              id="villageTempleFundEntryButton"
+              type="button"
+            >
+              + Fund Entry
+            </button>
+
+            <button
+              id="villageTempleImportButton"
+              type="button"
+            >
+              Import
+            </button>
+
+            <button
+              id="villageTempleExportButton"
+              type="button"
+            >
+              Export
+            </button>
+          </div>
+        </div>
+
+        <p
+          id="villageTempleStatus"
+          class="village-admin-status"
+          aria-live="polite"
+        ></p>
+
+        <div class="village-temple-summary">
+          <article class="village-temple-summary-card">
+            <span>Available Temple Fund</span>
+            <strong id="villageTempleAvailable">&#8377;0</strong>
+          </article>
+
+          <article class="village-temple-summary-card">
+            <span>Principal Given</span>
+            <strong id="villageTemplePrincipalGiven">&#8377;0</strong>
+          </article>
+
+          <article class="village-temple-summary-card">
+            <span>Principal Repaid</span>
+            <strong id="villageTemplePrincipalRepaid">&#8377;0</strong>
+          </article>
+
+          <article class="village-temple-summary-card">
+            <span>Interest Received</span>
+            <strong id="villageTempleInterestReceived">&#8377;0</strong>
+          </article>
+
+          <article class="village-temple-summary-card">
+            <span>Total Outstanding Today (Principal + Interest)</span>
+            <strong id="villageTemplePrincipalOutstanding">&#8377;0</strong>
+          </article>
+        </div>
+
+        <div class="village-admin-table-card">
+          <div class="village-admin-table-heading">
+            <div>
+              <strong>Temple Fund Accounts</strong>
+              <small>
+                Interest is calculated live using simple monthly interest. Final Settled accounts use the saved cutoff snapshot.
+              </small>
+            </div>
+          </div>
+
+          <div class="village-temple-top-scroll" aria-hidden="true">
+            <div class="village-temple-top-scroll-spacer"></div>
+          </div>
+
+          <div class="village-admin-table-scroll village-temple-table-scroll">
+            <table class="village-temple-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Name</th>
+                  <th>Residence</th>
+                  <th>Taken Date</th>
+                  <th>Principal</th>
+                  <th>Rate</th>
+                  <th>Calculated Interest</th>
+                  <th>Paid / Settlement</th>
+                  <th>Principal Repaid</th>
+                  <th>Total Outstanding Today (Principal + Interest)</th>
+                  <th>Status</th>
+                  <th>History</th>
+                </tr>
+              </thead>
+
+              <tbody id="villageTempleTableBody">
+                <tr>
+                  <td colspan="12">
+                    No Temple Fund accounts yet.
+                  </td>
+                </tr>
+              </tbody>
+
+              <tfoot>
+                <tr>
+                  <th colspan="4">Totals</th>
+                  <th id="villageTempleTablePrincipal">&#8377;0</th>
+                  <th>-</th>
+                  <th>-</th>
+                  <th>-</th>
+                  <th id="villageTempleTableRepaid">&#8377;0</th>
+                  <th id="villageTempleTableOutstanding">&#8377;0</th>
+                  <th colspan="2"></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+            </section>
+
+
+      <!-- PHASE 1E-3A TEMPLE PAYMENT FORM -->
+      <!-- PHASE 1E-2 TEMPLE ACCOUNT FORM -->
+      <div
+        id="villageTempleAccountModal"
+        class="village-temple-modal"
+        hidden
+      >
+        <div
+          class="village-temple-modal-backdrop"
+          data-temple-account-close
+        ></div>
+
+        <section
+          class="village-temple-modal-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="villageTempleAccountTitle"
+        >
+          <div class="village-temple-modal-header">
+            <div>
+              <p class="village-admin-kicker">
+                TEMPLE FUND ACCOUNT
+              </p>
+
+              <h3 id="villageTempleAccountTitle">
+                New Temple Fund Account
+              </h3>
+            </div>
+
+            <button
+              type="button"
+              class="village-temple-modal-close"
+              data-temple-account-close
+              aria-label="Close"
+            >
+              &times;
+            </button>
+          </div><form id="villageTempleAccountForm">
+            <input
+              id="villageTempleAccountId"
+              type="hidden"
+            >
+
+            <div class="village-temple-form-grid">
+              <label class="village-temple-field village-temple-field-wide">
+                <span>Person Name *</span>
+                <input
+                  id="villageTemplePersonName"
+                  type="text"
+                  required
+                  maxlength="200"
+                >
+              </label>
+
+              <label class="village-temple-field">
+                <span>Principal Amount *</span>
+                <input
+                  id="villageTemplePrincipalAmount"
+                  type="number"
+                  min="0.01"
+                  step="0.01"
+                  required
+                >
+              </label>
+
+              <label class="village-temple-field">
+                <span>Taken Date</span>
+                <input
+                  id="villageTempleTakenDate"
+                  type="date"
+                >
+                <small>
+                  Leave blank if the historical date is not known.
+                </small>
+              </label>
+
+              <label class="village-temple-field">
+                <span>Relation Details</span>
+                <input
+                  id="villageTempleRelationDetails"
+                  type="text"
+                  maxlength="200"
+                >
+              </label>
+
+              <label class="village-temple-field">
+                <span>Residence</span>
+                <input
+                  id="villageTempleResidence"
+                  type="text"
+                  maxlength="200"
+                >
+              </label>
+
+              <label class="village-temple-field">
+                <span>Monthly Interest Rate (%)</span>
+                <input
+                  id="villageTempleInterestRate"
+                  type="number"
+                  min="0"
+                  step="0.0001"
+                  value="1.5"
+                >
+              </label>
+
+              <label class="village-temple-field village-temple-field-wide">
+                <span>Notes</span>
+                <textarea
+                  id="villageTempleNotes"
+                  rows="3"
+                  maxlength="1000"
+                ></textarea>
+              </label>
+            </div>
+
+            <p
+              id="villageTempleAccountFormStatus"
+              class="village-admin-status"
+              aria-live="polite"
+            ></p>
+
+            <div class="village-temple-modal-actions">
+              <button
+                type="button"
+                data-temple-account-close
+              >
+                Cancel
+              </button>
+
+              <button
+                id="villageTempleAccountSaveButton"
+                type="submit"
+              >
+                Save Account
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <!-- DOCUMENTS -->
+
+
+      <!-- DOCUMENTS -->
+
+      <section
+        class="village-admin-panel"
+        data-village-panel="documents"
+      >
+        <div class="village-admin-toolbar">
+          <div>
+            <p class="village-admin-kicker">
+              VILLAGE RECORDS
+            </p>
+            <h3>Documents</h3>
+          </div>
+
+          <div class="village-admin-actions">
+            <button type="button">+ New Document</button>
+            <button type="button">Upload</button>
+            <button type="button">Export</button>
+          </div>
+        </div>
+
+        <div class="village-admin-placeholder">
+          <strong>Document Manager</strong>
+          <p>
+            Village PDFs, images and supporting records
+            will be managed here.
+          </p>
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+
+      <section
+        class="village-admin-panel"
+        data-village-panel="gallery"
+      >
+        <div class="village-admin-toolbar">
+          <div>
+            <p class="village-admin-kicker">
+              PHOTOS & VIDEOS
+            </p>
+            <h3>Event Gallery</h3>
+          </div>
+
+          <div class="village-admin-actions">
+            <button type="button">+ New Event</button>
+            <button type="button">
+              Upload Photos / Videos
+            </button>
+            <button type="button">Export</button>
+          </div>
+        </div>
+
+        <div class="village-admin-placeholder">
+          <strong>Event-wise Gallery</strong>
+          <p>
+            Every event can contain multiple photos and
+            videos, cover media and published media.
+          </p>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+
+      <section
+        class="village-admin-panel"
+        data-village-panel="settings"
+      >
+        <div class="village-admin-toolbar">
+          <div>
+            <p class="village-admin-kicker">
+              VILLAGE CONFIGURATION
+            </p>
+            <h3>Settings</h3>
+          </div>
+
+          <div class="village-admin-actions">
+            <button type="button">
+              Edit Village
+            </button>
+          </div>
+        </div>
+
+        <div class="village-admin-settings-grid">
+
+          <article>
+            <span>Village</span>
+            <strong id="vaVillageName">-</strong>
+          </article>
+
+          <article>
+            <span>Portal Title</span>
+            <strong id="vaPortalTitle">-</strong>
+          </article>
+
+          <article>
+            <span>Status</span>
+            <strong id="vaVillageStatus">-</strong>
+          </article>
+
+          <article>
+            <span>Temple Interest Rate</span>
+            <strong id="vaInterestRate">-</strong>
+          </article>
+
+        </div>
+
+        <div class="village-admin-placeholder">
+          <strong>Portal Appearance & Access</strong>
+          <p>
+            Entrance background, village title, subtitle,
+            PIN, gallery settings and Village Admin access
+            will be managed here.
+          </p>
+        </div>
+
+      </section>
+
+    </section>
   </main>
 
   <script
@@ -605,6 +1956,304 @@
 <script
     src="../assets/js/admin.js?v=encoding-cleanup-20260924"
   ></script>
+
+
+  <script
+    src="../assets/js/village-admin.js?v=20260927"
+  ></script>
+
+<div
+        id="villageTemplePaymentModal"
+        class="village-temple-modal"
+        hidden
+      >
+        <div
+          class="village-temple-modal-backdrop"
+          data-temple-payment-close
+        ></div>
+
+        <section
+          class="village-temple-modal-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="villageTemplePaymentTitle"
+        >
+          <div class="village-temple-modal-header">
+            <div>
+              <p class="village-admin-kicker">
+                TEMPLE FUND PAYMENT
+              </p>
+
+              <h3 id="villageTemplePaymentTitle">
+                Record Temple Fund Payment
+              </h3>
+            </div>
+
+            <button
+              type="button"
+              class="village-temple-modal-close"
+              data-temple-payment-close
+              aria-label="Close"
+            >
+              &times;
+            </button>
+          </div>
+
+          <p class="village-admin-note">
+            Record genuine historical or current principal and interest
+            payments without changing the original principal.
+          </p>
+
+          <form
+            id="villageTemplePaymentForm"
+            class="village-admin-form"
+            hidden
+          >
+
+            <div class="village-temple-form-grid">
+
+              <label class="village-temple-field village-temple-field-wide">
+                <span>Account / Person *</span>
+                <select id="villageTemplePaymentAccount" required>
+                  <option value="">Select account</option>
+                </select>
+              </label>
+
+              <label class="village-temple-field">
+                <span>Payment Type *</span>
+                <select id="villageTemplePaymentType" required>
+                  <option value="partial">Partial Payment</option>
+                  <option value="final">Final Settlement</option>
+                </select>
+              </label>
+
+              <label class="village-temple-field">
+                <span>Payment Date *</span>
+                <input
+                  id="villageTemplePaymentDate"
+                  type="date"
+                  required
+                />
+              </label>
+              <label
+                id="villageTempleInterestCalculatedUptoField"
+                class="village-temple-field"
+                hidden
+              >
+                <span>Interest Calculated Up To Date *</span>
+                <input
+                  id="villageTempleInterestCalculatedUpto"
+                  type="date"
+                />
+                <small>
+                  Final Settlement only. No interest will be calculated after this date.
+                </small>
+              </label>
+
+              <label class="village-temple-field">
+                <span>Original Principal</span>
+                <input
+                  id="villageTemplePaymentOriginalPrincipal"
+                  type="text"
+                  readonly
+                />
+              </label>
+
+              <label class="village-temple-field">
+                <span>Principal Already Repaid</span>
+                <input
+                  id="villageTemplePaymentAlreadyRepaid"
+                  type="text"
+                  readonly
+                />
+              </label>
+
+              <label class="village-temple-field">
+                <span>Principal Outstanding</span>
+                <input
+                  id="villageTemplePaymentOutstanding"
+                  type="text"
+                  readonly
+                />
+              </label>
+
+              <label class="village-temple-field" data-temple-partial-field>
+                <span>Principal Paid *</span>
+                <input
+                  id="villageTemplePrincipalPaid"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="0"
+                />
+              </label>
+
+              <label class="village-temple-field" data-temple-partial-field>
+                <span>Interest Paid *</span>
+                <input
+                  id="villageTempleInterestPaid"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="0"
+                />
+              </label>
+
+
+              <label
+                class="village-temple-field"
+                data-temple-final-field
+                hidden
+              >
+                <span>Calculated Interest</span>
+                <input
+                  id="villageTempleCalculatedInterest"
+                  type="text"
+                  readonly
+                />
+              </label>
+
+              <label
+                class="village-temple-field"
+                data-temple-final-field
+                hidden
+              >
+                <span>Calculated Due at Cutoff</span>
+                <input
+                  id="villageTempleCalculatedDue"
+                  type="text"
+                  readonly
+                />
+              </label>
+
+              <label
+                class="village-temple-field"
+                data-temple-final-field
+                hidden
+              >
+                <span>Final Settlement Amount Received *</span>
+                <input
+                  id="villageTempleFinalSettlementAmount"
+                  type="number"
+                  min="0.01"
+                  step="0.01"
+                />
+              </label>
+              <label class="village-temple-field">
+                <span>Total Cash Received</span>
+                <input
+                  id="villageTemplePaymentTotal"
+                  type="text"
+                  readonly
+                />
+              </label>
+
+              <label class="village-temple-field">
+                <span>Payment Mode</span>
+                <select id="villageTemplePaymentMode">
+                  <option value="">Select</option>
+                  <option value="Cash">Cash</option>
+                  <option value="Bank Transfer">Bank Transfer</option>
+                  <option value="UPI">UPI</option>
+                  <option value="Cheque">Cheque</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+
+              <label class="village-temple-field">
+                <span>Reference Number</span>
+                <input
+                  id="villageTemplePaymentReference"
+                  type="text"
+                  autocomplete="off"
+                />
+              </label>
+
+              <label class="village-temple-field village-temple-field-wide">
+                <span>Notes</span>
+                <textarea
+                  id="villageTemplePaymentNotes"
+                  rows="3"
+                ></textarea>
+              </label>
+
+            </div>
+
+                      <div
+            id="villageTemplePaymentPreview"
+            class="village-form-card"
+            hidden
+          >
+            <div class="village-section-heading">
+              <div>
+                <h4 id="villageTemplePaymentPreviewTitle">
+                  Temple Fund Payment - Final Review
+                </h4>
+                <p>
+                  Review these details carefully. Nothing is recorded
+                  until Confirm &amp; Record is selected.
+                </p>
+              </div>
+            </div>
+
+            <div
+              id="villageTemplePaymentPreviewBody"
+              class="village-detail-grid"
+            ></div>
+
+            <div class="village-form-actions">
+              <button
+                type="button"
+                class="secondary"
+                id="villageTemplePaymentPreviewEdit"
+              >
+                &larr; Edit Details
+              </button>
+
+              <button
+                type="button"
+                class="primary"
+                id="villageTemplePaymentPreviewConfirm"
+              >
+                Confirm &amp; Record Payment
+              </button>
+            </div>
+
+            <p
+              id="villageTemplePaymentPreviewWarning"
+              class="village-form-help"
+            >
+              Final confirmation writes the verified payment to the
+              Temple Fund ledger.
+            </p>
+          </div>
+<div
+              id="villageTemplePaymentWarning"
+              class="village-admin-note"
+              hidden
+            ></div>
+
+            <div class="village-admin-form-actions">
+              <button
+                id="villageTemplePaymentCancel"
+                type="button"
+                class="village-admin-secondary-button"
+              >
+                Cancel
+              </button>
+
+              <button
+                id="villageTemplePaymentSave"
+                type="submit"
+                class="village-admin-primary-button"
+              >
+                Save Payment
+              </button>
+            </div>
+          </form>
+
+        </section>
+      </div>
 
 </body>
 </html>

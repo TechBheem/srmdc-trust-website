@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="te">
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>మన బోడబండ | గ్రామ సమాచారం</title>
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/village.css"
+  >
+</head>
+
+<body>
+
+  <!-- =========================================================
+       PIN ENTRANCE
+       V1 VISIBILITY GATE ONLY.
+       This is not a replacement for server-side authorization.
+       ========================================================= -->
+
+  <section
+    id="villageGate"
+    class="village-gate"
+  >
+    <div class="gate-overlay"></div>
+
+    <div class="gate-card">
+
+      <div class="gate-badge">
+        మన ఊరు • మన సమాచారం
+      </div>
+
+      <h1>మన బోడబండ</h1>
+
+      <p class="gate-title">
+        బోడబండ గ్రామ సమాచారం
+      </p>
+
+      <p class="gate-description">
+        గ్రామ కార్యక్రమాలు, విరాళాలు, ఆలయ నిధులు,
+        పత్రాలు మరియు కార్యక్రమాల జ్ఞాపకాలు
+      </p>
+
+      <form id="villagePinForm">
+
+        <label for="villagePin">
+          గ్రామ ప్రవేశ PIN
+        </label>
+
+        <input
+          id="villagePin"
+          type="password"
+          inputmode="numeric"
+          maxlength="8"
+          autocomplete="off"
+          placeholder="PIN నమోదు చేయండి"
+          required
+        >
+
+        <button type="submit">
+          ప్రవేశించండి
+        </button>
+
+        <p
+          id="pinMessage"
+          class="pin-message"
+          aria-live="polite"
+        ></p>
+
+      </form>
+
+      <small>
+        బోడబండ గ్రామ సభ్యుల కోసం
+      </small>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       VILLAGE PORTAL
+       ========================================================= -->
+
+  <div
+    id="villagePortal"
+    class="hidden"
+  >
+
+    <header class="village-header">
+
+      <div class="header-inner">
+
+        <div>
+          <div class="village-kicker">
+            మన ఊరు • మన బాధ్యత
+          </div>
+
+          <h1>మన బోడబండ</h1>
+
+          <p>
+            గ్రామ సమాచారం &amp; పారదర్శక లెక్కలు
+          </p>
+        </div>
+
+        <button
+          id="villageLogout"
+          class="logout-button"
+          type="button"
+        >
+          బయటకు
+        </button>
+
+      </div>
+
+      <nav class="village-nav">
+
+        <button
+          type="button"
+          class="nav-link active"
+          data-section="overview"
+        >
+          ముఖ్య పేజీ
+        </button>
+
+        <button
+          type="button"
+          class="nav-link"
+          data-section="activities"
+        >
+          గ్రామ కార్యక్రమాలు
+        </button>
+
+        <button
+          type="button"
+          class="nav-link"
+          data-section="donations"
+        >
+          గ్రామ విరాళాలు
+        </button>
+
+        <button
+          type="button"
+          class="nav-link"
+          data-section="temple"
+        >
+          ఆలయ నిధి
+        </button>
+
+        <button
+          type="button"
+          class="nav-link"
+          data-section="documents"
+        >
+          గ్రామ పత్రాలు
+        </button>
+
+        <button
+          type="button"
+          class="nav-link"
+          data-section="gallery"
+        >
+          గ్యాలరీ
+        </button>
+
+      </nav>
+
+    </header>
+
+
+    <main class="village-main">
+
+      <!-- OVERVIEW -->
+
+      <section
+        id="overview"
+        class="portal-section active"
+      >
+
+        <div class="welcome-card">
+
+          <div class="welcome-copy">
+
+            <span class="section-label">
+              బోడబండ గ్రామం
+            </span>
+
+            <h2>
+              మన గ్రామ సమాచారం ఒకేచోట
+            </h2>
+
+            <p>
+              గ్రామ కార్యక్రమాలు, విరాళాలు,
+              ఖర్చులు, ఆలయ నిధులు, పత్రాలు
+              మరియు కార్యక్రమాల ఫోటోలు /
+              వీడియోలను సులభంగా చూడండి.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-grid">
+
+          <button
+            class="summary-card"
+            data-open="donations"
+            type="button"
+          >
+            <span>గ్రామ విరాళాల హామీలు</span>
+            <strong id="summaryCommitted">₹0</strong>
+            <small>వివరాలు చూడండి →</small>
+          </button>
+
+          <button
+            class="summary-card"
+            data-open="donations"
+            type="button"
+          >
+            <span>అందిన విరాళాలు</span>
+            <strong id="summaryReceived">₹0</strong>
+            <small>వివరాలు చూడండి →</small>
+          </button>
+
+          <button
+            class="summary-card"
+            data-open="activities"
+            type="button"
+          >
+            <span>గ్రామ కార్యక్రమాల ఖర్చులు</span>
+            <strong id="summaryExpenses">₹0</strong>
+            <small>వివరాలు చూడండి →</small>
+          </button>
+
+          <button
+            class="summary-card featured"
+            data-open="temple"
+            type="button"
+          >
+            <span>ఆలయ నిధి అందుబాటులో</span>
+            <strong id="summaryTempleBalance">₹0</strong>
+            <small>ఆలయ నిధి వివరాలు →</small>
+          </button>
+
+        </div>
+
+
+        <div class="info-grid">
+
+          <article class="info-card">
+            <h3>గ్రామ కార్యక్రమాలు</h3>
+            <p>
+              ప్రతి కార్యక్రమానికి వచ్చిన నిధులు,
+              ఖర్చులు మరియు మిగులు వివరాలు.
+            </p>
+            <button
+              type="button"
+              data-open="activities"
+            >
+              కార్యక్రమాలు చూడండి
+            </button>
+          </article>
+
+          <article class="info-card">
+            <h3>ఆలయ నిధి</h3>
+            <p>
+              తీసుకున్న మొత్తం, తేదీ, వడ్డీ మరియు
+              ప్రస్తుత బాకీ వివరాలు.
+            </p>
+            <button
+              type="button"
+              data-open="temple"
+            >
+              ఆలయ నిధి చూడండి
+            </button>
+          </article>
+
+          <article class="info-card">
+            <h3>గ్రామ పత్రాలు</h3>
+            <p>
+              గ్రామానికి సంబంధించిన అనుమతులు,
+              లేఖలు మరియు ఇతర ముఖ్యమైన పత్రాలు.
+            </p>
+            <button
+              type="button"
+              data-open="documents"
+            >
+              పత్రాలు చూడండి
+            </button>
+          </article>
+
+          <article class="info-card">
+            <h3>కార్యక్రమాల గ్యాలరీ</h3>
+            <p>
+              కార్యక్రమాల వారీగా ఫోటోలు మరియు
+              వీడియో జ్ఞాపకాలు.
+            </p>
+            <button
+              type="button"
+              data-open="gallery"
+            >
+              గ్యాలరీ చూడండి
+            </button>
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- ACTIVITIES -->
+
+      <section
+        id="activities"
+        class="portal-section"
+      >
+
+        <div class="section-heading">
+          <div>
+            <span class="section-label">
+              గ్రామ అభివృద్ధి
+            </span>
+            <h2>గ్రామ కార్యక్రమాలు</h2>
+          </div>
+        </div>
+
+        <div class="table-card">
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>కార్యక్రమం</th>
+                  <th>అందిన నిధులు</th>
+                  <th>ఖర్చులు</th>
+                  <th>మిగులు</th>
+                  <th>స్థితి</th>
+                </tr>
+              </thead>
+
+              <tbody id="activitiesTable">
+                <tr>
+                  <td colspan="5" class="empty-state">
+                    కార్యక్రమాల వివరాలు త్వరలో ఇక్కడ కనిపిస్తాయి.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- DONATIONS -->
+
+      <section
+        id="donations"
+        class="portal-section"
+      >
+
+        <div class="section-heading">
+          <div>
+            <span class="section-label">
+              గ్రామ సహకారం
+            </span>
+            <h2>&#x0C36;&#x0C4D;&#x0C30;&#x0C40; &#x0C36;&#x0C4D;&#x0C30;&#x0C40; &#x0C36;&#x0C4D;&#x0C30;&#x0C40; &#x0C15;&#x0C4B;&#x0C26;&#x0C02;&#x0C21; &#x0C30;&#x0C3E;&#x0C2E; &#x0C38;&#x0C4D;&#x0C35;&#x0C3E;&#x0C2E;&#x0C3F; &#x0C35;&#x0C3E;&#x0C30;&#x0C3F; &#x0C06;&#x0C32;&#x0C2F; &#x0C28;&#x0C3F;&#x0C30;&#x0C4D;&#x0C2E;&#x0C3E;&#x0C23; &#x0C26;&#x0C3E;&#x0C24;&#x0C32; &#x0C2A;&#x0C1F;&#x0C4D;&#x0C1F;&#x0C3F;&#x0C15;</h2>
+          </div>
+        </div>
+
+        <div class="mini-summary-grid">
+
+          <div class="mini-summary">
+            <span>మొత్తం హామీ</span>
+            <strong id="donationCommitted">₹0</strong>
+          </div>
+
+          <div class="mini-summary">
+            <span>అందిన మొత్తం</span>
+            <strong id="donationReceived">₹0</strong>
+          </div>
+
+          <div class="mini-summary">
+            <span>పెండింగ్</span>
+            <strong id="donationPending">₹0</strong>
+          </div>
+
+        </div>
+
+        <div class="table-card">
+
+          <div
+            id="donationTopScroll"
+            class="public-donation-top-scroll"
+            aria-label="Donation table horizontal scroll"
+          >
+            <div class="public-donation-top-scroll-inner"></div>
+          </div>
+
+          <div
+            id="donationTableScroll"
+            class="table-scroll public-donation-table-scroll"
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th>క్ర.సం.</th>
+                  <th>పేరు</th>
+                  <th>నివాసం</th>
+                  <th>హామీ మొత్తం</th>
+                  <th>అందిన మొత్తం</th>
+                  <th>&#x0C05;&#x0C02;&#x0C26;&#x0C35;&#x0C32;&#x0C38;&#x0C3F;&#x0C28;&#x0C26;&#x0C3F;</th>
+                  <th>స్థితి</th>
+                  <th>&#x0C17;&#x0C4D;&#x0C30;&#x0C3E;&#x0C2E;&#x0C02;&#x0C24;&#x0C4B; &#x0C28;&#x0C3F;&#x0C30;&#x0C4D;&#x0C23;&#x0C2F;&#x0C3F;&#x0C02;&#x0C1A;&#x0C3F;&#x0C28; &#x0C24;&#x0C47;&#x0C26;&#x0C40;</th>
+                  <th>&#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C1A;&#x0C3F;&#x0C28; &#x0C24;&#x0C47;&#x0C26;&#x0C40;</th>
+                </tr>
+              </thead>
+
+              <tbody id="donationsTable">
+                <tr>
+                  <td colspan="9" class="empty-state">
+                    విరాళాల వివరాలు త్వరలో ఇక్కడ కనిపిస్తాయి.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TEMPLE FUND -->
+
+      <section
+        id="temple"
+        class="portal-section"
+      >
+
+        <div class="section-heading">
+          <div>
+            <span class="section-label">
+              ఆలయ నిధి
+            </span>
+            <h2>ఆలయ నిధి వివరాలు</h2>
+          </div>
+        </div>
+
+        <div class="temple-balance-card">
+
+          <span>
+            ప్రస్తుతం అందుబాటులో ఉన్న ఆలయ నిధి
+          </span>
+
+          <strong id="templeAvailable">
+            ₹0
+          </strong>
+
+          <p>
+            ప్రారంభ ఆలయ నిధి + తిరిగి వచ్చిన మొత్తం +
+            ఇతర జమలు − తీసుకున్న అసలు మొత్తం −
+            ఆలయ ఖర్చులు
+          </p>
+
+        </div>
+
+        <div class="mini-summary-grid">
+
+          <div class="mini-summary">
+            <span>తీసుకున్న అసలు మొత్తం</span>
+            <strong id="templePrincipal">₹0</strong>
+          </div>
+
+          <div class="mini-summary">
+            <span>లెక్కించిన వడ్డీ</span>
+            <strong id="templeInterest">₹0</strong>
+          </div>
+
+          <div class="mini-summary">
+            <span>మొత్తం బాకీ</span>
+            <strong id="templeOutstanding">₹0</strong>
+          </div>
+
+        </div>
+
+        <div class="notice-card">
+          <strong>వడ్డీ లెక్క:</strong>
+          ప్రతి ₹100కు నెలకు ₹2.00 సాధారణ వడ్డీ.
+          ప్రతి రికార్డుకు తీసుకున్న తేదీ నుండి
+          ప్రస్తుత తేదీ వరకు లెక్కించబడుతుంది.
+        </div>
+
+        <div class="table-card">
+
+          <div
+            class="temple-top-scroll temple-custom-scroll"
+            aria-label="Temple Fund horizontal scroll"
+          >
+            <div class="temple-top-scroll-spacer"></div>
+            <div
+              class="temple-custom-scroll-thumb"
+              role="scrollbar"
+              aria-orientation="horizontal"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              tabindex="0"
+            ></div>
+          </div>
+
+          <div class="table-scroll public-temple-table-scroll">
+            <table class="public-temple-table">
+              <thead>
+                <tr>
+                  <th>&#x0C15;&#x0C4D;&#x0C30;.&#x0C38;&#x0C02;.</th>
+                  <th>&#x0C2A;&#x0C47;&#x0C30;&#x0C41;</th>
+                  <th>&#x0C28;&#x0C3F;&#x0C35;&#x0C3E;&#x0C38;&#x0C02;</th>
+                  <th>&#x0C24;&#x0C40;&#x0C38;&#x0C41;&#x0C15;&#x0C41;&#x0C28;&#x0C4D;&#x0C28; &#x0C24;&#x0C47;&#x0C26;&#x0C40;</th>
+                  <th>&#x0C05;&#x0C38;&#x0C32;&#x0C41;</th>
+                  <th>&#x0C30;&#x0C47;&#x0C1F;&#x0C41;</th>
+                  <th>&#x0C08; &#x0C30;&#x0C4B;&#x0C1C;&#x0C41; &#x0C35;&#x0C30;&#x0C15;&#x0C41; &#x0C32;&#x0C46;&#x0C15;&#x0C4D;&#x0C15;&#x0C3F;&#x0C02;&#x0C1A;&#x0C3F;&#x0C28; &#x0C35;&#x0C21;&#x0C4D;&#x0C21;&#x0C40;</th>
+                                    <th class="public-temple-outstanding-head">
+                    &#x0C08; &#x0C30;&#x0C4B;&#x0C1C;&#x0C41;
+                    &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02;
+                    &#x0C2C;&#x0C3E;&#x0C15;&#x0C40;
+                    <span class="public-temple-head-note">
+                      (&#x0C05;&#x0C38;&#x0C32;&#x0C41; +
+                      &#x0C35;&#x0C21;&#x0C4D;&#x0C21;&#x0C40;)
+                    </span>
+                  </th>
+<th>&#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C1A;&#x0C3F;&#x0C28; / &#x0C24;&#x0C41;&#x0C26;&#x0C3F; &#x0C38;&#x0C46;&#x0C1F;&#x0C3F;&#x0C32;&#x0C4D;&#x0C2E;&#x0C46;&#x0C02;&#x0C1F;&#x0C4D; &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C02;</th>
+                  <th>&#x0C38;&#x0C4D;&#x0C25;&#x0C3F;&#x0C24;&#x0C3F;</th>                  <th>&#x0C35;&#x0C3F;&#x0C35;&#x0C30;&#x0C23; / &#x0C15;&#x0C3E;&#x0C2E;&#x0C46;&#x0C02;&#x0C1F;&#x0C4D;&#x0C38;&#x0C4D;</th>
+                </tr>
+              </thead>
+
+              <tbody id="templeFundTable">
+                <tr>
+                  <td colspan="11" class="empty-state">
+                    ధృవీకరించిన ఆలయ నిధి వివరాలు
+                    ఇక్కడ నమోదు చేయబడతాయి.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- DOCUMENTS -->
+
+      <section
+        id="documents"
+        class="portal-section"
+      >
+
+        <div class="section-heading">
+          <div>
+            <span class="section-label">
+              గ్రామ రికార్డులు
+            </span>
+            <h2>గ్రామ పత్రాలు</h2>
+          </div>
+        </div>
+
+        <div
+          id="documentsGrid"
+          class="documents-grid"
+        >
+
+          <div class="empty-panel">
+            <strong>పత్రాలు ఇంకా జోడించలేదు</strong>
+            <p>
+              అడ్మిన్ ద్వారా గ్రామ పత్రాలు
+              ఇక్కడ ప్రచురించవచ్చు.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- GALLERY -->
+
+      <section
+        id="gallery"
+        class="portal-section"
+      >
+
+        <div class="section-heading">
+          <div>
+            <span class="section-label">
+              మన జ్ఞాపకాలు
+            </span>
+            <h2>కార్యక్రమాల గ్యాలరీ</h2>
+          </div>
+        </div>
+
+        <p class="section-intro">
+          ప్రతి కార్యక్రమానికి ప్రత్యేకంగా
+          ఫోటోలు మరియు వీడియోలు చూపించబడతాయి.
+        </p>
+
+        <div
+          id="galleryGrid"
+          class="gallery-grid"
+        >
+
+          <div class="empty-panel">
+            <strong>గ్యాలరీ సిద్ధంగా ఉంది</strong>
+            <p>
+              ఫోటోలు మరియు వీడియోలు అడ్మిన్
+              ద్వారా తరువాత జోడించవచ్చు.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer class="village-footer">
+      <strong>మన బోడబండ</strong>
+      <span>
+        గ్రామ సమాచారం • పారదర్శకత • ఐక్యత
+      </span>
+    </footer>
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/supabase-config.js"></script>
+<script src="../assets/js/village.js"></script>
+
+
+<div id="villagePaymentRequestModal"
+     class="village-payment-modal"
+     hidden>
+  <div class="village-payment-backdrop"
+       data-village-payment-close></div>
+
+  <div class="village-payment-dialog"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="villagePaymentTitle">
+
+    <button type="button"
+            class="village-payment-close"
+            data-village-payment-close
+            aria-label="Close">&times;</button>
+
+    <div class="village-payment-heading">
+      <span id="villagePaymentEyebrow"></span>
+      <h3 id="villagePaymentTitle"></h3>
+      <p id="villagePaymentIntro"></p>
+    </div>
+
+    <div class="village-payment-person">
+      <span>&#x0C2A;&#x0C47;&#x0C30;&#x0C41;</span>
+      <strong id="villagePaymentPerson">-</strong>
+    </div>
+
+    <div id="villagePaymentSummary"
+         class="village-payment-summary"></div>
+
+    <label class="village-payment-amount">
+      <span id="villagePaymentAmountLabel"></span>
+
+      <div class="village-payment-amount-input">
+        <span>&#8377;</span>
+        <input id="villagePaymentAmount"
+               type="number"
+               min="1"
+               step="1"
+               inputmode="decimal"
+               autocomplete="off">
+      </div>
+    </label>
+
+    <div class="village-payment-qr-card">
+      <strong>Official Trust QR</strong>
+
+      <img src="../assets/images/srmdc_donation_qr.png"
+           alt="Official SRMDC Trust payment QR"
+           class="village-payment-qr">
+
+      <span>Scan &amp; Pay</span>
+    </div>
+
+    <div class="village-payment-or">
+      <span>OR</span>
+    </div>
+
+    <div class="village-payment-bank-card">
+
+      <div class="village-payment-bank-heading">
+        <strong>
+          &#x0C2C;&#x0C4D;&#x0C2F;&#x0C3E;&#x0C02;&#x0C15;&#x0C4D;
+          &#x0C1F;&#x0C4D;&#x0C30;&#x0C3E;&#x0C28;&#x0C4D;&#x0C38;&#x0C4D;&#x0C2B;&#x0C30;&#x0C4D;
+        </strong>
+
+        <span>NEFT / RTGS / IMPS</span>
+      </div>
+
+      <p class="village-payment-bank-help">
+        &#x0C2A;&#x0C46;&#x0C26;&#x0C4D;&#x0C26;
+        &#x0C2E;&#x0C4A;&#x0C24;&#x0C4D;&#x0C24;&#x0C3E;&#x0C32;
+        &#x0C15;&#x0C4B;&#x0C38;&#x0C02;
+        &#x0C2C;&#x0C4D;&#x0C2F;&#x0C3E;&#x0C02;&#x0C15;&#x0C4D;
+        &#x0C1F;&#x0C4D;&#x0C30;&#x0C3E;&#x0C28;&#x0C4D;&#x0C38;&#x0C4D;&#x0C2B;&#x0C30;&#x0C4D;
+        &#x0C09;&#x0C2A;&#x0C2F;&#x0C4B;&#x0C17;&#x0C3F;&#x0C02;&#x0C1A;&#x0C35;&#x0C1A;&#x0C4D;&#x0C1A;&#x0C41;.
+      </p>
+
+      <div class="village-payment-bank-row">
+        <span>Account Name</span>
+        <strong>
+          SRI RAMA MANDIRA DEVASTHANA CHARITABLE TRUST
+        </strong>
+      </div>
+
+      <div class="village-payment-bank-row">
+        <span>Bank Name</span>
+        <strong>Canara Bank</strong>
+      </div>
+
+      <div class="village-payment-bank-row village-payment-bank-copy-row">
+        <span>Account Number</span>
+
+        <div>
+          <strong>120042082389</strong>
+
+          <button type="button"
+                  class="village-payment-copy"
+                  data-village-bank-copy="120042082389"
+                  data-village-bank-copy-label="Account number">
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <div class="village-payment-bank-row village-payment-bank-copy-row">
+        <span>IFSC</span>
+
+        <div>
+          <strong>CNRB0013470</strong>
+
+          <button type="button"
+                  class="village-payment-copy"
+                  data-village-bank-copy="CNRB0013470"
+                  data-village-bank-copy-label="IFSC">
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <div class="village-payment-bank-row">
+        <span>Branch</span>
+        <strong>Udayagiri - 524226</strong>
+      </div>
+
+      <div id="villagePaymentCopyMessage"
+           class="village-payment-copy-message"
+           aria-live="polite"></div>
+    </div>
+
+    <div class="village-payment-proof-note">
+      <strong>
+        &#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C2A;&#x0C41;
+        &#x0C1A;&#x0C47;&#x0C38;&#x0C3F;&#x0C28;
+        &#x0C24;&#x0C30;&#x0C4D;&#x0C35;&#x0C3E;&#x0C24;
+      </strong>
+
+      <p id="villagePaymentProofText"></p>
+    </div>
+
+    <button type="button"
+            id="villagePaymentWhatsApp"
+            class="village-payment-whatsapp">
+      WhatsApp
+      &#x0C26;&#x0C4D;&#x0C35;&#x0C3E;&#x0C30;&#x0C3E;
+      &#x0C35;&#x0C3F;&#x0C35;&#x0C30;&#x0C3E;&#x0C32;&#x0C41;
+      &#x0C2A;&#x0C02;&#x0C2A;&#x0C02;&#x0C21;&#x0C3F;
+    </button>
+
+    <p class="village-payment-verification">
+      &#x0C1F;&#x0C4D;&#x0C30;&#x0C38;&#x0C4D;&#x0C1F;&#x0C4D;
+      &#x0C16;&#x0C3E;&#x0C24;&#x0C3E;&#x0C32;&#x0C4B;
+      &#x0C1A;&#x0C46;&#x0C32;&#x0C4D;&#x0C32;&#x0C3F;&#x0C02;&#x0C2A;&#x0C41;
+      &#x0C27;&#x0C43;&#x0C35;&#x0C40;&#x0C15;&#x0C30;&#x0C3F;&#x0C02;&#x0C1A;&#x0C2C;&#x0C21;&#x0C3F;&#x0C28;
+      &#x0C24;&#x0C30;&#x0C4D;&#x0C35;&#x0C3E;&#x0C24;
+      &#x0C2E;&#x0C3E;&#x0C24;&#x0C4D;&#x0C30;&#x0C2E;&#x0C47;
+      &#x0C30;&#x0C3F;&#x0C15;&#x0C3E;&#x0C30;&#x0C4D;&#x0C21;&#x0C41;
+      &#x0C05;&#x0C2A;&#x0C4D;&#x0C21;&#x0C47;&#x0C1F;&#x0C4D;
+      &#x0C1A;&#x0C47;&#x0C2F;&#x0C2C;&#x0C21;&#x0C41;&#x0C24;&#x0C41;&#x0C02;&#x0C26;&#x0C3F;.
+    </p>
+  </div>
+</div>
+</body>
+</html>

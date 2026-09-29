@@ -1,0 +1,1918 @@
+:root {
+  --village-green: #1f5a3a;
+  --village-green-dark: #123e29;
+  --village-gold: #d99a2b;
+  --village-red: #8f251f;
+  --village-cream: #fffaf0;
+  --village-paper: rgba(255, 255, 255, 0.94);
+  --village-text: #17324d;
+  --village-muted: #637067;
+  --village-border: rgba(160, 112, 35, 0.25);
+  --shadow: 0 18px 45px rgba(33, 46, 37, 0.13);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family:
+    "Noto Sans Telugu",
+    "Nirmala UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: var(--village-text);
+  background:
+    linear-gradient(
+      rgba(255, 251, 240, 0.86),
+      rgba(255, 248, 229, 0.92)
+    ),
+    url("../images/srmdc_temple_background.png")
+      center / cover fixed;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ---------------------------------------------------------
+   PIN GATE
+   --------------------------------------------------------- */
+
+.village-gate {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(8, 48, 27, 0.36),
+      rgba(86, 53, 13, 0.24)
+    ),
+    url("../images/srmdc_temple_background.png")
+      center / cover no-repeat;
+}
+
+.gate-overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(1px);
+}
+
+.gate-card {
+  position: relative;
+  z-index: 1;
+  width: min(560px, 100%);
+  padding: 44px;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 28px;
+  text-align: center;
+  background: rgba(255, 252, 240, 0.94);
+  box-shadow: 0 30px 80px rgba(0,0,0,.24);
+}
+
+.gate-badge {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--village-green);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.gate-card h1 {
+  margin: 18px 0 4px;
+  color: var(--village-red);
+  font-size: clamp(40px, 8vw, 66px);
+  line-height: 1;
+}
+
+.gate-title {
+  margin: 12px 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.gate-description {
+  max-width: 440px;
+  margin: 0 auto 28px;
+  color: var(--village-muted);
+  line-height: 1.8;
+}
+
+#villagePinForm {
+  display: grid;
+  gap: 11px;
+  max-width: 340px;
+  margin: auto;
+}
+
+#villagePinForm label {
+  text-align: left;
+  font-weight: 800;
+}
+
+#villagePinForm input {
+  width: 100%;
+  padding: 15px 16px;
+  border: 1px solid #d8c49e;
+  border-radius: 12px;
+  background: #fff;
+  text-align: center;
+  letter-spacing: 5px;
+  font-size: 20px;
+}
+
+#villagePinForm button {
+  border: 0;
+  border-radius: 12px;
+  padding: 15px;
+  color: white;
+  background: var(--village-green);
+  font-weight: 800;
+}
+
+.pin-message {
+  min-height: 20px;
+  margin: 0;
+  color: var(--village-red);
+  font-size: 13px;
+}
+
+.gate-card small {
+  display: block;
+  margin-top: 20px;
+  color: var(--village-muted);
+}
+
+
+/* ---------------------------------------------------------
+   HEADER
+   --------------------------------------------------------- */
+
+.village-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 252, 244, 0.96);
+  border-bottom: 1px solid var(--village-border);
+  backdrop-filter: blur(12px);
+}
+
+.header-inner {
+  width: min(1180px, calc(100% - 32px));
+  margin: auto;
+  padding: 18px 0 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.header-inner h1 {
+  margin: 2px 0;
+  color: var(--village-red);
+  font-size: 28px;
+}
+
+.header-inner p {
+  margin: 0;
+  color: var(--village-muted);
+  font-size: 13px;
+}
+
+.village-kicker,
+.section-label {
+  color: var(--village-green);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+
+.logout-button {
+  padding: 9px 14px;
+  border: 1px solid var(--village-red);
+  border-radius: 10px;
+  color: var(--village-red);
+  background: transparent;
+  font-weight: 800;
+}
+
+.village-nav {
+  width: min(1180px, calc(100% - 32px));
+  margin: auto;
+  display: flex;
+  overflow-x: auto;
+  gap: 5px;
+  padding-bottom: 10px;
+}
+
+.nav-link {
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 14px;
+  color: var(--village-text);
+  background: transparent;
+  font-weight: 800;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #fff;
+  background: var(--village-green);
+}
+
+
+/* ---------------------------------------------------------
+   CONTENT
+   --------------------------------------------------------- */
+
+.village-main {
+  width: min(1180px, calc(100% - 32px));
+  min-height: 75vh;
+  margin: 30px auto 55px;
+}
+
+.portal-section {
+  display: none;
+}
+
+.portal-section.active {
+  display: block;
+}
+
+.welcome-card {
+  min-height: 330px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 34px;
+  border-radius: 26px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(14, 60, 36, .91),
+      rgba(14, 60, 36, .26)
+    ),
+    url("../images/srmdc_temple_background.png")
+      center / cover no-repeat;
+  box-shadow: var(--shadow);
+}
+
+.welcome-copy {
+  max-width: 640px;
+  color: #fff;
+}
+
+.welcome-copy .section-label {
+  color: #ffe6a2;
+}
+
+.welcome-copy h2 {
+  margin: 8px 0;
+  font-size: clamp(30px, 5vw, 48px);
+}
+
+.welcome-copy p {
+  margin: 0;
+  max-width: 580px;
+  line-height: 1.8;
+}
+
+.summary-grid,
+.info-grid,
+.mini-summary-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.summary-grid {
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 18px;
+}
+
+.summary-card {
+  border: 1px solid var(--village-border);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: left;
+  color: var(--village-text);
+  background: var(--village-paper);
+  box-shadow: var(--shadow);
+}
+
+.summary-card span,
+.summary-card small {
+  display: block;
+}
+
+.summary-card strong {
+  display: block;
+  margin: 9px 0;
+  color: var(--village-red);
+  font-size: 26px;
+}
+
+.summary-card small {
+  color: var(--village-green);
+  font-weight: 800;
+}
+
+.summary-card.featured {
+  border-top: 4px solid var(--village-gold);
+}
+
+.info-grid {
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 18px;
+}
+
+.info-card,
+.table-card,
+.notice-card,
+.empty-panel,
+.mini-summary,
+.temple-balance-card {
+  border: 1px solid var(--village-border);
+  border-radius: 18px;
+  background: var(--village-paper);
+  box-shadow: var(--shadow);
+}
+
+.info-card {
+  padding: 22px;
+}
+
+.info-card h3 {
+  margin-top: 0;
+}
+
+.info-card p,
+.section-intro {
+  color: var(--village-muted);
+  line-height: 1.7;
+}
+
+.info-card button {
+  border: 0;
+  padding: 0;
+  color: var(--village-green);
+  background: transparent;
+  font-weight: 900;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.section-heading h2 {
+  margin: 5px 0 0;
+  font-size: 30px;
+}
+
+.table-card {
+  overflow: hidden;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+th,
+td {
+  padding: 15px 16px;
+  border-bottom: 1px solid #eee4cf;
+  text-align: left;
+}
+
+th {
+  color: var(--village-green-dark);
+  background: #fff5dc;
+  white-space: nowrap;
+}
+
+tbody tr:hover {
+  background: #fffaf0;
+}
+
+.empty-state {
+  padding: 36px;
+  color: var(--village-muted);
+  text-align: center;
+}
+
+.mini-summary-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 18px;
+}
+
+.mini-summary {
+  padding: 20px;
+}
+
+.mini-summary span {
+  display: block;
+  color: var(--village-muted);
+  font-weight: 700;
+}
+
+.mini-summary strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--village-red);
+  font-size: 26px;
+}
+
+.temple-balance-card {
+  margin-bottom: 18px;
+  padding: 28px;
+  text-align: center;
+  border-top: 5px solid var(--village-gold);
+}
+
+.temple-balance-card span {
+  display: block;
+  font-weight: 900;
+}
+
+.temple-balance-card strong {
+  display: block;
+  margin: 8px 0;
+  color: var(--village-red);
+  font-size: clamp(32px, 5vw, 48px);
+}
+
+.temple-balance-card p {
+  margin: 0;
+  color: var(--village-muted);
+}
+
+.notice-card {
+  margin-bottom: 18px;
+  padding: 17px 20px;
+  color: #684a0d;
+  background: #fff8df;
+}
+
+.documents-grid,
+.gallery-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+.empty-panel {
+  padding: 30px;
+  text-align: center;
+}
+
+.empty-panel p {
+  color: var(--village-muted);
+}
+
+
+/* ---------------------------------------------------------
+   FOOTER
+   --------------------------------------------------------- */
+
+.village-footer {
+  display: grid;
+  gap: 5px;
+  padding: 28px 20px;
+  color: #fff;
+  background: var(--village-green-dark);
+  text-align: center;
+}
+
+.village-footer span {
+  opacity: .8;
+  font-size: 13px;
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 920px) {
+  .summary-grid,
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .gate-card {
+    padding: 30px 20px;
+  }
+
+  .header-inner {
+    align-items: flex-start;
+  }
+
+  .summary-grid,
+  .info-grid,
+  .mini-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-card {
+    min-height: 280px;
+    padding: 25px;
+  }
+
+  .village-main {
+    width: min(100% - 20px, 1180px);
+    margin-top: 18px;
+  }
+}
+/* ---------------------------------------------------------
+   PUBLIC VILLAGE DONATIONS
+   --------------------------------------------------------- */
+
+.public-donor-name {
+  font-weight: 800;
+}
+
+.amount-cell {
+  white-space: nowrap;
+  font-weight: 800;
+}
+
+.public-donation-status {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.public-donation-status-pending {
+  color: #8a4b08;
+  background: #fff2d8;
+}
+
+.public-donation-status-partial {
+  color: #765a00;
+  background: #fff7c7;
+}
+
+.public-donation-status-complete {
+  color: var(--village-green-dark);
+  background: #e4f4e7;
+}
+
+/*
+ * Available Temple Fund is a positive available balance,
+ * therefore its public amount is green.
+ */
+#summaryTempleBalance,
+#templeAvailable {
+  color: var(--village-green-dark);
+}
+
+/* Received Village Donation amounts represent money received. */
+#donationReceived,
+.public-received-amount {
+  color: var(--village-green-dark);
+}
+
+
+/* ---------------------------------------------------------
+   PUBLIC DONATION TABLE ENHANCED SCROLL
+   --------------------------------------------------------- */
+
+.public-donation-table-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-gutter: stable;
+}
+
+.public-donation-table-scroll table {
+  width: 100%;
+  min-width: 1050px;
+  table-layout: auto;
+}
+
+.public-donation-table-scroll th,
+.public-donation-table-scroll td {
+  padding: 14px 13px;
+  font-size: 14px;
+  line-height: 1.4;
+  vertical-align: middle;
+}
+
+.public-donation-table-scroll th {
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.public-donation-table-scroll th:nth-child(1),
+.public-donation-table-scroll td:nth-child(1) {
+  width: 55px;
+}
+
+.public-donation-table-scroll th:nth-child(2),
+.public-donation-table-scroll td:nth-child(2) {
+  min-width: 200px;
+}
+
+.public-donation-table-scroll th:nth-child(3),
+.public-donation-table-scroll td:nth-child(3) {
+  min-width: 90px;
+}
+
+.public-donation-table-scroll th:nth-child(4),
+.public-donation-table-scroll td:nth-child(4),
+.public-donation-table-scroll th:nth-child(5),
+.public-donation-table-scroll td:nth-child(5) {
+  min-width: 110px;
+  white-space: nowrap;
+}
+
+.public-donation-table-scroll th:nth-child(6),
+.public-donation-table-scroll td:nth-child(6) {
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+.public-donation-table-scroll th:nth-child(7),
+.public-donation-table-scroll td:nth-child(7) {
+  min-width: 170px;
+  white-space: nowrap;
+}
+
+.public-donation-table-scroll th:nth-child(8),
+.public-donation-table-scroll td:nth-child(8) {
+  min-width: 135px;
+  white-space: nowrap;
+}
+
+.public-donation-top-scroll {
+  width: 100%;
+  height: 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: #fffaf0;
+  border-bottom: 1px solid #eee4cf;
+  scrollbar-gutter: stable;
+}
+
+.public-donation-top-scroll-inner {
+  width: 1050px;
+  height: 1px;
+}
+
+@media (max-width: 650px) {
+  .public-donation-table-scroll table {
+    min-width: 1050px;
+  }
+
+  .public-donation-table-scroll th,
+  .public-donation-table-scroll td {
+    padding: 13px 12px;
+    font-size: 13px;
+  }
+}
+
+/* ---------------------------------------------------------
+   PUBLIC DONATION TABLE 9-COLUMN ALIGNMENT
+   --------------------------------------------------------- */
+
+.public-donation-table-scroll table {
+  width: 100%;
+  min-width: 1220px;
+  table-layout: auto;
+}
+
+.public-donation-table-scroll th,
+.public-donation-table-scroll td {
+  padding: 14px 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  vertical-align: middle;
+}
+
+.public-donation-table-scroll th {
+  white-space: nowrap;
+}
+
+.public-donation-table-scroll th:nth-child(1),
+.public-donation-table-scroll td:nth-child(1) {
+  width: 55px;
+}
+
+.public-donation-table-scroll th:nth-child(2),
+.public-donation-table-scroll td:nth-child(2) {
+  min-width: 205px;
+}
+
+.public-donation-table-scroll th:nth-child(3),
+.public-donation-table-scroll td:nth-child(3) {
+  min-width: 90px;
+}
+
+.public-donation-table-scroll th:nth-child(4),
+.public-donation-table-scroll td:nth-child(4),
+.public-donation-table-scroll th:nth-child(5),
+.public-donation-table-scroll td:nth-child(5),
+.public-donation-table-scroll th:nth-child(6),
+.public-donation-table-scroll td:nth-child(6) {
+  min-width: 110px;
+  white-space: nowrap;
+}
+
+.public-donation-table-scroll th:nth-child(7),
+.public-donation-table-scroll td:nth-child(7) {
+  min-width: 125px;
+  white-space: nowrap;
+}
+
+.public-donation-table-scroll th:nth-child(8),
+.public-donation-table-scroll td:nth-child(8) {
+  min-width: 175px;
+  white-space: nowrap;
+}
+
+.public-donation-table-scroll th:nth-child(9),
+.public-donation-table-scroll td:nth-child(9) {
+  min-width: 140px;
+  white-space: nowrap;
+}
+
+.public-donor-residence {
+  color: var(--village-muted);
+}
+
+.public-donation-top-scroll-inner {
+  width: 1220px;
+}
+
+@media (max-width: 650px) {
+  .public-donation-table-scroll table {
+    min-width: 1220px;
+  }
+}
+
+/* =========================================================
+   MANA BODABANDA TEMPLE CONSTRUCTION BACKGROUND
+   CSS ONLY - PUBLIC VILLAGE PORTAL
+   ========================================================= */
+
+body {
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(255, 250, 235, 0.08),
+      rgba(255, 248, 225, 0.12)
+    ),
+    url("../images/village/mana_bodabanda_temple_construction_bg.png");
+
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/*
+  Keep the page content readable while allowing the
+  Sita-Rama family and temple construction to remain visible.
+*/
+.village-main {
+  position: relative;
+  z-index: 1;
+}
+
+/*
+  Summary cards receive a soft temple-paper treatment.
+*/
+.summary-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(255, 249, 230, 0.94)
+    );
+  border: 1px solid rgba(190, 139, 46, 0.28);
+  box-shadow:
+    0 10px 28px rgba(83, 55, 12, 0.10),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  backdrop-filter: blur(5px);
+}
+
+/*
+  Donation table stays highly readable while allowing a
+  slight devotional background presence around it.
+*/
+.table-card {
+  background: rgba(255, 253, 247, 0.965);
+  border: 1px solid rgba(190, 139, 46, 0.30);
+  box-shadow:
+    0 16px 38px rgba(72, 47, 10, 0.14);
+  backdrop-filter: blur(6px);
+}
+
+/*
+  Traditional warm-gold table header.
+*/
+.public-donation-table-scroll th {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 247, 216, 0.98),
+      rgba(255, 239, 188, 0.96)
+    );
+  border-bottom-color: rgba(177, 121, 25, 0.30);
+}
+
+/*
+  Soft ivory rows rather than harsh white.
+*/
+.public-donation-table-scroll tbody tr {
+  background: rgba(255, 255, 252, 0.94);
+}
+
+.public-donation-table-scroll tbody tr:nth-child(even) {
+  background: rgba(255, 250, 237, 0.94);
+}
+
+.public-donation-table-scroll tbody tr:hover {
+  background: rgba(255, 242, 205, 0.97);
+}
+
+/*
+  Top scrollbar belongs visually to the table.
+*/
+.public-donation-top-scroll {
+  background: rgba(255, 248, 228, 0.96);
+}
+
+/*
+  Desktop: keep the full devotional composition.
+*/
+@media (min-width: 901px) {
+  body {
+    background-position: center top;
+    background-size: cover;
+  }
+}
+
+/*
+  Tablet/mobile:
+  fixed backgrounds can perform poorly on mobile browsers.
+  Keep the same artwork but scroll it normally.
+*/
+@media (max-width: 900px) {
+  body {
+    background-attachment: scroll;
+    background-position: center top;
+    background-size: auto 100vh;
+  }
+}
+
+/* =========================================================
+   FINAL PUBLIC DONATION TABLE DEVOTIONAL POLISH
+   Visual layer only - no structural/data changes
+   ========================================================= */
+
+/*
+   Main table frame:
+   warm temple-paper appearance with a subtle gold border.
+*/
+.public-donation-table-scroll {
+  background: rgba(255, 253, 246, 0.98);
+  border-left: 1px solid rgba(173, 116, 26, 0.22);
+  border-right: 1px solid rgba(173, 116, 26, 0.22);
+}
+
+.public-donation-table-scroll table {
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 1220px;
+}
+
+
+/*
+   Header:
+   stronger sandal/gold treatment while keeping Telugu clear.
+*/
+.public-donation-table-scroll thead th {
+  padding: 15px 12px;
+
+  color: #31543d;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff9df 0%,
+      #ffefba 100%
+    );
+
+  border-top: 1px solid rgba(166, 108, 20, 0.20);
+  border-bottom: 2px solid rgba(166, 108, 20, 0.34);
+
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+
+  text-align: left;
+}
+
+
+/*
+   Body rows:
+   clean ivory register appearance.
+*/
+.public-donation-table-scroll tbody td {
+  padding: 15px 12px;
+
+  border-bottom:
+    1px solid rgba(178, 135, 66, 0.20);
+
+  color: #17364a;
+
+  font-size: 14px;
+  line-height: 1.45;
+
+  background: rgba(255, 255, 252, 0.965);
+}
+
+.public-donation-table-scroll tbody tr:nth-child(even) td {
+  background: rgba(255, 250, 237, 0.965);
+}
+
+
+/*
+   Gentle hover, useful when reading long donor registers.
+*/
+.public-donation-table-scroll tbody tr:hover td {
+  background: #fff3ce;
+}
+
+
+/*
+   Donor names deserve slightly more visual weight.
+*/
+.public-donation-table-scroll .public-donor-name {
+  color: #17384f;
+  font-weight: 900;
+  font-size: 14.5px;
+}
+
+
+/*
+   Residence stays secondary.
+*/
+.public-donation-table-scroll .public-donor-residence {
+  color: #6d746e;
+  font-weight: 600;
+}
+
+
+/*
+   Financial columns.
+*/
+.public-donation-table-scroll td:nth-child(4),
+.public-donation-table-scroll td:nth-child(5),
+.public-donation-table-scroll td:nth-child(6) {
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* Committed */
+.public-donation-table-scroll td:nth-child(4) {
+  color: #183b55;
+}
+
+
+/* Received */
+.public-donation-table-scroll td:nth-child(5),
+.public-donation-table-scroll .public-received-amount {
+  color: #116530;
+}
+
+
+/* Amount still to be received */
+.public-donation-table-scroll td:nth-child(6) {
+  color: #8b321f;
+}
+
+
+/*
+   Soft separators between the three financial columns.
+*/
+.public-donation-table-scroll th:nth-child(4),
+.public-donation-table-scroll td:nth-child(4),
+.public-donation-table-scroll th:nth-child(5),
+.public-donation-table-scroll td:nth-child(5),
+.public-donation-table-scroll th:nth-child(6),
+.public-donation-table-scroll td:nth-child(6) {
+  border-left:
+    1px solid rgba(166, 108, 20, 0.10);
+}
+
+
+/*
+   Status badges.
+*/
+.public-donation-status {
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.15;
+  border: 1px solid transparent;
+}
+
+.public-donation-status-pending {
+  color: #94500c;
+  background: #fff0cf;
+  border-color: #f1d29b;
+}
+
+.public-donation-status-partial {
+  color: #755c00;
+  background: #fff6c7;
+  border-color: #eadc8a;
+}
+
+.public-donation-status-complete {
+  color: #145b32;
+  background: #e4f4e7;
+  border-color: #b9dec2;
+}
+
+
+/*
+   A fully received donor gets a very subtle green register tint.
+   :has() is supported by current Chromium/Edge browsers.
+*/
+.public-donation-table-scroll tbody tr:has(
+  .public-donation-status-complete
+) td {
+  background: rgba(241, 250, 241, 0.97);
+}
+
+.public-donation-table-scroll tbody tr:has(
+  .public-donation-status-complete
+):hover td {
+  background: #e9f6e9;
+}
+
+
+/*
+   Dates: keep easy to scan.
+*/
+.public-donation-table-scroll td:nth-child(8),
+.public-donation-table-scroll td:nth-child(9) {
+  color: #29495d;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/*
+   Serial number stays visually secondary.
+*/
+.public-donation-table-scroll td:nth-child(1) {
+  color: #587080;
+  font-weight: 700;
+}
+
+
+/*
+   Top horizontal scrollbar:
+   visually integrate with the devotional table.
+*/
+.public-donation-top-scroll {
+  height: 19px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 251, 237, 0.98),
+      rgba(255, 243, 210, 0.98)
+    );
+
+  border-top:
+    1px solid rgba(166, 108, 20, 0.18);
+
+  border-bottom:
+    1px solid rgba(166, 108, 20, 0.24);
+}
+
+
+/*
+   Desktop scrollbar styling.
+*/
+.public-donation-top-scroll::-webkit-scrollbar,
+.public-donation-table-scroll::-webkit-scrollbar {
+  height: 11px;
+}
+
+.public-donation-top-scroll::-webkit-scrollbar-track,
+.public-donation-table-scroll::-webkit-scrollbar-track {
+  background: #fff5dc;
+}
+
+.public-donation-top-scroll::-webkit-scrollbar-thumb,
+.public-donation-table-scroll::-webkit-scrollbar-thumb {
+  background: #b79a67;
+  border-radius: 999px;
+  border: 2px solid #fff5dc;
+}
+
+
+/*
+   Mobile:
+   preserve the same 9-column table and horizontal swipe.
+*/
+@media (max-width: 650px) {
+  .public-donation-table-scroll table {
+    min-width: 1220px;
+  }
+
+  .public-donation-table-scroll thead th,
+  .public-donation-table-scroll tbody td {
+    padding: 13px 11px;
+    font-size: 13px;
+  }
+
+  .public-donation-table-scroll .public-donor-name {
+    font-size: 13.5px;
+  }
+}
+
+
+/* PHASE 1E-3B.4 - Public Temple Fund */
+.public-temple-name {
+  font-weight: 800;
+}
+
+.public-temple-interest {
+  color: #b42318;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.public-temple-paid {
+  color: #137333;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.public-temple-status {
+  display: inline-block;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.public-temple-status-settled {
+  color: #137333;
+}
+/* Phase 1E-3B.9 Temple Fund name/relation */
+.temple-person-name {
+  display: block;
+  font-weight: 700;
+}
+
+.temple-person-relation {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  opacity: 0.78;
+  white-space: normal;
+}
+
+.temple-public-comments {
+  min-width: 300px;
+  max-width: 420px;
+  white-space: normal;
+  line-height: 1.55;
+  vertical-align: top;
+}
+/* Phase 1E-3B.9 Temple Fund frozen No. + Name */
+.temple-table th:nth-child(1),
+.temple-table td:nth-child(1) {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  min-width: 48px;
+  background: inherit;
+}
+
+.temple-table th:nth-child(2),
+.temple-table td:nth-child(2) {
+  position: sticky;
+  left: 48px;
+  z-index: 4;
+  min-width: 210px;
+  background: inherit;
+}
+
+.temple-table thead th:nth-child(1),
+.temple-table thead th:nth-child(2) {
+  z-index: 6;
+}
+
+.temple-table td:nth-child(2) {
+  box-shadow: 6px 0 8px -8px rgba(0, 0, 0, 0.35);
+}
+/* Phase 1E-3B.9 top Temple horizontal scrollbar */
+.temple-table-top-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 18px;
+}
+
+.temple-table-top-scroll-spacer {
+  height: 1px;
+}
+/* Phase 1E-3B.9A Temple Fund relation + comments + frozen columns + top scroll */
+
+.public-temple-person-name {
+  display: block;
+  font-weight: 700;
+}
+
+.public-temple-person-relation {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  font-weight: 500;
+  opacity: 0.78;
+  white-space: normal;
+}
+
+.public-temple-comments {
+  min-width: 300px;
+  max-width: 440px;
+  white-space: normal !important;
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.public-temple-table th:nth-child(1),
+.public-temple-table td:nth-child(1) {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  min-width: 54px;
+  background: #fff;
+}
+
+.public-temple-table th:nth-child(2),
+.public-temple-table td:nth-child(2) {
+  position: sticky;
+  left: 54px;
+  z-index: 4;
+  min-width: 230px;
+  background: #fff;
+}
+
+.public-temple-table thead th:nth-child(1),
+.public-temple-table thead th:nth-child(2) {
+  z-index: 7;
+}
+
+.public-temple-table td:nth-child(2) {
+  box-shadow: 8px 0 10px -11px rgba(0,0,0,.8);
+}
+
+/* Temple Fund - stronger villager name emphasis */
+.public-temple-person-name {
+  display: block;
+  font-weight: 800;
+  color: #123f32;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.public-temple-person-relation {
+  display: block;
+  margin-top: 3px;
+  font-weight: 500;
+  opacity: 0.72;
+}
+/* Public Temple - Total Outstanding */
+.public-temple-outstanding {
+  font-weight: 800;
+  color: #173f35;
+  white-space: nowrap;
+}
+
+.public-temple-outstanding-head {
+  min-width: 145px;
+}
+
+.public-temple-head-note {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.78em;
+  font-weight: 600;
+  opacity: 0.72;
+  white-space: nowrap;
+}
+/* Public Temple top scrollbar - final */
+.temple-top-scroll {
+  display: block;
+  width: 100%;
+  height: 20px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin: 0 0 4px 0;
+  scrollbar-gutter: stable;
+}
+
+.temple-top-scroll-spacer {
+  height: 1px;
+  min-height: 1px;
+}
+
+.public-temple-table-scroll {
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+
+/* VILLAGE PUBLIC PAYMENT REQUEST */
+
+.village-public-pay-button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 14px;
+  font: inherit;
+  font-weight: 800;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  background: #176b3d;
+  color: #fff;
+  box-shadow: 0 5px 14px rgba(23, 107, 61, 0.18);
+}
+
+.village-public-pay-button:hover {
+  filter: brightness(0.94);
+}
+
+.village-public-donation-pay {
+  background: #8b2f24;
+}
+
+.village-payment-action-cell {
+  text-align: center;
+}
+
+.village-payment-complete {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e8f6ec;
+  color: #176b3d;
+  font-weight: 900;
+}
+
+body.village-payment-open {
+  overflow: hidden;
+}
+
+.village-payment-modal[hidden] {
+  display: none !important;
+}
+
+.village-payment-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.village-payment-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 13, 8, 0.72);
+  backdrop-filter: blur(3px);
+}
+
+.village-payment-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(620px, 100%);
+  max-height: calc(100vh - 36px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 24px;
+  border-radius: 22px;
+  background: #fffdf8;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.30);
+}
+
+.village-payment-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: #f2e9dc;
+  color: #5c241d;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.village-payment-heading {
+  padding-right: 42px;
+}
+
+.village-payment-heading > span {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: #8b2f24;
+  font-weight: 800;
+}
+
+.village-payment-heading h3 {
+  margin: 0 0 8px;
+  color: #5c241d;
+  font-size: clamp(1.35rem, 4vw, 1.8rem);
+}
+
+.village-payment-heading p {
+  margin: 0;
+  line-height: 1.7;
+  color: #594c44;
+}
+
+.village-payment-person {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid #eadbc7;
+  border-radius: 14px;
+  background: #fff8ed;
+}
+
+.village-payment-person span {
+  display: block;
+  margin-bottom: 3px;
+  color: #75675d;
+  font-size: 0.86rem;
+}
+
+.village-payment-person strong {
+  color: #4f211c;
+  font-size: 1.08rem;
+}
+
+.village-payment-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.village-payment-summary > div {
+  padding: 12px;
+  border-radius: 13px;
+  background: #f8f3eb;
+}
+
+.village-payment-summary span {
+  display: block;
+  min-height: 38px;
+  color: #75675d;
+  font-size: 0.8rem;
+}
+
+.village-payment-summary strong {
+  display: block;
+  margin-top: 4px;
+  color: #34221d;
+}
+
+.village-payment-amount {
+  display: block;
+  margin-top: 17px;
+  font-weight: 800;
+  color: #4f211c;
+}
+
+.village-payment-amount-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 7px;
+  padding: 0 13px;
+  border: 1px solid #d9c7ae;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.village-payment-amount-input > span {
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.village-payment-amount-input input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.village-payment-qr-card {
+  width: min(300px, 100%);
+  margin: 18px auto 0;
+  padding: 12px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid #eadbc7;
+  border-radius: 17px;
+  background: #fff;
+}
+
+.village-payment-qr-card strong,
+.village-payment-qr-card span {
+  display: block;
+}
+
+.village-payment-qr {
+  display: block;
+  width: min(250px, 100%);
+  height: auto;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+
+.village-payment-proof-note {
+  margin-top: 17px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #fff5dc;
+  color: #5b431e;
+}
+
+.village-payment-proof-note p {
+  margin: 5px 0 0;
+  line-height: 1.65;
+}
+
+.village-payment-whatsapp {
+  width: 100%;
+  margin-top: 14px;
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 13px;
+  background: #176b3d;
+  color: #fff;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.village-payment-whatsapp:hover {
+  filter: brightness(0.94);
+}
+
+.village-payment-verification {
+  margin: 12px 0 0;
+  text-align: center;
+  color: #75675d;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 620px) {
+  .village-payment-modal {
+    padding: 10px;
+  }
+
+  .village-payment-dialog {
+    padding: 20px 15px;
+    border-radius: 18px;
+  }
+
+  .village-payment-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .village-payment-summary span {
+    min-height: 0;
+  }
+}
+
+
+/* VILLAGE PUBLIC BANK TRANSFER */
+
+.village-payment-or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 17px 0;
+  color: #8b7568;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.village-payment-or::before,
+.village-payment-or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e2d3c0;
+}
+
+.village-payment-bank-card {
+  padding: 16px;
+  border: 1px solid #dfcdb5;
+  border-radius: 16px;
+  background: #fffaf2;
+}
+
+.village-payment-bank-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid #eadbc7;
+}
+
+.village-payment-bank-heading strong {
+  color: #5c241d;
+  font-size: 1.05rem;
+}
+
+.village-payment-bank-heading span {
+  color: #176b3d;
+  font-size: 0.8rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.village-payment-bank-help {
+  margin: 11px 0 4px;
+  color: #6f5c50;
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.village-payment-bank-row {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed #e6d8c5;
+}
+
+.village-payment-bank-row:last-of-type {
+  border-bottom: 0;
+}
+
+.village-payment-bank-row > span {
+  color: #76675e;
+  font-size: 0.82rem;
+}
+
+.village-payment-bank-row strong {
+  overflow-wrap: anywhere;
+  color: #34221d;
+}
+
+.village-payment-bank-copy-row > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.village-payment-copy {
+  flex: 0 0 auto;
+  border: 1px solid #b98c72;
+  border-radius: 8px;
+  padding: 5px 9px;
+  background: #fff;
+  color: #6f2d23;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.village-payment-copy:hover {
+  background: #f8eee4;
+}
+
+.village-payment-copy-message {
+  min-height: 18px;
+  padding-top: 6px;
+  color: #176b3d;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-align: right;
+}
+
+@media (max-width: 520px) {
+  .village-payment-bank-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .village-payment-bank-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .village-payment-bank-copy-row > div {
+    align-items: flex-start;
+  }
+}
+
+
+/* PHASE 1C DONATION FROZEN COLUMNS */
+
+/*
+  Keep donor identity visible while the donation register
+  scrolls horizontally.
+*/
+
+.public-donation-table-scroll th:nth-child(1),
+.public-donation-table-scroll td:nth-child(1) {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  width: 55px;
+  min-width: 55px;
+  max-width: 55px;
+}
+
+.public-donation-table-scroll th:nth-child(2),
+.public-donation-table-scroll td:nth-child(2) {
+  position: sticky;
+  left: 55px;
+  z-index: 4;
+  min-width: 205px;
+}
+
+/* Header must remain above sticky body cells. */
+.public-donation-table-scroll thead th:nth-child(1),
+.public-donation-table-scroll thead th:nth-child(2) {
+  z-index: 7;
+}
+
+/* Preserve the normal ivory row background on frozen cells. */
+.public-donation-table-scroll tbody td:nth-child(1),
+.public-donation-table-scroll tbody td:nth-child(2) {
+  background: rgba(255, 255, 252, 0.98);
+}
+
+/* Preserve alternating row background. */
+.public-donation-table-scroll tbody tr:nth-child(even) td:nth-child(1),
+.public-donation-table-scroll tbody tr:nth-child(even) td:nth-child(2) {
+  background: rgba(255, 250, 237, 0.985);
+}
+
+/* Preserve hover background across the frozen cells. */
+.public-donation-table-scroll tbody tr:hover td:nth-child(1),
+.public-donation-table-scroll tbody tr:hover td:nth-child(2) {
+  background: #fff3ce;
+}
+
+/* Preserve completed/received row background. */
+.public-donation-table-scroll tbody tr:has(
+  .public-donation-status-complete
+) td:nth-child(1),
+.public-donation-table-scroll tbody tr:has(
+  .public-donation-status-complete
+) td:nth-child(2) {
+  background: rgba(241, 250, 241, 0.99);
+}
+
+.public-donation-table-scroll tbody tr:has(
+  .public-donation-status-complete
+):hover td:nth-child(1),
+.public-donation-table-scroll tbody tr:has(
+  .public-donation-status-complete
+):hover td:nth-child(2) {
+  background: #e9f6e9;
+}
+
+/* Subtle edge showing where frozen columns finish. */
+.public-donation-table-scroll th:nth-child(2),
+.public-donation-table-scroll td:nth-child(2) {
+  box-shadow: 8px 0 10px -11px rgba(0, 0, 0, 0.8);
+}
+
+/* PHASE 1D.4 - CUSTOM TEMPLE TOP DRAGGER */
+
+.temple-custom-scroll {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 22px;
+  min-height: 22px;
+  margin: 0 0 6px 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(117, 94, 55, 0.22);
+  cursor: pointer;
+  user-select: none;
+  touch-action: none;
+}
+
+.temple-custom-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.temple-custom-scroll {
+  scrollbar-width: none;
+}
+
+.temple-custom-scroll-spacer {
+  display: none;
+}
+
+.temple-custom-scroll-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  height: 14px;
+  min-width: 48px;
+  border-radius: 999px;
+  background: #6f746f;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+  cursor: grab;
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+  touch-action: none;
+}
+
+.temple-custom-scroll-thumb:hover {
+  background: #23613f;
+}
+
+.temple-custom-scroll-thumb:active,
+.temple-custom-scroll-thumb.is-dragging {
+  cursor: grabbing;
+  background: #174d31;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.28),
+    0 0 0 2px rgba(35, 97, 63, 0.13);
+}
+
+.temple-custom-scroll-thumb:focus-visible {
+  outline: 2px solid #23613f;
+  outline-offset: 2px;
+}
