@@ -21,7 +21,7 @@
   >
   <link
     rel="stylesheet"
-    href="../assets/css/village-admin.css?v=20260927"
+    href="../assets/css/village-admin.css?v=20261003-phase19d3d"
   >
 </head>
 
@@ -717,6 +717,13 @@
           Gallery
         </button>
 
+        <button
+          type="button"
+          class="village-admin-tab"
+          data-village-tab="receipts"
+        >
+          Receipt Books
+        </button>
         <button
           type="button"
           class="village-admin-tab"
@@ -1883,6 +1890,351 @@
         </div>
       </section>
 
+      <!-- OFFLINE RECEIPT BOOKS - PHASE 3B2 -->
+
+      <section
+        class="village-admin-panel"
+        data-village-panel="receipts"
+      >
+        <div class="village-admin-toolbar">
+          <div>
+            <p class="village-admin-kicker">
+              OFFLINE RECEIPT CONTROL
+            </p>
+
+            <h3>Receipt Books</h3>
+
+            <p class="village-admin-note">
+              Reserved manual receipt numbers and their issue status.
+              Reserved receipts do not count as received payments.
+            </p>
+          </div>
+
+          <div class="village-admin-actions">
+            <button
+              type="button"
+              id="offlineReceiptEntryButton"
+            >
+              + Enter Offline Receipt
+            </button>
+
+            <!-- PHASE3D1_19D2_NEXT_BOOK_PREVIEW_UI -->
+            <button
+              type="button"
+              id="offlineReceiptPreviewNextBookButton"
+              title="Preview the next server-calculated receipt book"
+            >
+              Preview Next Book
+            </button>
+          </div>
+        </div>
+
+        <!-- PHASE3D1_19D2_NEXT_BOOK_PREVIEW_PANEL -->
+        <div
+          id="offlineReceiptNextBookPreview"
+          class="offline-receipt-book-banner"
+          hidden
+        >
+          <div>
+            <span>Next Book</span>
+            <strong id="offlineReceiptNextBookNumber">-</strong>
+          </div>
+
+          <div>
+            <span>Financial Year</span>
+            <strong id="offlineReceiptNextBookFinancialYear">-</strong>
+          </div>
+
+          <div>
+            <span>Serial Range</span>
+            <strong id="offlineReceiptNextBookSerialRange">-</strong>
+          </div>
+
+          <div>
+            <span>Quantity</span>
+            <strong id="offlineReceiptNextBookQuantity">-</strong>
+          </div>
+
+          <!-- PHASE3D1_19D3A_CONTROLLED_CREATE_UI -->
+          <div id="offlineReceiptNextBookCreateActions" hidden>
+            <button
+              type="button"
+              id="offlineReceiptCreateNextBookButton"
+            >
+              Create Next Receipt Book
+            </button>
+          </div>
+        </div>
+        <div class="offline-receipt-book-banner">
+          <div>
+            <span>Receipt Book</span>
+            <strong id="offlineReceiptBookLabel">
+              Loading...
+            </strong>
+          </div>
+
+          <div>
+            <span>Financial Year</span>
+            <strong id="offlineReceiptFinancialYear">
+              -
+            </strong>
+          </div>
+
+          <div>
+            <span>Series</span>
+            <strong>
+              SRMDC-OR
+            </strong>
+          </div>
+        </div>
+
+        <div class="offline-receipt-summary">
+          <article>
+            <span>Total</span>
+            <strong id="offlineReceiptTotal">0</strong>
+          </article>
+
+          <article>
+            <span>Reserved</span>
+            <strong id="offlineReceiptReserved">0</strong>
+          </article>
+
+          <!-- PHASE3D1_17C_STOCK_CARDS -->
+
+          <article>
+            <span>Printed / Exported</span>
+            <strong id="offlineReceiptPrinted">0</strong>
+          </article>
+
+          <article>
+            <span>Not Printed</span>
+            <strong id="offlineReceiptNotPrinted">0</strong>
+          </article>
+
+          <article>
+            <span>Reprinted</span>
+            <strong id="offlineReceiptReprinted">0</strong>
+          </article>
+
+          <article>
+            <span>Issued</span>
+            <strong id="offlineReceiptIssued">0</strong>
+          </article>
+
+
+          <article>
+            <span>Void</span>
+            <strong id="offlineReceiptVoid">0</strong>
+          </article>
+        </div>
+
+        <div class="offline-receipt-controls">
+          <!-- PHASE3D1_19D3B_WORKING_BOOK_SELECTOR_UI -->
+          <label>
+            <span>Working Receipt Book</span>
+            <select
+              id="offlineReceiptWorkingBook"
+              aria-label="Working receipt book"
+              title="Choose the existing receipt book used by Search, ORIGINAL print and Controlled Reprint"
+              disabled
+            >
+              <option value="">Loading receipt books...</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Search</span>
+            <input
+              type="search"
+              id="offlineReceiptSearch"
+              placeholder="Receipt no., donor, mobile..."
+            >
+          </label>
+
+          <label>
+            <span>Status</span>
+            <select id="offlineReceiptStatusFilter">
+              <option value="">All Statuses</option>
+              <option value="RESERVED">Reserved</option>
+              <option value="ISSUED">Issued</option>
+              <option value="VOID">Void</option>
+            </select>
+          </label>          <!-- PHASE3D1_18C_FRIENDLY_ORIGINAL_RANGE -->
+          <div class="offline-receipt-pdf-range">
+            <span>Original Receipt Print Range</span>
+
+            <div>
+              <input
+                type="number"
+                id="offlineReceiptPdfFrom"
+                min="1"
+                max="500"
+                value="1"
+                aria-label="Receipt PDF start number"
+                title="Starting receipt serial"
+              >
+
+              <span>Quantity</span>
+
+              <select
+                id="offlineReceiptPdfQuantity"
+                aria-label="Original receipt quantity"
+                title="Choose quantity or Custom for manual range"
+              >
+                <option value="1">1</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50" selected>50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+                <option value="custom">Custom</option>
+              </select>
+
+              <span>to</span>
+
+              <input
+                type="number"
+                id="offlineReceiptPdfTo"
+                min="1"
+                max="500"
+                value="50"
+                aria-label="Receipt PDF end number"
+                title="Ending receipt serial"
+              >
+
+              <button
+                type="button"
+                id="offlineReceiptPdfButton"
+                disabled
+                title="Preview controlled ORIGINAL receipt range"
+              >
+                Preview / Generate
+              </button>
+              <button
+                type="button"
+                id="offlineReceiptConfirmExported"
+                disabled
+                title="Generate a valid preview before confirming export"
+              >
+                Confirm Exported
+              </button>
+            </div>
+          </div>
+        </div>
+
+                        <!-- PHASE3D1_18C_ORIGINAL_RANGE_SUMMARY -->
+        <p
+          id="offlineReceiptOriginalRangeSummary"
+          class="village-admin-note offline-receipt-status"
+        >
+          Loading receipt book range...
+        </p>
+<p
+          id="offlineReceiptExportPendingStatus"
+          class="village-admin-note offline-receipt-status"
+        >
+          No ORIGINAL export is awaiting confirmation.
+        </p>
+        <!-- PHASE3D1_17E3A_REPRINT_UI -->
+        <div class="offline-receipt-pdf-range">
+          <span>Controlled Reprint</span>
+
+          <div>
+            <input
+              type="number"
+              id="offlineReceiptReprintFrom"
+              min="1"
+              max="500"
+              value="85"
+              aria-label="Reprint start serial"
+            >
+
+            <span>to</span>
+
+            <input
+              type="number"
+              id="offlineReceiptReprintTo"
+              min="1"
+              max="500"
+              value="85"
+              aria-label="Reprint end serial"
+            >
+
+            <input
+              type="text"
+              id="offlineReceiptReprintReason"
+              maxlength="500"
+              placeholder="Mandatory reprint reason"
+              aria-label="Mandatory reprint reason"
+            >
+
+            <button
+              type="button"
+              id="offlineReceiptReprintButton"
+              title="Preview an already printed receipt for controlled reprint"
+            >
+              Preview Reprint
+            </button>
+
+            <button
+              type="button"
+              id="offlineReceiptConfirmReprinted"
+              disabled
+              title="Preview and actually print/save before confirming reprint"
+            >
+              Confirm Reprinted
+            </button>
+          </div>
+        </div>
+
+        <p
+          id="offlineReceiptReprintPendingStatus"
+          class="village-admin-note offline-receipt-status"
+        >
+          No REPRINT is awaiting confirmation.
+        </p>
+<p
+          id="offlineReceiptStatus"
+          class="village-admin-note offline-receipt-status"
+        >
+          Loading reserved receipt register...
+        </p>
+
+        <div class="offline-receipt-table-wrap">
+          <table class="offline-receipt-table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Receipt Number</th>
+                <!-- PHASE3D1_17C1_SERIAL_PRINT_STATUS -->
+                <th>Print Status</th>
+                <th>Receipt Status</th>
+                <th>Donor</th>
+                <th>Receipt Date</th>
+                <th>Amount</th>
+                <th>Payment Mode</th>
+                <th>Received By</th>
+                <th>Verification</th>
+              </tr>
+            </thead>
+
+            <tbody id="offlineReceiptTableBody">
+              <tr>
+                <td colspan="10">
+                  Loading receipt register...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="offline-receipt-safety-note">
+          RESERVED receipts are blank controlled stationery only.
+          They are not treated as donations, Temple Fund payments,
+          or accounting transactions until separately verified.
+        </p>
+      </section>
+
       <!-- SETTINGS -->
 
       <section
@@ -1960,6 +2312,366 @@
 
   <script
     src="../assets/js/village-admin.js?v=20260927"
+  ></script>
+  <!-- ======================================================
+       PHASE 3B3B - OFFLINE RECEIPT ENTRY
+       PREVIEW ONLY - NO DATABASE WRITE
+       ====================================================== -->
+
+  <div
+    id="offlineReceiptEntryModal"
+    class="offline-receipt-modal"
+    hidden
+  >
+    <div
+      class="offline-receipt-modal-backdrop"
+      data-offline-receipt-close
+    ></div>
+
+    <section
+      class="offline-receipt-modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="offlineReceiptEntryTitle"
+    >
+      <header class="offline-receipt-modal-header">
+        <div>
+          <p class="village-admin-kicker">
+            CONTROLLED OFFLINE RECEIPT
+          </p>
+
+          <h3 id="offlineReceiptEntryTitle">
+            Enter Offline Receipt
+          </h3>
+
+          <p>
+            Select one RESERVED receipt number and enter the
+            handwritten receipt details.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="offline-receipt-modal-close"
+          data-offline-receipt-close
+          aria-label="Close"
+        >
+          &times;
+        </button>
+      </header>
+
+      <div
+        id="offlineReceiptFormMessage"
+        class="offline-receipt-form-message"
+        hidden
+      ></div>
+
+      <form
+        id="offlineReceiptEntryForm"
+        class="offline-receipt-entry-form"
+      >
+        <div class="offline-receipt-form-grid">
+
+          <label class="offline-receipt-span-2">
+            <span>Reserved Receipt Number *</span>
+
+            <select
+              id="offlineReceiptNumber"
+              required
+            >
+              <option value="">
+                Select reserved receipt
+              </option>
+            </select>
+          </label>
+
+          <label>
+            <span>Honorific</span>
+
+            <select id="offlineReceiptHonorific">
+              <option value="">Select</option>
+              <option value="Sri">Sri</option>
+              <option value="Srimathi">Srimathi</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Donor Name *</span>
+
+            <input
+              type="text"
+              id="offlineReceiptDonorName"
+              autocomplete="off"
+              required
+            >
+          </label>
+
+          <label>
+            <span>PAN - Optional</span>
+
+            <input
+              type="text"
+              id="offlineReceiptPan"
+              maxlength="10"
+              autocomplete="off"
+              placeholder="ABCDE1234F"
+            >
+          </label>
+
+          <label>
+            <span>Mobile</span>
+
+            <input
+              type="tel"
+              id="offlineReceiptMobile"
+              maxlength="15"
+              autocomplete="off"
+            >
+          </label>
+
+          <label class="offline-receipt-span-2">
+            <span>Address</span>
+
+            <textarea
+              id="offlineReceiptAddress"
+              rows="2"
+            ></textarea>
+          </label>
+
+          <label>
+            <span>Receipt Date *</span>
+
+            <input
+              type="date"
+              id="offlineReceiptDate"
+              required
+            >
+          </label>
+
+          <label>
+            <span>Payment Mode</span>
+
+            <select id="offlineReceiptPaymentMode">
+              <option value="">Select</option>
+              <option value="Cash">Cash</option>
+              <option value="UPI">UPI</option>
+              <option value="Bank Transfer">
+                Bank Transfer
+              </option>
+              <option value="Cheque">Cheque</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Fund *</span>
+
+            <select
+              id="offlineReceiptFundType"
+              required
+            >
+              <option value="">Select Fund</option>
+
+              <option value="Village Donation">
+                Village Donation
+              </option>
+
+              <option value="Temple Fund">
+                Temple Fund
+              </option>
+
+              <option value="Temple Fund Repayment">
+                Temple Fund Repayment
+              </option>
+
+              <option value="Interest Payment">
+                Interest Payment
+              </option>
+
+              <option value="Final Settlement">
+                Final Settlement
+              </option>
+
+              <option value="Village Activity">
+                Village Activity
+              </option>
+
+              <option value="Charitable Activities">
+                Charitable Activities
+              </option>
+
+              <option value="Other">
+                Other
+              </option>
+            </select>
+          </label>
+
+          <label>
+            <span>Purpose *</span>
+
+            <input
+              type="text"
+              id="offlineReceiptPurpose"
+              required
+            >
+          </label>
+
+          <label>
+            <span>Amount *</span>
+
+            <input
+              type="number"
+              id="offlineReceiptAmount"
+              min="0.01"
+              step="0.01"
+              required
+            >
+          </label>
+
+          <label>
+            <span>Amount in Words</span>
+
+            <input
+              type="text"
+              id="offlineReceiptAmountWords"
+            >
+          </label>
+
+          <label>
+            <span>Reference</span>
+
+            <input
+              type="text"
+              id="offlineReceiptReference"
+            >
+          </label>
+
+          <label>
+            <span>Received By - Name *</span>
+
+            <input
+              type="text"
+              id="offlineReceiptReceivedBy"
+              required
+            >
+          </label>
+
+          <label class="offline-receipt-span-2">
+            <span>Remarks</span>
+
+            <textarea
+              id="offlineReceiptRemarks"
+              rows="2"
+            ></textarea>
+          </label>
+
+          <label class="offline-receipt-span-2">
+            <span>Treasurer / Authorized Signatory</span>
+
+            <input
+              type="text"
+              id="offlineReceiptSignatory"
+            >
+          </label>
+
+        </div>
+
+        <div class="offline-receipt-form-actions">
+          <button
+            type="button"
+            class="secondary"
+            data-offline-receipt-close
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            id="offlineReceiptPreviewButton"
+          >
+            Preview Receipt
+          </button>
+        </div>
+
+        <p class="offline-receipt-preview-warning">
+          Preview only. No receipt will be issued and no database
+          record will be changed at this stage.
+        </p>
+      </form>
+    </section>
+  </div>
+
+
+  <div
+    id="offlineReceiptPreviewModal"
+    class="offline-receipt-modal"
+    hidden
+  >
+    <div
+      class="offline-receipt-modal-backdrop"
+      data-offline-preview-close
+    ></div>
+
+    <section
+      class="offline-receipt-modal-card offline-receipt-preview-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="offlineReceiptPreviewTitle"
+    >
+      <header class="offline-receipt-modal-header">
+        <div>
+          <p class="village-admin-kicker">
+            PREVIEW - NOT YET ISSUED
+          </p>
+
+          <h3 id="offlineReceiptPreviewTitle">
+            Offline Receipt Preview
+          </h3>
+        </div>
+
+        <button
+          type="button"
+          class="offline-receipt-modal-close"
+          data-offline-preview-close
+          aria-label="Close"
+        >
+          &times;
+        </button>
+      </header>
+
+      <div
+        id="offlineReceiptPreviewBody"
+        class="offline-receipt-preview-body"
+      ></div>
+
+      <div class="offline-receipt-form-actions">
+        <button
+          type="button"
+          id="offlineReceiptPreviewEdit"
+          class="secondary"
+        >
+          Edit Details
+        </button>
+
+        <button
+          type="button"
+          id="offlineReceiptConfirmIssue"
+          disabled
+          title="Final issue will be enabled after preview approval"
+        >
+          Confirm & Issue
+        </button>
+      </div>
+
+      <p class="offline-receipt-preview-warning">
+        Confirm & Issue is intentionally disabled in Phase 3B3B.
+        This preview does not write to Supabase.
+      </p>
+    </section>
+  </div>
+
+  <script
+    src="../assets/js/offline-receipts-admin.js?v=20261003-phase19e1"
   ></script>
 
 <div
@@ -2257,14 +2969,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

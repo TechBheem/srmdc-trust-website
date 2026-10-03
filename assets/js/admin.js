@@ -1,5 +1,3 @@
-"use strict";
-
 (() => {
   const config =
     window.SRMDC_SUPABASE_CONFIG;
@@ -2550,7 +2548,8 @@
 
               await shareSrmdcOfficialReceipt(
                 item.receipt_number,
-                item.verification_token
+                item.verification_token,
+                item
               );
             }
           );
@@ -3004,7 +3003,8 @@
 
             await shareSrmdcOfficialReceipt(
               result.receipt_number,
-              result.verification_token
+              result.verification_token,
+              currentSubmission
             );
           }
         );
@@ -3248,7 +3248,7 @@
 
 
     // ==========================================================
-    // SRMDC_SAFE_RECEIPT_SHARE_V2
+    // SRMDC_SAFE_RECEIPT_SHARE_V3
     //
     // Shares only public receipt-verification information.
     // No mobile, email, PAN, address, UTR or bank data.
@@ -3256,18 +3256,16 @@
 
     async function shareSrmdcOfficialReceipt(
       receiptNumber,
-      verificationToken
+      verificationToken,
+      submission = null
     ) {
 
       if (!receiptNumber || !verificationToken) {
-
         window.alert(
           "Official receipt details are not available."
         );
-
         return;
       }
-
 
       const verificationUrl =
         buildSrmdcPublicVerificationUrl(
@@ -3275,26 +3273,130 @@
           verificationToken
         );
 
+      const donorName =
+        String(
+          submission?.donor_name ||
+          submission?.name ||
+          submission?.full_name ||
+          ""
+        ).trim();
+
+      const amountRaw =
+        submission?.bank_credited_amount ??
+        submission?.amount ??
+        submission?.donation_amount ??
+        submission?.donor_amount ??
+        null;
+
+      const amount =
+        amountRaw !== null &&
+        amountRaw !== undefined &&
+        amountRaw !== ""
+          ? money(amountRaw)
+          : "";
+
+      const fundName =
+        String(
+          submission?.fund_name ||
+          submission?.fund ||
+          submission?.purpose ||
+          ""
+        ).trim();
+
+      const paymentMode =
+        String(
+          submission?.payment_mode ||
+          submission?.donor_payment_mode ||
+          ""
+        ).trim();
+
+      const paymentDateRaw =
+        submission?.bank_credit_date ||
+        submission?.donor_payment_date ||
+        submission?.payment_date ||
+        submission?.receipt_date ||
+        "";
+
+      const paymentDate =
+        paymentDateRaw
+          ? formatDate(paymentDateRaw)
+          : "";
+
+      const donationReference =
+        String(
+          submission?.donation_reference ||
+          submission?.reference_number ||
+          submission?.submission_reference ||
+          ""
+        ).trim();
+
+      const details = [];
+
+      if (amount) {
+        details.push(`Amount: ${amount}`);
+      }
+
+      if (fundName) {
+        details.push(`Fund / Purpose: ${fundName}`);
+      }
+
+      if (paymentMode) {
+        details.push(`Payment Mode: ${paymentMode}`);
+      }
+
+      if (paymentDate) {
+        details.push(`Payment Date: ${paymentDate}`);
+      }
+
+      if (donationReference) {
+        details.push(
+          `Donation Reference: ${donationReference}`
+        );
+      }
+
+      details.push(
+        `Official Receipt No.: ${receiptNumber}`
+      );
+
+      const greeting =
+        donorName
+          ? `Dear ${donorName} Garu,`
+          : "Dear Devotee,";
 
       const shareText =
+        "*Sri Rama Mandira Devasthana Charitable Trust, Bodabanda*\n\n" +
+        greeting +
+        "\n\n" +
+        "We gratefully acknowledge receipt of your generous donation to Sri Rama Mandira Devasthana Charitable Trust, Bodabanda.\n\n" +
+        "*Payment Details*\n" +
+        details
+          .map(detail => `- ${detail}`)
+          .join("\n") +
+        "\n\n" +
+        "Your payment has been received and verified by the Trust, and your official donation receipt has been issued.\n\n" +
+        "*Verify your official receipt:*\n" +
+        verificationUrl +
+        "\n\n" +
+        "Thank you for your valuable contribution and continued support to the Trust and its religious and charitable activities.\n\n" +
+        "*Jai Sri Ram!*\n\n" +
         "Sri Rama Mandira Devasthana Charitable Trust\n" +
-        "Official Donation Receipt\n" +
-        `Receipt: ${receiptNumber}\n` +
-        `Verify: ${verificationUrl}`;
+        "Bodabanda Village";
 
+      const whatsappUrl =
+        "https://wa.me/?text=" +
+        encodeURIComponent(shareText);
+
+      const popup =
+        window.open(
+          whatsappUrl,
+          "_blank"
+        );
+
+      if (popup) {
+        return;
+      }
 
       try {
-
-        if (navigator.share) {
-
-          await navigator.share({
-            title: `SRMDC Receipt ${receiptNumber}`,
-            text: shareText
-          });
-
-          return;
-        }
-
 
         if (
           navigator.clipboard &&
@@ -3306,58 +3408,25 @@
           );
 
           window.alert(
-            "Receipt verification details copied. " +
-            "You can paste them into WhatsApp or email."
+            "WhatsApp could not be opened. " +
+            "Receipt message copied to clipboard."
           );
 
           return;
         }
-
-
-        window.prompt(
-          "Copy these receipt verification details:",
-          shareText
-        );
       }
       catch (error) {
 
-        if (
-          error &&
-          error.name === "AbortError"
-        ) {
-          return;
-        }
-
-
-        try {
-
-          if (
-            navigator.clipboard &&
-            navigator.clipboard.writeText
-          ) {
-
-            await navigator.clipboard.writeText(
-              shareText
-            );
-
-            window.alert(
-              "Receipt verification details copied. " +
-              "You can paste them into WhatsApp or email."
-            );
-
-            return;
-          }
-        }
-        catch (_) {
-          // Use manual copy fallback below.
-        }
-
-
-        window.prompt(
-          "Copy these receipt verification details:",
-          shareText
+        console.warn(
+          "WhatsApp receipt-share fallback failed:",
+          error
         );
       }
+
+      window.prompt(
+        "Copy this receipt message:",
+        shareText
+      );
     }
 
     function openOfficialReceipt(
@@ -3954,6 +4023,217 @@
     position: relative;
   }
 
+  /* PHASE3B3B2C_OFFLINE_RECEIPT_DETAILS */
+
+  .offline-receipt-details {
+    margin:
+      8px
+      0
+      10px;
+
+    padding:
+      9px
+      12px;
+
+    border:
+      1px solid
+      #c79b45;
+
+    background:
+      rgba(
+        255,
+        253,
+        245,
+        0.88
+      );
+
+    break-inside:
+      avoid;
+
+    page-break-inside:
+      avoid;
+  }
+
+  .offline-receipt-details-title {
+    margin:
+      0
+      0
+      7px;
+
+    padding-bottom:
+      5px;
+
+    border-bottom:
+      1px solid
+      rgba(
+        155,
+        23,
+        33,
+        0.35
+      );
+
+    color:
+      #8a2025;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      11px;
+
+    font-weight:
+      800;
+
+    letter-spacing:
+      1px;
+
+    text-align:
+      center;
+  }
+
+  .offline-receipt-details-grid {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap:
+      5px
+      18px;
+  }
+
+  .offline-detail {
+    display:
+      flex;
+
+    gap:
+      6px;
+
+    align-items:
+      baseline;
+
+    min-width:
+      0;
+
+    padding:
+      3px
+      0;
+
+    border-bottom:
+      1px dotted
+      rgba(
+        16,
+        43,
+        69,
+        0.32
+      );
+
+    font-size:
+      11px;
+  }
+
+  .offline-detail.full {
+    grid-column:
+      1 / -1;
+  }
+
+  .offline-detail-label {
+    flex:
+      0
+      0
+      auto;
+
+    color:
+      #775f31;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      9px;
+
+    font-weight:
+      700;
+
+    letter-spacing:
+      0.35px;
+
+    text-transform:
+      uppercase;
+  }
+
+  .offline-detail-value {
+    min-width:
+      0;
+
+    color:
+      #17355c;
+
+    font-weight:
+      700;
+
+    overflow-wrap:
+      anywhere;
+  }
+
+  .offline-signatures {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap:
+      14px;
+
+    margin-top:
+      8px;
+
+    padding-top:
+      32px;
+
+    text-align:
+      center;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      10px;
+
+    font-weight:
+      700;
+  }
+
+  .offline-signature-item {
+    padding-top:
+      5px;
+
+    border-top:
+      1px solid
+      rgba(
+        16,
+        43,
+        69,
+        0.65
+      );
+  }
+
+  @media print {
+    .offline-receipt-details,
+    .offline-signatures {
+      break-inside:
+        avoid !important;
+
+      page-break-inside:
+        avoid !important;
+    }
+  }
   .srmdc-receipt-bodabanda {
     position: absolute;
     left: 14px;
@@ -4594,6 +4874,217 @@
       12px;
   }
 
+  /* PHASE3B3B2C_OFFLINE_RECEIPT_DETAILS */
+
+  .offline-receipt-details {
+    margin:
+      8px
+      0
+      10px;
+
+    padding:
+      9px
+      12px;
+
+    border:
+      1px solid
+      #c79b45;
+
+    background:
+      rgba(
+        255,
+        253,
+        245,
+        0.88
+      );
+
+    break-inside:
+      avoid;
+
+    page-break-inside:
+      avoid;
+  }
+
+  .offline-receipt-details-title {
+    margin:
+      0
+      0
+      7px;
+
+    padding-bottom:
+      5px;
+
+    border-bottom:
+      1px solid
+      rgba(
+        155,
+        23,
+        33,
+        0.35
+      );
+
+    color:
+      #8a2025;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      11px;
+
+    font-weight:
+      800;
+
+    letter-spacing:
+      1px;
+
+    text-align:
+      center;
+  }
+
+  .offline-receipt-details-grid {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap:
+      5px
+      18px;
+  }
+
+  .offline-detail {
+    display:
+      flex;
+
+    gap:
+      6px;
+
+    align-items:
+      baseline;
+
+    min-width:
+      0;
+
+    padding:
+      3px
+      0;
+
+    border-bottom:
+      1px dotted
+      rgba(
+        16,
+        43,
+        69,
+        0.32
+      );
+
+    font-size:
+      11px;
+  }
+
+  .offline-detail.full {
+    grid-column:
+      1 / -1;
+  }
+
+  .offline-detail-label {
+    flex:
+      0
+      0
+      auto;
+
+    color:
+      #775f31;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      9px;
+
+    font-weight:
+      700;
+
+    letter-spacing:
+      0.35px;
+
+    text-transform:
+      uppercase;
+  }
+
+  .offline-detail-value {
+    min-width:
+      0;
+
+    color:
+      #17355c;
+
+    font-weight:
+      700;
+
+    overflow-wrap:
+      anywhere;
+  }
+
+  .offline-signatures {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap:
+      14px;
+
+    margin-top:
+      8px;
+
+    padding-top:
+      32px;
+
+    text-align:
+      center;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      10px;
+
+    font-weight:
+      700;
+  }
+
+  .offline-signature-item {
+    padding-top:
+      5px;
+
+    border-top:
+      1px solid
+      rgba(
+        16,
+        43,
+        69,
+        0.65
+      );
+  }
+
+  @media print {
+    .offline-receipt-details,
+    .offline-signatures {
+      break-inside:
+        avoid !important;
+
+      page-break-inside:
+        avoid !important;
+    }
+  }
   .srmdc-receipt-bodabanda {
     left:
       12px;
@@ -4795,6 +5286,217 @@
   /*
     Bottom Bodabanda emblem becomes the single receipt emblem.
   */
+  /* PHASE3B3B2C_OFFLINE_RECEIPT_DETAILS */
+
+  .offline-receipt-details {
+    margin:
+      8px
+      0
+      10px;
+
+    padding:
+      9px
+      12px;
+
+    border:
+      1px solid
+      #c79b45;
+
+    background:
+      rgba(
+        255,
+        253,
+        245,
+        0.88
+      );
+
+    break-inside:
+      avoid;
+
+    page-break-inside:
+      avoid;
+  }
+
+  .offline-receipt-details-title {
+    margin:
+      0
+      0
+      7px;
+
+    padding-bottom:
+      5px;
+
+    border-bottom:
+      1px solid
+      rgba(
+        155,
+        23,
+        33,
+        0.35
+      );
+
+    color:
+      #8a2025;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      11px;
+
+    font-weight:
+      800;
+
+    letter-spacing:
+      1px;
+
+    text-align:
+      center;
+  }
+
+  .offline-receipt-details-grid {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap:
+      5px
+      18px;
+  }
+
+  .offline-detail {
+    display:
+      flex;
+
+    gap:
+      6px;
+
+    align-items:
+      baseline;
+
+    min-width:
+      0;
+
+    padding:
+      3px
+      0;
+
+    border-bottom:
+      1px dotted
+      rgba(
+        16,
+        43,
+        69,
+        0.32
+      );
+
+    font-size:
+      11px;
+  }
+
+  .offline-detail.full {
+    grid-column:
+      1 / -1;
+  }
+
+  .offline-detail-label {
+    flex:
+      0
+      0
+      auto;
+
+    color:
+      #775f31;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      9px;
+
+    font-weight:
+      700;
+
+    letter-spacing:
+      0.35px;
+
+    text-transform:
+      uppercase;
+  }
+
+  .offline-detail-value {
+    min-width:
+      0;
+
+    color:
+      #17355c;
+
+    font-weight:
+      700;
+
+    overflow-wrap:
+      anywhere;
+  }
+
+  .offline-signatures {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap:
+      14px;
+
+    margin-top:
+      8px;
+
+    padding-top:
+      32px;
+
+    text-align:
+      center;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      10px;
+
+    font-weight:
+      700;
+  }
+
+  .offline-signature-item {
+    padding-top:
+      5px;
+
+    border-top:
+      1px solid
+      rgba(
+        16,
+        43,
+        69,
+        0.65
+      );
+  }
+
+  @media print {
+    .offline-receipt-details,
+    .offline-signatures {
+      break-inside:
+        avoid !important;
+
+      page-break-inside:
+        avoid !important;
+    }
+  }
   .srmdc-receipt-bodabanda {
     left: 8px;
 
@@ -4847,7 +5549,218 @@
     .srmdc-v2-art-panel,
     .srmdc-v2-header-art,
     .srmdc-v2-jai,
-    .srmdc-receipt-bodabanda {
+    /* PHASE3B3B2C_OFFLINE_RECEIPT_DETAILS */
+
+  .offline-receipt-details {
+    margin:
+      8px
+      0
+      10px;
+
+    padding:
+      9px
+      12px;
+
+    border:
+      1px solid
+      #c79b45;
+
+    background:
+      rgba(
+        255,
+        253,
+        245,
+        0.88
+      );
+
+    break-inside:
+      avoid;
+
+    page-break-inside:
+      avoid;
+  }
+
+  .offline-receipt-details-title {
+    margin:
+      0
+      0
+      7px;
+
+    padding-bottom:
+      5px;
+
+    border-bottom:
+      1px solid
+      rgba(
+        155,
+        23,
+        33,
+        0.35
+      );
+
+    color:
+      #8a2025;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      11px;
+
+    font-weight:
+      800;
+
+    letter-spacing:
+      1px;
+
+    text-align:
+      center;
+  }
+
+  .offline-receipt-details-grid {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap:
+      5px
+      18px;
+  }
+
+  .offline-detail {
+    display:
+      flex;
+
+    gap:
+      6px;
+
+    align-items:
+      baseline;
+
+    min-width:
+      0;
+
+    padding:
+      3px
+      0;
+
+    border-bottom:
+      1px dotted
+      rgba(
+        16,
+        43,
+        69,
+        0.32
+      );
+
+    font-size:
+      11px;
+  }
+
+  .offline-detail.full {
+    grid-column:
+      1 / -1;
+  }
+
+  .offline-detail-label {
+    flex:
+      0
+      0
+      auto;
+
+    color:
+      #775f31;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      9px;
+
+    font-weight:
+      700;
+
+    letter-spacing:
+      0.35px;
+
+    text-transform:
+      uppercase;
+  }
+
+  .offline-detail-value {
+    min-width:
+      0;
+
+    color:
+      #17355c;
+
+    font-weight:
+      700;
+
+    overflow-wrap:
+      anywhere;
+  }
+
+  .offline-signatures {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap:
+      14px;
+
+    margin-top:
+      8px;
+
+    padding-top:
+      32px;
+
+    text-align:
+      center;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      10px;
+
+    font-weight:
+      700;
+  }
+
+  .offline-signature-item {
+    padding-top:
+      5px;
+
+    border-top:
+      1px solid
+      rgba(
+        16,
+        43,
+        69,
+        0.65
+      );
+  }
+
+  @media print {
+    .offline-receipt-details,
+    .offline-signatures {
+      break-inside:
+        avoid !important;
+
+      page-break-inside:
+        avoid !important;
+    }
+  }
+  .srmdc-receipt-bodabanda {
 
       -webkit-print-color-adjust:
         exact !important;
@@ -4856,7 +5769,218 @@
         exact !important;
     }
 
-    .srmdc-receipt-bodabanda {
+    /* PHASE3B3B2C_OFFLINE_RECEIPT_DETAILS */
+
+  .offline-receipt-details {
+    margin:
+      8px
+      0
+      10px;
+
+    padding:
+      9px
+      12px;
+
+    border:
+      1px solid
+      #c79b45;
+
+    background:
+      rgba(
+        255,
+        253,
+        245,
+        0.88
+      );
+
+    break-inside:
+      avoid;
+
+    page-break-inside:
+      avoid;
+  }
+
+  .offline-receipt-details-title {
+    margin:
+      0
+      0
+      7px;
+
+    padding-bottom:
+      5px;
+
+    border-bottom:
+      1px solid
+      rgba(
+        155,
+        23,
+        33,
+        0.35
+      );
+
+    color:
+      #8a2025;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      11px;
+
+    font-weight:
+      800;
+
+    letter-spacing:
+      1px;
+
+    text-align:
+      center;
+  }
+
+  .offline-receipt-details-grid {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap:
+      5px
+      18px;
+  }
+
+  .offline-detail {
+    display:
+      flex;
+
+    gap:
+      6px;
+
+    align-items:
+      baseline;
+
+    min-width:
+      0;
+
+    padding:
+      3px
+      0;
+
+    border-bottom:
+      1px dotted
+      rgba(
+        16,
+        43,
+        69,
+        0.32
+      );
+
+    font-size:
+      11px;
+  }
+
+  .offline-detail.full {
+    grid-column:
+      1 / -1;
+  }
+
+  .offline-detail-label {
+    flex:
+      0
+      0
+      auto;
+
+    color:
+      #775f31;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      9px;
+
+    font-weight:
+      700;
+
+    letter-spacing:
+      0.35px;
+
+    text-transform:
+      uppercase;
+  }
+
+  .offline-detail-value {
+    min-width:
+      0;
+
+    color:
+      #17355c;
+
+    font-weight:
+      700;
+
+    overflow-wrap:
+      anywhere;
+  }
+
+  .offline-signatures {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap:
+      14px;
+
+    margin-top:
+      8px;
+
+    padding-top:
+      32px;
+
+    text-align:
+      center;
+
+    font-family:
+      Arial,
+      sans-serif;
+
+    font-size:
+      10px;
+
+    font-weight:
+      700;
+  }
+
+  .offline-signature-item {
+    padding-top:
+      5px;
+
+    border-top:
+      1px solid
+      rgba(
+        16,
+        43,
+        69,
+        0.65
+      );
+  }
+
+  @media print {
+    .offline-receipt-details,
+    .offline-signatures {
+      break-inside:
+        avoid !important;
+
+      page-break-inside:
+        avoid !important;
+    }
+  }
+  .srmdc-receipt-bodabanda {
       width: 118px !important;
       height: 118px !important;
     }
@@ -5023,6 +6147,94 @@
   </section>
 
 
+  ${submission.offline_receipt === true ? `
+  <!-- PHASE3B3B2C_OFFLINE_RECEIPT_DETAILS -->
+  <section class="offline-receipt-details">
+
+    <div class="offline-receipt-details-title">
+      OFFLINE RECEIPT DETAILS
+    </div>
+
+    <div class="offline-receipt-details-grid">
+
+      ${submission.mobile ? `
+        <div class="offline-detail">
+          <span class="offline-detail-label">Mobile</span>
+          <span class="offline-detail-value">
+            ${escapeHtml(submission.mobile)}
+          </span>
+        </div>
+      ` : ""}
+
+      ${submission.pan_number ? `
+        <div class="offline-detail">
+          <span class="offline-detail-label">PAN</span>
+          <span class="offline-detail-value">
+            ${escapeHtml(submission.pan_number)}
+          </span>
+        </div>
+      ` : ""}
+
+      ${submission.address ? `
+        <div class="offline-detail full">
+          <span class="offline-detail-label">Address</span>
+          <span class="offline-detail-value">
+            ${escapeHtml(submission.address)}
+          </span>
+        </div>
+      ` : ""}
+
+      ${submission.reference_number ? `
+        <div class="offline-detail">
+          <span class="offline-detail-label">Reference</span>
+          <span class="offline-detail-value">
+            ${escapeHtml(submission.reference_number)}
+          </span>
+        </div>
+      ` : ""}
+
+      <div class="offline-detail">
+        <span class="offline-detail-label">Book No.</span>
+        <span class="offline-detail-value">
+          ${escapeHtml(
+            String(submission.offline_book_number || "")
+              .padStart(3, "0")
+          )}
+        </span>
+      </div>
+
+      ${submission.remarks ? `
+        <div class="offline-detail">
+          <span class="offline-detail-label">Remarks</span>
+          <span class="offline-detail-value">
+            ${escapeHtml(submission.remarks)}
+          </span>
+        </div>
+      ` : ""}
+
+      <div class="offline-detail">
+        <span class="offline-detail-label">Serial No.</span>
+        <span class="offline-detail-value">
+          ${escapeHtml(
+            String(submission.offline_serial_number || "")
+              .padStart(6, "0")
+          )}
+        </span>
+      </div>
+
+      ${submission.received_by_name ? `
+        <div class="offline-detail full">
+          <span class="offline-detail-label">Received By</span>
+          <span class="offline-detail-value">
+            ${escapeHtml(submission.received_by_name)}
+          </span>
+        </div>
+      ` : ""}
+
+    </div>
+
+  </section>
+  ` : ""}
   <section class="amount-box">
 
     <div class="amount-number">
@@ -5070,6 +6282,23 @@
   </section>
 
 
+  ${submission.offline_receipt === true ? `
+  <section class="offline-signatures">
+
+    <div class="offline-signature-item">
+      Donor Signature
+    </div>
+
+    <div class="offline-signature-item">
+      Received By - Name &amp; Signature
+    </div>
+
+    <div class="offline-signature-item">
+      Treasurer / Authorized Signatory
+    </div>
+
+  </section>
+  ` : ""}
   <section class="signature">
 
 
@@ -5082,6 +6311,9 @@
 
     <div class="signature-space"></div>
 
+    <!-- PHASE3B3B2C1_OFFLINE_SIGNATURE_CLEANUP -->
+
+    ${submission.offline_receipt !== true ? `
     <strong>
       For SRI RAMA MANDIRA DEVASTHANA
       CHARITABLE TRUST
@@ -5090,6 +6322,7 @@
     <div>
       Treasurer / Authorized Signatory
     </div>
+    ` : ""}
 
   </section>
 
@@ -5201,12 +6434,14 @@
 
       async shareExisting(
         receiptNumber,
-        verificationToken
+        verificationToken,
+        submission = null
       ) {
 
         return await shareSrmdcOfficialReceipt(
           receiptNumber,
-          verificationToken
+          verificationToken,
+          submission
         );
       }
 

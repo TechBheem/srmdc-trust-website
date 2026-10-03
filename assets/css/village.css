@@ -1916,3 +1916,939 @@ body.village-payment-open {
   outline: 2px solid #23613f;
   outline-offset: 2px;
 }
+
+/* PHASE 2A2 - DEVOTIONAL PUBLIC HEADER */
+
+/*
+   Appearance-only overrides.
+   Existing portal behaviour and data hooks remain unchanged.
+*/
+
+.village-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  overflow: visible;
+
+  border-bottom:
+    1px solid rgba(176, 117, 27, 0.38);
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 249, 0.99) 0%,
+      rgba(255, 249, 224, 0.98) 52%,
+      rgba(249, 231, 181, 0.98) 100%
+    );
+
+  box-shadow:
+    0 7px 24px rgba(92, 55, 12, 0.12);
+
+  backdrop-filter: none;
+}
+
+.header-inner.village-brand-header {
+  position: relative;
+
+  width: min(1180px, calc(100% - 32px));
+  min-height: 150px;
+
+  margin: auto;
+  padding: 12px 0 9px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+/* Sita Rama Lakshmana Hanuman */
+
+.village-brand-family {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 175px;
+  height: 145px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.village-brand-family img {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 170px;
+  max-height: 143px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 7px 7px rgba(83, 48, 10, 0.20)
+    );
+}
+
+/* Existing heading becomes primary Mana Bodabanda branding */
+
+.header-inner.village-brand-header > div:not(.village-brand-family) {
+  width: min(680px, calc(100% - 390px));
+  margin: 0 auto;
+  padding: 0 14px;
+}
+
+.header-inner.village-brand-header .village-kicker {
+  margin-bottom: 2px;
+
+  color: #267045;
+
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.header-inner.village-brand-header h1 {
+  margin: 0;
+
+  color: #9f2119;
+
+  font-family:
+    "Noto Serif Telugu",
+    "Noto Sans Telugu",
+    "Nirmala UI",
+    sans-serif;
+
+  font-size: clamp(43px, 4.7vw, 66px);
+  font-weight: 900;
+
+  line-height: 1.08;
+
+  text-shadow:
+    0 2px 0 rgba(255, 244, 204, 0.95),
+    0 4px 8px rgba(116, 49, 13, 0.15);
+}
+
+.header-inner.village-brand-header p {
+  margin: 5px 0 0;
+
+  color: #6f2a20;
+
+  font-size: clamp(15px, 1.55vw, 20px);
+  font-weight: 800;
+}
+
+/* Small traditional divider */
+
+.header-inner.village-brand-header p::after {
+  content: "\2756";
+
+  display: block;
+
+  width: min(300px, 75%);
+
+  margin: 7px auto 0;
+  padding-bottom: 3px;
+
+  color: #bf8120;
+
+  font-size: 13px;
+  line-height: 1;
+
+  border-bottom:
+    1px solid rgba(177, 104, 25, 0.38);
+}
+
+/* Logout remains available but visually secondary */
+
+.header-inner.village-brand-header .logout-button {
+  position: absolute;
+  top: 14px;
+  right: 0;
+
+  padding: 7px 12px;
+
+  border:
+    1px solid rgba(145, 42, 33, 0.68);
+
+  border-radius: 9px;
+
+  color: #8f251f;
+
+  background:
+    rgba(255, 252, 240, 0.86);
+
+  font-size: 12px;
+  font-weight: 900;
+
+  box-shadow:
+    0 3px 9px rgba(81, 45, 13, 0.07);
+}
+
+/* Cream / gold / green navigation */
+
+.village-nav {
+  width: min(950px, calc(100% - 32px));
+
+  margin: 0 auto 11px;
+  padding: 6px;
+
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+
+  overflow-x: auto;
+
+  border:
+    1px solid rgba(181, 124, 32, 0.31);
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 253, 246, 0.96);
+
+  box-shadow:
+    0 7px 18px rgba(81, 50, 12, 0.08);
+}
+
+.village-nav .nav-link {
+  flex: 0 0 auto;
+
+  padding: 9px 14px;
+
+  border: 0;
+  border-radius: 9px;
+
+  color: #214a36;
+
+  background: transparent;
+
+  font-weight: 900;
+
+  transition:
+    color .15s ease,
+    background .15s ease,
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.village-nav .nav-link:hover {
+  transform: translateY(-1px);
+}
+
+.village-nav .nav-link:hover,
+.village-nav .nav-link.active {
+  color: #fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #23784b,
+      #155637
+    );
+
+  box-shadow:
+    0 4px 10px rgba(25, 86, 52, 0.18);
+}
+
+/* Tablet */
+
+@media (max-width: 820px) {
+
+  .header-inner.village-brand-header {
+    min-height: 132px;
+    padding: 10px 0 7px;
+  }
+
+  .village-brand-family {
+    width: 105px;
+    height: 116px;
+  }
+
+  .village-brand-family img {
+    max-width: 102px;
+    max-height: 114px;
+  }
+
+  .header-inner.village-brand-header > div:not(.village-brand-family) {
+    width: calc(100% - 165px);
+
+    margin-left: 110px;
+    margin-right: 55px;
+
+    padding: 0;
+  }
+
+  .header-inner.village-brand-header h1 {
+    font-size: clamp(32px, 7vw, 46px);
+  }
+
+  .header-inner.village-brand-header .village-kicker {
+    font-size: 11px;
+  }
+
+  .header-inner.village-brand-header p {
+    font-size: 14px;
+  }
+
+  .header-inner.village-brand-header .logout-button {
+    top: 7px;
+    right: 0;
+
+    padding: 5px 7px;
+
+    font-size: 10px;
+  }
+
+  .village-nav {
+    width: calc(100% - 18px);
+    justify-content: flex-start;
+  }
+}
+
+/* Phone */
+
+@media (max-width: 520px) {
+
+  .header-inner.village-brand-header {
+    min-height: 116px;
+  }
+
+  .village-brand-family {
+    width: 76px;
+    height: 98px;
+  }
+
+  .village-brand-family img {
+    max-width: 74px;
+    max-height: 96px;
+  }
+
+  .header-inner.village-brand-header > div:not(.village-brand-family) {
+    width: calc(100% - 112px);
+
+    margin-left: 80px;
+    margin-right: 32px;
+  }
+
+  .header-inner.village-brand-header h1 {
+    font-size: 28px;
+  }
+
+  .header-inner.village-brand-header .village-kicker {
+    font-size: 9px;
+  }
+
+  .header-inner.village-brand-header p {
+    margin-top: 3px;
+    font-size: 11px;
+  }
+
+  .header-inner.village-brand-header p::after {
+    margin-top: 4px;
+  }
+
+  .village-nav .nav-link {
+    padding: 8px 11px;
+    font-size: 12px;
+  }
+}
+/* PHASE 2A3 - BRAND WORDING AND PROPORTIONS */
+
+/*
+   Final tuning for the public branding header.
+   Appearance only.
+*/
+
+.header-inner.village-brand-header {
+  min-height: 168px;
+  padding-top: 12px;
+  padding-bottom: 9px;
+}
+
+/* Make the devotional family a real part of the branding */
+
+.village-brand-family {
+  left: 4px;
+  bottom: 0;
+
+  width: 230px;
+  height: 164px;
+}
+
+.village-brand-family img {
+  max-width: 225px;
+  max-height: 162px;
+
+  filter:
+    drop-shadow(
+      0 7px 8px rgba(81, 45, 9, 0.22)
+    );
+}
+
+/* Reserve balanced space around the central title */
+
+.header-inner.village-brand-header > div:not(.village-brand-family) {
+  width: min(720px, calc(100% - 500px));
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/* Main title */
+
+.header-inner.village-brand-header h1 {
+  margin: 0;
+
+  color: #a42119;
+
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: 1.02;
+
+  text-shadow:
+    0 2px 0 rgba(255, 242, 195, 0.98),
+    0 5px 10px rgba(108, 45, 12, 0.16);
+}
+
+/* Subtitle */
+
+.header-inner.village-brand-header p {
+  margin: 3px 0 0;
+
+  color: #711f1b;
+
+  font-size: clamp(17px, 1.7vw, 23px);
+  font-weight: 900;
+}
+
+/* Tagline now sits below subtitle */
+
+.header-inner.village-brand-header .village-kicker {
+  position: absolute;
+
+  left: 50%;
+  bottom: 8px;
+
+  width: max-content;
+  max-width: 70%;
+
+  margin: 0;
+
+  transform: translateX(-50%);
+
+  color: #1d6940;
+
+  font-size: clamp(12px, 1.2vw, 16px);
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+/*
+   Gold divider belongs beneath subtitle,
+   leaving room for tagline.
+*/
+
+.header-inner.village-brand-header p::after {
+  width: min(350px, 78%);
+
+  margin-top: 7px;
+  margin-bottom: 20px;
+
+  color: #c58a25;
+
+  border-bottom:
+    1px solid rgba(177, 104, 25, 0.43);
+}
+
+/* Logout remains secondary */
+
+.header-inner.village-brand-header .logout-button {
+  top: 12px;
+  right: 2px;
+}
+
+/* Tablet */
+
+@media (max-width: 820px) {
+
+  .header-inner.village-brand-header {
+    min-height: 145px;
+  }
+
+  .village-brand-family {
+    width: 120px;
+    height: 128px;
+  }
+
+  .village-brand-family img {
+    max-width: 116px;
+    max-height: 126px;
+  }
+
+  .header-inner.village-brand-header > div:not(.village-brand-family) {
+    width: calc(100% - 185px);
+
+    margin-left: 125px;
+    margin-right: 60px;
+
+    padding: 0;
+  }
+
+  .header-inner.village-brand-header h1 {
+    font-size: clamp(34px, 7vw, 48px);
+  }
+
+  .header-inner.village-brand-header p {
+    font-size: 14px;
+  }
+
+  .header-inner.village-brand-header .village-kicker {
+    bottom: 7px;
+
+    max-width: calc(100% - 155px);
+
+    font-size: 10px;
+
+    white-space: normal;
+  }
+
+  .header-inner.village-brand-header p::after {
+    margin-bottom: 17px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 520px) {
+
+  .header-inner.village-brand-header {
+    min-height: 128px;
+  }
+
+  .village-brand-family {
+    left: 0;
+
+    width: 82px;
+    height: 105px;
+  }
+
+  .village-brand-family img {
+    max-width: 80px;
+    max-height: 103px;
+  }
+
+  .header-inner.village-brand-header > div:not(.village-brand-family) {
+    width: calc(100% - 120px);
+
+    margin-left: 84px;
+    margin-right: 36px;
+  }
+
+  .header-inner.village-brand-header h1 {
+    font-size: 29px;
+  }
+
+  .header-inner.village-brand-header p {
+    font-size: 11px;
+  }
+
+  .header-inner.village-brand-header .village-kicker {
+    left: calc(50% + 20px);
+    bottom: 6px;
+
+    max-width: calc(100% - 120px);
+
+    font-size: 8px;
+    line-height: 1.35;
+  }
+
+  .header-inner.village-brand-header p::after {
+    margin-top: 4px;
+    margin-bottom: 16px;
+  }
+}
+/* PHASE 2B1 - UNIFIED VILLAGER CARD SYSTEM */
+
+/*
+   Public villagers-view visual system.
+   Appearance only.
+
+   IMPORTANT:
+   No table widths, sticky positioning, frozen columns,
+   scrollbar mechanics or Temple Fund dragger mechanics
+   are changed here.
+*/
+
+/* -------------------------------------------------------
+   MAIN CONTENT
+------------------------------------------------------- */
+
+.village-main {
+  position: relative;
+}
+
+/* -------------------------------------------------------
+   WELCOME / HERO CARD
+------------------------------------------------------- */
+
+.welcome-card {
+  position: relative;
+  overflow: hidden;
+
+  border:
+    1px solid rgba(204, 151, 58, 0.52);
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(20, 86, 56, 0.94) 0%,
+      rgba(29, 103, 68, 0.89) 48%,
+      rgba(62, 110, 75, 0.66) 100%
+    );
+
+  box-shadow:
+    0 14px 34px rgba(64, 39, 9, 0.18),
+    inset 0 1px 0 rgba(255, 247, 207, 0.18);
+}
+
+.welcome-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 82% 15%,
+      rgba(255, 223, 137, 0.18),
+      transparent 35%
+    );
+}
+
+.welcome-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-card h2 {
+  color: #fffdf3;
+
+  text-shadow:
+    0 2px 5px rgba(17, 49, 31, 0.30);
+}
+
+.welcome-card p {
+  color: rgba(255, 255, 247, 0.95);
+}
+
+/* -------------------------------------------------------
+   TOP FINANCIAL SUMMARY CARDS
+------------------------------------------------------- */
+
+.mini-summary-grid {
+  gap: 14px;
+}
+
+.summary-card {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 118px;
+
+  padding: 18px 19px;
+
+  border:
+    1px solid rgba(195, 139, 39, 0.42);
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 250, 0.97),
+      rgba(255, 247, 221, 0.96)
+    );
+
+  box-shadow:
+    0 9px 22px rgba(82, 53, 15, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease;
+}
+
+.summary-card::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 4px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #b52820,
+      #d59b2f
+    );
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(176, 116, 27, 0.60);
+
+  box-shadow:
+    0 13px 27px rgba(82, 53, 15, 0.15);
+}
+
+.summary-card span {
+  color: #4c5e57;
+
+  font-weight: 800;
+}
+
+.summary-card strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #9e281f;
+
+  font-size: clamp(21px, 2vw, 29px);
+  font-weight: 900;
+
+  letter-spacing: -0.3px;
+}
+
+.summary-card small {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #276944;
+
+  font-weight: 800;
+}
+
+/*
+   Preserve the existing featured-card semantic treatment,
+   but make it part of the same visual family.
+*/
+
+.summary-card.featured {
+  border-color:
+    rgba(205, 144, 32, 0.70);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 253, 239, 0.99),
+      rgba(249, 238, 195, 0.98)
+    );
+}
+
+.summary-card.featured::before {
+  background:
+    linear-gradient(
+      180deg,
+      #d69b2d,
+      #24704a
+    );
+}
+
+/* -------------------------------------------------------
+   FOUR HOME NAVIGATION / INFORMATION CARDS
+------------------------------------------------------- */
+
+.info-card {
+  position: relative;
+  overflow: hidden;
+
+  padding: 21px 20px;
+
+  border:
+    1px solid rgba(190, 137, 45, 0.34);
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 252, 0.97),
+      rgba(255, 249, 229, 0.95)
+    );
+
+  box-shadow:
+    0 9px 22px rgba(69, 45, 15, 0.10);
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+}
+
+.info-card::after {
+  content: "";
+
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 0;
+
+  height: 3px;
+
+  border-radius: 0 0 8px 8px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a82720,
+      #d5a13b,
+      #24704a
+    );
+
+  opacity: 0.78;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(187, 128, 29, 0.57);
+
+  box-shadow:
+    0 14px 28px rgba(69, 45, 15, 0.14);
+}
+
+.info-card h3 {
+  margin-bottom: 9px;
+
+  color: #6f261e;
+
+  font-weight: 900;
+}
+
+.info-card p {
+  color: #5d655f;
+
+  line-height: 1.72;
+}
+
+.info-card button {
+  color: #17633d;
+
+  font-weight: 900;
+}
+
+/* -------------------------------------------------------
+   COMMON SECTION / TABLE CONTAINERS
+------------------------------------------------------- */
+
+.table-card {
+  border:
+    1px solid rgba(190, 135, 40, 0.38);
+
+  border-radius: 18px;
+
+  background:
+    rgba(255, 253, 244, 0.97);
+
+  box-shadow:
+    0 12px 30px rgba(68, 44, 12, 0.11);
+}
+
+/*
+   We intentionally style only the frame.
+   No table width/column/sticky rules are changed.
+*/
+
+.table-card h2,
+.table-card h3 {
+  color: #75271f;
+}
+
+.mini-summary {
+  border:
+    1px solid rgba(194, 139, 42, 0.36);
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 250, 0.98),
+      rgba(255, 247, 220, 0.96)
+    );
+
+  box-shadow:
+    0 7px 17px rgba(73, 47, 13, 0.08);
+}
+
+.mini-summary span {
+  color: #59665f;
+  font-weight: 800;
+}
+
+.mini-summary strong {
+  color: #78271f;
+  font-weight: 900;
+}
+
+/* -------------------------------------------------------
+   SHARED BUTTON POLISH
+------------------------------------------------------- */
+
+.village-main button:not(.nav-link):not(.logout-button) {
+  border-radius: 10px;
+}
+
+/* -------------------------------------------------------
+   MOBILE
+------------------------------------------------------- */
+
+@media (max-width: 650px) {
+
+  .mini-summary-grid {
+    gap: 10px;
+  }
+
+  .summary-card {
+    min-height: 102px;
+    padding: 15px 14px;
+    border-radius: 14px;
+  }
+
+  .summary-card strong {
+    font-size: 21px;
+  }
+
+  .info-card {
+    padding: 17px 15px;
+    border-radius: 14px;
+  }
+
+  .table-card {
+    border-radius: 14px;
+  }
+
+  .welcome-card {
+    border-radius: 17px;
+  }
+}

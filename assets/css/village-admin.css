@@ -1225,3 +1225,619 @@
     width: 100%;
   }
 }
+/* ==========================================================
+   PHASE 3B2 - OFFLINE RECEIPT REGISTER
+   Read-only register UI.
+   ========================================================== */
+
+.offline-receipt-book-banner {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.offline-receipt-book-banner > div,
+.offline-receipt-summary article {
+  border: 1px solid #e4d6ae;
+  border-radius: 14px;
+  background: #fffaf0;
+  padding: 14px 16px;
+}
+
+.offline-receipt-book-banner span,
+.offline-receipt-summary span {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  opacity: .7;
+  margin-bottom: 6px;
+}
+
+.offline-receipt-book-banner strong {
+  color: #6d2019;
+  font-size: 17px;
+}
+
+.offline-receipt-summary {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.offline-receipt-summary strong {
+  display: block;
+  font-size: 25px;
+  color: #6d2019;
+}
+
+.offline-receipt-controls {
+  display: grid;
+  grid-template-columns:
+    minmax(220px, 1fr)
+    minmax(170px, .45fr)
+    minmax(300px, 1fr);
+  gap: 14px;
+  align-items: end;
+  margin: 0 0 14px;
+}
+
+.offline-receipt-controls label,
+.offline-receipt-pdf-range {
+  display: grid;
+  gap: 6px;
+}
+
+.offline-receipt-controls label > span,
+.offline-receipt-pdf-range > span {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.offline-receipt-controls input,
+.offline-receipt-controls select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.offline-receipt-pdf-range > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.offline-receipt-pdf-range input {
+  width: 78px;
+}
+
+.offline-receipt-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e4d6ae;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.offline-receipt-table {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: collapse;
+}
+
+.offline-receipt-table th,
+.offline-receipt-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid #eee6d3;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.offline-receipt-table th {
+  background: #fff7e4;
+  color: #6d2019;
+  white-space: nowrap;
+}
+
+.offline-receipt-table tbody tr:hover {
+  background: #fffcf5;
+}
+
+.offline-receipt-status {
+  min-height: 20px;
+}
+
+.offline-receipt-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 78px;
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.offline-receipt-status-badge[data-status="RESERVED"] {
+  background: #fff3cd;
+  color: #755800;
+}
+
+.offline-receipt-status-badge[data-status="ISSUED"] {
+  background: #e7f0ff;
+  color: #174b8a;
+}
+
+.offline-receipt-status-badge[data-status="VERIFIED"] {
+  background: #e4f6e9;
+  color: #176b32;
+}
+
+.offline-receipt-status-badge[data-status="VOID"] {
+  background: #f7e7e7;
+  color: #8a2424;
+}
+
+.offline-receipt-safety-note {
+  margin: 14px 0 0;
+  padding: 11px 13px;
+  border-left: 4px solid #c99b39;
+  background: #fff9e9;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .offline-receipt-book-banner,
+  .offline-receipt-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .offline-receipt-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   PHASE 3B3B - OFFLINE RECEIPT ENTRY
+   Preview only - no database write.
+   ========================================================== */
+
+.offline-receipt-modal[hidden] {
+  display: none !important;
+}
+
+.offline-receipt-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.offline-receipt-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 18, 10, .62);
+}
+
+.offline-receipt-modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 96vw);
+  max-height: 92vh;
+  overflow: auto;
+  border-radius: 18px;
+  border: 1px solid #d8c28c;
+  background: #fffaf0;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .24);
+  padding: 22px;
+}
+
+.offline-receipt-modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  border-bottom: 1px solid #e6d7b3;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+.offline-receipt-modal-header h3 {
+  margin: 4px 0 5px;
+}
+
+.offline-receipt-modal-header p {
+  margin-bottom: 0;
+}
+
+.offline-receipt-modal-close {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.offline-receipt-entry-form {
+  display: grid;
+  gap: 18px;
+}
+
+.offline-receipt-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.offline-receipt-form-grid label {
+  display: grid;
+  gap: 6px;
+}
+
+.offline-receipt-form-grid label > span {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.offline-receipt-form-grid input,
+.offline-receipt-form-grid select,
+.offline-receipt-form-grid textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.offline-receipt-span-2 {
+  grid-column: 1 / -1;
+}
+
+.offline-receipt-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.offline-receipt-preview-warning {
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 4px solid #c99b39;
+  background: #fff4d2;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.offline-receipt-form-message {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f8e4e4;
+  color: #842424;
+  font-weight: 700;
+}
+
+.offline-receipt-preview-card {
+  width: min(820px, 96vw);
+}
+
+.offline-receipt-preview-body {
+  border: 2px solid #c99b39;
+  border-radius: 14px;
+  background: #fff;
+  padding: 22px;
+}
+
+.offline-receipt-preview-heading {
+  text-align: center;
+  border-bottom: 1px solid #e6d7b3;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.offline-receipt-preview-heading strong {
+  display: block;
+  color: #76251d;
+  font-size: 19px;
+}
+
+.offline-receipt-preview-heading span {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.offline-receipt-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
+}
+
+.offline-receipt-preview-field {
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #ddd0ae;
+}
+
+.offline-receipt-preview-field span {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  opacity: .68;
+  margin-bottom: 4px;
+}
+
+.offline-receipt-preview-field strong {
+  display: block;
+  word-break: break-word;
+}
+
+.offline-receipt-preview-full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 700px) {
+  .offline-receipt-form-grid,
+  .offline-receipt-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offline-receipt-span-2,
+  .offline-receipt-preview-full {
+    grid-column: auto;
+  }
+}
+
+/* ==========================================================
+   PHASE3D1_19D3D_RECEIPT_CONTROL_UI_POLISH
+   Admin Receipt Books presentation only.
+   No receipt PDF / print renderer styles are changed.
+   ========================================================== */
+
+.offline-receipt-controls {
+  margin: 24px 0 20px;
+  padding: 20px;
+  border: 1px solid #d8c69d;
+  border-radius: 16px;
+  background: #fffdf8;
+  box-shadow: 0 6px 18px rgba(60, 42, 18, 0.07);
+  align-items: end;
+  gap: 16px;
+}
+
+.offline-receipt-controls label {
+  min-width: 0;
+}
+
+.offline-receipt-controls label > span {
+  display: block;
+  margin-bottom: 7px;
+  color: #263b31;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+#offlineReceiptWorkingBook,
+#offlineReceiptSearch,
+#offlineReceiptStatusFilter {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #c9b78c;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 9px 12px;
+  font: inherit;
+}
+
+#offlineReceiptWorkingBook {
+  border: 2px solid #2f7657;
+  background: #f3faf6;
+  color: #173d2d;
+  font-weight: 800;
+}
+
+#offlineReceiptWorkingBook:focus,
+#offlineReceiptSearch:focus,
+#offlineReceiptStatusFilter:focus,
+.offline-receipt-pdf-range input:focus,
+.offline-receipt-pdf-range select:focus {
+  outline: 3px solid rgba(47, 118, 87, 0.14);
+  border-color: #2f7657;
+}
+
+/* Workflow cards */
+
+.offline-receipt-pdf-range {
+  margin: 18px 0;
+  padding: 18px 20px;
+  border: 1px solid #d8c69d;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 5px 16px rgba(60, 42, 18, 0.06);
+}
+
+.offline-receipt-pdf-range > span {
+  display: block;
+  margin-bottom: 12px;
+  color: #173d2d;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.offline-receipt-pdf-range > div {
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.offline-receipt-pdf-range input,
+.offline-receipt-pdf-range select {
+  min-height: 42px;
+  border: 1px solid #c9b78c;
+  border-radius: 9px;
+  background: #ffffff;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.offline-receipt-pdf-range input[type="number"] {
+  width: 96px;
+}
+
+#offlineReceiptReprintReason {
+  width: min(400px, 100%);
+  flex: 1 1 260px;
+  border-color: #c7a957;
+  background: #fffdf5;
+}
+
+/* Action buttons */
+
+.offline-receipt-pdf-range button {
+  min-height: 42px;
+  border: 1px solid #246648;
+  border-radius: 9px;
+  background: #276d4d;
+  color: #ffffff;
+  padding: 8px 15px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.offline-receipt-pdf-range button:hover:not(:disabled) {
+  filter: brightness(0.94);
+  transform: translateY(-1px);
+}
+
+.offline-receipt-pdf-range button:disabled {
+  border-color: #d4d4d1;
+  background: #eeeeec;
+  color: #999995;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#offlineReceiptReprintButton {
+  border-color: #8b681b;
+  background: #8b681b;
+}
+
+#offlineReceiptReprintConfirmButton {
+  border-color: #7a281f;
+  background: #7a281f;
+}
+
+/* Feedback messages */
+
+.offline-receipt-status {
+  margin: 10px 0 14px;
+  padding: 11px 14px;
+  border-left: 4px solid #caa44a;
+  border-radius: 0 9px 9px 0;
+  background: #fffaf0;
+  line-height: 1.45;
+}
+
+#offlineReceiptOriginalRangeSummary {
+  border-left-color: #2f7657;
+  background: #f3faf6;
+  color: #244637;
+  font-weight: 650;
+}
+
+#offlineReceiptOriginalPendingStatus {
+  border-left-color: #597a9e;
+  background: #f5f8fc;
+}
+
+#offlineReceiptReprintPendingStatus {
+  border-left-color: #a77b20;
+  background: #fff9e8;
+}
+
+#offlineReceiptStatus {
+  border-left-color: #597a9e;
+  background: #f5f8fc;
+}
+
+/* Receipt register */
+
+.offline-receipt-table-wrap {
+  margin-top: 18px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(60, 42, 18, 0.07);
+}
+
+.offline-receipt-table th {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.offline-receipt-table td {
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.offline-receipt-table tbody tr:nth-child(even) {
+  background: #fffdf8;
+}
+
+.offline-receipt-table tbody tr:hover {
+  background: #fff7e6;
+}
+
+/* Desktop */
+
+@media (min-width: 1100px) {
+  .offline-receipt-controls {
+    grid-template-columns:
+      minmax(330px, 1.15fr)
+      minmax(250px, 0.8fr)
+      minmax(260px, 0.9fr);
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .offline-receipt-controls,
+  .offline-receipt-pdf-range {
+    padding: 16px;
+  }
+
+  #offlineReceiptWorkingBook,
+  #offlineReceiptSearch,
+  #offlineReceiptStatusFilter {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .offline-receipt-pdf-range > div {
+    align-items: stretch;
+  }
+
+  .offline-receipt-pdf-range input[type="number"] {
+    width: 84px;
+  }
+
+  #offlineReceiptReprintReason {
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .offline-receipt-pdf-range button {
+    flex: 1 1 150px;
+  }
+}
