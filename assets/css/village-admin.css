@@ -1841,3 +1841,111 @@
     flex: 1 1 150px;
   }
 }
+
+/* =========================================================
+   PHASE 22D.2A - TAX REPORTING UI FOUNDATION
+   ========================================================= */
+
+.village-tax-reporting-panel {
+  margin-top: 1rem;
+}
+
+.village-tax-payment-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 1.25rem;
+}
+
+.village-tax-payment-summary article {
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 12px;
+  background: rgba(248, 250, 252, 0.75);
+}
+
+.village-tax-payment-summary span {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.village-tax-payment-summary strong {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.village-tax-history-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  min-width: 150px;
+}
+
+.village-tax-status-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.village-tax-prepare-button {
+  white-space: nowrap;
+}
+
+.village-tax-corpus-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  border-radius: 12px;
+  background: rgba(248, 250, 252, 0.7);
+}
+
+.village-tax-corpus-fields.hidden {
+  display: none;
+}
+
+.village-tax-check-field {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  line-height: 1.45;
+}
+
+.village-tax-check-field input {
+  width: auto;
+  margin-top: 0.2rem;
+}
+
+#villageTaxReportingPrepare:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+@media (max-width: 900px) {
+  .village-tax-payment-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .village-tax-corpus-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .village-tax-payment-summary {
+    grid-template-columns: 1fr;
+  }
+}

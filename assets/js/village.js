@@ -232,7 +232,905 @@
     });
   }
 
+  let publicVillageDonationRows = [];
+
+  function publicDonationCsvCell(value) {
+    const text = String(value ?? "");
+
+    return '"' +
+      text.replace(/"/g, '""') +
+      '"';
+  }
+
+  function publicDonationPlainMoney(value) {
+    return Number(value || 0).toFixed(2);
+  }
+
+  function publicDonationReportRows() {
+    return publicVillageDonationRows.map(
+      (row, index) => {
+        const status =
+          publicDonationStatus(
+            row.committed,
+            row.received
+          );
+
+        return {
+          serial: index + 1,
+          donor: row.donor_name || "",
+          residence: row.residence || "",
+          committed: Number(
+            row.committed || 0
+          ),
+          received: Number(
+            row.received || 0
+          ),
+          pending: Number(
+            row.pending || 0
+          ),
+          status: status.text,
+          commitmentDate:
+            formatVillagePublicDate(
+              row.commitment_date
+            ),
+          paymentDate:
+            formatVillagePublicDate(
+              row.lastPaymentDate
+            )
+        };
+      }
+    );
+  }
+
+  function exportPublicVillageDonations() {
+    const rows =
+      publicDonationReportRows();
+
+    if (!rows.length) {
+      window.alert(
+        "Export à°šà±‡à°¯à°¡à°¾à°¨à°¿à°•à°¿ à°µà°¿à°°à°¾à°³à°¾à°² à°µà°¿à°µà°°à°¾à°²à± à°²à±‡à°µà±."
+      );
+      return;
+    }
+
+    const headers = [
+      "S.No",
+      "Donor Name",
+      "Residence",
+      "Committed Amount",
+      "Received Amount",
+      "Pending Amount",
+      "Status",
+      "Commitment Date",
+      "Last Payment Date"
+    ];
+
+    const lines = [
+      headers
+        .map(publicDonationCsvCell)
+        .join(",")
+    ];
+
+    rows.forEach((row) => {
+      lines.push(
+        [
+          row.serial,
+          row.donor,
+          row.residence,
+          publicDonationPlainMoney(
+            row.committed
+          ),
+          publicDonationPlainMoney(
+            row.received
+          ),
+          publicDonationPlainMoney(
+            row.pending
+          ),
+          row.status,
+          row.commitmentDate,
+          row.paymentDate
+        ]
+          .map(publicDonationCsvCell)
+          .join(",")
+      );
+    });
+
+    const csv =
+      "\uFEFF" +
+      lines.join("\r\n");
+
+    const blob =
+      new Blob(
+        [csv],
+        {
+          type:
+            "text/csv;charset=utf-8"
+        }
+      );
+
+    const url =
+      URL.createObjectURL(blob);
+
+    const link =
+      document.createElement("a");
+
+    const now =
+      new Date();
+
+    const datePart = [
+      now.getFullYear(),
+      String(
+        now.getMonth() + 1
+      ).padStart(2, "0"),
+      String(
+        now.getDate()
+      ).padStart(2, "0")
+    ].join("-");
+
+    link.href = url;
+    link.download =
+      `bodabanda-donations-${datePart}.csv`;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+  }
+
+  function printPublicVillageDonations() {
+    const rows =
+      publicDonationReportRows();
+
+    if (!rows.length) {
+      window.alert(
+        "No donation records are available to print."
+      );
+      return;
+    }
+
+    const totalCommitted =
+      rows.reduce(
+        (sum, row) =>
+          sum + row.committed,
+        0
+      );
+
+    const totalReceived =
+      rows.reduce(
+        (sum, row) =>
+          sum + row.received,
+        0
+      );
+
+    const totalPending =
+      rows.reduce(
+        (sum, row) =>
+          sum + row.pending,
+        0
+      );
+
+    const generated =
+      new Intl.DateTimeFormat(
+        "en-IN",
+        {
+          dateStyle: "medium",
+          timeStyle: "short"
+        }
+      ).format(new Date());
+
+    const logoUrl =
+      new URL(
+        "../assets/images/village/sita_rama_family.png",
+        window.location.href
+      ).href;
+
+    const reportRows =
+      rows
+        .map((row) => `
+          <tr>
+            <td class="serial">
+              ${row.serial}
+            </td>
+
+            <td class="donor">
+              ${escapeVillagePublicHtml(
+                row.donor
+              )}
+            </td>
+
+            <td>
+              ${escapeVillagePublicHtml(
+                row.residence || "-"
+              )}
+            </td>
+
+            <td class="amount">
+              ${formatVillagePublicMoney(
+                row.committed
+              )}
+            </td>
+
+            <td class="amount received">
+              ${formatVillagePublicMoney(
+                row.received
+              )}
+            </td>
+
+            <td class="amount pending">
+              ${formatVillagePublicMoney(
+                row.pending
+              )}
+            </td>
+
+            <td class="status">
+              ${escapeVillagePublicHtml(
+                row.status
+              )}
+            </td>
+
+            <td class="date">
+              ${escapeVillagePublicHtml(
+                row.commitmentDate
+              )}
+            </td>
+
+            <td class="date">
+              ${escapeVillagePublicHtml(
+                row.paymentDate
+              )}
+            </td>
+          </tr>
+        `)
+        .join("");
+
+    const reportWindow =
+      window.open(
+        "",
+        "_blank"
+      );
+
+    if (!reportWindow) {
+      window.alert(
+        "Unable to open the print window."
+      );
+      return;
+    }
+
+    reportWindow.document.open();
+
+    reportWindow.document.write(`
+      <!doctype html>
+
+      <html lang="te">
+      <head>
+        <meta charset="utf-8">
+
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        >
+
+        <title>
+          Mana Bodabanda - Donations Register
+        </title>
+
+        <style>
+          @page {
+            size: A4 landscape;
+            margin: 9mm 8mm 10mm;
+          }
+
+          * {
+            box-sizing: border-box;
+          }
+
+          html,
+          body {
+            margin: 0;
+            padding: 0;
+          }
+
+          body {
+            color: #172033;
+            background: #ffffff;
+            font-family:
+              "Nirmala UI",
+              "Noto Sans Telugu",
+              "Segoe UI",
+              Arial,
+              sans-serif;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
+
+          .report {
+            width: 100%;
+          }
+
+          .brand-header {
+            position: relative;
+            display: grid;
+            grid-template-columns:
+              105px minmax(0, 1fr) 105px;
+            align-items: center;
+            min-height: 104px;
+            padding: 8px 18px 10px;
+            overflow: hidden;
+            border: 1px solid #e6c88b;
+            border-radius: 12px;
+            background:
+              linear-gradient(
+                135deg,
+                #fff7dc 0%,
+                #fffdf4 48%,
+                #fff4cc 100%
+              );
+          }
+
+          .brand-header::after {
+            content: "";
+            position: absolute;
+            left: 16%;
+            right: 16%;
+            bottom: 0;
+            height: 2px;
+            background:
+              linear-gradient(
+                90deg,
+                transparent,
+                #c7923e,
+                transparent
+              );
+          }
+
+          .brand-logo {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .brand-logo img {
+            display: block;
+            width: 92px;
+            max-height: 94px;
+            object-fit: contain;
+          }
+
+          .brand-copy {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+          }
+
+          .brand-name {
+            margin: 0;
+            color: #a52a1b;
+            font-size: 30px;
+            line-height: 1.05;
+            font-weight: 800;
+          }
+
+          .brand-subtitle {
+            margin-top: 4px;
+            color: #8a2c20;
+            font-size: 15px;
+            font-weight: 700;
+          }
+
+          .brand-tagline {
+            display: inline-block;
+            margin-top: 7px;
+            padding-top: 5px;
+            border-top: 1px solid #d8b46a;
+            color: #286b48;
+            font-size: 11px;
+            font-weight: 700;
+          }
+
+          .report-title {
+            margin: 9px 0 7px;
+            text-align: center;
+          }
+
+          .report-title h2 {
+            margin: 0;
+            color: #173b64;
+            font-size: 17px;
+            line-height: 1.25;
+          }
+
+          .report-title .english {
+            margin-top: 2px;
+            color: #6b7280;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+          }
+
+          .report-meta {
+            margin-top: 3px;
+            color: #6b7280;
+            font-size: 8.5px;
+          }
+
+          .summary {
+            display: grid;
+            grid-template-columns:
+              repeat(3, minmax(0, 1fr));
+            gap: 7px;
+            margin: 0 0 8px;
+          }
+
+          .summary-card {
+            padding: 6px 9px;
+            border: 1px solid #e3d0a6;
+            border-radius: 7px;
+            text-align: center;
+            background: #fffaf0;
+          }
+
+          .summary-card span {
+            display: block;
+            color: #6b7280;
+            font-size: 8px;
+            font-weight: 700;
+          }
+
+          .summary-card strong {
+            display: block;
+            margin-top: 2px;
+            font-size: 13px;
+            line-height: 1.1;
+          }
+
+          .summary-card.commitment strong {
+            color: #8d2419;
+          }
+
+          .summary-card.received strong {
+            color: #17603b;
+          }
+
+          .summary-card.pending strong {
+            color: #9a291c;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            font-size: 7.8px;
+          }
+
+          thead {
+            display: table-header-group;
+          }
+
+          th {
+            padding: 5px 3px;
+            border: 1px solid #d8bf88;
+            color: #31563e;
+            background: #fff2bd;
+            text-align: center;
+            line-height: 1.2;
+            font-weight: 800;
+          }
+
+          td {
+            padding: 4px 3px;
+            border: 1px solid #ddd7c9;
+            vertical-align: middle;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+          }
+
+          tbody tr:nth-child(even) {
+            background: #fffaf0;
+          }
+
+          tr {
+            break-inside: avoid;
+            page-break-inside: avoid;
+          }
+
+          .serial {
+            width: 4%;
+            text-align: center;
+          }
+
+          .donor {
+            width: 22%;
+            font-weight: 600;
+          }
+
+          .residence {
+            width: 9%;
+          }
+
+          .money {
+            width: 11%;
+          }
+
+          .status-col {
+            width: 11%;
+          }
+
+          .date-col {
+            width: 10%;
+          }
+
+          td.amount {
+            text-align: right;
+            white-space: nowrap;
+            font-variant-numeric:
+              tabular-nums;
+          }
+
+          td.received {
+            color: #17603b;
+          }
+
+          td.pending {
+            color: #8d2419;
+          }
+
+          td.status {
+            text-align: center;
+          }
+
+          td.date {
+            text-align: center;
+            white-space: nowrap;
+          }
+
+          .report-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 7px;
+            padding-top: 5px;
+            border-top: 1px solid #dedede;
+            color: #777;
+            font-size: 7.5px;
+          }
+		.preview-actions {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e4d3aa;
+  background: rgba(255, 250, 240, 0.96);
+}
+
+.preview-actions button {
+  padding: 8px 15px;
+  border: 1px solid #9d321f;
+  border-radius: 7px;
+  background: #9d321f;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.preview-actions .close-button {
+  border-color: #c9b98f;
+  background: #ffffff;
+  color: #55462f;
+}
+
+@media print {
+  .preview-actions {
+    display: none !important;
+  }
+}
+          @media print {
+            .brand-header,
+            .summary-card,
+            th {
+              -webkit-print-color-adjust: exact;
+              print-color-adjust: exact;
+            }
+          }
+        </style>
+      </head>
+
+      <body>
+        <main class="report">
+
+          <header class="brand-header">
+
+            <div class="brand-logo">
+              <img
+                src="${logoUrl}"
+                alt="Sri Sita Rama"
+              >
+            </div>
+
+            <div class="brand-copy">
+
+              <h1 class="brand-name">
+                &#3118;&#3112;
+                &#3116;&#3147;&#3105;&#3116;&#3074;&#3105;
+              </h1>
+
+              <div class="brand-subtitle">
+                &#3095;&#3149;&#3120;&#3134;&#3118;
+                &#3128;&#3118;&#3134;&#3098;&#3134;&#3120;
+                &#3125;&#3143;&#3110;&#3135;&#3093;
+              </div>
+
+              <div class="brand-tagline">
+                &#3118;&#3112; &#3095;&#3149;&#3120;&#3134;&#3118;&#3074;
+                &bull;
+                &#3118;&#3112; &#3128;&#3118;&#3134;&#3098;&#3134;&#3120;&#3074;
+                &bull;
+                &#3118;&#3112; &#3116;&#3134;&#3111;&#3149;&#3119;&#3108;
+              </div>
+
+            </div>
+
+            <div></div>
+
+          </header>
+
+          <section class="report-title">
+
+            <h2>
+              &#3125;&#3135;&#3120;&#3134;&#3123;&#3134;&#3122;
+              &#3112;&#3135;&#3125;&#3143;&#3110;&#3135;&#3093;
+            </h2>
+
+            <div class="english">
+              Donations Register
+            </div>
+
+            <div class="report-meta">
+              Generated:
+              ${escapeVillagePublicHtml(
+                generated
+              )}
+            </div>
+
+          </section>
+
+          <section class="summary">
+
+            <div class="summary-card commitment">
+              <span>
+                Total Commitment
+              </span>
+
+              <strong>
+                ${formatVillagePublicMoney(
+                  totalCommitted
+                )}
+              </strong>
+            </div>
+
+            <div class="summary-card received">
+              <span>
+                Total Received
+              </span>
+
+              <strong>
+                ${formatVillagePublicMoney(
+                  totalReceived
+                )}
+              </strong>
+            </div>
+
+            <div class="summary-card pending">
+              <span>
+                Total Pending
+              </span>
+
+              <strong>
+                ${formatVillagePublicMoney(
+                  totalPending
+                )}
+              </strong>
+            </div>
+
+          </section>
+
+          <table>
+
+            <colgroup>
+              <col class="serial">
+              <col class="donor">
+              <col class="residence">
+              <col class="money">
+              <col class="money">
+              <col class="money">
+              <col class="status-col">
+              <col class="date-col">
+              <col class="date-col">
+            </colgroup>
+
+            <thead>
+              <tr>
+                <th>
+                  S.No
+                </th>
+
+                <th>
+                  Donor Name
+                </th>
+
+                <th>
+                  Residence
+                </th>
+
+                <th>
+                  Committed
+                </th>
+
+                <th>
+                  Received
+                </th>
+
+                <th>
+                  Pending
+                </th>
+
+                <th>
+                  Status
+                </th>
+
+                <th>
+                  Commitment Date
+                </th>
+
+                <th>
+                  Last Payment
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              ${reportRows}
+            </tbody>
+
+          </table>
+
+          <footer class="report-footer">
+
+            <span>
+              Mana Bodabanda Village Information Portal
+            </span>
+
+            <span>
+              Sri Rama Mandira Devasthana Charitable Trust
+            </span>
+
+          </footer>
+
+        </main>
+
+        <script>
+          window.addEventListener(
+            "load",
+            function () {
+
+              const images =
+                Array.from(
+                  document.images
+                );
+
+              const waits =
+                images.map(
+                  function (image) {
+
+                    if (image.complete) {
+                      return Promise.resolve();
+                    }
+
+                    return new Promise(
+                      function (resolve) {
+
+                        image.addEventListener(
+                          "load",
+                          resolve,
+                          { once: true }
+                        );
+
+                        image.addEventListener(
+                          "error",
+                          resolve,
+                          { once: true }
+                        );
+                      }
+                    );
+                  }
+                );
+
+              Promise.all(waits)
+                .then(
+                  function () {
+                    window.setTimeout(
+                      function () {
+                        window.print();
+                      },
+                      250
+                    );
+                  }
+                );
+            }
+          );
+        <\/script>
+
+      </body>
+	<div class="preview-actions">
+  <button
+    type="button"
+    onclick="window.print()"
+  >
+    Print / Save PDF
+  </button>
+
+  <button
+    type="button"
+    class="close-button"
+    onclick="window.close()"
+  >
+    Close Preview
+  </button>
+</div>
+      </html>
+    `);
+
+    reportWindow.document.close();
+  }
+  function bindPublicDonationReportActions() {
+    const exportButton =
+      villagePublicElement(
+        "publicDonationExportButton"
+      );
+
+    const printButton =
+      villagePublicElement(
+        "publicDonationPrintButton"
+      );
+
+    if (
+      exportButton &&
+      !exportButton.dataset.bound
+    ) {
+      exportButton.dataset.bound = "true";
+
+      exportButton.addEventListener(
+        "click",
+        exportPublicVillageDonations
+      );
+    }
+
+    if (
+      printButton &&
+      !printButton.dataset.bound
+    ) {
+      printButton.dataset.bound = "true";
+
+      printButton.addEventListener(
+        "click",
+        printPublicVillageDonations
+      );
+    }
+  }
+
   function renderPublicVillageDonations(rows) {
+    publicVillageDonationRows =
+      Array.isArray(rows)
+        ? rows.map((row) => ({ ...row }))
+        : [];
+
     const body =
       villagePublicElement(
         "donationsTable"
@@ -1403,7 +2301,8 @@
       setupPublicDonationTableScroll();
       setupVillagePublicPaymentRequests();
 
-      loadPublicVillageDonations()
+      bindPublicDonationReportActions();
+  loadPublicVillageDonations()
         .catch((error) => {
           console.error(
             "Public village donation loading failed:",

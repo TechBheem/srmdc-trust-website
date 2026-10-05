@@ -5,7 +5,9 @@
     villages: [],
     currentVillage: null,
     donorRows: [],
-    editingCommitmentId: null
+    editingCommitmentId: null,
+    selectedTaxPayment: null,
+    selectedTaxDonor: null
   };
 
   const money = new Intl.NumberFormat("en-IN", {
@@ -1075,6 +1077,21 @@
                   )}
                 </td>
                 <td>
+                  <div class="village-tax-history-action">
+                    <span class="village-tax-status-badge">
+                      Not Prepared
+                    </span>
+                    <button
+                      type="button"
+                      class="secondary-button village-tax-prepare-button"
+                      data-tax-payment-id="${escapeVillageHtml(payment.id)}"
+                      data-tax-commitment-id="${escapeVillageHtml(row.id)}"
+                    >
+                      Prepare Tax Details
+                    </button>
+                  </div>
+                </td>
+                <td>
                   ${escapeVillageHtml(
                     payment.notes || "-"
                   )}
@@ -1084,6 +1101,425 @@
           )
           .join("");
     }
+
+    panel?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  // ---------------------------------------------------------
+  // PHASE 22D.2A - TAX REPORTING UI FOUNDATION
+  // UI only. No Phase 22 database mutation occurs here.
+  // ---------------------------------------------------------
+
+  function setTaxReportingMessage(text) {
+    const node = el("villageTaxReportingMessage");
+
+    if (node) {
+      node.textContent = text || "";
+    }
+  }
+
+  function updateTaxConditionalFields() {
+    const donationType =
+      el("villageTaxDonationType")?.value || "";
+
+    const corpusFields =
+      el("villageTaxCorpusFields");
+
+    const otherField =
+      el("villageTaxOtherDescriptionField");
+
+    corpusFields?.classList.toggle(
+      "hidden",
+      donationType !== "CORPUS"
+    );
+
+    otherField?.classList.toggle(
+      "hidden",
+      donationType !== "OTHER"
+    );
+  }
+
+  function closeTaxReportingPanel() {
+    const panel =
+      el("villageTaxReportingPanel");
+
+    if (panel) {
+      panel.classList.add("hidden");
+    }
+
+    state.selectedTaxPayment = null;
+    state.selectedTaxDonor = null;
+  }
+
+  function resetTaxReportingForm() {
+    const form =
+      el("villageTaxReportingForm");
+
+    form?.reset();
+
+    const currentYear =
+      new Date().getFullYear();
+
+    const taxYear =
+      el("villageTaxYear");
+
+    if (taxYear) {
+      taxYear.value =
+        `${currentYear}-${String(
+          (currentYear + 1) % 100
+        ).padStart(2, "0")}`;
+    }
+
+    updateTaxConditionalFields();
+
+    setTaxReportingMessage(
+      "Review the details, then select Prepare Tax Details. Preparation does not validate, batch, export, or file Form 113."
+    );
+  }
+
+    function validateTaxReportingPreparation() {
+    const payment =
+      state.selectedTaxPayment;
+
+    if (!payment?.id) {
+      return {
+        ok: false,
+        message:
+          "Select a recorded payment before preparing tax details."
+      };
+    }
+
+    const taxYear =
+      el("villageTaxYear")?.value.trim() || "";
+
+    const identificationType =
+      el("villageTaxIdentificationType")
+        ?.value || "";
+
+    const identificationNumber =
+      el("villageTaxIdentificationNumber")
+        ?.value.trim() || "";
+
+    const donationType =
+      el("villageTaxDonationType")
+        ?.value || "";
+
+    const otherDescription =
+      el("villageTaxOtherDescription")
+        ?.value.trim() || "";
+
+    const corpusConfirmed =
+      Boolean(
+        el("villageTaxCorpusConfirmed")
+          ?.checked
+      );
+
+    const corpusDirection =
+      el("villageTaxCorpusDirection")
+        ?.value.trim() || "";
+
+    const corpusReference =
+      el("villageTaxCorpusReference")
+        ?.value.trim() || "";
+
+    if (
+      !/^[0-9]{4}-[0-9]{2}$/.test(
+        taxYear
+      )
+    ) {
+      return {
+        ok: false,
+        message:
+          "Enter Tax Year in YYYY-YY format, for example 2026-27."
+      };
+    }
+
+    if (
+      identificationType !== "PAN" &&
+      identificationType !== "OTHER"
+    ) {
+      return {
+        ok: false,
+        message:
+          "Select Identification Type."
+      };
+    }
+
+    if (!identificationNumber) {
+      return {
+        ok: false,
+        message:
+          "Enter the donor identification number."
+      };
+    }
+
+    const allowedDonationTypes = [
+      "VOLUNTARY_OTHER_THAN_CORPUS",
+      "CORPUS",
+      "SPECIFIC_GRANT",
+      "CSR",
+      "OTHER"
+    ];
+
+    if (
+      !allowedDonationTypes.includes(
+        donationType
+      )
+    ) {
+      return {
+        ok: false,
+        message:
+          "Select Donation Type."
+      };
+    }
+
+    if (
+      donationType === "OTHER" &&
+      !otherDescription
+    ) {
+      return {
+        ok: false,
+        message:
+          "Describe the donation type when Other is selected."
+      };
+    }
+
+    if (
+      donationType === "CORPUS" &&
+      !corpusConfirmed
+    ) {
+      return {
+        ok: false,
+        message:
+          "Confirm the donor's specific corpus direction."
+      };
+    }
+
+    if (
+      donationType === "CORPUS" &&
+      !corpusDirection
+    ) {
+      return {
+        ok: false,
+        message:
+          "Enter the donor's corpus direction."
+      };
+    }
+
+    return {
+      ok: true,
+
+      payload: {
+        p_donation_payment_id:
+          payment.id,
+
+        p_tax_year:
+          taxYear,
+
+        p_donation_type:
+          donationType,
+
+        p_identification_type:
+          identificationType,
+
+        p_identification_number:
+          identificationNumber,
+
+        p_corpus_direction_confirmed:
+          donationType === "CORPUS"
+            ? corpusConfirmed
+            : false,
+
+        p_corpus_direction_text:
+          donationType === "CORPUS"
+            ? corpusDirection || null
+            : null,
+
+        p_corpus_supporting_reference:
+          donationType === "CORPUS"
+            ? corpusReference || null
+            : null,
+
+        p_other_description:
+          donationType === "OTHER"
+            ? otherDescription
+            : null
+      }
+    };
+  }
+
+  async function prepareTaxReportingDetails() {
+    const client = getClient();
+
+    if (!client) {
+      setTaxReportingMessage(
+        "Supabase client is unavailable."
+      );
+      return;
+    }
+
+    const validation =
+      validateTaxReportingPreparation();
+
+    if (!validation.ok) {
+      setTaxReportingMessage(
+        validation.message
+      );
+      return;
+    }
+
+    const prepareButton =
+      el("villageTaxReportingPrepare");
+
+    if (prepareButton) {
+      prepareButton.disabled = true;
+      prepareButton.textContent =
+        "Preparing...";
+    }
+
+    setTaxReportingMessage(
+      "Preparing tax-reporting details..."
+    );
+
+    try {
+      const {
+        data: taxReportingId,
+        error
+      } =
+        await client.rpc(
+          "prepare_donation_tax_reporting",
+          validation.payload
+        );
+
+      if (error) {
+        console.error(
+          "Prepare tax reporting RPC failed:",
+          error
+        );
+
+        setTaxReportingMessage(
+          `Prepare failed: ${error.message}`
+        );
+
+        return;
+      }
+
+      if (!taxReportingId) {
+        setTaxReportingMessage(
+          "Prepare completed without a tax-reporting ID. No further action was taken."
+        );
+        return;
+      }
+
+      setTaxReportingMessage(
+        `Tax details prepared successfully. Reporting ID: ${taxReportingId}. Validation and Form 113 filing have not been performed.`
+      );
+
+      await loadDonors();
+    } catch (error) {
+      console.error(
+        "Unexpected tax reporting prepare error:",
+        error
+      );
+
+      setTaxReportingMessage(
+        `Prepare failed: ${
+          error?.message ||
+          "Unexpected error."
+        }`
+      );
+    } finally {
+      if (prepareButton) {
+        prepareButton.disabled = false;
+        prepareButton.textContent =
+          "Prepare Tax Details";
+      }
+    }
+  }
+async function openTaxReportingPanel(
+    paymentId,
+    commitmentId
+  ) {
+    const client = getClient();
+
+    const donor =
+      getDonorRowById(commitmentId);
+
+    if (!client || !donor || !paymentId) {
+      setDonorStatus(
+        "Unable to open tax reporting details."
+      );
+      return;
+    }
+
+    const { data, error } =
+      await client
+        .from("village_commitment_payments")
+        .select(
+          "id,village_id,commitment_id,payment_date,amount,payment_mode,reference_number,receipt_number,notes"
+        )
+        .eq("id", paymentId)
+        .eq("commitment_id", commitmentId)
+        .eq(
+          "village_id",
+          state.currentVillage?.id
+        )
+        .maybeSingle();
+
+    if (error || !data) {
+      console.error(
+        "Unable to load payment for tax reporting:",
+        error
+      );
+
+      setDonorStatus(
+        "Unable to load payment for tax reporting."
+      );
+      return;
+    }
+
+    state.selectedTaxPayment = data;
+    state.selectedTaxDonor = donor;
+
+    resetTaxReportingForm();
+
+    setText(
+      "villageTaxDonorName",
+      donor.donor_name || "-"
+    );
+
+    setText(
+      "villageTaxPaymentDate",
+      formatVillageDate(data.payment_date)
+    );
+
+    setText(
+      "villageTaxPaymentAmount",
+      money.format(Number(data.amount || 0))
+    );
+
+    setText(
+      "villageTaxReceiptNumber",
+      data.receipt_number || "-"
+    );
+
+    setText(
+      "villageTaxPaymentMode",
+      data.payment_mode || "-"
+    );
+
+    setText(
+      "villageTaxPaymentReference",
+      data.reference_number || "-"
+    );
+
+    const panel =
+      el("villageTaxReportingPanel");
+
+    panel?.classList.remove("hidden");
 
     panel?.scrollIntoView({
       behavior: "smooth",
@@ -6734,6 +7170,62 @@ el("villageTemplePaymentForm")?.addEventListener(
       );
     }
 
+    const donorHistoryBody =
+      el("villageDonorHistoryBody");
+
+    if (donorHistoryBody) {
+      donorHistoryBody.addEventListener(
+        "click",
+        async (event) => {
+          const taxButton =
+            event.target.closest(
+              "[data-tax-payment-id]"
+            );
+
+          if (!taxButton) {
+            return;
+          }
+
+          await openTaxReportingPanel(
+            taxButton.dataset.taxPaymentId,
+            taxButton.dataset.taxCommitmentId
+          );
+        }
+      );
+    }
+
+        const taxPrepareButton =
+      el("villageTaxReportingPrepare");
+
+    if (taxPrepareButton) {
+      taxPrepareButton.addEventListener(
+        "click",
+        prepareTaxReportingDetails
+      );
+    }
+const taxDonationType =
+      el("villageTaxDonationType");
+
+    if (taxDonationType) {
+      taxDonationType.addEventListener(
+        "change",
+        updateTaxConditionalFields
+      );
+    }
+
+    [
+      "villageTaxReportingClose",
+      "villageTaxReportingCancel"
+    ].forEach((id) => {
+      const button = el(id);
+
+      if (button) {
+        button.addEventListener(
+          "click",
+          closeTaxReportingPanel
+        );
+      }
+    });
     const historyClose =
       el("villageDonorHistoryClose");
 
