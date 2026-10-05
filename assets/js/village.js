@@ -841,6 +841,7 @@
       </head>
 
       <body>
+        <!-- SRMDC_DONATIONS_MANUAL_PRINT_PREVIEW -->
         <main class="report">
 
           <header class="brand-header">
@@ -1013,57 +1014,6 @@
 
         </main>
 
-        <script>
-          window.addEventListener(
-            "load",
-            function () {
-
-              const images =
-                Array.from(
-                  document.images
-                );
-
-              const waits =
-                images.map(
-                  function (image) {
-
-                    if (image.complete) {
-                      return Promise.resolve();
-                    }
-
-                    return new Promise(
-                      function (resolve) {
-
-                        image.addEventListener(
-                          "load",
-                          resolve,
-                          { once: true }
-                        );
-
-                        image.addEventListener(
-                          "error",
-                          resolve,
-                          { once: true }
-                        );
-                      }
-                    );
-                  }
-                );
-
-              Promise.all(waits)
-                .then(
-                  function () {
-                    window.setTimeout(
-                      function () {
-                        window.print();
-                      },
-                      250
-                    );
-                  }
-                );
-            }
-          );
-        <\/script>
 
       </body>
 	<div class="preview-actions">
