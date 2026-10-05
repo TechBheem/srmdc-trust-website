@@ -287,9 +287,7 @@
       publicDonationReportRows();
 
     if (!rows.length) {
-      window.alert(
-        "Export à°šà±‡à°¯à°¡à°¾à°¨à°¿à°•à°¿ à°µà°¿à°°à°¾à°³à°¾à°² à°µà°¿à°µà°°à°¾à°²à± à°²à±‡à°µà±."
-      );
+      window.alert("No donation records are available to export.");
       return;
     }
 
@@ -1089,7 +1087,107 @@
 
     reportWindow.document.close();
   }
-  function bindPublicDonationReportActions() {
+    // SRMDC_VILLAGE_MOBILE_USER_FREEZE
+  const PUBLIC_DONATION_FREEZE_KEY =
+    "srmdc-public-donation-freeze";
+
+  function publicDonationMobileView() {
+    return window.matchMedia(
+      "(max-width: 650px)"
+    ).matches;
+  }
+
+  function savedPublicDonationFreezePreference() {
+    const value =
+      window.localStorage.getItem(
+        PUBLIC_DONATION_FREEZE_KEY
+      );
+
+    if (value === "freeze") {
+      return true;
+    }
+
+    if (value === "unfreeze") {
+      return false;
+    }
+
+    // Existing desktop/tablet behaviour remains frozen.
+    // Mobile defaults to unfrozen.
+    return !publicDonationMobileView();
+  }
+
+  function applyPublicDonationFreezePreference(
+    shouldFreeze
+  ) {
+    document.body.classList.toggle(
+      "public-table-freeze-enabled",
+      shouldFreeze
+    );
+
+    const button =
+      villagePublicElement(
+        "publicDonationFreezeButton"
+      );
+
+    if (!button) {
+      return;
+    }
+
+    button.setAttribute(
+      "aria-pressed",
+      shouldFreeze ? "true" : "false"
+    );
+
+    button.textContent =
+      shouldFreeze
+        ? "Unfreeze Name"
+        : "Freeze Name";
+  }
+
+  function bindPublicDonationFreezePreference() {
+    const button =
+      villagePublicElement(
+        "publicDonationFreezeButton"
+      );
+
+    if (!button) {
+      return;
+    }
+
+    applyPublicDonationFreezePreference(
+      savedPublicDonationFreezePreference()
+    );
+
+    if (!button.dataset.bound) {
+      button.dataset.bound = "true";
+
+      button.addEventListener(
+        "click",
+        () => {
+          const currentlyFrozen =
+            document.body.classList.contains(
+              "public-table-freeze-enabled"
+            );
+
+          const shouldFreeze =
+            !currentlyFrozen;
+
+          window.localStorage.setItem(
+            PUBLIC_DONATION_FREEZE_KEY,
+            shouldFreeze
+              ? "freeze"
+              : "unfreeze"
+          );
+
+          applyPublicDonationFreezePreference(
+            shouldFreeze
+          );
+        }
+      );
+    }
+  }
+function bindPublicDonationReportActions() {
+    bindPublicDonationFreezePreference();
     const exportButton =
       villagePublicElement(
         "publicDonationExportButton"
@@ -1832,6 +1930,1048 @@
     return "\u0C2A\u0C46\u0C02\u0C21\u0C3F\u0C02\u0C17\u0C4D";
   }
 
+  // SRMDC_TEMPLE_FUND_USER_FREEZE
+  const TEMPLE_FUND_FREEZE_KEY =
+    "srmdc-temple-fund-freeze";
+
+  function templeFundMobileView() {
+    return window.matchMedia(
+      "(max-width: 650px)"
+    ).matches;
+  }
+
+  function savedTempleFundFreezePreference() {
+    const value =
+      window.localStorage.getItem(
+        TEMPLE_FUND_FREEZE_KEY
+      );
+
+    if (value === "freeze") {
+      return true;
+    }
+
+    if (value === "unfreeze") {
+      return false;
+    }
+
+    // Existing desktop/tablet behaviour remains frozen.
+    // Mobile defaults to unfrozen.
+    return !templeFundMobileView();
+  }
+
+  function applyTempleFundFreezePreference(
+    shouldFreeze
+  ) {
+    document.body.classList.toggle(
+      "temple-table-freeze-enabled",
+      shouldFreeze
+    );
+
+    const button =
+      villagePublicElement(
+        "templeFundFreezeButton"
+      );
+
+    if (!button) {
+      return;
+    }
+
+    button.setAttribute(
+      "aria-pressed",
+      shouldFreeze ? "true" : "false"
+    );
+
+    button.textContent =
+      shouldFreeze
+        ? "Unfreeze Name"
+        : "Freeze Name";
+  }
+
+  function bindTempleFundFreezePreference() {
+    const button =
+      villagePublicElement(
+        "templeFundFreezeButton"
+      );
+
+    if (!button) {
+      return;
+    }
+
+    applyTempleFundFreezePreference(
+      savedTempleFundFreezePreference()
+    );
+
+    if (!button.dataset.bound) {
+      button.dataset.bound = "true";
+
+      button.addEventListener(
+        "click",
+        () => {
+          const currentlyFrozen =
+            document.body.classList.contains(
+              "temple-table-freeze-enabled"
+            );
+
+          const shouldFreeze =
+            !currentlyFrozen;
+
+          window.localStorage.setItem(
+            TEMPLE_FUND_FREEZE_KEY,
+            shouldFreeze
+              ? "freeze"
+              : "unfreeze"
+          );
+
+          applyTempleFundFreezePreference(
+            shouldFreeze
+          );
+
+          if (
+            typeof window.refreshTempleHorizontalScroll ===
+            "function"
+          ) {
+            window.refreshTempleHorizontalScroll();
+          }
+        }
+      );
+    }
+  }
+  // SRMDC_TEMPLE_FUND_PUBLIC_REPORTS
+  let publicTempleFundReportRows = [];
+
+  function publicTempleCsvCell(value) {
+    const text = String(value ?? "");
+
+    return '"' +
+      text.replace(/"/g, '""') +
+      '"';
+  }
+
+  function publicTemplePlainMoney(value) {
+    const number = Number(value || 0);
+
+    return Number.isFinite(number)
+      ? number.toFixed(2)
+      : "0.00";
+  }
+
+  function exportPublicTempleFundCsv() {
+    const rows = publicTempleFundReportRows;
+
+    if (!rows.length) {
+      window.alert(
+        "No Temple Fund records are available to export."
+      );
+      return;
+    }
+
+    const headers = [
+      "S.No.",
+      "Name",
+      "Residence",
+      "Taken Date",
+      "Principal",
+      "Monthly Interest Rate",
+      "Calculated Interest",
+      "Current Total Due",
+      "Paid / Final Settlement",
+      "Status",
+      "Details / Comments"
+    ];
+
+    const lines = [
+      headers
+        .map(publicTempleCsvCell)
+        .join(",")
+    ];
+
+    rows.forEach((row, index) => {
+      const paid =
+        row.isFinalSettled
+          ? Number(
+              row.finalSettlementReceived ||
+              row.final_settlement_amount ||
+              row.totalPaid ||
+              0
+            )
+          : Number(row.totalPaid || 0);
+
+      const status =
+        row.isFinalSettled
+          ? "Closed"
+          : "Pending";
+
+      const details =
+        row.settlement_notes ||
+        row.notes ||
+        "";
+
+      lines.push(
+        [
+          index + 1,
+          row.person_name || "",
+          row.residence || "",
+          row.taken_date || "",
+          publicTemplePlainMoney(
+            row.principal
+          ),
+          publicTemplePlainMoney(
+            row.monthly_interest_rate
+          ) + "%",
+          row.isFinalSettled
+            ? ""
+            : publicTemplePlainMoney(
+                row.calculatedInterest
+              ),
+          publicTemplePlainMoney(
+            row.currentCalculatedTotal
+          ),
+          publicTemplePlainMoney(paid),
+          status,
+          details
+        ]
+          .map(publicTempleCsvCell)
+          .join(",")
+      );
+    });
+
+    const csv =
+      "\uFEFF" +
+      lines.join("\r\n");
+
+    const blob =
+      new Blob(
+        [csv],
+        {
+          type:
+            "text/csv;charset=utf-8"
+        }
+      );
+
+    const url =
+      URL.createObjectURL(blob);
+
+    const link =
+      document.createElement("a");
+
+    const now =
+      new Date();
+
+    const datePart = [
+      now.getFullYear(),
+      String(
+        now.getMonth() + 1
+      ).padStart(2, "0"),
+      String(
+        now.getDate()
+      ).padStart(2, "0")
+    ].join("-");
+
+    link.href = url;
+
+    link.download =
+      `bodabanda-temple-fund-${datePart}.csv`;
+
+    document.body.appendChild(link);
+
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+  }
+
+  function printPublicTempleFund() {
+    if (!publicTempleFundReportRows.length) {
+      window.alert(
+        "No Temple Fund records are available to print."
+      );
+      return;
+    }
+
+    const table =
+      document.querySelector(
+        ".public-temple-table"
+      );
+
+    if (!table) {
+      window.alert(
+        "Temple Fund table is not available."
+      );
+      return;
+    }
+
+    const principalTotal =
+      publicTempleFundReportRows.reduce(
+        (sum, row) =>
+          sum +
+          Number(row.principal || 0),
+        0
+      );
+
+    const interestTotal =
+      publicTempleFundReportRows.reduce(
+        (sum, row) =>
+          sum +
+          Number(row.calculatedInterest || 0),
+        0
+      );
+
+    const dueTotal =
+      publicTempleFundReportRows.reduce(
+        (sum, row) =>
+          sum +
+          Number(row.currentCalculatedTotal || 0),
+        0
+      );
+
+    const generated =
+      new Intl.DateTimeFormat(
+        "en-IN",
+        {
+          dateStyle: "medium",
+          timeStyle: "short"
+        }
+      ).format(new Date());
+
+    const logoUrl =
+      new URL(
+        "../assets/images/village/sita_rama_family.png",
+        window.location.href
+      ).href;
+
+    const reportTable =
+      table.cloneNode(true);
+
+    reportTable
+      .querySelectorAll(
+        "button, .village-public-pay-button"
+      )
+      .forEach((element) => {
+        element.remove();
+      });
+
+    const previewWindow =
+      window.open(
+        "",
+        "_blank"
+      );
+
+    if (!previewWindow) {
+      window.alert(
+        "Please allow pop-ups to open the Temple Fund report."
+      );
+      return;
+    }
+
+    previewWindow.document.open();
+
+    previewWindow.document.write(`
+      <!doctype html>
+      <html lang="te">
+
+        <head>
+
+          <meta charset="utf-8">
+
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+          >
+
+          <title>
+            Mana Bodabanda - Temple Fund Report
+          </title>
+
+          <style>
+
+            @page {
+              size: A4 landscape;
+              margin: 9mm 8mm 10mm;
+            }
+
+            * {
+              box-sizing: border-box;
+            }
+
+            html,
+            body {
+              margin: 0;
+              padding: 0;
+            }
+
+            body {
+              color: #172033;
+              background: #f5f2e9;
+
+              font-family:
+                "Noto Sans Telugu",
+                "Nirmala UI",
+                "Segoe UI",
+                Arial,
+                sans-serif;
+            }
+
+            .preview-toolbar {
+              position: sticky;
+              top: 0;
+              z-index: 50;
+
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 12px;
+
+              padding: 12px 18px;
+
+              border-bottom:
+                1px solid #d7d1c1;
+
+              background:
+                rgba(255, 255, 255, 0.97);
+
+              box-shadow:
+                0 3px 14px
+                rgba(0, 0, 0, 0.08);
+            }
+
+            .preview-toolbar-copy {
+              display: grid;
+              gap: 2px;
+            }
+
+            .preview-toolbar-copy strong {
+              color: #7c2d12;
+              font-size: 15px;
+            }
+
+            .preview-toolbar-copy span {
+              color: #64748b;
+              font-size: 12px;
+            }
+
+            .print-button {
+              min-height: 40px;
+              padding: 8px 16px;
+
+              border:
+                1px solid #7c2d12;
+
+              border-radius: 10px;
+
+              background: #7c2d12;
+              color: #ffffff;
+
+              font: inherit;
+              font-weight: 700;
+              cursor: pointer;
+            }
+
+            .report {
+              width:
+                min(
+                  1380px,
+                  calc(100% - 28px)
+                );
+
+              margin: 20px auto;
+
+              overflow: hidden;
+
+              border:
+                1px solid #d8cba7;
+
+              border-radius: 18px;
+
+              background: #ffffff;
+
+              box-shadow:
+                0 18px 45px
+                rgba(54, 40, 20, 0.12);
+            }
+
+            .brand-header {
+              position: relative;
+
+              display: grid;
+
+              grid-template-columns:
+                110px 1fr 110px;
+
+              align-items: center;
+
+              min-height: 128px;
+
+              padding: 15px 24px;
+
+              overflow: hidden;
+
+              border-bottom:
+                1px solid #dfc98e;
+
+              background:
+                radial-gradient(
+                  circle at 50% -35%,
+                  rgba(255, 255, 255, 0.96),
+                  rgba(255, 249, 225, 0.86) 42%,
+                  rgba(245, 226, 163, 0.78) 100%
+                );
+            }
+
+            .brand-header::after {
+              content: "";
+
+              position: absolute;
+
+              left: 8%;
+              right: 8%;
+              bottom: 0;
+
+              height: 2px;
+
+              background:
+                linear-gradient(
+                  90deg,
+                  transparent,
+                  #c7923e,
+                  transparent
+                );
+            }
+
+            .brand-logo {
+              position: relative;
+              z-index: 1;
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            .brand-logo img {
+              display: block;
+
+              width: 92px;
+              max-height: 94px;
+
+              object-fit: contain;
+            }
+
+            .brand-copy {
+              position: relative;
+              z-index: 1;
+              text-align: center;
+            }
+
+            .brand-name {
+              margin: 0;
+
+              color: #a52a1b;
+
+              font-size: 30px;
+              line-height: 1.05;
+              font-weight: 800;
+            }
+
+            .brand-subtitle {
+              margin-top: 5px;
+
+              color: #12573e;
+
+              font-size: 18px;
+              font-weight: 800;
+            }
+
+            .brand-tagline {
+              margin-top: 6px;
+
+              color: #75582e;
+
+              font-size: 12px;
+              font-weight: 700;
+            }
+
+            .report-heading {
+              padding: 16px 22px 12px;
+              text-align: center;
+            }
+
+            .report-heading h2 {
+              margin: 0;
+
+              color: #17251f;
+
+              font-size: 23px;
+              line-height: 1.3;
+            }
+
+            .report-heading .english {
+              margin-top: 3px;
+
+              color: #7c2d12;
+
+              font-size: 15px;
+              font-weight: 800;
+            }
+
+            .report-meta {
+              margin-top: 5px;
+
+              color: #64748b;
+              font-size: 11px;
+            }
+
+            .summary {
+              display: grid;
+
+              grid-template-columns:
+                repeat(
+                  3,
+                  minmax(0, 1fr)
+                );
+
+              gap: 10px;
+              padding: 0 18px 16px;
+            }
+
+            .summary-card {
+              display: grid;
+              gap: 5px;
+
+              min-height: 78px;
+
+              padding: 12px 14px;
+
+              border:
+                1px solid #ddd6c5;
+
+              border-radius: 12px;
+
+              background: #faf8f2;
+            }
+
+            .summary-card span {
+              color: #64748b;
+
+              font-size: 11px;
+              font-weight: 700;
+            }
+
+            .summary-card strong {
+              color: #17251f;
+
+              font-size: 18px;
+              line-height: 1.2;
+            }
+
+            .summary-card.principal {
+              border-top:
+                3px solid #9a6b2f;
+            }
+
+            .summary-card.interest {
+              border-top:
+                3px solid #315f8a;
+            }
+
+            .summary-card.due {
+              border-top:
+                3px solid #a52a1b;
+            }
+
+            .table-wrap {
+              padding: 0 14px 16px;
+              overflow-x: auto;
+            }
+
+            table {
+              width: 100%;
+              min-width: 1120px;
+
+              border-collapse: collapse;
+
+              background: #ffffff;
+              font-size: 10px;
+            }
+
+            th,
+            td {
+              position: static !important;
+
+              left: auto !important;
+              z-index: auto !important;
+
+              border:
+                1px solid #cfc9ba;
+
+              padding: 6px 7px;
+
+              vertical-align: top;
+              text-align: left;
+
+              white-space: normal;
+
+              box-shadow:
+                none !important;
+            }
+
+            th {
+              color: #3c321f;
+
+              background:
+                #f4e9bf !important;
+
+              font-weight: 800;
+            }
+
+            tbody tr:nth-child(even) td {
+              background: #fcfbf7;
+            }
+
+            button,
+            .village-public-pay-button {
+              display: none !important;
+            }
+
+            .report-footer {
+              display: flex;
+
+              justify-content:
+                space-between;
+
+              gap: 16px;
+
+              padding:
+                10px 18px 13px;
+
+              border-top:
+                1px solid #e1dccf;
+
+              color: #6b7280;
+              background: #faf9f5;
+
+              font-size: 10px;
+              font-weight: 600;
+            }
+
+            @media (max-width: 720px) {
+
+              .preview-toolbar {
+                align-items: stretch;
+                flex-direction: column;
+              }
+
+              .print-button {
+                width: 100%;
+              }
+
+              .report {
+                width:
+                  calc(100% - 14px);
+
+                margin: 8px auto;
+
+                border-radius: 12px;
+              }
+
+              .brand-header {
+                grid-template-columns:
+                  76px 1fr 20px;
+
+                padding: 12px 10px;
+              }
+
+              .brand-logo img {
+                width: 66px;
+              }
+
+              .brand-name {
+                font-size: 22px;
+              }
+
+              .brand-subtitle {
+                font-size: 15px;
+              }
+
+              .summary {
+                grid-template-columns: 1fr;
+              }
+            }
+
+            @media print {
+
+              body {
+                background: #ffffff;
+              }
+
+              .preview-toolbar {
+                display: none !important;
+              }
+
+              .report {
+                width: 100%;
+
+                margin: 0;
+
+                border: 0;
+                border-radius: 0;
+
+                box-shadow: none;
+              }
+
+              .brand-header {
+                min-height: 105px;
+              }
+
+              .brand-logo img {
+                width: 78px;
+                max-height: 80px;
+              }
+
+              .brand-name {
+                font-size: 24px;
+              }
+
+              .brand-subtitle {
+                font-size: 15px;
+              }
+
+              .report-heading {
+                padding-top: 10px;
+              }
+
+              .summary-card {
+                min-height: 60px;
+                padding: 8px 10px;
+              }
+
+              .summary-card strong {
+                font-size: 15px;
+              }
+
+              .table-wrap {
+                padding: 0;
+                overflow: visible;
+              }
+
+              table {
+                min-width: 0;
+                font-size: 7.5px;
+              }
+
+              th,
+              td {
+                padding: 3.5px 4px;
+              }
+
+              thead {
+                display: table-header-group;
+              }
+
+              tr {
+                break-inside: avoid;
+              }
+
+              .report-footer {
+                padding-left: 4px;
+                padding-right: 4px;
+              }
+            }
+
+          </style>
+
+        </head>
+
+        <body>
+
+          <div class="preview-toolbar">
+
+            <div class="preview-toolbar-copy">
+
+              <strong>
+                Temple Fund Report Preview
+              </strong>
+
+              <span>
+                Review the report below before printing or saving as PDF.
+              </span>
+
+            </div>
+
+            <button
+              type="button"
+              class="print-button"
+              onclick="window.print()"
+            >
+              Print / Save PDF
+            </button>
+
+          </div>
+
+          <main class="report">
+
+            <header class="brand-header">
+
+              <div class="brand-logo">
+
+                <img
+                  src="${logoUrl}"
+                  alt="Sri Sita Rama"
+                >
+
+              </div>
+
+              <div class="brand-copy">
+
+                <h1 class="brand-name">
+                  &#3118;&#3112;
+                  &#3116;&#3147;&#3105;&#3116;&#3074;&#3105;
+                </h1>
+
+                <div class="brand-subtitle">
+                  &#3095;&#3149;&#3120;&#3134;&#3118;
+                  &#3128;&#3118;&#3134;&#3098;&#3134;&#3120;
+                  &#3125;&#3143;&#3110;&#3135;&#3093;
+                </div>
+
+                <div class="brand-tagline">
+                  Mana Bodabanda
+                  &bull;
+                  Village Information Portal
+                </div>
+
+              </div>
+
+              <div></div>
+
+            </header>
+
+            <section class="report-heading">
+
+              <h2>
+                &#3110;&#3143;&#3125;&#3134;&#3122;&#3119;
+                &#3112;&#3135;&#3111;&#3135;
+                &#3112;&#3135;&#3125;&#3143;&#3110;&#3135;&#3093;
+              </h2>
+
+              <div class="english">
+                Temple Fund Report
+              </div>
+
+              <div class="report-meta">
+                Generated:
+                ${generated}
+              </div>
+
+            </section>
+
+            <section class="summary">
+
+              <div class="summary-card principal">
+
+                <span>
+                  Principal Amount
+                </span>
+
+                <strong>
+                  ${formatVillagePublicMoney(
+                    principalTotal
+                  )}
+                </strong>
+
+              </div>
+
+              <div class="summary-card interest">
+
+                <span>
+                  Calculated Interest
+                </span>
+
+                <strong>
+                  ${formatVillagePublicMoney(
+                    interestTotal
+                  )}
+                </strong>
+
+              </div>
+
+              <div class="summary-card due">
+
+                <span>
+                  Total Due
+                </span>
+
+                <strong>
+                  ${formatVillagePublicMoney(
+                    dueTotal
+                  )}
+                </strong>
+
+              </div>
+
+            </section>
+
+            <div class="table-wrap">
+              ${reportTable.outerHTML}
+            </div>
+
+            <footer class="report-footer">
+
+              <span>
+                Mana Bodabanda Village Information Portal
+              </span>
+
+              <span>
+                Sri Rama Mandira Devasthana Charitable Trust
+              </span>
+
+            </footer>
+
+          </main>
+
+        </body>
+
+      </html>
+    `);
+
+    previewWindow.document.close();
+  }
+
+  function bindTempleFundReportActions() {
+    const exportButton =
+      villagePublicElement(
+        "templeFundExportButton"
+      );
+
+    const printButton =
+      villagePublicElement(
+        "templeFundPrintButton"
+      );
+
+    if (
+      exportButton &&
+      !exportButton.dataset.reportBound
+    ) {
+      exportButton.dataset.reportBound =
+        "true";
+
+      exportButton.addEventListener(
+        "click",
+        exportPublicTempleFundCsv
+      );
+    }
+
+    if (
+      printButton &&
+      !printButton.dataset.reportBound
+    ) {
+      printButton.dataset.reportBound =
+        "true";
+
+      printButton.addEventListener(
+        "click",
+        printPublicTempleFund
+      );
+    }
+  }
   async function loadPublicTempleFund() {
     const body =
       villagePublicElement(
@@ -2044,6 +3184,9 @@
             b.principal -
               a.principal
         );
+
+    publicTempleFundReportRows =
+      rows.slice();
 
     const principalTotal =
       rows.reduce(
@@ -2310,6 +3453,8 @@
           );
         });
 
+      bindTempleFundFreezePreference();
+      bindTempleFundReportActions();
       loadPublicTempleFund()
         .then(() => {
           if (

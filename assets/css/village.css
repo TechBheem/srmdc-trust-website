@@ -2925,3 +2925,80 @@ body.village-payment-open {
     flex: 1 1 150px;
   }
 }
+
+/* SRMDC_VILLAGE_MOBILE_USER_FREEZE */
+
+.public-donation-table-preferences {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 10px;
+}
+
+.public-table-freeze-button {
+  border: 1px solid rgba(18, 87, 62, 0.28);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #12573e;
+  padding: 8px 14px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.public-table-freeze-button[aria-pressed="true"] {
+  background: #12573e;
+  color: #ffffff;
+}
+
+/*
+ * Freeze state is user-controlled at every viewport width.
+ *
+ * Default state is selected by village.js:
+ * - mobile <= 650px: unfrozen
+ * - desktop/tablet: frozen
+ *
+ * When freeze is OFF, release No. + Name from the
+ * public village donation table.
+ */
+body:not(.public-table-freeze-enabled)
+  .public-donation-table-scroll th:nth-child(1),
+body:not(.public-table-freeze-enabled)
+  .public-donation-table-scroll td:nth-child(1),
+body:not(.public-table-freeze-enabled)
+  .public-donation-table-scroll th:nth-child(2),
+body:not(.public-table-freeze-enabled)
+  .public-donation-table-scroll td:nth-child(2) {
+  position: static !important;
+  left: auto !important;
+  z-index: auto !important;
+  box-shadow: none !important;
+}
+/* SRMDC_TEMPLE_FUND_USER_FREEZE */
+
+/*
+ * Temple Fund Freeze state is user-controlled.
+ *
+ * Default:
+ * - mobile <= 650px: unfrozen
+ * - desktop/tablet: frozen
+ *
+ * When OFF, release only No. + Name.
+ */
+body:not(.temple-table-freeze-enabled)
+  .public-temple-table th:nth-child(1),
+body:not(.temple-table-freeze-enabled)
+  .public-temple-table td:nth-child(1),
+body:not(.temple-table-freeze-enabled)
+  .public-temple-table th:nth-child(2),
+body:not(.temple-table-freeze-enabled)
+  .public-temple-table td:nth-child(2) {
+  position: static !important;
+  left: auto !important;
+  z-index: auto !important;
+  box-shadow: none !important;
+}
+
+.temple-fund-table-preferences {
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
