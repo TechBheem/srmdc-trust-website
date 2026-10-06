@@ -386,12 +386,19 @@
     fallbackMessage,
     reportType
   ) {
+    // SRMDC_MOBILE_BROWSER_PDF_COMPAT
     const mobilePdfRequested =
       window.matchMedia(
         "(max-width: 700px)"
       ).matches ||
-      /Android|iPhone|iPad|iPod/i.test(
+      /Android|iPhone|iPad|iPod|Mobile/i.test(
         navigator.userAgent
+      ) ||
+      (
+        navigator.maxTouchPoints > 0 &&
+        window.matchMedia(
+          "(max-width: 1024px)"
+        ).matches
       );
 
     try {
