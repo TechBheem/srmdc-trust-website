@@ -380,15 +380,26 @@
   const VILLAGE_PRINT_REPORT_KEY =
     "srmdc-village-print-report";
 
+  // SRMDC_REPORT_URL_CONTEXT
   function openVillagePrintReport(
     reportHtml,
-    fallbackMessage
+    fallbackMessage,
+    reportType
   ) {
+    const mobilePdfRequested =
+      window.matchMedia(
+        "(max-width: 700px)"
+      ).matches ||
+      /Android|iPhone|iPad|iPod/i.test(
+        navigator.userAgent
+      );
+
     try {
       window.sessionStorage.setItem(
         VILLAGE_PRINT_REPORT_KEY,
         reportHtml
       );
+
     } catch (error) {
       console.error(
         "Unable to prepare report preview.",
@@ -405,11 +416,26 @@
       new URL(
         "./report.html",
         window.location.href
-      ).href;
+      );
+
+    reportUrl.searchParams.set(
+      "mobile",
+      mobilePdfRequested
+        ? "1"
+        : "0"
+    );
+
+    reportUrl.searchParams.set(
+      "type",
+      reportType
+    );
+
+    const reportUrlHref =
+      reportUrl.href;
 
     const reportWindow =
       window.open(
-        reportUrl,
+        reportUrlHref,
         "_blank"
       );
 
@@ -418,8 +444,22 @@
         VILLAGE_PRINT_REPORT_KEY
       );
 
+
       window.alert(fallbackMessage);
       return null;
+    }
+
+    // SRMDC_CHILD_WINDOW_REPORT_CONTEXT
+    try {
+      reportWindow.srmdcReportContext = {
+        mobilePdfRequested,
+        reportType
+      };
+    } catch (error) {
+      console.warn(
+        "Unable to pass report context directly.",
+        error
+      );
     }
 
     return reportWindow;
@@ -1071,7 +1111,8 @@
 
     openVillagePrintReport(
       reportHtml,
-      "Unable to open the print preview."
+      "Unable to open the print preview.",
+      "donations"
     );
   }
     // SRMDC_VILLAGE_MOBILE_USER_FREEZE
@@ -3141,7 +3182,8 @@ function bindPublicDonationReportActions() {
 
     openVillagePrintReport(
       reportHtml,
-      "Please allow pop-ups to open the Temple Fund report."
+      "Please allow pop-ups to open the Temple Fund report.",
+      "temple-fund"
     );
   }
 

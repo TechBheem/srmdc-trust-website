@@ -14,6 +14,133 @@
     JavaScript is required to display this report.
   </noscript>
 
+  <script src="../assets/js/vendor/html2pdf.bundle.min.js"></script>
+
+  <style>
+    /* SRMDC_TEMPLE_MOBILE_PDF_ONE_PAGE */
+    body.srmdc-temple-pdf-fit {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #ffffff !important;
+      overflow: visible !important;
+    }
+
+    body.srmdc-temple-pdf-fit .preview-toolbar {
+      display: none !important;
+    }
+
+    body.srmdc-temple-pdf-fit .temple-preview-actions {
+      display: none !important;
+    }
+
+    body.srmdc-temple-pdf-fit .report {
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      overflow: visible !important;
+      transform: none !important;
+    }
+
+    body.srmdc-temple-pdf-fit .brand-header {
+      min-height: 58px !important;
+      padding: 5px 10px !important;
+    }
+
+    body.srmdc-temple-pdf-fit .brand-logo img {
+      width: 44px !important;
+      max-height: 48px !important;
+    }
+
+    body.srmdc-temple-pdf-fit .brand-name {
+      font-size: 17px !important;
+      line-height: 1.05 !important;
+    }
+
+    body.srmdc-temple-pdf-fit .brand-subtitle {
+      font-size: 10px !important;
+      line-height: 1.05 !important;
+    }
+
+    body.srmdc-temple-pdf-fit .brand-tagline {
+      font-size: 7px !important;
+      line-height: 1.05 !important;
+    }
+
+    body.srmdc-temple-pdf-fit .report-heading {
+      padding-top: 4px !important;
+      padding-bottom: 4px !important;
+    }
+
+    body.srmdc-temple-pdf-fit .report-heading h2 {
+      margin: 0 !important;
+      font-size: 15px !important;
+      line-height: 1.05 !important;
+    }
+
+    body.srmdc-temple-pdf-fit .report-heading .english {
+      margin-top: 1px !important;
+      font-size: 9px !important;
+      line-height: 1.05 !important;
+    }
+
+    body.srmdc-temple-pdf-fit .report-meta {
+      margin-top: 1px !important;
+      font-size: 7px !important;
+      line-height: 1.05 !important;
+    }
+
+    body.srmdc-temple-pdf-fit .summary {
+      gap: 5px !important;
+      padding: 0 6px 5px !important;
+    }
+
+    body.srmdc-temple-pdf-fit .summary-card {
+      min-height: 38px !important;
+      gap: 1px !important;
+      padding: 4px 6px !important;
+      border-radius: 6px !important;
+    }
+
+    body.srmdc-temple-pdf-fit .summary-card span {
+      font-size: 7px !important;
+      line-height: 1.05 !important;
+    }
+
+    body.srmdc-temple-pdf-fit .summary-card strong {
+      font-size: 10px !important;
+      line-height: 1.05 !important;
+    }
+
+    body.srmdc-temple-pdf-fit .table-wrap {
+      padding: 0 !important;
+      overflow: visible !important;
+    }
+
+    body.srmdc-temple-pdf-fit table {
+      width: 100% !important;
+      min-width: 0 !important;
+      font-size: 6.35px !important;
+      line-height: 1.08 !important;
+    }
+
+    body.srmdc-temple-pdf-fit th,
+    body.srmdc-temple-pdf-fit td {
+      padding: 1.5px 2px !important;
+      line-height: 1.08 !important;
+    }
+
+    body.srmdc-temple-pdf-fit th {
+      font-size: 6.2px !important;
+    }
+
+    body.srmdc-temple-pdf-fit .report-footer {
+      gap: 8px !important;
+      padding: 3px 4px 4px !important;
+      font-size: 6.5px !important;
+      line-height: 1.05 !important;
+    }
+  </style>
+
   <script>
     (() => {
       "use strict";
@@ -21,6 +148,59 @@
       // SRMDC_REAL_URL_PRINT_REPORT_PAGE
       const REPORT_KEY =
         "srmdc-village-print-report";
+
+      // SRMDC_REPORT_URL_CONTEXT
+      const reportParams =
+        new URLSearchParams(
+          window.location.search
+        );
+
+      // SRMDC_CHILD_WINDOW_REPORT_CONTEXT
+      let directReportContext = null;
+
+      try {
+        if (
+          window.srmdcReportContext &&
+          typeof window.srmdcReportContext ===
+            "object"
+        ) {
+          directReportContext =
+            window.srmdcReportContext;
+        } else if (
+          window.opener &&
+          window.opener !== window &&
+          window.opener.location.origin ===
+            window.location.origin &&
+          window.srmdcReportContext
+        ) {
+          directReportContext =
+            window.srmdcReportContext;
+        }
+      } catch (error) {
+        console.warn(
+          "Unable to read direct report context.",
+          error
+        );
+      }
+
+      const mobilePdfRequested =
+        directReportContext
+          ? Boolean(
+              directReportContext
+                .mobilePdfRequested
+            )
+          : reportParams.get("mobile") === "1";
+
+      const requestedReportType =
+        directReportContext &&
+        directReportContext.reportType
+          ? directReportContext.reportType
+          : reportParams.get("type");
+
+      const reportType =
+        requestedReportType === "temple-fund"
+          ? "temple-fund"
+          : "donations";
 
       const reportHtml =
         window.sessionStorage.getItem(
@@ -42,9 +222,393 @@
         REPORT_KEY
       );
 
+
       document.open();
       document.write(reportHtml);
       document.close();
+
+      // SRMDC_MOBILE_PDF_DOWNLOAD
+      if (!mobilePdfRequested) {
+        return;
+      }
+
+      const findReportActionButton = () => {
+        const buttons =
+          Array.from(
+            document.querySelectorAll("button")
+          );
+
+        return (
+          buttons.find((button) =>
+            /Print\s*\/\s*Save PDF/i.test(
+              button.textContent || ""
+            )
+          ) || null
+        );
+      };
+
+      const reportActionButton =
+        findReportActionButton();
+
+      if (!reportActionButton) {
+        return;
+      }
+
+      reportActionButton.textContent =
+        "Download PDF";
+
+      reportActionButton.removeAttribute(
+        "onclick"
+      );
+
+      const setPdfButtonState = (
+        busy,
+        label
+      ) => {
+        reportActionButton.disabled =
+          busy;
+
+        reportActionButton.textContent =
+          label;
+      };
+
+      const reportFileName = () => {
+        const datePart =
+          new Date()
+            .toISOString()
+            .slice(0, 10);
+
+        return reportType === "temple-fund"
+          ? `bodabanda-temple-fund-${datePart}.pdf`
+          : `bodabanda-donations-${datePart}.pdf`;
+      };
+
+      const hidePreviewControls = () => {
+        const hidden =
+          [];
+
+        document
+          .querySelectorAll("button")
+          .forEach((button) => {
+            const parent =
+              button.parentElement;
+
+            if (
+              parent &&
+              !hidden.includes(parent)
+            ) {
+              hidden.push(parent);
+            }
+          });
+
+        const states =
+          hidden.map((element) => ({
+            element,
+            display:
+              element.style.display
+          }));
+
+        hidden.forEach((element) => {
+          element.style.display =
+            "none";
+        });
+
+        return () => {
+          states.forEach(
+            ({
+              element,
+              display
+            }) => {
+              element.style.display =
+                display;
+            }
+          );
+        };
+      };
+
+      const downloadMobilePdf =
+        async () => {
+          if (
+            typeof window.html2pdf !==
+            "function"
+          ) {
+            window.alert(
+              "PDF download is unavailable. Please refresh the report and try again."
+            );
+            return;
+          }
+
+          setPdfButtonState(
+            true,
+            "Preparing PDF..."
+          );
+
+          const restoreControls =
+            hidePreviewControls();
+
+          try {
+            if (
+              document.fonts &&
+              document.fonts.ready
+            ) {
+              await document.fonts.ready;
+            }
+
+            await new Promise(
+              (resolve) => {
+                window.requestAnimationFrame(
+                  () => {
+                    window.requestAnimationFrame(
+                      resolve
+                    );
+                  }
+                );
+              }
+            );
+
+            const isTempleFund =
+              reportType ===
+              "temple-fund";
+
+            // SRMDC_TEMPLE_MOBILE_PDF_CAPTURE
+            if (isTempleFund) {
+              document.body.classList.add(
+                "srmdc-temple-pdf-fit"
+              );
+            }
+
+            const reportElement =
+              isTempleFund
+                ? document.querySelector(
+                    ".report"
+                  )
+                : document.body;
+
+            if (!reportElement) {
+              throw new Error(
+                "Printable report element was not found."
+              );
+            }
+
+            if (isTempleFund) {
+              await new Promise(
+                (resolve) => {
+                  window.requestAnimationFrame(
+                    () => {
+                      window.requestAnimationFrame(
+                        resolve
+                      );
+                    }
+                  );
+                }
+              );
+            }
+
+            const options = {
+              margin:
+                isTempleFund
+                  ? [4, 4, 4, 4]
+                  : [7, 7, 7, 7],
+
+              filename:
+                reportFileName(),
+
+              image: {
+                type: "jpeg",
+                quality: 0.98
+              },
+
+              html2canvas: {
+                scale: 2,
+                useCORS: true,
+                allowTaint: false,
+                logging: false,
+                backgroundColor: "#ffffff",
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth:
+                  Math.max(
+                    document.documentElement
+                      .scrollWidth,
+                    document.body.scrollWidth
+                  )
+              },
+
+              jsPDF: {
+                unit: "mm",
+                format: "a4",
+                orientation:
+                  isTempleFund
+                    ? "landscape"
+                    : "portrait"
+              },
+
+              pagebreak: {
+                mode: [
+                  "css",
+                  "legacy"
+                ]
+              }
+            };
+
+            if (isTempleFund) {
+              /*
+               * SRMDC_TEMPLE_MOBILE_PDF_SINGLE_PAGE
+               *
+               * Render the complete compact Temple Fund report
+               * to one canvas, then fit that canvas inside one
+               * A4-landscape PDF page. This avoids html2pdf
+               * splitting account rows across multiple pages.
+               */
+              const worker =
+                window
+                  .html2pdf()
+                  .set(options)
+                  .from(reportElement)
+                  .toCanvas();
+
+              const canvas =
+                await worker.get("canvas");
+
+              const pdf =
+                await worker.toPdf().get("pdf");
+
+              const pageWidth =
+                pdf.internal.pageSize.getWidth();
+
+              const pageHeight =
+                pdf.internal.pageSize.getHeight();
+
+              const marginX = 4;
+              const marginY = 4;
+
+              const availableWidth =
+                pageWidth - (marginX * 2);
+
+              const availableHeight =
+                pageHeight - (marginY * 2);
+
+              const imageRatio =
+                canvas.width / canvas.height;
+
+              const pageRatio =
+                availableWidth /
+                availableHeight;
+
+              let renderWidth;
+              let renderHeight;
+
+              if (imageRatio >= pageRatio) {
+                renderWidth =
+                  availableWidth;
+
+                renderHeight =
+                  renderWidth / imageRatio;
+              } else {
+                renderHeight =
+                  availableHeight;
+
+                renderWidth =
+                  renderHeight * imageRatio;
+              }
+
+              const imageX =
+                (pageWidth - renderWidth) / 2;
+
+              const imageY =
+                (pageHeight - renderHeight) / 2;
+
+              while (
+                pdf.internal.getNumberOfPages() > 1
+              ) {
+                pdf.deletePage(
+                  pdf.internal.getNumberOfPages()
+                );
+              }
+
+              pdf.setPage(1);
+
+              /*
+               * SRMDC_TEMPLE_MOBILE_PDF_WORKER_ONE_PAGE
+               *
+               * Reuse the PDF object already created by the
+               * html2pdf Worker. No separately exposed jsPDF
+               * constructor is required.
+               */
+              while (
+                pdf.internal.getNumberOfPages() > 1
+              ) {
+                pdf.deletePage(
+                  pdf.internal.getNumberOfPages()
+                );
+              }
+
+              pdf.setPage(1);
+
+              /*
+               * Remove html2pdf's automatically rendered page
+               * and replace it with one clean A4 landscape page.
+               */
+              pdf.deletePage(1);
+
+              pdf.addPage(
+                "a4",
+                "landscape"
+              );
+
+              pdf.setPage(1);
+
+              pdf.addImage(
+                canvas.toDataURL(
+                  "image/jpeg",
+                  0.98
+                ),
+                "JPEG",
+                imageX,
+                imageY,
+                renderWidth,
+                renderHeight,
+                undefined,
+                "FAST"
+              );
+
+              pdf.save(
+                reportFileName()
+              );
+            } else {
+              await window
+                .html2pdf()
+                .set(options)
+                .from(reportElement)
+                .save();
+            }
+          } catch (error) {
+            console.error(
+              "Mobile PDF download failed.",
+              error
+            );
+
+            window.alert(
+              "Unable to create the PDF on this device. Please try again."
+            );
+          } finally {
+            document.body.classList.remove(
+              "srmdc-temple-pdf-fit"
+            );
+
+            restoreControls();
+
+            setPdfButtonState(
+              false,
+              "Download PDF"
+            );
+          }
+        };
+
+      reportActionButton.addEventListener(
+        "click",
+        downloadMobilePdf
+      );
     })();
   </script>
 </body>
