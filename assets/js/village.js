@@ -1014,24 +1014,24 @@
 
         </main>
 
+        <div class="preview-actions">
+          <button
+            type="button"
+            onclick="window.print()"
+          >
+            Print / Save PDF
+          </button>
+
+          <button
+            type="button"
+            class="close-button"
+            onclick="window.close()"
+          >
+            Close Preview
+          </button>
+        </div>
 
       </body>
-	<div class="preview-actions">
-  <button
-    type="button"
-    onclick="window.print()"
-  >
-    Print / Save PDF
-  </button>
-
-  <button
-    type="button"
-    class="close-button"
-    onclick="window.close()"
-  >
-    Close Preview
-  </button>
-</div>
       </html>
     `);
 
@@ -2726,7 +2726,230 @@ function bindPublicDonationReportActions() {
               }
             }
 
-          </style>
+
+          /* SRMDC_TEMPLE_PREVIEW_BOTTOM_ACTIONS */
+          .temple-preview-actions {
+            position: sticky;
+            bottom: 0;
+            z-index: 100;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+
+            width: 100%;
+            min-height: 64px;
+            margin-top: 12px;
+            padding: 10px 14px;
+
+            overflow: visible;
+
+            border-top: 1px solid #e1d6b9;
+            background: #fffaf0;
+
+            box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.08);
+          }
+
+          .temple-preview-actions > button {
+            position: static !important;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 auto;
+
+            min-width: 140px;
+            min-height: 42px;
+
+            margin: 0;
+            opacity: 1 !important;
+            visibility: visible !important;
+          }
+
+          .temple-preview-actions .print-button {
+            min-height: 40px;
+          }
+
+          .temple-preview-close-button {
+            min-height: 40px;
+            padding: 8px 16px;
+            border: 1px solid #c9b77e;
+            border-radius: 9px;
+            background: #ffffff;
+            color: #5b4630;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+          }
+
+          @media (max-width: 760px) {
+            .temple-preview-actions {
+              flex-direction: column;
+              align-items: stretch;
+            }
+
+            .temple-preview-actions .print-button,
+            .temple-preview-close-button {
+              width: 100%;
+            }
+          }
+
+          /* SRMDC_TEMPLE_ONE_PAGE_PRINT */
+          @media print {
+
+            /*
+             * Keep each Temple Fund account row together,
+             * while making the report compact enough for
+             * A4 landscape printing.
+             */
+
+            .brand-header {
+              min-height: 58px;
+              padding: 5px 10px;
+            }
+
+            .brand-logo img {
+              width: 44px;
+              max-height: 48px;
+            }
+
+            .brand-name {
+              font-size: 17px;
+              line-height: 1.05;
+            }
+
+            .brand-subtitle {
+              font-size: 10px;
+              line-height: 1.05;
+            }
+
+            .brand-tagline {
+              font-size: 7px;
+              line-height: 1.05;
+            }
+
+            .report-heading {
+              padding-top: 4px;
+              padding-bottom: 4px;
+            }
+
+            .report-heading h2 {
+              margin: 0;
+              font-size: 15px;
+              line-height: 1.05;
+            }
+
+            .report-heading .english {
+              margin-top: 1px;
+              font-size: 9px;
+              line-height: 1.05;
+            }
+
+            .report-meta {
+              margin-top: 1px;
+              font-size: 7px;
+              line-height: 1.05;
+            }
+
+            .summary {
+              gap: 5px;
+              padding: 0 6px 5px;
+            }
+
+            .summary-card {
+              min-height: 38px;
+              gap: 1px;
+              padding: 4px 6px;
+              border-radius: 6px;
+            }
+
+            .summary-card span {
+              font-size: 7px;
+              line-height: 1.05;
+            }
+
+            .summary-card strong {
+              font-size: 10px;
+              line-height: 1.05;
+            }
+
+            .table-wrap {
+              padding: 0;
+              overflow: visible;
+            }
+
+            table {
+              width: 100%;
+              min-width: 0;
+              font-size: 6.35px;
+              line-height: 1.08;
+            }
+
+            th,
+            td {
+              padding: 1.5px 2px;
+              line-height: 1.08;
+            }
+
+            th {
+              font-size: 6.2px;
+            }
+
+            thead {
+              display: table-header-group;
+            }
+
+            tr {
+              break-inside: avoid;
+              page-break-inside: avoid;
+            }
+
+            .report-footer {
+              gap: 8px;
+              padding: 3px 4px 4px;
+              font-size: 6.5px;
+              line-height: 1.05;
+            }
+          }
+          /* SRMDC_TEMPLE_PRINT_PAGE_SCALE */
+          @media print {
+            html,
+            body {
+              margin: 0 !important;
+              padding: 0 !important;
+            }
+
+            body {
+              overflow: visible !important;
+            }
+
+            /*
+             * Scale the complete printable report as one unit.
+             * Width compensation keeps the final scaled width
+             * close to the available landscape page width.
+             */
+            .report {
+              width: 95.24% !important;
+              max-width: none !important;
+              margin: 0 !important;
+
+              transform: scale(1.05);
+              transform-origin: top left;
+
+              overflow: visible !important;
+            }
+
+            .temple-preview-actions {
+              display: none !important;
+            }
+          }
+          @media print {
+            .temple-preview-actions {
+              display: none !important;
+            }
+          }
+        </style>
 
         </head>
 
@@ -2746,13 +2969,7 @@ function bindPublicDonationReportActions() {
 
             </div>
 
-            <button
-              type="button"
-              class="print-button"
-              onclick="window.print()"
-            >
-              Print / Save PDF
-            </button>
+
 
           </div>
 
@@ -2877,7 +3094,25 @@ function bindPublicDonationReportActions() {
 
           </main>
 
-        </body>
+
+        <div class="temple-preview-actions">
+          <button
+            type="button"
+            class="print-button"
+            onclick="window.print()"
+          >
+            Print / Save PDF
+          </button>
+
+          <button
+            type="button"
+            class="temple-preview-close-button"
+            onclick="window.close()"
+          >
+            Close Preview
+          </button>
+        </div>
+      </body>
 
       </html>
     `);
