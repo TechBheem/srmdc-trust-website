@@ -1017,7 +1017,7 @@
         <div class="preview-actions">
           <button
             type="button"
-            onclick="window.print()"
+            onclick="printPreviewReport()"
           >
             Print / Save PDF
           </button>
@@ -1036,6 +1036,15 @@
     `);
 
     reportWindow.document.close();
+
+    // SRMDC_MOBILE_PREVIEW_PRINT_FIX
+    reportWindow.printPreviewReport = () => {
+      reportWindow.focus();
+
+      reportWindow.setTimeout(() => {
+        reportWindow.print();
+      }, 150);
+    };
   }
     // SRMDC_VILLAGE_MOBILE_USER_FREEZE
   const PUBLIC_DONATION_FREEZE_KEY =
@@ -3099,7 +3108,7 @@ function bindPublicDonationReportActions() {
           <button
             type="button"
             class="print-button"
-            onclick="window.print()"
+            onclick="printPreviewReport()"
           >
             Print / Save PDF
           </button>
@@ -3118,6 +3127,15 @@ function bindPublicDonationReportActions() {
     `);
 
     previewWindow.document.close();
+
+    // SRMDC_MOBILE_PREVIEW_PRINT_FIX
+    previewWindow.printPreviewReport = () => {
+      previewWindow.focus();
+
+      previewWindow.setTimeout(() => {
+        previewWindow.print();
+      }, 150);
+    };
   }
 
   function bindTempleFundReportActions() {
