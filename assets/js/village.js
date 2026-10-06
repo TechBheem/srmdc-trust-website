@@ -376,6 +376,55 @@
     URL.revokeObjectURL(url);
   }
 
+  // SRMDC_REAL_URL_PRINT_PREVIEW
+  const VILLAGE_PRINT_REPORT_KEY =
+    "srmdc-village-print-report";
+
+  function openVillagePrintReport(
+    reportHtml,
+    fallbackMessage
+  ) {
+    try {
+      window.sessionStorage.setItem(
+        VILLAGE_PRINT_REPORT_KEY,
+        reportHtml
+      );
+    } catch (error) {
+      console.error(
+        "Unable to prepare report preview.",
+        error
+      );
+
+      window.alert(
+        "Unable to prepare the report preview."
+      );
+      return null;
+    }
+
+    const reportUrl =
+      new URL(
+        "./report.html",
+        window.location.href
+      ).href;
+
+    const reportWindow =
+      window.open(
+        reportUrl,
+        "_blank"
+      );
+
+    if (!reportWindow) {
+      window.sessionStorage.removeItem(
+        VILLAGE_PRINT_REPORT_KEY
+      );
+
+      window.alert(fallbackMessage);
+      return null;
+    }
+
+    return reportWindow;
+  }
+
   function printPublicVillageDonations() {
     const rows =
       publicDonationReportRows();
@@ -482,22 +531,7 @@
         `)
         .join("");
 
-    const reportWindow =
-      window.open(
-        "",
-        "_blank"
-      );
-
-    if (!reportWindow) {
-      window.alert(
-        "Unable to open the print window."
-      );
-      return;
-    }
-
-    reportWindow.document.open();
-
-    reportWindow.document.write(`
+    const reportHtml = `
       <!doctype html>
 
       <html lang="te">
@@ -1017,7 +1051,7 @@
         <div class="preview-actions">
           <button
             type="button"
-            onclick="printPreviewReport()"
+            onclick="window.print()"
           >
             Print / Save PDF
           </button>
@@ -1033,18 +1067,12 @@
 
       </body>
       </html>
-    `);
+    `;
 
-    reportWindow.document.close();
-
-    // SRMDC_MOBILE_PREVIEW_PRINT_FIX
-    reportWindow.printPreviewReport = () => {
-      reportWindow.focus();
-
-      reportWindow.setTimeout(() => {
-        reportWindow.print();
-      }, 150);
-    };
+    openVillagePrintReport(
+      reportHtml,
+      "Unable to open the print preview."
+    );
   }
     // SRMDC_VILLAGE_MOBILE_USER_FREEZE
   const PUBLIC_DONATION_FREEZE_KEY =
@@ -2209,22 +2237,7 @@ function bindPublicDonationReportActions() {
         element.remove();
       });
 
-    const previewWindow =
-      window.open(
-        "",
-        "_blank"
-      );
-
-    if (!previewWindow) {
-      window.alert(
-        "Please allow pop-ups to open the Temple Fund report."
-      );
-      return;
-    }
-
-    previewWindow.document.open();
-
-    previewWindow.document.write(`
+    const reportHtml = `
       <!doctype html>
       <html lang="te">
 
@@ -3108,7 +3121,7 @@ function bindPublicDonationReportActions() {
           <button
             type="button"
             class="print-button"
-            onclick="printPreviewReport()"
+            onclick="window.print()"
           >
             Print / Save PDF
           </button>
@@ -3124,18 +3137,12 @@ function bindPublicDonationReportActions() {
       </body>
 
       </html>
-    `);
+    `;
 
-    previewWindow.document.close();
-
-    // SRMDC_MOBILE_PREVIEW_PRINT_FIX
-    previewWindow.printPreviewReport = () => {
-      previewWindow.focus();
-
-      previewWindow.setTimeout(() => {
-        previewWindow.print();
-      }, 150);
-    };
+    openVillagePrintReport(
+      reportHtml,
+      "Please allow pop-ups to open the Temple Fund report."
+    );
   }
 
   function bindTempleFundReportActions() {

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+  <title>Mana Bodabanda - Report Preview</title>
+</head>
+
+<body>
+  <noscript>
+    JavaScript is required to display this report.
+  </noscript>
+
+  <script>
+    (() => {
+      "use strict";
+
+      // SRMDC_REAL_URL_PRINT_REPORT_PAGE
+      const REPORT_KEY =
+        "srmdc-village-print-report";
+
+      const reportHtml =
+        window.sessionStorage.getItem(
+          REPORT_KEY
+        );
+
+      if (!reportHtml) {
+        document.body.innerHTML =
+          "<main style='font-family:Arial,sans-serif;" +
+          "max-width:720px;margin:60px auto;padding:24px;" +
+          "text-align:center'>" +
+          "<h1>Report preview unavailable</h1>" +
+          "<p>Please return to Mana Bodabanda and open the report again.</p>" +
+          "</main>";
+        return;
+      }
+
+      window.sessionStorage.removeItem(
+        REPORT_KEY
+      );
+
+      document.open();
+      document.write(reportHtml);
+      document.close();
+    })();
+  </script>
+</body>
+</html>
